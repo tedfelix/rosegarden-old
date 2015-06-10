@@ -1,0 +1,17 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Categories=AudioVideo;Audio;Midi;Sequencer;X-SuSE-Sequencer;X-Red-Hat-Base;
+Exec=rosegarden %f
+MimeType=audio/x-rosegarden-composition;audio/x-rosegarden-device;audio/x-rosegarden-project;audio/x-rosegarden-template;audio/x-wav;audio/midi;audio/ogg;audio/mp3;audio/x-flac;
+X-KDE-NativeMimeType=audio/x-rosegarden-composition
+Icon=rosegarden
+Comment=MIDI and Audio Sequencer and Notation Editor
+Comment[de]=MIDI- und Audio-Sequencer und Notensatzprogramm
+Comment[es]=Secuenciador de MIDI y de audio y editor de partitura
+Comment[fr]=Séquenceur MIDI/audio et éditeur de partitions
+Comment[ru]=MIDI-секвенсер и нотный редактор
+Terminal=false
+Name=Rosegarden
+GenericName=Digital audio workstation
+GenericName[de]=Digital Audio Workstation

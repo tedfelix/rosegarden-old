@@ -1,0 +1,52 @@
+#!/bin/bash
+warnings=""
+if [ x"$1" = x-w ]; then warnings=yes; shift; fi
+outcodefile=`mktemp /tmp/XXXXXX`
+trap "rm -f ${outcodefile} ; stty -F /dev/tty cooked echo" 0
+getinput() {
+    echo -ne "\033[1;31;37m--More--\033[00m" 1>&2
+    stty -F /dev/tty raw -echo
+    c=`dd if=/dev/tty bs=1 count=1 2>/dev/null`
+    stty -F /dev/tty cooked echo
+    echo -ne '\r        \r' 1>&2
+    echo $c
+}
+if [ -z "$MAKE" ]; then
+    if gmake --version 2>/dev/null | grep GNU >/dev/null; then
+	MAKE=gmake
+    else
+	MAKE=make
+    fi
+fi
+( "$MAKE" "$@" 2>&1 ; echo $? > "${outcodefile}" ) | (
+    count=0
+    bad=""
+    runon=""
+    while IFS='' read line; do
+	if [[ "$line" =~ 'rror: ' ]] || [[ "$line" =~ ': undefined ' ]]; then
+	    bad=yes
+	    b=${line#*[: ][0-9]*:}
+	    a=${line%${b}}
+	    line="\033[01;37;44m$a\033[00m$b"
+	elif [ -n "$warnings" ]; then
+            if [[ "$line" =~ 'arning: ' ]]; then
+                b=${line#*[: ][0-9]*:}
+                a=${line%${b}}
+                line="\033[01;37;44m$a\033[00m$b"
+	    fi
+        fi
+	echo -e "$line"
+	if [ -n "$bad" ] && [ -z "$runon" ]; then
+	    lines=`echo -e "$line" | fold | wc -l | awk '{ print $1 }'`
+	    [ -z "$lines" ] && lines=1
+	    count=$(($count+$lines))
+	    if [ "$count" -gt 14 ]; then
+		c=$(getinput)
+		case "$c" in q) exit 1;; c) runon=yes;; esac
+		count=0
+	    fi
+	fi
+    done )
+rv=1
+[ -f "${outcodefile}" ] && rv=`cat "${outcodefile}"`
+exit $rv

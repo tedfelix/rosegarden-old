@@ -1,0 +1,18 @@
+--- src/gui/general/FileSource.cpp	(revision 13703)
++++ src/gui/general/FileSource.cpp	(working copy)
+@@ -382,6 +382,7 @@
+             this, SLOT(ftpCommandFinished(int, bool)));
+     connect(m_ftp, SIGNAL(dataTransferProgress(qint64, qint64)),
+             this, SLOT(dataTransferProgress(qint64, qint64)));
++
+     m_ftp->connectToHost(m_url.host(), m_url.port(21));
+     
+     QString username = m_url.userName();
+@@ -401,6 +402,7 @@
+     
+     if (dirpath == "") dirpath = "/";
+     m_ftp->cd(dirpath);
++
+     m_ftp->get(filename, m_localFile);
+ }
+ 
