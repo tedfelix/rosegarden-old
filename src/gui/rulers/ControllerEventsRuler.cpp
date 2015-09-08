@@ -79,9 +79,6 @@ ControllerEventsRuler::ControllerEventsRuler(ViewSegment *segment,
         m_controller = 0;
     }
 
-    // This is necessary to run the overloaded method, the base method has already run
-    setViewSegment(segment);
-
     setMenuName("controller_events_ruler_menu");
 //    drawBackground(); Now in paintEvent
 //    init();
@@ -460,7 +457,11 @@ ControllerEventsRuler::addControlLine(float x1, float y1, float x2, float y2, bo
                                                     *ei,
                                                     collapseRests));
        }
+    }
 
+    if (macro->haveCommands()) {
+        CommandHistory::getInstance()->addCommand(macro);
+        macro = new MacroCommand(tr("Insert Line of Controllers"));
     }
 
     for (float i = originTime; i <= destinationTime; i += step) {
