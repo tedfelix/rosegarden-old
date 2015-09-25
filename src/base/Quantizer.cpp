@@ -76,6 +76,11 @@ Quantizer::quantize(Segment *s,
 {
     Q_ASSERT(m_toInsert.size() == 0);
 
+    m_normalizeRegion.first =
+        (from != s->end() ? (*from)->getAbsoluteTime() : s->getStartTime());
+    m_normalizeRegion.second =
+        (to != s->end() ? (*to)->getAbsoluteTime() : s->getEndTime());
+
     quantizeRange(s, from, to);
 
     insertNewEvents(s);
@@ -126,8 +131,14 @@ Quantizer::quantize(EventSelection *selection)
 
     // Push the new events to the selection
     for (int i = 0; i < int(m_toInsert.size()); ++i) {
-	selection->addEvent(m_toInsert[i]);
+        if (m_toInsert[i]->getAbsoluteTime() < segment.getEndTime()) {
+            // Select only the events inside the segment.
+            selection->addEvent(m_toInsert[i]);
+        }
     }
+
+    m_normalizeRegion.first = segment.getStartTime();
+    m_normalizeRegion.second = segment.getEndTime();
 
     // and then to the segment
     insertNewEvents(&segment);
@@ -450,12 +461,24 @@ Quantizer::insertNewEvents(Segment *s) const
     timeT minTime = m_normalizeRegion.first,
 	  maxTime = m_normalizeRegion.second;
 
+    bool hasEndTime = maxTime > 0;
+
     for (size_t i = 0; i < sz; ++i) {
 
 	timeT myTime = m_toInsert[i]->getAbsoluteTime();
 	timeT myDur  = m_toInsert[i]->getDuration();
-	if (i == 0 || myTime < minTime) minTime = myTime;
-	if (i == 0 || myTime + myDur > maxTime) maxTime = myTime + myDur;
+
+        if (hasEndTime && myTime >= maxTime) {
+            cerr << "Quantizer::insertNewEvents(): ignoring event outside the segment at "
+                 << myTime << endl;
+            continue;
+        }
+
+	if (myTime < minTime) minTime = myTime;
+
+        if (!hasEndTime && myTime + myDur > maxTime) {
+            maxTime = myTime + myDur;
+        }
 
 	s->insert(m_toInsert[i]);
     }

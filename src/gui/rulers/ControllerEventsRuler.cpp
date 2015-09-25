@@ -80,8 +80,6 @@ ControllerEventsRuler::ControllerEventsRuler(ViewSegment *segment,
     }
 
     setMenuName("controller_events_ruler_menu");
-//    drawBackground(); Now in paintEvent
-//    init();
 
     RG_DEBUG << "ControllerEventsRuler::ControllerEventsRuler - " << controller->getName();
     RG_DEBUG << "Segment from " << segment->getSegment().getStartTime() << " to " << segment->getSegment().getEndTime();
@@ -177,8 +175,6 @@ void ControllerEventsRuler::paintEvent(QPaintEvent *event)
 
     QBrush brush(GUIPalette::getColour(GUIPalette::ControlItem),Qt::SolidPattern);
 
-//    QPen highlightPen(GUIPalette::getColour(GUIPalette::SelectedElement),
-//            2, Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin);
     QPen pen(GUIPalette::getColour(GUIPalette::MatrixElementBorder),
             0.5, Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin);
 
@@ -186,8 +182,6 @@ void ControllerEventsRuler::paintEvent(QPaintEvent *event)
     painter.setPen(pen);
 
     QString str;
-//    str = QString::fromStdString(m_controller->getName());
-//    painter.drawText(10,20,str.toUpper());
     
     ControlItemMap::iterator mapIt;
     float lastX, lastY;
@@ -221,7 +215,7 @@ void ControllerEventsRuler::paintEvent(QPaintEvent *event)
             mapYToWidget(lastY));
     
     // Use a fast vector list to record selected items that are currently visible so that they
-    //  can be drawn last - can't use m_selectedItems as this covers all selected, visible or not
+    // can be drawn last - can't use m_selectedItems as this covers all selected, visible or not
     std::vector<ControlItem*> selectedvector;
 
     for (ControlItemList::iterator it = m_visibleItems.begin(); it != m_visibleItems.end(); ++it) {
@@ -232,7 +226,6 @@ void ControllerEventsRuler::paintEvent(QPaintEvent *event)
         }
     }
 
-//    painter.setBrush(brush);
     pen.setColor(GUIPalette::getColour(GUIPalette::SelectedElement));
     pen.setWidthF(2.0);
     painter.setPen(pen);
@@ -247,7 +240,13 @@ void ControllerEventsRuler::paintEvent(QPaintEvent *event)
 
         // For selected items, draw the value in text alongside the marker
         // By preference, this should sit on top of the new line that represents this value change
-        str = QString::number(yToValue((*it)->y())-m_controller->getDefault());
+        
+        // Any controller that has a default of 64 is presumed to be or behave
+        // like pan, and display a working range of -64 to 64, centered on 0,
+        // rather than the usual 0 to 127.  Note, the == 64 is hard coded
+        // elsewhere, so one more won't hurt.  Fixes #1451.
+        int offsetFactor = (m_controller->getDefault() == 64 ? 64 : 0);
+        str = QString::number(yToValue((*it)->y()) - offsetFactor);
         int x = mapXToWidget((*it)->xStart())+0.4*fontOffset;
         int y = std::max(mapYToWidget((*it)->y())-0.2f*fontHeight,float(fontHeight));
         
@@ -345,10 +344,6 @@ ControlItem* ControllerEventsRuler::addControlItem(float x, float y)
     EventControlItem *item = new EventControlItem(this, new ControllerEventAdapter(0), QPolygonF());
     item->reconfigure(x,y);
     item->setSelected(true);
-//    m_selectedItems.push_back(item);
-//    if (isVisible(item)) {
-//        m_visibleItems.push_back(item);
-//    }
     ControlRuler::addControlItem(item);
     
     return item;
@@ -549,7 +544,6 @@ void ControllerEventsRuler::slotSetTool(const QString &matrixtoolname)
     if (m_currentTool) m_currentTool->stow();
     m_currentTool = tool;
     m_currentTool->ready();
-//    emit toolChanged(name);
 }
 
 Event *ControllerEventsRuler::insertEvent(float x, float y)
@@ -581,8 +575,6 @@ Event *ControllerEventsRuler::insertEvent(float x, float y)
 
         bool ok = false;
         QIntValidator intValidator(0, 128, this);
-//         QString res = KLineEditDlg::getText(tr("Controller Event Number"), "0",
-//                                             &ok, this, &intValidator);
         QString res = InputDialog::getText(this, "", tr("Controller Event Number"),
                                            LineEdit::Normal, "0", &ok);
 
@@ -590,6 +582,10 @@ Event *ControllerEventsRuler::insertEvent(float x, float y)
             number = res.toULong();
     }
 
+    //NOTE: while debugging #1451 I determined that the pan controller sets
+    // values 0 to 127 like anything else, and the difference in interpretation
+    // (improperly applied to volume and expression) is happening at a more
+    // superficial level; all of this code here is working logically
     if (m_controller->getType() == Rosegarden::Controller::EventType)
     {
         controllerEvent->set<Rosegarden::Int>(Rosegarden::Controller::VALUE, initialValue);
@@ -609,12 +605,6 @@ Event *ControllerEventsRuler::insertEvent(float x, float y)
     m_moddingSegment = false;
 
     return controllerEvent;
-//    ControlRulerEventInsertCommand* command =
-//        new ControlRulerEventInsertCommand(m_controller->getType(),
-//                                           insertTime, number,
-//                                           initialValue, *m_segment);
-//
-//    CommandHistory::getInstance()->addCommand(command);
 }
 
 void ControllerEventsRuler::eraseEvent(Event *event)

@@ -1359,7 +1359,10 @@ bool RosegardenDocument::saveDocumentActual(const QString& filename,
 
         Segment *segment = *segitr;
 
-        if (segment->isLinked()) {
+        // Fix #1446 : Replace isLinked() with isTrulyLinked().
+        // Maybe this fix will need to be removed some day if the
+        // LinkTransposeParams come to be used.
+        if (segment->isTrulyLinked()) {
             QString attsString = QString("linkerid=\"%1\" ");
             attsString += QString("linkertransposechangekey=\"%2\" ");
             attsString += QString("linkertransposesteps=\"%3\" ");
@@ -3032,8 +3035,9 @@ Instrument *
 RosegardenDocument::
 getInstrument(Segment *segment)
 {
-    if (!segment)
-        { return 0; }
+    if (!segment || !(segment->getComposition())) {
+        return 0;
+    }
 
     Studio &studio = getStudio();
     Instrument *instrument =
