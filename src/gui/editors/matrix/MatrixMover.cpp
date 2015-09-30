@@ -96,7 +96,10 @@ MatrixMover::handleLeftButtonPress(const MatrixMouseEvent *e)
     m_currentViewSegment = e->viewSegment;
 
     m_currentElement = e->element;
-    m_clickSnappedLeftTime = e->snappedLeftTime;
+
+    timeT snappedAbsoluteLeftTime =
+        getSnapGrid()->snapTime(m_currentElement->getViewAbsoluteTime());
+    m_clickSnappedLeftDeltaTime = e->snappedLeftTime - snappedAbsoluteLeftTime;
 
     m_quickCopy = (e->modifiers & Qt::ControlModifier);
 
@@ -122,7 +125,7 @@ MatrixMover::handleLeftButtonPress(const MatrixMouseEvent *e)
         } else {
             newSelection = new EventSelection(m_currentViewSegment->getSegment());
         }
-        
+
         // if the selection already contains the event, remove it from the
         // selection if shift is pressed
         if (selection->contains(event)) {
@@ -132,6 +135,7 @@ MatrixMover::handleLeftButtonPress(const MatrixMouseEvent *e)
         } else {
             newSelection->addEvent(event);
         }
+
         m_scene->setSelection(newSelection, true);
         selection = newSelection;
     } else {
@@ -189,8 +193,7 @@ MatrixMover::handleMouseMove(const MatrixMouseEvent *e)
         clearContextHelp();
     }
 
-    timeT newTime = m_currentElement->getViewAbsoluteTime() +
-        (e->snappedLeftTime - m_clickSnappedLeftTime);
+    timeT newTime = e->snappedLeftTime - m_clickSnappedLeftDeltaTime;
     int newPitch = e->pitch;
 
     emit hoveredOverNoteChanged(newPitch, true, newTime);
@@ -204,7 +207,7 @@ MatrixMover::handleMouseMove(const MatrixMouseEvent *e)
     if (m_currentElement->event()->has(PITCH)) {
         diffPitch = newPitch - m_currentElement->event()->get<Int>(PITCH);
     }
-    
+
     EventSelection* selection = m_scene->getSelection();
 
     // factor in transpose to adjust the height calculation
@@ -233,9 +236,8 @@ MatrixMover::handleMouseMove(const MatrixMouseEvent *e)
         element->reconfigure(newTime + diffTime,
                              element->getViewDuration(),
                              epitch + diffPitch);
-                             
+
         element->setSelected(true);
-            
     }
 
     if (newPitch != m_lastPlayedPitch) {
@@ -258,8 +260,7 @@ MatrixMover::handleMouseRelease(const MatrixMouseEvent *e)
 
     if (!m_currentElement || !m_currentViewSegment) return;
 
-    timeT newTime = m_currentElement->getViewAbsoluteTime() +
-        (e->snappedLeftTime - m_clickSnappedLeftTime);
+    timeT newTime = e->snappedLeftTime - m_clickSnappedLeftDeltaTime;
     int newPitch = e->pitch;
 
     if (newPitch > 127) newPitch = 127;

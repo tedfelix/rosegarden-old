@@ -2,13 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="cs">
 <context>
-    <name></name>
-    <message>
-        <source>Rosegarden</source>
-        <translation type="obsolete">Rosegarden</translation>
-    </message>
-</context>
-<context>
     <name>:</name>
     <message>
         <location filename="../../src/sound/MidiFile.cpp" line="104"/>
@@ -60,10 +53,6 @@
         <location filename="../../src/gui/studio/DeviceManagerDialogUi.h" line="482"/>
         <source>Default playback device</source>
         <translation>Výchozí zařízení pro přehrávání</translation>
-    </message>
-    <message>
-        <source>&lt;qt&gt;&lt;p&gt;Create new playback devices here. Click the device name to change it. Select a device here and connect it to a MIDI output port by clicking on a port to the right.&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Zde vytvořte nové zařízení pro přehrávání. Klepněte na název zařízení, abyste jej mohl změnit. Vyberte zde zařízení a spojte je s přípojkou výstupu MIDI klepnutím na přípojku na pravé straně.&lt;/p&gt;&lt;/qt&gt;</translation>
     </message>
     <message>
         <location filename="../../src/gui/studio/DeviceManagerDialogUi.ui" line="150"/>
@@ -149,10 +138,6 @@
         <translation>&lt;qt&gt;&lt;p&gt;Dostupné vstupy MIDI (od technických po programové)&lt;/p&gt;&lt;/qt&gt;</translation>
     </message>
     <message>
-        <source>&lt;qt&gt;&lt;p&gt;Available ALSA MIDI outputs for any hardware detected and supported by your distribution, and any available soft synths such as QSynth, ZynAddSubFX, etc.&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Jsou zjištěna a vaší distribucí podporována dostupná ALSA MIDI výstupní zařízení, a všechny dostupné softwarové syntetizátory jako například QSynth, ZynAddSubFX, etc.&lt;/p&gt;&lt;/qt&gt;</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/studio/DeviceManagerDialogUi.ui" line="389"/>
         <location filename="../../src/gui/studio/DeviceManagerDialogUi.ui" line="729"/>
         <location filename="../../src/gui/studio/DeviceManagerDialogUi.h" line="520"/>
@@ -222,10 +207,6 @@
         <location filename="../../src/gui/studio/DeviceManagerDialogUi.h" line="547"/>
         <source>Available inputs</source>
         <translation>Dostupné vstupy</translation>
-    </message>
-    <message>
-        <source>&lt;qt&gt;&lt;p&gt;Available ALSA MIDI inputs for any hardware MIDI inputs detected by your distribution&apos;s hardware autodetection, plus any ALSA MIDI software that exposes output ports, such as VMPK&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Dostupná ALSA MIDI vstupní zařízení pro všechny MIDI hardwarové vstupy, která byla zjištěna během automatického zjišťování vaší distribucí, plus všechen ALSA MIDI software, který poskytuje výstupní přípojky, jako například VMPK&lt;/p&gt;&lt;/qt&gt;</translation>
     </message>
 </context>
 <context>
@@ -311,10 +292,6 @@
         <location filename="../../src/base/parameterpattern/RingingParameterPattern.cpp" line="30"/>
         <source>Ringing - set %1 alternating from max to min with both dying to zero</source>
         <translation>Vyzvánění - nastavit %1 na střídání od největšího po nejmenší s ukončením na nule</translation>
-    </message>
-    <message>
-        <source>Half-wave crescendo - set %1 rising from min to max n a half sine wave contour</source>
-        <translation type="obsolete">Crescendo - nastavit %1 na zvětšující se od nejmenšího po největší</translation>
     </message>
     <message>
         <location filename="../../src/base/parameterpattern/HalfSinePattern.cpp" line="28"/>
@@ -436,10 +413,6 @@
         <translation>Přehrát ukázku</translation>
     </message>
     <message>
-        <source>Insert Into Selected Audio track</source>
-        <translation type="obsolete">Vložit do vybrané zvukové stopy</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="51"/>
         <location filename="../QMenuStrings.cpp" line="110"/>
         <location filename="../QMenuStrings.cpp" line="111"/>
@@ -462,10 +435,6 @@
         <location filename="../QMenuStrings.cpp" line="4761"/>
         <source>&amp;Help</source>
         <translation>&amp;Nápověda</translation>
-    </message>
-    <message>
-        <source>&amp;Rosegarden tutorial</source>
-        <translation type="obsolete">&amp;Výukový materiál pro Rosegarden</translation>
     </message>
     <message>
         <location filename="../QMenuStrings.cpp" line="1554"/>
@@ -508,10 +477,6 @@
         <translation>&amp;Nic pro vzetí zpět</translation>
     </message>
     <message>
-        <source>Ctrl+Z</source>
-        <translation type="obsolete">Ctrl+Z</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="83"/>
         <location filename="../QMenuStrings.cpp" line="153"/>
         <location filename="../QMenuStrings.cpp" line="202"/>
@@ -520,10 +485,6 @@
         <location filename="../QMenuStrings.cpp" line="4738"/>
         <source>N&amp;othing to redo</source>
         <translation>&amp;Nic pro provedení znovu</translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+Z</source>
-        <translation type="obsolete">Ctrl+Shift+Z</translation>
     </message>
     <message>
         <location filename="../QMenuStrings.cpp" line="92"/>
@@ -601,17 +562,9 @@
         <translation>&amp;Vložit událost</translation>
     </message>
     <message>
-        <source>I</source>
-        <translation type="obsolete">I</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="220"/>
         <source>&amp;Delete Event</source>
         <translation>&amp;Odstranit událost</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation type="obsolete">Smazat</translation>
     </message>
     <message>
         <location filename="../QMenuStrings.cpp" line="229"/>
@@ -726,10 +679,6 @@
         <location filename="../QMenuStrings.cpp" line="4428"/>
         <source>Open in &amp;Notation Editor</source>
         <translation>Otevřít v editoru &amp;notového zápisu</translation>
-    </message>
-    <message>
-        <source>Rosegarden &amp;manual</source>
-        <translation type="obsolete">&amp;Příručka k programu Rosegarden</translation>
     </message>
     <message>
         <location filename="../QMenuStrings.cpp" line="1556"/>
@@ -905,18 +854,6 @@
         <translation>Přepnout na nástroj pro změnu velikosti</translation>
     </message>
     <message>
-        <source>E&amp;dit</source>
-        <translation type="obsolete">U&amp;pravit</translation>
-    </message>
-    <message>
-        <source>Nothing to &amp;undo</source>
-        <translation type="obsolete">&amp;Nic pro vzetí zpět</translation>
-    </message>
-    <message>
-        <source>Nothing to &amp;redo</source>
-        <translation type="obsolete">&amp;Nic pro provedení znovu</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="538"/>
         <location filename="../QMenuStrings.cpp" line="3879"/>
         <location filename="../QMenuStrings.cpp" line="4500"/>
@@ -940,10 +877,6 @@
         <translation>&amp;Zapadnout do 1/64</translation>
     </message>
     <message>
-        <source>0</source>
-        <translation type="obsolete">0</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="587"/>
         <source>Snap to &amp;1/48</source>
         <translation>Zapadnout do &amp;1/48</translation>
@@ -954,10 +887,6 @@
         <translation>Za&amp;padnout do 1/32</translation>
     </message>
     <message>
-        <source>3</source>
-        <translation type="obsolete">3</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="597"/>
         <source>Snap to 1/&amp;24</source>
         <translation>Zapadnout do 1/&amp;24</translation>
@@ -966,10 +895,6 @@
         <location filename="../QMenuStrings.cpp" line="598"/>
         <source>Sna&amp;p to 1/16</source>
         <translation>Zapad&amp;nout do 1/16</translation>
-    </message>
-    <message>
-        <source>6</source>
-        <translation type="obsolete">6</translation>
     </message>
     <message>
         <location filename="../QMenuStrings.cpp" line="607"/>
@@ -992,10 +917,6 @@
         <translation>Zapadnout do 1/4</translation>
     </message>
     <message>
-        <source>4</source>
-        <translation type="obsolete">4</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="627"/>
         <source>Snap to 3/8</source>
         <translation>Zapadnout do 3/8</translation>
@@ -1006,26 +927,14 @@
         <translation>Zapadnout do 1/2</translation>
     </message>
     <message>
-        <source>2</source>
-        <translation type="obsolete">2</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="637"/>
         <source>Snap to Bea&amp;t</source>
         <translation>Zapadnout do &amp;doby</translation>
     </message>
     <message>
-        <source>1</source>
-        <translation type="obsolete">1</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="646"/>
         <source>Snap to &amp;Bar</source>
         <translation>Zapadnout k &amp;taktové čáře</translation>
-    </message>
-    <message>
-        <source>5</source>
-        <translation type="obsolete">5</translation>
     </message>
     <message>
         <location filename="../QMenuStrings.cpp" line="687"/>
@@ -1051,10 +960,6 @@
         <translation>Přidat změnu &amp;taktového označení...</translation>
     </message>
     <message>
-        <source>&amp;Segment</source>
-        <translation type="obsolete">&amp;Část</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="692"/>
         <location filename="../QMenuStrings.cpp" line="1981"/>
         <location filename="../QMenuStrings.cpp" line="4066"/>
@@ -1063,36 +968,16 @@
         <translation>Otevřít v editoru seznamu &amp;událostí</translation>
     </message>
     <message>
-        <source>Set Segment Start &amp;Time...</source>
-        <translation type="obsolete">Nastavit počáteční č&amp;as části...</translation>
-    </message>
-    <message>
-        <source>Set Segment &amp;Duration...</source>
-        <translation type="obsolete">Nastavit &amp;dobu trvání části...</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation type="obsolete">Vlevo</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="951"/>
         <location filename="../QMenuStrings.cpp" line="2706"/>
         <source>Step Back (Left)</source>
         <translation>Krok zpět (vlevo)</translation>
     </message>
     <message>
-        <source>Right</source>
-        <translation type="obsolete">Vpravo</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="966"/>
         <location filename="../QMenuStrings.cpp" line="2721"/>
         <source>Step Forward (Right)</source>
         <translation>Krok vpřed (vpravo)</translation>
-    </message>
-    <message>
-        <source>Ctrl+R</source>
-        <translation type="obsolete">Ctrl+R</translation>
     </message>
     <message>
         <location filename="../QMenuStrings.cpp" line="699"/>
@@ -1706,10 +1591,6 @@
         <translation>&amp;Kopírovat události ovládacího prvku</translation>
     </message>
     <message>
-        <source>Paste Events (&amp;V)</source>
-        <translation type="obsolete">Vložit události (&amp;V)</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="860"/>
         <location filename="../QMenuStrings.cpp" line="2584"/>
         <source>&amp;Place a Controller for Each Note</source>
@@ -1860,34 +1741,6 @@
         <translation>&amp;Rychlost</translation>
     </message>
     <message>
-        <source>Local &amp;Cursor</source>
-        <translation type="obsolete">Lokální &amp;kurzor</translation>
-    </message>
-    <message>
-        <source>Cursor &amp;Back</source>
-        <translation type="obsolete">Běžec &amp;zpět</translation>
-    </message>
-    <message>
-        <source>Cursor &amp;Forward</source>
-        <translation type="obsolete">Běžec &amp;vpřed</translation>
-    </message>
-    <message>
-        <source>C&amp;ursor Back Bar</source>
-        <translation type="obsolete">Běžec na &amp;předcházející taktovou čáru</translation>
-    </message>
-    <message>
-        <source>Cursor For&amp;ward Bar</source>
-        <translation type="obsolete">Běžec na &amp;následující taktovou čáru</translation>
-    </message>
-    <message>
-        <source>Cursor to St&amp;art</source>
-        <translation type="obsolete">Běžec na z&amp;ačátek</translation>
-    </message>
-    <message>
-        <source>Cursor to &amp;End</source>
-        <translation type="obsolete">Běžec na &amp;konec</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="2589"/>
         <source>Cursor back and Se&amp;lect</source>
         <translation>Běžec zpět a &amp;vybrat</translation>
@@ -1992,78 +1845,6 @@
         <translation>&amp;Nouzové zastavení</translation>
     </message>
     <message>
-        <source>I&amp;nsert Note</source>
-        <translation type="obsolete">V&amp;ložit notu</translation>
-    </message>
-    <message>
-        <source>&amp;I</source>
-        <translation type="obsolete">&amp;I</translation>
-    </message>
-    <message>
-        <source>I &amp;sharp</source>
-        <translation type="obsolete">I &amp;zvýšený o půltón</translation>
-    </message>
-    <message>
-        <source>II &amp;flat</source>
-        <translation type="obsolete">II &amp;snížený o půltón</translation>
-    </message>
-    <message>
-        <source>II</source>
-        <translation type="obsolete">II</translation>
-    </message>
-    <message>
-        <source>II sh&amp;arp</source>
-        <translation type="obsolete">II zvýš&amp;ený o půltón</translation>
-    </message>
-    <message>
-        <source>III flat</source>
-        <translation type="obsolete">III snížený o půltón</translation>
-    </message>
-    <message>
-        <source>III</source>
-        <translation type="obsolete">III</translation>
-    </message>
-    <message>
-        <source>IV</source>
-        <translation type="obsolete">IV</translation>
-    </message>
-    <message>
-        <source>IV sha&amp;rp</source>
-        <translation type="obsolete">IV zvýšený o &amp;půltón</translation>
-    </message>
-    <message>
-        <source>&amp;V flat</source>
-        <translation type="obsolete">&amp;V snížený o půltón</translation>
-    </message>
-    <message>
-        <source>V</source>
-        <translation type="obsolete">V</translation>
-    </message>
-    <message>
-        <source>V s&amp;harp</source>
-        <translation type="obsolete">V zvýšený &amp;o půltón</translation>
-    </message>
-    <message>
-        <source>VI fla&amp;t</source>
-        <translation type="obsolete">VI sníže&amp;ný o půltón</translation>
-    </message>
-    <message>
-        <source>VI</source>
-        <translation type="obsolete">VI</translation>
-    </message>
-    <message>
-        <source>VI shar&amp;p</source>
-        <translation type="obsolete">VI zvýšený o půltó&amp;n</translation>
-    </message>
-    <message>
-        <source>VII flat</source>
-        <translation type="obsolete">VII snížený o půltón</translation>
-    </message>
-    <message>
-        <source>VII</source>
-        <translation type="obsolete">VII</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="1225"/>
         <location filename="../QMenuStrings.cpp" line="3134"/>
         <source>&amp;Upper Octave</source>
@@ -2141,26 +1922,10 @@
         <translation>&amp;Ovladače</translation>
     </message>
     <message>
-        <source>Cut controller events (&amp;X)</source>
-        <translation type="obsolete">Vyjmout události ovládacího prvku (&amp;X)</translation>
-    </message>
-    <message>
-        <source>&amp;Copy controller events</source>
-        <translation type="obsolete">&amp;Kopírovat události ovládacího prvku</translation>
-    </message>
-    <message>
-        <source>Paste events (&amp;V)</source>
-        <translation type="obsolete">Vložit události (&amp;V)</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="859"/>
         <location filename="../QMenuStrings.cpp" line="2583"/>
         <source>&amp;Set Controller Values</source>
         <translation>&amp;Nastavit hodnoty ovládacího prvku</translation>
-    </message>
-    <message>
-        <source>&amp;Place a controller for each note</source>
-        <translation type="obsolete">&amp;Umístit ovládací prvek pro každou notu</translation>
     </message>
     <message>
         <location filename="../QMenuStrings.cpp" line="862"/>
@@ -2888,10 +2653,6 @@
         <translation>&amp;Tisk...</translation>
     </message>
     <message>
-        <source>P&amp;rint preview...</source>
-        <translation type="obsolete">Náhled &amp;tisku...</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="1868"/>
         <source>C&amp;ut and Close</source>
         <translation>Vyjmout a &amp;zavřít</translation>
@@ -2952,10 +2713,6 @@
         <translation>&amp;Rozestupy</translation>
     </message>
     <message>
-        <source>Du&amp;ration Factor</source>
-        <translation type="obsolete">Faktor doby &amp;trvání</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="1943"/>
         <source>&amp;Layout Mode</source>
         <translation>Režim &amp;rozvržení</translation>
@@ -2979,10 +2736,6 @@
         <location filename="../QMenuStrings.cpp" line="1947"/>
         <source>Open L&amp;yric Editor</source>
         <translation>Otevřít editor se &amp;slovy písně</translation>
-    </message>
-    <message>
-        <source>Add Event Ruler</source>
-        <translation type="obsolete">Přidat pravítko událostí</translation>
     </message>
     <message>
         <location filename="../QMenuStrings.cpp" line="1970"/>
@@ -3017,14 +2770,6 @@
         <location filename="../QMenuStrings.cpp" line="1989"/>
         <source>Add Pedal &amp;Release</source>
         <translation>Přidat &amp;uvolnění pedálu</translation>
-    </message>
-    <message>
-        <source>&amp;Set Segment Start Time...</source>
-        <translation type="obsolete">&amp;Nastavit počáteční čas části...</translation>
-    </message>
-    <message>
-        <source>Transpose by &amp;Inverval...</source>
-        <translation type="obsolete">Přemístit o &amp;interval...</translation>
     </message>
     <message>
         <location filename="../QMenuStrings.cpp" line="1993"/>
@@ -3371,22 +3116,6 @@
         <location filename="../QMenuStrings.cpp" line="2117"/>
         <source>Note &amp;Style</source>
         <translation>&amp;Styl not</translation>
-    </message>
-    <message>
-        <source>&amp;Classical</source>
-        <translation type="obsolete">Klasi&amp;cký</translation>
-    </message>
-    <message>
-        <source>C&amp;ross</source>
-        <translation type="obsolete">&amp;Kříž</translation>
-    </message>
-    <message>
-        <source>&amp;Mensural</source>
-        <translation type="obsolete">&amp;Menzurální</translation>
-    </message>
-    <message>
-        <source>&amp;Triangle</source>
-        <translation type="obsolete">&amp;Trojúhelník</translation>
     </message>
     <message>
         <location filename="../QMenuStrings.cpp" line="2122"/>
@@ -4267,22 +3996,6 @@
         <translation>&amp;Kytarový akord</translation>
     </message>
     <message>
-        <source>Cursor &amp;Up Staff</source>
-        <translation type="obsolete">Posunout kurzor v osnově &amp;nahoru</translation>
-    </message>
-    <message>
-        <source>Cursor &amp;Down Staff</source>
-        <translation type="obsolete">Posunout kurzor v osnově &amp;dolů</translation>
-    </message>
-    <message>
-        <source>Cursor Pre&amp;vious Segment</source>
-        <translation type="obsolete">Kurzor na &amp;předchozí segment</translation>
-    </message>
-    <message>
-        <source>Cursor Ne&amp;xt Segment</source>
-        <translation type="obsolete">Kurzor na &amp;následující segment</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="1071"/>
         <location filename="../QMenuStrings.cpp" line="2980"/>
         <source>&amp;Insert Note</source>
@@ -4397,17 +4110,9 @@
         <translation>Ukázat ná&amp;stroje</translation>
     </message>
     <message>
-        <source>&amp;Events</source>
-        <translation type="obsolete">&amp;Události</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="855"/>
         <source>Remove &amp;Triggers</source>
         <translation>Odstranit sp&amp;ouštěče</translation>
-    </message>
-    <message>
-        <source>Pitch &amp;Bend Sequence...</source>
-        <translation type="obsolete">Pořadí &amp;změn výšek tónů...</translation>
     </message>
     <message>
         <location filename="../QMenuStrings.cpp" line="658"/>
@@ -4420,10 +4125,6 @@
         <location filename="../QMenuStrings.cpp" line="4361"/>
         <source>Rosegarden &amp;Manual</source>
         <translation>&amp;Příručka k programu Rosegarden</translation>
-    </message>
-    <message>
-        <source>Rosegarden &amp;Mandbook</source>
-        <translation type="obsolete">&amp;Příručka k programu Rosegarden</translation>
     </message>
     <message>
         <location filename="../QMenuStrings.cpp" line="286"/>
@@ -4442,10 +4143,6 @@
         <location filename="../QMenuStrings.cpp" line="1968"/>
         <source>Show Pitch &amp;Bend Ruler</source>
         <translation>Ukázat pravítko se &amp;změnami výšek tónů</translation>
-    </message>
-    <message>
-        <source>Add &amp;Control Ruler...</source>
-        <translation type="obsolete">Přidat &amp;ovládací pravítko...</translation>
     </message>
     <message>
         <location filename="../QMenuStrings.cpp" line="864"/>
@@ -4505,10 +4202,6 @@
         <location filename="../QMenuStrings.cpp" line="4446"/>
         <source>Open in &amp;Pitch Tracker</source>
         <translation>Otevřít sledování &amp;výšky tónu</translation>
-    </message>
-    <message>
-        <source>Add Clef Change in this link only...</source>
-        <translation type="obsolete">Přidat změnu klíče pouze v tomto odkazu...</translation>
     </message>
     <message>
         <location filename="../QMenuStrings.cpp" line="2001"/>
@@ -4893,21 +4586,9 @@
         <translation>&amp;Zavést</translation>
     </message>
     <message>
-        <source>Import Rosegarden &amp;Project file...</source>
-        <translation type="obsolete">Zavést soubor s &amp;projektem programu Rosegarden...</translation>
-    </message>
-    <message>
-        <source>Import &amp;MIDI file...</source>
-        <translation type="obsolete">Zavést soubor &amp;MIDI...</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="3757"/>
         <source>Import &amp;Hydrogen file...</source>
         <translation>Zavést soubor &amp;Hydrogen...</translation>
-    </message>
-    <message>
-        <source>Import MusicXM&amp;L file...</source>
-        <translation type="obsolete">Zavést soubor MusicXM&amp;L...</translation>
     </message>
     <message>
         <location filename="../QMenuStrings.cpp" line="3759"/>
@@ -4920,46 +4601,14 @@
         <translation>Připojit &amp;soubor...</translation>
     </message>
     <message>
-        <source>Merge &amp;MIDI file...</source>
-        <translation type="obsolete">Připojit soubor &amp;MIDI...</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="3763"/>
         <source>Merge &amp;Hydrogen file...</source>
         <translation>Připojit soubor &amp;Hydrogen...</translation>
     </message>
     <message>
-        <source>Merge MusicXM&amp;L file...</source>
-        <translation type="obsolete">Připojit soubor MusicXM&amp;L...</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="3765"/>
         <source>&amp;Export</source>
         <translation>&amp;Vyvést</translation>
-    </message>
-    <message>
-        <source>Export Rosegarden &amp;Project file...</source>
-        <translation type="obsolete">Vyvést jako soubor s &amp;projektem programu Rosegarden...</translation>
-    </message>
-    <message>
-        <source>Export &amp;Lilypond file...</source>
-        <translation type="obsolete">Vyvést jako soubor ve formátu &amp;LilyPond...</translation>
-    </message>
-    <message>
-        <source>Export &amp;MIDI file...</source>
-        <translation type="obsolete">Vyvést jako soubor &amp;MIDI...</translation>
-    </message>
-    <message>
-        <source>Export &amp;Csound score file...</source>
-        <translation type="obsolete">Vyvést jako soubor s notovým zápisem pro &amp;Csound...</translation>
-    </message>
-    <message>
-        <source>Export M&amp;up file...</source>
-        <translation type="obsolete">Vyvést jako soubor M&amp;up...</translation>
-    </message>
-    <message>
-        <source>Export Music&amp;XML file...</source>
-        <translation type="obsolete">Vyvést jako hudební soubor XML (Music&amp;XML)...</translation>
     </message>
     <message>
         <location filename="../QMenuStrings.cpp" line="3772"/>
@@ -4972,10 +4621,6 @@
         <translation>Otevřít &amp;nedávný</translation>
     </message>
     <message>
-        <source>Save &amp;As...</source>
-        <translation type="obsolete">Uložit &amp;jako...</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="3800"/>
         <source>Save as &amp;Template...</source>
         <translation>Uložit jako před&amp;lohu...</translation>
@@ -4984,10 +4629,6 @@
         <location filename="../QMenuStrings.cpp" line="3801"/>
         <source>Re&amp;vert</source>
         <translation>&amp;Vrátit</translation>
-    </message>
-    <message>
-        <source>Prin&amp;t preview...</source>
-        <translation type="obsolete">Náhled t&amp;isku...</translation>
     </message>
     <message>
         <location filename="../QMenuStrings.cpp" line="3804"/>
@@ -5131,17 +4772,9 @@
         <translation>&amp;Uložit současný dokument jako výchozí studio</translation>
     </message>
     <message>
-        <source>Se&amp;gments</source>
-        <translation type="obsolete">Čás&amp;ti</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="4020"/>
         <source>Toggle Repeat</source>
         <translation>Zapnout/Vypnout opakování</translation>
-    </message>
-    <message>
-        <source>Open in &amp;Default editor</source>
-        <translation type="obsolete">Otevřít ve &amp;výchozím editoru</translation>
     </message>
     <message>
         <location filename="../QMenuStrings.cpp" line="4084"/>
@@ -5419,14 +5052,6 @@
         <translation>Ukázat pravítko vyjadřující polohu &amp;přehrávání</translation>
     </message>
     <message>
-        <source>Import &amp;X11 Rosegarden file...</source>
-        <translation type="obsolete">Zavést soubor &amp;Rosegarden X11...</translation>
-    </message>
-    <message>
-        <source>Merge &amp;X11 Rosegarden file...</source>
-        <translation type="obsolete">Připojit soubor &amp;Rosegarden X11...</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="4009"/>
         <source>MIDI Mi&amp;xer</source>
         <translation>Směšo&amp;vač MIDI</translation>
@@ -5547,10 +5172,6 @@
         <translation>Ukázat &amp;označení stop</translation>
     </message>
     <message>
-        <source>Fit existing beats to beat segment</source>
-        <translation type="obsolete">Umístit stávající doby do části s dobami</translation>
-    </message>
-    <message>
         <location filename="../QMenuStrings.cpp" line="1926"/>
         <location filename="../QMenuStrings.cpp" line="3986"/>
         <source>Ctrl+K</source>
@@ -5610,11 +5231,6 @@
         <source>Ctrl+D</source>
         <comment>keyboard shortcut</comment>
         <translation>Ctrl+D</translation>
-    </message>
-    <message>
-        <source>Enter, Media Play, Ctrl+Return</source>
-        <comment>keyboard shortcut</comment>
-        <translation type="obsolete">Enter, Media Play (Přehrát), Ctrl+Return</translation>
     </message>
     <message>
         <location filename="../QMenuStrings.cpp" line="4304"/>
@@ -5677,10 +5293,6 @@
         <location filename="../QMenuStrings.cpp" line="4391"/>
         <source>Fast Forward to End</source>
         <translation>Přetáčet rychle na konec</translation>
-    </message>
-    <message>
-        <source>Export &amp;LilyPond file...</source>
-        <translation type="obsolete">Vyvést jako soubor ve formátu &amp;LilyPond...</translation>
     </message>
     <message>
         <location filename="../QMenuStrings.cpp" line="1557"/>
@@ -5759,14 +5371,6 @@
         <location filename="../QMenuStrings.cpp" line="4747"/>
         <source>Pa&amp;ste as New Triggered Segment</source>
         <translation>&amp;Vložit jako novou spouštěnou část</translation>
-    </message>
-    <message>
-        <source>The Restricted paste type requires enough empty space (containing only rests) at the paste position to hold all of the events to be pasted.
-Not enough space was found.
-If you want to paste anyway, consider using one of the other paste types from the &quot;Paste...&quot; option on the Edit menu.  You can also change the default paste type to something other than Restricted if you wish.</source>
-        <translation type="obsolete">Omezený typ vkládání vyžaduje dostatek volného místa (obsahující pouze pomlky) na místě vložení, aby se do něj všechny události vešly.
-Nebylo nalezeno dost místa.
-Chcete-li i přesto provést vložení, zvažte použití jednoho z dalších typů vkládání pod možností &quot;Vložit&quot; v nabídce Upravit. Pokud chcete, můžete také změnit výchozí typ vkládání na jiný než Omezený.</translation>
     </message>
     <message>
         <location filename="../../src/gui/editors/notation/NoteFont.cpp" line="58"/>
@@ -7568,86 +7172,6 @@ Chcete-li i přesto provést vložení, zvažte použití jednoho z dalších ty
         <location filename="../InstrumentStrings.cpp" line="374"/>
         <source>Pistol shot</source>
         <translation>Výstřel z pistole</translation>
-    </message>
-    <message>
-        <source>Cb</source>
-        <translation type="obsolete">Cb</translation>
-    </message>
-    <message>
-        <source>C</source>
-        <translation type="obsolete">C</translation>
-    </message>
-    <message>
-        <source>C#</source>
-        <translation type="obsolete">C#</translation>
-    </message>
-    <message>
-        <source>Db</source>
-        <translation type="obsolete">Db</translation>
-    </message>
-    <message>
-        <source>D</source>
-        <translation type="obsolete">D</translation>
-    </message>
-    <message>
-        <source>Eb</source>
-        <translation type="obsolete">Eb</translation>
-    </message>
-    <message>
-        <source>E</source>
-        <translation type="obsolete">E</translation>
-    </message>
-    <message>
-        <source>E#</source>
-        <translation type="obsolete">E#</translation>
-    </message>
-    <message>
-        <source>Fb</source>
-        <translation type="obsolete">Fb</translation>
-    </message>
-    <message>
-        <source>D#</source>
-        <translation type="obsolete">D#</translation>
-    </message>
-    <message>
-        <source>F</source>
-        <translation type="obsolete">F</translation>
-    </message>
-    <message>
-        <source>F#</source>
-        <translation type="obsolete">F#</translation>
-    </message>
-    <message>
-        <source>G</source>
-        <translation type="obsolete">G</translation>
-    </message>
-    <message>
-        <source>G#</source>
-        <translation type="obsolete">G#</translation>
-    </message>
-    <message>
-        <source>Ab</source>
-        <translation type="obsolete">Ab</translation>
-    </message>
-    <message>
-        <source>A#</source>
-        <translation type="obsolete">A#</translation>
-    </message>
-    <message>
-        <source>A</source>
-        <translation type="obsolete">A</translation>
-    </message>
-    <message>
-        <source>Bb</source>
-        <translation type="obsolete">Bb</translation>
-    </message>
-    <message>
-        <source>B</source>
-        <translation type="obsolete">H</translation>
-    </message>
-    <message>
-        <source>B#</source>
-        <translation type="obsolete">H#</translation>
     </message>
     <message>
         <location filename="../AutoloadStrings.cpp" line="41"/>
@@ -10940,10 +10464,6 @@ Chcete-li i přesto provést vložení, zvažte použití jednoho z dalších ty
         <translation>Obecné</translation>
     </message>
     <message>
-        <source>Blue pastel</source>
-        <translation type="obsolete">Modrá pastelová</translation>
-    </message>
-    <message>
         <location filename="../AutoloadStrings.cpp" line="727"/>
         <source>Red pastel</source>
         <translation>Červená pastelová</translation>
@@ -10989,10 +10509,6 @@ Chcete-li i přesto provést vložení, zvažte použití jednoho z dalších ty
         <translation>Neznámá</translation>
     </message>
     <message>
-        <source>[ %1 ]</source>
-        <translation type="obsolete">[ %1 ]</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/editors/parameters/MIDIInstrumentParameterPanel.cpp" line="716"/>
         <location filename="../../src/gui/editors/parameters/MIDIInstrumentParameterPanel.cpp" line="847"/>
         <source>%1. %2</source>
@@ -11017,9 +10533,9 @@ Chcete-li i přesto provést vložení, zvažte použití jednoho z dalších ty
     </message>
     <message>
         <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="468"/>
-        <location filename="../../src/gui/editors/matrix/MatrixWidget.cpp" line="1043"/>
+        <location filename="../../src/gui/editors/matrix/MatrixWidget.cpp" line="1049"/>
         <location filename="../../src/gui/editors/notation/NotationView.cpp" line="907"/>
-        <location filename="../../src/gui/editors/notation/NotationWidget.cpp" line="1656"/>
+        <location filename="../../src/gui/editors/notation/NotationWidget.cpp" line="1683"/>
         <source>%1 Controller %2 %3</source>
         <translation>%1 Ovládací prvek %2 %3</translation>
     </message>
@@ -11034,23 +10550,19 @@ Chcete-li i přesto provést vložení, zvažte použití jednoho z dalších ty
         <translation>Rosegarden</translation>
     </message>
     <message>
-        <location filename="../../src/gui/application/main.cpp" line="791"/>
+        <location filename="../../src/gui/application/main.cpp" line="798"/>
         <source>Welcome!</source>
         <translation>Vítejte!</translation>
     </message>
     <message>
-        <location filename="../../src/gui/application/main.cpp" line="807"/>
+        <location filename="../../src/gui/application/main.cpp" line="814"/>
         <source>http://rosegardenmusic.com/wiki/doc:manual-en</source>
         <translation>http://rosegardenmusic.com/wiki/doc:manual-en</translation>
     </message>
     <message>
-        <location filename="../../src/gui/application/main.cpp" line="808"/>
+        <location filename="../../src/gui/application/main.cpp" line="815"/>
         <source>&lt;h2&gt;Welcome to Rosegarden!&lt;/h2&gt;&lt;p&gt;Welcome to the Rosegarden audio and MIDI sequencer and musical notation editor.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;If you have not already done so, you may wish to install some DSSI synth plugins, or a separate synth program such as QSynth.  Rosegarden does not synthesize sounds from MIDI on its own, so without these you will hear nothing.&lt;/li&gt;&lt;li&gt;Rosegarden uses the JACK audio server for recording and playback of audio, and for playback from DSSI synth plugins.  These features will only be available if the JACK server is running.&lt;/li&gt;&lt;li&gt;Rosegarden has comprehensive documentation: see the &lt;a style=&quot;color:gold&quot; href=&quot;http://rosegardenmusic.com&quot;&gt;Rosegarden website&lt;/a&gt; for the &lt;a style=&quot;color:gold&quot; href=&quot;%1&quot;&gt;manual&lt;/a&gt;, &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/tutorials/&quot;&gt;tutorials&lt;/a&gt;, and other information!&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Rosegarden was brought to you by a team of volunteers across the world.  To learn more, go to the &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/&quot;&gt;Rosegarden website&lt;/a&gt;.&lt;/p&gt;</source>
         <translation>&lt;h2&gt;Vítejte v Rosegardenu!&lt;/h2&gt;&lt;p&gt;Vítejte ve zvukovém a MIDI sekvenceru a hudebním editoru notového zápisu Rosegarden.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Pokud jste tak ještě neučinil, budete jistě chtít nainstalovat nějaké syntetizátorové přídavné moduly DSSI, nebo samostatný syntetizátorový program, například QSynth. Rosegarden sám o sobě nesyntetizuje zvuky z MIDI, takže bez uvedených programů neuslyšíte zhola nic.&lt;/li&gt;&lt;li&gt;Rosegarden používá pro nahrávání a přehrávání zvuku zvukový server JACK, a pro přehrávání z DSSI syntetizátorové přídavné moduly. Tyto funkce budou dostupné jen tehdy, když server JACK bude běžet.&lt;/li&gt;&lt;li&gt;Rosegarden má úplnou dokumentaci: podívejte se na &lt;a style=&quot;color:gold&quot; href=&quot;http://rosegardenmusic.com&quot;&gt;stránky programu Rosegarden&lt;/a&gt; na &lt;a style=&quot;color:gold&quot; href=&quot;%1&quot;&gt;příručku&lt;/a&gt;, &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/tutorials/&quot;&gt;návody&lt;/a&gt; a další informace!&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Rosegarden vám přináší družstvo dobrovolníků z celého světa. Abyste se dozvěděl víc, jděte na &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/&quot;&gt;stránky programu Rosegarden&lt;/a&gt;.&lt;/p&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;h2&gt;Welcome to Rosegarden!&lt;/h2&gt;&lt;p&gt;Welcome to the Rosegarden audio and MIDI sequencer and musical notation editor.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;If you have not already done so, you may wish to install some DSSI synth plugins, or a separate synth program such as QSynth.  Rosegarden does not synthesize sounds from MIDI on its own, so without these you will hear nothing.&lt;/li&gt;&lt;li&gt;Rosegarden uses the JACK audio server for recording and playback of audio, and for playback from DSSI synth plugins.  These features will only be available if the JACK server is running.&lt;/li&gt;&lt;li&gt;Rosegarden has comprehensive documentation: see the &lt;a style=&quot;color:gold&quot; href=&quot;http://rosegardenmusic.com&gt;Rosegarden website&lt;/a&gt; for the &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/doc/en/&quot;&gt;handbook&lt;/a&gt;, &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/tutorials/&quot;&gt;tutorials&lt;/a&gt;, and other information!&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Rosegarden was brought to you by a team of volunteers across the world.  To learn more, go to the &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/&quot;&gt;Rosegarden website&lt;/a&gt;.&lt;/p&gt;</source>
-        <translation type="obsolete">&lt;h2&gt;Vítejte v Rosegardenu!&lt;/h2&gt;&lt;p&gt;Vítejte ve zvukovém a MIDI sekvenceru Rosegarden a hudebním editoru notového zápisu.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Pokud jste tak ještě neučinil, budete jistě chtít nainstalovat nějaké syntetizátorové přídavné moduly DSSI, nebo samostatný syntetizátorový program, například QSynth. Rosegarden sám o sobě nesyntetizuje zvuky z MIDI, takže bez uvedených programů neuslyšíte zhola nic.&lt;/li&gt;&lt;li&gt;Rosegarden používá pro nahrávání a přehrávání zvuku zvukový server JACK, a pro přehrávání z DSSI syntetizátorové přídavné moduly. Tyto funkce budou dostupné jen tehdy, když server JACK bude běžet.&lt;/li&gt;&lt;li&gt;Rosegarden má úplnou dokumentaci: podívejte se na &lt;a style=&quot;color:gold&quot; href=&quot;http://rosegardenmusic.com&gt;Rosegarden website&lt;/a&gt; for the &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/doc/en/&quot;&gt;příručku&lt;/a&gt;, &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/tutorials/&quot;&gt;návody&lt;/a&gt;, a další informace!&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Rosegarden vám přináší družstvo dobrovolníků z celého světa. Abyste se dozvěděl víc, jděte na &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/&quot;&gt;stránky programu Rosegarden&lt;/a&gt;.&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="511"/>
@@ -11063,7 +10575,7 @@ Chcete-li i přesto provést vložení, zvažte použití jednoho z dalších ty
         <translation>&lt;qt&gt;&lt;p&gt;Pro nahrávání nebyly uvedeny v činnost žádné stopy.&lt;/p&gt;&lt;p&gt;Odjistěte, prosím, alespoň jednu z nahrávacích LED diod &lt;img src=&quot;:pixmaps/tooltip/record-leds.png&quot;&gt; a zkuste to znovu&lt;/p&gt;&lt;/qt&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="789"/>
+        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="791"/>
         <source>&lt;qt&gt;&lt;p&gt;Couldn&apos;t start recording audio.&lt;/p&gt;&lt;p&gt;Please set a valid recording path in &lt;b&gt;Composition -&gt; Edit Document Properties... -&gt; Audio&lt;/b&gt;&lt;/p&gt;&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;&lt;p&gt;Nepodařilo se spustit nahrávání zvuku.&lt;/p&gt;&lt;p&gt;Platnou nahrávací cestu nastavte, prosím, v &lt;b&gt;Skladba -&gt; Upravit vlastnosti dokumentu... -&gt; Zvuk&lt;/b&gt;&lt;/p&gt;&lt;/qt&gt;</translation>
     </message>
@@ -11298,7 +10810,7 @@ Chcete-li i přesto provést vložení, zvažte použití jednoho z dalších ty
         <translation>Přídavný modul syntetizátoru</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/matrix/MatrixElement.cpp" line="176"/>
+        <location filename="../../src/gui/editors/matrix/MatrixElement.cpp" line="179"/>
         <source>This event is tied to another event.</source>
         <translation>Tato událost je svázána s jinou událostí.</translation>
     </message>
@@ -11397,26 +10909,6 @@ Chcete-li i přesto provést vložení, zvažte použití jednoho z dalších ty
         <source>&lt;p&gt;Copyright 2000-2015 the Rosegarden development team&lt;/p&gt;&lt;p&gt;Version: %1 &amp;nbsp; Qt version: %2&lt;br&gt;Build key: %3&lt;/p&gt;&lt;p&gt;Rosegarden was brought to you by a team of volunteers across the world.  For a list of contributors, visit &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/resources/authors&quot;&gt;http://www.rosegardenmusic.com/resources/authors&lt;/a&gt;.&lt;br&gt;For more information about Rosegarden, visit &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com&quot;&gt;http://www.rosegardenmusic.com&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;License: GNU General Public License Version 2 or later&lt;/p&gt;</source>
         <translation type="unfinished">&lt;p&gt;Copyright 2000-2012 Vývojářský tým programu Rosgarden&lt;/p&gt;&lt;p&gt;Verze: %1 &amp;nbsp; Verze Qt: %2&lt;br&gt;Klíč: %3&lt;/p&gt;&lt;p&gt;Rosegarden byl vyvíjen skupinou dobrovolníků z celého světa. Seznam přispěvatelů je k prohlédnutí na &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/resources/authors&quot;&gt;http://www.rosegardenmusic.com/resources/authors&lt;/a&gt;. &lt;br&gt;Další informace o Rosegardenu jsou dostupné na &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com&quot;&gt;http://www.rosegardenmusic.com&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Povolení: GNU General Public License Version 2 nebo pozdější&lt;/p&gt; {2000-2015 ?} {1 ?} {2&lt;?} {3&lt;?} {2 ?}</translation>
     </message>
-    <message>
-        <source>&lt;p&gt;Copyright 2000-2014 the Rosegarden development team&lt;/p&gt;&lt;p&gt;Version: %1 &amp;nbsp; Qt version: %2&lt;br&gt;Build key: %3&lt;/p&gt;&lt;p&gt;Rosegarden was brought to you by a team of volunteers across the world.  For a list of contributors, visit &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/resources/authors&quot;&gt;http://www.rosegardenmusic.com/resources/authors&lt;/a&gt;.&lt;br&gt;For more information about Rosegarden, visit &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com&quot;&gt;http://www.rosegardenmusic.com&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;License: GNU General Public License Version 2 or later&lt;/p&gt;</source>
-        <translation type="obsolete">&lt;p&gt;Autorské právo 2000-2014 skupina vývojářů programu Rosgarden&lt;/p&gt;&lt;p&gt;Verze: %1 &amp;nbsp; Verze Qt: %2&lt;br&gt;Klíč: %3&lt;/p&gt;&lt;p&gt;Rosegarden byl vyvíjen skupinou dobrovolníků z celého světa. Seznam přispěvatelů je k prohlédnutí na &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/resources/authors&quot;&gt;http://www.rosegardenmusic.com/resources/authors&lt;/a&gt;. &lt;br&gt;Další informace o Rosegardenu jsou dostupné na &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com&quot;&gt;http://www.rosegardenmusic.com&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Povolení: GNU General Public License Version 2 nebo pozdější&lt;/p&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;p&gt;Copyright 2000-2012 the Rosegarden development team&lt;/p&gt;&lt;p&gt;Version: %1 &amp;nbsp; Qt version: %2&lt;br&gt;Build key: %3&lt;/p&gt;&lt;p&gt;Rosegarden was brought to you by a team of volunteers across the world.  For a list of contributors, visit &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/resources/authors&quot;&gt;http://www.rosegardenmusic.com/resources/authors&lt;/a&gt;.&lt;br&gt;For more information about Rosegarden, visit &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com&quot;&gt;http://www.rosegardenmusic.com&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;License: GNU General Public License Version 2 or later&lt;/p&gt;</source>
-        <translation type="obsolete">&lt;p&gt;Copyright 2000-2012 Vývojářský tým programu Rosgarden&lt;/p&gt;&lt;p&gt;Verze: %1 &amp;nbsp; Verze Qt: %2&lt;br&gt;Klíč: %3&lt;/p&gt;&lt;p&gt;Rosegarden byl vyvíjen skupinou dobrovolníků z celého světa. Seznam přispěvatelů je k prohlédnutí na &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/resources/authors&quot;&gt;http://www.rosegardenmusic.com/resources/authors&lt;/a&gt;. &lt;br&gt;Další informace o Rosegardenu jsou dostupné na &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com&quot;&gt;http://www.rosegardenmusic.com&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Povolení: GNU General Public License Version 2 nebo pozdější&lt;/p&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;p&gt;Copyright 2000-2011 the Rosegarden development team&lt;/p&gt;&lt;p&gt;Version: %1 &amp;nbsp; Qt version: %2&lt;br&gt;Build key: %3&lt;/p&gt;&lt;p&gt;Rosegarden was brought to you by a team of volunteers across the world.  For a list of contributors, visit &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/resources/authors&quot;&gt;http://www.rosegardenmusic.com/resources/authors&lt;/a&gt;.&lt;br&gt;For more information about Rosegarden, visit &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com&quot;&gt;http://www.rosegardenmusic.com&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;License: GNU General Public License Version 2&lt;/p&gt;</source>
-        <translation type="obsolete">&lt;p&gt;Copyright 2000-2011 Vývojářský tým programu Rosgarden&lt;/p&gt;&lt;p&gt;Verze: %1 &amp;nbsp; Verze Qt: %2&lt;br&gt;Schlüssel: %3&lt;/p&gt;&lt;p&gt;Rosegarden byl vyvíjen skupinou dobrovolníků. Seznam se zůčastněnými je k prohlédnutí na &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/resources/authors&quot;&gt;http://www.rosegardenmusic.com/resources/authors&lt;/a&gt;. &lt;br&gt;Další informace o Rosegardenu jsou dostupné na href=&quot;http://www.rosegardenmusic.com&quot;&gt;http://www.rosegardenmusic.com&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;License: GNU General Public License Version 2&lt;/p&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;p&gt;Copyright 2000-2010 the Rosegarden development team&lt;/p&gt;&lt;p&gt;Version: %1 &amp;nbsp; Qt version: %2&lt;br&gt;Build key: %3&lt;/p&gt;&lt;p&gt;Rosegarden was brought to you by a team of volunteers across the world.  For a list of contributors, visit &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/resources/authors&quot;&gt;http://www.rosegardenmusic.com/resources/authors&lt;/a&gt;.&lt;br&gt;For more information about Rosegarden, visit &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com&quot;&gt;http://www.rosegardenmusic.com&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;License: GNU General Public License Version 2&lt;/p&gt;</source>
-        <translation type="obsolete">&lt;p&gt;Copyright 2000-2009 Vývojářský tým programu Rosgarden&lt;/p&gt;&lt;p&gt;Verze: %1 &amp;nbsp; Verze Qt: %2&lt;br&gt;Klíč: %3&lt;/p&gt;&lt;p&gt;Rosegarden byl vyvíjen skupinou dobrovolníků. Seznam se zůčastněnými je k prohlédnutí na &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/resources/authors&quot;&gt;http://www.rosegardenmusic.com/resources/authors&lt;/a&gt;. &lt;br&gt;Další informace o Rosegardenu jsou dostupné na &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com&quot;&gt;http://www.rosegardenmusic.com&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Licence: GNU General Public License Version 2&lt;/p&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;p&gt;Copyright 2000-2009 the Rosegarden development team&lt;/p&gt;&lt;p&gt;Version: %1 &amp;nbsp; Qt version: %2&lt;br&gt;Build key: %3&lt;/p&gt;&lt;p&gt;Rosegarden was brought to you by a team of volunteers across the world.  For a list of contributors, visit &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/resources/authors&quot;&gt;http://www.rosegardenmusic.com/resources/authors&lt;/a&gt;.&lt;br&gt;For more information about Rosegarden, visit &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com&quot;&gt;http://www.rosegardenmusic.com&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;License: GNU General Public License Version 2&lt;/p&gt;</source>
-        <translation type="obsolete">&lt;p&gt;Copyright 2000-2009 Vývojářský tým programu Rosgarden&lt;/p&gt;&lt;p&gt;Verze: %1 &amp;nbsp; Verze Qt: %2&lt;br&gt;Schlüssel: %3&lt;/p&gt;&lt;p&gt;Rosegarden byl vyvíjen skupinou dobrovolníků. Seznam se zůčastněnými je k prohlédnutí na &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/resources/authors&quot;&gt;http://www.rosegardenmusic.com/resources/authors&lt;/a&gt;. &lt;br&gt;Další informace o Rosegardenu jsou dostupné na &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com&quot;&gt;http://www.rosegardenmusic.com&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Licence: GNU General Public License Version 2&lt;/p&gt;</translation>
-    </message>
 </context>
 <context>
     <name>Rosegarden::ActionCommandArgumentQuerier</name>
@@ -11476,72 +10968,72 @@ Chcete-li i přesto provést vložení, zvažte použití jednoho z dalších ty
 <context>
     <name>Rosegarden::AddIndicationCommand</name>
     <message>
-        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="107"/>
+        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="108"/>
         <source>Can&apos;t add identical overlapping indications</source>
         <translation>Nelze přidat dvě stejná překrývající se označení</translation>
     </message>
     <message>
-        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="221"/>
+        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="242"/>
         <source>Add S&amp;lur</source>
         <translation>Přidat &amp;legato</translation>
     </message>
     <message>
-        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="223"/>
+        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="244"/>
         <source>Add &amp;Phrasing Slur</source>
         <translation>Přidat &amp;frázovací legato</translation>
     </message>
     <message>
-        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="225"/>
+        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="246"/>
         <source>Add Double-Octave Up</source>
         <translation>Přidat dvojitou oktávu nahoru</translation>
     </message>
     <message>
-        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="227"/>
+        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="248"/>
         <source>Add Octave &amp;Up</source>
         <translation>Přidat oktávu &amp;nahoru</translation>
     </message>
     <message>
-        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="229"/>
+        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="250"/>
         <source>Add Octave &amp;Down</source>
         <translation>Přidat oktávu &amp;dolů</translation>
     </message>
     <message>
-        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="231"/>
+        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="252"/>
         <source>Add Double Octave Down</source>
         <translation>Přidat dvojitou oktávu dolů</translation>
     </message>
     <message>
-        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="236"/>
+        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="257"/>
         <source>Add &amp;Crescendo</source>
         <translation>Přidat &amp;crescendo</translation>
     </message>
     <message>
-        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="238"/>
+        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="259"/>
         <source>Add &amp;Decrescendo</source>
         <translation>Přidat &amp;decrescendo</translation>
     </message>
     <message>
-        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="240"/>
+        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="261"/>
         <source>Add &amp;Glissando</source>
         <translation>Přidat &amp;glissando</translation>
     </message>
     <message>
-        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="242"/>
+        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="263"/>
         <source>Add Tri&amp;ll With Line</source>
         <translation>Přidat try&amp;lek s linkou</translation>
     </message>
     <message>
-        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="244"/>
+        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="265"/>
         <source>Add Parameter Chord</source>
         <translation>Přidat akord parametru</translation>
     </message>
     <message>
-        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="246"/>
+        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="267"/>
         <source>Add Figuration</source>
         <translation>Přidat figuraci</translation>
     </message>
     <message>
-        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="249"/>
+        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="270"/>
         <source>Add &amp;%1%2</source>
         <translation>Přidat &amp;%1%2</translation>
     </message>
@@ -11976,14 +11468,6 @@ Chcete-li i přesto provést vložení, zvažte použití jednoho z dalších ty
         <translation>Probíhá převod zvukového souboru...</translation>
     </message>
     <message>
-        <source>Resampling audio file...</source>
-        <translation type="obsolete">Probíhá převzorkování zvukového souboru...</translation>
-    </message>
-    <message>
-        <source>Converting and resampling audio file...</source>
-        <translation type="obsolete">Probíhá převod a převzorkování zvukového souboru...</translation>
-    </message>
-    <message>
         <location filename="../../src/sound/AudioFileManager.cpp" line="666"/>
         <source>Importing audio file...</source>
         <translation>Probíhá zavedení zvukového souboru...</translation>
@@ -12065,22 +11549,6 @@ Chcete-li i přesto provést vložení, zvažte použití jednoho z dalších ty
         <location filename="../../src/gui/dialogs/AudioManagerDialog.cpp" line="182"/>
         <source>File</source>
         <translation>Soubor</translation>
-    </message>
-    <message>
-        <source>&lt;no audio files&gt;</source>
-        <translation type="obsolete">&lt;žádné zvukové soubory&gt;</translation>
-    </message>
-    <message>
-        <source>Please select an audio item in the list!</source>
-        <translation type="obsolete">Vyberte, prosím, nějaký zvukový záznam ze seznamu!</translation>
-    </message>
-    <message>
-        <source>Error: Selection is empty!</source>
-        <translation type="obsolete">Chyba: Výběr je prázdný!</translation>
-    </message>
-    <message>
-        <source>Choose a name to save this file as </source>
-        <translation type="obsolete">Vybrat název pro uložení souboru</translation>
     </message>
     <message>
         <location filename="../../src/gui/dialogs/AudioManagerDialog.cpp" line="514"/>
@@ -12209,10 +11677,6 @@ Vyberte ty, které chcete z pevného disku trvale odstranit.
         <translation>Zadat nový popisek</translation>
     </message>
     <message>
-        <source>importing a remote audio file</source>
-        <translation type="obsolete">Probíhá zavedení zvukového souboru</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/dialogs/AudioManagerDialog.cpp" line="1175"/>
         <source>importing an audio file that needs to be converted or resampled</source>
         <translation>Zavádí se zvukový soubor, který je třeba převést nebo převzorkovat</translation>
@@ -12279,14 +11743,6 @@ Vyberte ty, které chcete z pevného disku trvale odstranit.
         <location filename="../../src/gui/studio/AudioMixerWindow.cpp" line="353"/>
         <source>Mono or stereo</source>
         <translation>Mono nebo stereo</translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation type="obsolete">Ztlumit</translation>
-    </message>
-    <message>
-        <source>Solo</source>
-        <translation type="obsolete">Sólo</translation>
     </message>
     <message>
         <location filename="../../src/gui/studio/AudioMixerWindow.cpp" line="361"/>
@@ -12794,10 +12250,6 @@ Vyberte ty, které chcete z pevného disku trvale odstranit.
         <translation>Správa bank a programů MIDI</translation>
     </message>
     <message>
-        <source>Reset</source>
-        <translation type="obsolete">Reset</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="123"/>
         <source>Device and Banks</source>
         <translation>Zařízení a banky</translation>
@@ -12935,84 +12387,80 @@ Vyberte ty, které chcete z pevného disku trvale odstranit.
         <translation>Skutečně chcete odstranit tuto banku?</translation>
     </message>
     <message>
-        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1232"/>
+        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1238"/>
         <source>Really delete this key mapping?</source>
         <translation>Skutečně chcete odstranit tuto tabulku přiřazení kláves k tónině?</translation>
     </message>
     <message>
-        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1284"/>
+        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1290"/>
         <source>Really delete all banks for </source>
         <translation>Skutečně chcete odstranit všechny banky pro </translation>
     </message>
     <message>
-        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1567"/>
+        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1573"/>
         <source>Import Banks from Device in File</source>
         <translation>Zavést banky ze zařízení v souboru</translation>
     </message>
     <message>
-        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1568"/>
+        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1574"/>
         <source>Rosegarden Device files</source>
         <translation>Soubory zařízení programu Rosegarden</translation>
     </message>
     <message>
-        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1569"/>
+        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1575"/>
         <source>Rosegarden files</source>
         <translation>Soubory programu Rosegarden</translation>
     </message>
     <message>
-        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1570"/>
+        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1576"/>
         <source>Sound fonts</source>
         <translation>Zvuková písma</translation>
     </message>
     <message>
-        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1571"/>
+        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1577"/>
         <source>LinuxSampler configuration files</source>
         <translation>Soubory s nastavením programu LinuxSampler</translation>
     </message>
     <message>
-        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1572"/>
+        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1578"/>
         <source>All files</source>
         <translation>Všechny soubory</translation>
     </message>
     <message>
-        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1590"/>
+        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1596"/>
         <source>Some internal error: cannot locate selected device</source>
         <translation>Vnitřní chyba: Vybrané zařízení nelze najít</translation>
     </message>
     <message>
-        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1600"/>
+        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1606"/>
         <source>Some internal error: no device selected</source>
         <translation>Vnitřní chyba: Nevybráno žádné zařízení</translation>
     </message>
     <message>
-        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1762"/>
+        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1768"/>
         <source>Export Device as...</source>
         <translation>Vyvést zařízení jako...</translation>
     </message>
     <message>
-        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1784"/>
+        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1790"/>
         <source>You have specified a directory</source>
         <translation>Zadali jste adresář</translation>
     </message>
     <message>
-        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1794"/>
+        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1800"/>
         <source>The specified file exists.  Overwrite?</source>
         <translation>Zadaný soubor již existuje. Chcete jej přepsat?</translation>
     </message>
     <message>
-        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1823"/>
-        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1827"/>
+        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1829"/>
+        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1833"/>
         <source>Rosegarden</source>
         <translation>Rosegarden</translation>
     </message>
     <message>
-        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1864"/>
+        <location filename="../../src/gui/studio/BankEditorDialog.cpp" line="1870"/>
         <source>http://rosegardenmusic.com/wiki/doc:bankEditorDialog-en</source>
         <translation>http://rosegardenmusic.com/wiki/doc:bankEditorDialog-en</translation>
-    </message>
-    <message>
-        <source>Unsaved Changes</source>
-        <translation type="obsolete">Neuložené změny</translation>
     </message>
 </context>
 <context>
@@ -13239,10 +12687,6 @@ Vyberte ty, které chcete z pevného disku trvale odstranit.
 <context>
     <name>Rosegarden::ChordNameRuler</name>
     <message>
-        <source>&lt;qt&gt;&lt;p&gt;Chord name ruler.  This ruler analyzes your harmonies and attempts to guess what chords your composition contains.  These chords cannot be printed or        manipulated, and this is only a reference for your information.&lt;/p&gt;&lt;p&gt;Turn it on and off from the Settings-&gt;Rulers menu.&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Pravítko s názvy akordů.  Toto pravítko provádí rozbor souzvuků a pokouší se určit, které akordy vaše skladba obsahuje.  Tyto akordy nelze vytisknout nebo změnit, a jde pouze o doporučení pro vaši informaci.&lt;/p&gt;&lt;p&gt;Lze je zapnout a vypnout přes Nastavení-&gt;Nabídka pravítek.&lt;/p&gt;&lt;/qt&gt;</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/rulers/ChordNameRuler.cpp" line="89"/>
         <source>&lt;qt&gt;&lt;p&gt;Chord name ruler.  This ruler analyzes your harmonies and attempts to guess what chords your composition contains.  These chords cannot be printed or manipulated, and this is only a reference for your information.&lt;/p&gt;&lt;p&gt;Turn it on and off with the &lt;b&gt;View -&gt; Rulers&lt;/b&gt; menu.&lt;/p&gt;&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;&lt;p&gt;Pravítko s názvy akordů.  Toto pravítko provádí rozbor souzvuků a pokouší se určit, které akordy vaše skladba obsahuje.  Tyto akordy nelze vytisknout nebo změnit, a jde pouze o doporučení pro vaši informaci.&lt;/p&gt;&lt;p&gt;Lze je zapnout a vypnout přes nabídku &lt;b&gt;Pohled -&gt; Pravítka&lt;/b&gt;.&lt;/p&gt;&lt;/qt&gt;</translation>
@@ -13445,10 +12889,6 @@ Vyberte ty, které chcete z pevného disku trvale odstranit.
         <source>New</source>
         <translation>Nový</translation>
     </message>
-    <message>
-        <source>Please select an item in the list!</source>
-        <translation type="obsolete">Vyberte, prosím, nějaký záznam ze seznamu!</translation>
-    </message>
 </context>
 <context>
     <name>Rosegarden::ColourTable</name>
@@ -13576,11 +13016,6 @@ Vyberte ty, které chcete z pevného disku trvale odstranit.
 <context>
     <name>Rosegarden::ConfigureDialog</name>
     <message>
-        <source>Configure Rosegarden</source>
-        <extracomment>QDialog(parent) //, tr(&quot;Configure Rosegarden&quot;), name)</extracomment>
-        <translation type="obsolete">Nastavení aplikace Rosegarden</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/dialogs/ConfigureDialog.cpp" line="48"/>
         <source>Rosegarden - Preferences</source>
         <translation>Nastavení programu Rosegarden</translation>
@@ -13592,10 +13027,6 @@ Vyberte ty, které chcete z pevného disku trvale odstranit.
         <location filename="../../src/gui/dialogs/ConfigureDialogBase.cpp" line="48"/>
         <source>Configure Rosegarden</source>
         <translation>Nastavení programu Rosegarden</translation>
-    </message>
-    <message>
-        <source>http://rosegardenmusic.com/wiki/doc:configureDialogBase-en</source>
-        <translation type="obsolete">http://rosegardenmusic.com/wiki/doc:configureDialogBase-en</translation>
     </message>
 </context>
 <context>
@@ -13802,7 +13233,7 @@ Vyberte ty, které chcete z pevného disku trvale odstranit.
 <context>
     <name>Rosegarden::ControlRulerWidget</name>
     <message>
-        <location filename="../../src/gui/rulers/ControlRulerWidget.cpp" line="325"/>
+        <location filename="../../src/gui/rulers/ControlRulerWidget.cpp" line="330"/>
         <source>Velocity</source>
         <translation>Rychlost</translation>
     </message>
@@ -13818,28 +13249,28 @@ Vyberte ty, které chcete z pevného disku trvale odstranit.
 <context>
     <name>Rosegarden::ControllerEventsRuler</name>
     <message>
-        <location filename="../../src/gui/rulers/ControllerEventsRuler.cpp" line="288"/>
+        <location filename="../../src/gui/rulers/ControllerEventsRuler.cpp" line="284"/>
         <source>Unsupported Event Type</source>
         <translation>Nepodporovaný typ události</translation>
     </message>
     <message>
-        <location filename="../../src/gui/rulers/ControllerEventsRuler.cpp" line="298"/>
+        <location filename="../../src/gui/rulers/ControllerEventsRuler.cpp" line="294"/>
         <source>Pitch Bend</source>
         <translation>Změna výšky tónu</translation>
     </message>
     <message>
-        <location filename="../../src/gui/rulers/ControllerEventsRuler.cpp" line="303"/>
+        <location filename="../../src/gui/rulers/ControllerEventsRuler.cpp" line="299"/>
         <source>Controller Events</source>
         <translation>Události ovládacího prvku</translation>
     </message>
     <message>
-        <location filename="../../src/gui/rulers/ControllerEventsRuler.cpp" line="445"/>
-        <location filename="../../src/gui/rulers/ControllerEventsRuler.cpp" line="467"/>
+        <location filename="../../src/gui/rulers/ControllerEventsRuler.cpp" line="437"/>
+        <location filename="../../src/gui/rulers/ControllerEventsRuler.cpp" line="459"/>
         <source>Insert Line of Controllers</source>
         <translation>Vložit řádek s ovládacími prvky</translation>
     </message>
     <message>
-        <location filename="../../src/gui/rulers/ControllerEventsRuler.cpp" line="589"/>
+        <location filename="../../src/gui/rulers/ControllerEventsRuler.cpp" line="578"/>
         <source>Controller Event Number</source>
         <translation>Číslo události ovládacího prvku</translation>
     </message>
@@ -13857,12 +13288,12 @@ Vyberte ty, které chcete z pevného disku trvale odstranit.
         <translation>(výňatek)</translation>
     </message>
     <message>
-        <location filename="../../src/commands/edit/CopyCommand.cpp" line="56"/>
+        <location filename="../../src/commands/edit/CopyCommand.cpp" line="57"/>
         <source>(copied)</source>
         <translation>(zkopírováno)</translation>
     </message>
     <message>
-        <location filename="../../src/commands/edit/CopyCommand.cpp" line="64"/>
+        <location filename="../../src/commands/edit/CopyCommand.cpp" line="65"/>
         <source>Copy Range</source>
         <translation>Kopírovat oblast</translation>
     </message>
@@ -13967,10 +13398,6 @@ Vyberte ty, které chcete z pevného disku trvale odstranit.
 <context>
     <name>Rosegarden::DeleteRangeCommand</name>
     <message>
-        <source>Rejoin Command</source>
-        <translation type="obsolete">Příkaz k opětovnému spojení</translation>
-    </message>
-    <message>
         <location filename="../../src/commands/segment/DeleteRangeCommand.cpp" line="322"/>
         <source>Delete Range</source>
         <translation>Odstranit oblast</translation>
@@ -14011,45 +13438,9 @@ Vyberte ty, které chcete z pevného disku trvale odstranit.
         <source>http://rosegardenmusic.com/wiki/doc:device-manager-en</source>
         <translation>http://rosegardenmusic.com/wiki/doc:device-manager-en</translation>
     </message>
-    <message>
-        <source>Help for the Midi Devices-Manager Dialog</source>
-        <translation type="obsolete">Nápověda pro dialog ke správě zařízení MIDI</translation>
-    </message>
-    <message>
-        <source>This is Rosegardens central connection station. Create and connect your Midi Devices here! </source>
-        <translation type="obsolete">Toto je ústřední spojovací jednotka programu Rosegarden. Zde vytvářejte a připojujte svá zařízení MIDI!</translation>
-    </message>
 </context>
 <context>
     <name>Rosegarden::DiatonicPitchChooser</name>
-    <message>
-        <source>C</source>
-        <translation type="obsolete">C</translation>
-    </message>
-    <message>
-        <source>D</source>
-        <translation type="obsolete">D</translation>
-    </message>
-    <message>
-        <source>E</source>
-        <translation type="obsolete">E</translation>
-    </message>
-    <message>
-        <source>F</source>
-        <translation type="obsolete">F</translation>
-    </message>
-    <message>
-        <source>G</source>
-        <translation type="obsolete">G</translation>
-    </message>
-    <message>
-        <source>A</source>
-        <translation type="obsolete">A</translation>
-    </message>
-    <message>
-        <source>B</source>
-        <translation type="obsolete">H</translation>
-    </message>
     <message>
         <location filename="../../src/gui/widgets/DiatonicPitchChooser.cpp" line="59"/>
         <source>C</source>
@@ -14323,137 +13714,6 @@ Vyberte ty, které chcete z pevného disku trvale odstranit.
         <location filename="../../src/gui/configuration/DocumentMetaConfigurationPage.cpp" line="306"/>
         <source>Segment Summary</source>
         <translation>Přehled části</translation>
-    </message>
-</context>
-<context>
-    <name>Rosegarden::EditView</name>
-    <message>
-        <source>%1 Controller %2 %3</source>
-        <translation type="obsolete">%1 Ovládací prvek %2 %3</translation>
-    </message>
-    <message>
-        <source>Pitch Bend</source>
-        <translation type="obsolete">Ohýbání výšky tónu</translation>
-    </message>
-    <message>
-        <source>Unsupported Event Type</source>
-        <translation type="obsolete">Nepodporovaný typ události</translation>
-    </message>
-    <message>
-        <source>I</source>
-        <translation type="obsolete">I</translation>
-    </message>
-    <message>
-        <source>II</source>
-        <translation type="obsolete">II</translation>
-    </message>
-    <message>
-        <source>III</source>
-        <translation type="obsolete">III</translation>
-    </message>
-    <message>
-        <source>IV</source>
-        <translation type="obsolete">IV</translation>
-    </message>
-    <message>
-        <source>V</source>
-        <translation type="obsolete">V</translation>
-    </message>
-    <message>
-        <source>VI</source>
-        <translation type="obsolete">VI</translation>
-    </message>
-    <message>
-        <source>VII</source>
-        <translation type="obsolete">VII</translation>
-    </message>
-    <message>
-        <source>VIII</source>
-        <translation type="obsolete">VIII</translation>
-    </message>
-    <message>
-        <source>%1 flat</source>
-        <translation type="obsolete">%1 béčko</translation>
-    </message>
-    <message>
-        <source>%1 sharp</source>
-        <translation type="obsolete">%1 křížek</translation>
-    </message>
-    <message>
-        <source>&amp;Insert Note</source>
-        <translation type="obsolete">&amp;Vložit notu</translation>
-    </message>
-    <message>
-        <source>&amp;Upper Octave</source>
-        <translation type="obsolete">&amp;Vyšší oktáva</translation>
-    </message>
-    <message>
-        <source>&amp;Lower Octave</source>
-        <translation type="obsolete">&amp;Nižší oktáva</translation>
-    </message>
-    <message>
-        <source>Estimated time signature shown</source>
-        <translation type="obsolete">Zobrazené odhadované označení taktu</translation>
-    </message>
-    <message>
-        <source>Halving durations...</source>
-        <translation type="obsolete">Probíhá půlení dob trvání...</translation>
-    </message>
-    <message>
-        <source>Doubling durations...</source>
-        <translation type="obsolete">Probíhá násobení dob trvání dvěma...</translation>
-    </message>
-    <message>
-        <source>Rescaling...</source>
-        <translation type="obsolete">Probíhá změna délky...</translation>
-    </message>
-    <message>
-        <source>Transpose</source>
-        <translation type="obsolete">Transponovat</translation>
-    </message>
-    <message>
-        <source>By number of semitones: </source>
-        <translation type="obsolete">Zadejte o kolik půltónů:</translation>
-    </message>
-    <message>
-        <source>Transposing...</source>
-        <translation type="obsolete">Probíhá transpozice...</translation>
-    </message>
-    <message>
-        <source>Transposing up one semitone...</source>
-        <translation type="obsolete">Probíhá transpozice o půl tónu výš...</translation>
-    </message>
-    <message>
-        <source>Transposing up one octave...</source>
-        <translation type="obsolete">Probíhá transpozice o oktávu výš...</translation>
-    </message>
-    <message>
-        <source>Transposing down one semitone...</source>
-        <translation type="obsolete">Probíhá transpozice o půl tónu níž...</translation>
-    </message>
-    <message>
-        <source>Transposing down one octave...</source>
-        <translation type="obsolete">Probíhá transpozice o oktávu níž...</translation>
-    </message>
-    <message>
-        <source>Inverting...</source>
-        <translation type="obsolete">Probíhá invertování...</translation>
-    </message>
-    <message>
-        <source>Retrograding...</source>
-        <translation type="obsolete">Probíhá návrat zpět...</translation>
-    </message>
-    <message>
-        <source>Retrograde inverting...</source>
-        <translation type="obsolete">Probíhá zpětné invertování...</translation>
-    </message>
-    <message>
-        <source>Jogging left...</source>
-        <translation type="obsolete">Probíhá krokový posun vlevo...</translation>
-    </message>
-    <message>
-        <source>Jogging right...</source>
-        <translation type="obsolete">Probíhá krokový posun vpravo...</translation>
     </message>
 </context>
 <context>
@@ -14795,45 +14055,9 @@ Mohlo by to způsobit problémy, pokud by takto byla později potlačena nějak�
         <translation>Vzor</translation>
     </message>
     <message>
-        <source>Flat - set %1 to value</source>
-        <translation type="obsolete">Ploché - nastavit %1 na hodnotu</translation>
-    </message>
-    <message>
-        <source>Alternating - set %1 to max and min on alternate events</source>
-        <translation type="obsolete">Střídavé - nastavit %1 střídavě na největší a nejmenší při střídání událostí</translation>
-    </message>
-    <message>
-        <source>Crescendo - set %1 rising from min to max</source>
-        <translation type="obsolete">Crescendo - nastavit %1 na zvětšující se od nejmenšího po největší</translation>
-    </message>
-    <message>
-        <source>Diminuendo - set %1 falling from max to min</source>
-        <translation type="obsolete">Diminuendo - nastavit %1 na zmenšující se od největšího po nejmenší</translation>
-    </message>
-    <message>
-        <source>Ringing - set %1 alternating from max to min with both dying to zero</source>
-        <translation type="obsolete">Vyzvánění - nastavit %1 na střídání od největšího po nejmenší s ukončením na nule</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/dialogs/EventParameterDialog.cpp" line="47"/>
         <source>Value</source>
         <translation>Hodnota</translation>
-    </message>
-    <message>
-        <source>First Value</source>
-        <translation type="obsolete">První hodnota</translation>
-    </message>
-    <message>
-        <source>Second Value</source>
-        <translation type="obsolete">Druhá hodnota</translation>
-    </message>
-    <message>
-        <source>Low Value</source>
-        <translation type="obsolete">Nízká hodnota</translation>
-    </message>
-    <message>
-        <source>High Value</source>
-        <translation type="obsolete">Vysoká hodnota</translation>
     </message>
 </context>
 <context>
@@ -15094,18 +14318,6 @@ Mohlo by to způsobit problémy, pokud by takto byla později potlačena nějak�
         <source>http://rosegardenmusic.com/wiki/doc:eventView-en</source>
         <translation>http://rosegardenmusic.com/wiki/doc:eventView-en</translation>
     </message>
-    <message>
-        <source>%1 - Triggered Segment: %2</source>
-        <translation type="obsolete">%1 - Spouštěný segment: %2</translation>
-    </message>
-    <message>
-        <source>%1 - Segment Track #%2 - Event List</source>
-        <translation type="obsolete">%1 - Stopa segmentu #%2 - Seznam událostí</translation>
-    </message>
-    <message>
-        <source>%1 - %2 Segments - Event List</source>
-        <translation type="obsolete">%1 - %2 Segmenty - Seznam událostí</translation>
-    </message>
 </context>
 <context>
     <name>Rosegarden::ExpandFigurationCommand</name>
@@ -15241,22 +14453,6 @@ Chcete se pokusit nalézt soubor ručně nebo se má přeskočit?</translation>
         <translation>Stahuje se %1...</translation>
     </message>
     <message>
-        <source>Failed to connect to FTP server</source>
-        <translation type="obsolete">Připojení k FTP serveru se nezdařilo</translation>
-    </message>
-    <message>
-        <source>Login failed</source>
-        <translation type="obsolete">Přihlášení se nezdařilo</translation>
-    </message>
-    <message>
-        <source>Failed to change to correct directory</source>
-        <translation type="obsolete">Změna na správný adresář se nepodařila</translation>
-    </message>
-    <message>
-        <source>FTP download aborted</source>
-        <translation type="obsolete">FTP stahování zrušeno</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/general/FileSource.cpp" line="732"/>
         <source>Download cancelled</source>
         <translation>Stahování zrušeno</translation>
@@ -15350,10 +14546,6 @@ Chcete se pokusit nalézt soubor ručně nebo se má přeskočit?</translation>
         <location filename="../../src/gui/configuration/GeneralConfigurationPage.cpp" line="83"/>
         <source>Graphics performance</source>
         <translation>Zobrazovací výkon</translation>
-    </message>
-    <message>
-        <source>Normal</source>
-        <translation type="obsolete">Normální</translation>
     </message>
     <message>
         <location filename="../../src/gui/configuration/GeneralConfigurationPage.cpp" line="89"/>
@@ -15528,10 +14720,6 @@ Chcete se pokusit nalézt soubor ručně nebo se má přeskočit?</translation>
         <translation>Aby se změna vzhledu projevila, musíte Rosegarden spustit znovu.</translation>
     </message>
     <message>
-        <source>KPrinter (KDE3)</source>
-        <translation type="obsolete">KPrinter (KDE3)</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/configuration/GeneralConfigurationPage.cpp" line="266"/>
         <source>Note name style</source>
         <translation>Styl názvu noty</translation>
@@ -15555,10 +14743,6 @@ Chcete se pokusit nalézt soubor ručně nebo se má přeskočit?</translation>
         <location filename="../../src/gui/configuration/GeneralConfigurationPage.cpp" line="288"/>
         <source>Main window</source>
         <translation>Hlavní okno</translation>
-    </message>
-    <message>
-        <source>Matrix</source>
-        <translation type="obsolete">Tabulka</translation>
     </message>
     <message>
         <location filename="../../src/gui/configuration/GeneralConfigurationPage.cpp" line="292"/>
@@ -15596,10 +14780,6 @@ Chcete se pokusit nalézt soubor ručně nebo se má přeskočit?</translation>
         <translation>Adobe Acrobat Reader (něco stojí)</translation>
     </message>
     <message>
-        <source>KPDF (KDE 3.x)</source>
-        <translation type="obsolete">KPDF (KDE 3.x)</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/configuration/GeneralConfigurationPage.cpp" line="352"/>
         <source>Used to preview generated LilyPond output</source>
         <translation>Používá se pro náhled vytvořeného výstupu programu LilyPond</translation>
@@ -15608,10 +14788,6 @@ Chcete se pokusit nalézt soubor ručně nebo se má přeskočit?</translation>
         <location filename="../../src/gui/configuration/GeneralConfigurationPage.cpp" line="357"/>
         <source>Command-line file printing utility</source>
         <translation>Pomocný program pro tisk z příkazové řádky</translation>
-    </message>
-    <message>
-        <source>KPrinter (KDE 3)</source>
-        <translation type="obsolete">KPrinter (KDE 3)</translation>
     </message>
     <message>
         <location filename="../../src/gui/configuration/GeneralConfigurationPage.cpp" line="362"/>
@@ -15627,10 +14803,6 @@ Chcete se pokusit nalézt soubor ručně nebo se má přeskočit?</translation>
         <location filename="../../src/gui/configuration/GeneralConfigurationPage.cpp" line="364"/>
         <source>lp (no GUI)</source>
         <translation>lp (bez uživatelského rozhraní)</translation>
-    </message>
-    <message>
-        <source>HPLIP (QT4)</source>
-        <translation type="obsolete">HPLIP (QT4)</translation>
     </message>
     <message>
         <location filename="../../src/gui/configuration/GeneralConfigurationPage.cpp" line="366"/>
@@ -15672,13 +14844,6 @@ Chcete se pokusit nalézt soubor ručně nebo se má přeskočit?</translation>
         <location filename="../../src/commands/notation/GeneratedRegionInsertionCommand.cpp" line="32"/>
         <source>Insert Generated Region</source>
         <translation>Vložit vytvořenou oblast</translation>
-    </message>
-</context>
-<context>
-    <name>Rosegarden::Guitar::Fingering</name>
-    <message>
-        <source>couldn&apos;t parse fingering &apos;%1&apos; in &apos;%2&apos;</source>
-        <translation type="obsolete">nebylo možné načíst prstoklad &apos;%1&apos; v &apos;%2&apos;</translation>
     </message>
 </context>
 <context>
@@ -15904,24 +15069,6 @@ Chcete se pokusit nalézt soubor ručně nebo se má přeskočit?</translation>
 </context>
 <context>
     <name>Rosegarden::IdentifyTextCodecDialog</name>
-    <message>
-        <source>Choose Text Encoding</source>
-        <translation type="obsolete">Vybrat kódování textu</translation>
-    </message>
-    <message>
-        <source>
-This file contains text in an unknown language encoding.
-
-Please select one of the following estimated text encodings
-for use with the text in this file:
-</source>
-        <translation type="obsolete">
-Tento soubor obsahuje text v neznámém jazykovém kódování.
-
-Zvolte jedno z následujících předpokládaných kódování textu,
-které bude použito na text v tomto souboru:
-</translation>
-    </message>
     <message>
         <location filename="../../src/gui/dialogs/IdentifyTextCodecDialog.cpp" line="69"/>
         <source>Rosegarden</source>
@@ -16619,49 +15766,6 @@ Vzor textu ze souboru:</translation>
     </message>
 </context>
 <context>
-    <name>Rosegarden::LatencyConfigurationPage</name>
-    <message>
-        <source>Latency</source>
-        <translation type="obsolete">Prodleva</translation>
-    </message>
-    <message>
-        <source>Sequencer Latency</source>
-        <translation type="obsolete">Prodleva sekvenceru</translation>
-    </message>
-    <message>
-        <source>JACK latency</source>
-        <translation type="obsolete">Prodleva serveru JACK</translation>
-    </message>
-    <message>
-        <source>Use the &quot;Fetch JACK latencies&quot; button to discover the latency values set at
-the sequencer.  It&apos;s recommended that you use the returned values but it&apos;s also
-possible to override them manually using the sliders.  Note that if you change
-your JACK server parameters you should always fetch the latency values again.
-The latency values will be stored by Rosegarden for use next time.</source>
-        <translation type="obsolete">Pomocí tlačítka &quot;Načíst prodlevy JACK&quot; zjistíte hodnoty prodlev nastavené na
-sekvenceru. Doporučujeme použít tyto vrácené hodnoty. Je však také možné
-hodnoty ručně přepsat pomocí posuvníků.  Uvědomte si, že pokud změníte
-parametry serveru JACK, měli byste vždy načíst hodnoty prodlev znovu.
-Hodnoty prodlev budou aplikací Rosegarden uloženy pro další použití.</translation>
-    </message>
-    <message>
-        <source>JACK playback latency (in ms)</source>
-        <translation type="obsolete">Prodleva přehrávání přes JACK (ms)</translation>
-    </message>
-    <message>
-        <source>JACK record latency (in ms)</source>
-        <translation type="obsolete">Prodleva záznamu přes JACK (ms)</translation>
-    </message>
-    <message>
-        <source>Fetch JACK latencies</source>
-        <translation type="obsolete">Načíst prodlevy serveru JACK</translation>
-    </message>
-    <message>
-        <source>JACK Latency</source>
-        <translation type="obsolete">Prodleva serveru JACK</translation>
-    </message>
-</context>
-<context>
     <name>Rosegarden::LilyPondExporter</name>
     <message>
         <location filename="../../src/document/io/LilyPondExporter.cpp" line="630"/>
@@ -16739,21 +15843,9 @@ Chcete použít
         <translation>Základní možnosti</translation>
     </message>
     <message>
-        <source>&lt;qt&gt;Choose which tracks to export.&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;Vybrat stopy, které se mají vyvést.&lt;/qt&gt;</translation>
-    </message>
-    <message>
-        <source>Selected tracks</source>
-        <translation type="obsolete">Vybrané stopy</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/dialogs/LilyPondOptionsDialog.cpp" line="127"/>
         <source>Compatibility level</source>
         <translation>Úroveň slučitelnosti</translation>
-    </message>
-    <message>
-        <source>&lt;qt&gt;Set the LilyPond version you have installed. Rosegarden only caters for stable releases of LilyPond.&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;Nastavte verzi programu LilyPond, kterou jste nainstaloval. Rosegarden se dá používat pouze se stabilními verzemi LilyPondu.&lt;/qt&gt;</translation>
     </message>
     <message>
         <location filename="../../src/gui/dialogs/LilyPondOptionsDialog.cpp" line="132"/>
@@ -16788,10 +15880,6 @@ Chcete použít
         <location filename="../../src/gui/dialogs/LilyPondOptionsDialog.cpp" line="140"/>
         <source>Paper size</source>
         <translation>Velikost papíru</translation>
-    </message>
-    <message>
-        <source>&lt;qt&gt;Set the paper size.&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;Nastavit velikost papíru.&lt;/qt&gt;</translation>
     </message>
     <message>
         <location filename="../../src/gui/dialogs/LilyPondOptionsDialog.cpp" line="145"/>
@@ -16837,18 +15925,6 @@ Chcete použít
         <location filename="../../src/gui/dialogs/LilyPondOptionsDialog.cpp" line="154"/>
         <source>Landscape</source>
         <translation>na šířku</translation>
-    </message>
-    <message>
-        <source>&lt;qt&gt;Check this if you want your score set in landscape.&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;Zvolte, pokud chcete, aby se váš notový zápis na papíru objevil natočen na šířku.&lt;/qt&gt;</translation>
-    </message>
-    <message>
-        <source>Specific options</source>
-        <translation type="obsolete">Zvláštní volby</translation>
-    </message>
-    <message>
-        <source>&lt;qt&gt;Set different score mark options.&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;Nastavit různé volby pro značky v notovém zápisus.&lt;/qt&gt;</translation>
     </message>
     <message>
         <location filename="../../src/gui/dialogs/LilyPondOptionsDialog.cpp" line="350"/>
@@ -16962,10 +16038,6 @@ Chcete použít
         <translation>Tisknout krátké názvy osnov</translation>
     </message>
     <message>
-        <source>&lt;qt&gt;Useful for large, complex scores, this prints the short name every time there is a line break in the score, making it easier to follow which line belongs to which instrument across pages&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;Užitečné pro rozsáhlé, složité notové zápisy. Vytiskne krátký název pokaždé, když je v notovém zápisu zalomení řádku, čímž je  snadnější sledovat, který řádek patří na stranách ke kterému nástroji.&lt;/qt&gt;</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/dialogs/LilyPondOptionsDialog.cpp" line="246"/>
         <source>&lt;qt&gt;&lt;p&gt;Useful for multi-page scores: this may prevent ugly final pages&lt;/p&gt;&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;&lt;p&gt;Užitečné u notových zápisů s více stranami: zabrání ošklivým stranám na konci.&lt;/p&gt;&lt;/qt&gt;</translation>
@@ -17036,26 +16108,14 @@ Chcete použít
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;qt&gt;Choose how often to show Tempo Marks in your score.&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;Vybrat počet značek s tempem v notovém zápisu.&lt;/qt&gt;</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/dialogs/LilyPondOptionsDialog.cpp" line="210"/>
         <source>Export lyrics</source>
         <translation>Vyvést text písně</translation>
     </message>
     <message>
-        <source>&lt;qt&gt;Set the position of the &lt;b&gt;lyrics/words&lt;/b&gt; in relation to the notes.&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;Nastavit polohu &lt;b&gt;textu písně/slov&lt;/b&gt; ve vztahu k notám.&lt;/qt&gt;</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/dialogs/LilyPondOptionsDialog.cpp" line="221"/>
         <source>Export beamings</source>
         <translation>Vyvést trámce</translation>
-    </message>
-    <message>
-        <source>&lt;qt&gt;Check to export Rosegarden beamings to your score.&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;Zaškrtněte, aby Rosegarden vyvedl trámce do vašeho notového zápisu.&lt;/qt&gt;</translation>
     </message>
     <message>
         <location filename="../../src/gui/dialogs/LilyPondOptionsDialog.cpp" line="228"/>
@@ -17113,17 +16173,9 @@ Chcete použít
         <translation>Vykládat texty u akordů jako názvy akordů u hlavního listu</translation>
     </message>
     <message>
-        <source>&lt;qt&gt;If you have only one staff in this score, you wouldn&apos;t want to export brackets.&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;V případě že je v notovém zápisu pouze jedna osnova, neměly by se závorky raději vyvádět.&lt;/qt&gt;</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/dialogs/LilyPondOptionsDialog.cpp" line="241"/>
         <source>&lt;qt&gt;&lt;p&gt;There is a tutorial on how to use this feature at http://www.rosegardenmusic.com/tutorials/supplemental/chordnames/index.html&lt;/p&gt;&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;&lt;p&gt;Pro používání této funkce je návod na http://www.rosegardenmusic.com/tutorials/supplemental/chordnames/index.html&lt;/p&gt;&lt;/qt&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;qt&gt;&lt;p&gt;Useful for multipage scores: this will prevent ugly final pages.&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Užitečné u notových zápisů s více stranami: zabrání ošklivým stranám na konci.&lt;/p&gt;&lt;/qt&gt;</translation>
     </message>
     <message>
         <location filename="../../src/gui/dialogs/LilyPondOptionsDialog.cpp" line="249"/>
@@ -17264,10 +16316,6 @@ Chcete použít
         <translation>&lt;b&gt;%1&lt;/b&gt; spuštěn...</translation>
     </message>
     <message>
-        <source>&lt;qt&gt;&lt;p&gt;LilyPond processed the file successfully, but &lt;b&gt;%1&lt;/b&gt; did not run!&lt;/p&gt;&lt;p&gt;Please configure a valid %2 under &lt;b&gt;Settings -&gt; Configure Rosegarden -&gt; General -&gt; External Applications&lt;/b&gt; and try again.&lt;/p&gt;&lt;p&gt;Processing terminated due to fatal errors.&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;LilyPond provedl zpracování souboru úspěšně, ale &lt;b&gt;%1&lt;/b&gt; neběžel!&lt;/p&gt;&lt;p&gt;Nastavte, prosím, platný %2 pod &lt;b&gt;Nastavení -&gt; Nastavit Rosegarden -&gt; Obecné -&gt; Vnější programy&lt;/b&gt; a zkuste to znovu.&lt;/p&gt;&lt;p&gt;Provedení ukončeno kvůli nepříjemným chybám.&lt;/p&gt;&lt;/qt&gt;</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/general/LilyPondProcessor.cpp" line="278"/>
         <source>file printer</source>
         <translation>Tisk do souboru</translation>
@@ -17280,10 +16328,6 @@ Chcete použít
 </context>
 <context>
     <name>Rosegarden::LoopRuler</name>
-    <message>
-        <source>&lt;qt&gt;&lt;p&gt;Click and drag to move the playback pointer.&lt;/p&gt;&lt;p&gt;Shift-click and drag to set a range for looping or editing.&lt;/p&gt;&lt;p&gt;Shift-click to clear the loop or range.&lt;/p&gt;&lt;p&gt;Double-click to start playback.&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Klepněte a táhněte pro přemístění ukazatele polohy přehrávání.&lt;/p&gt;&lt;p&gt;Shift-klepnutí a tažení pro nastavení oblasti pro opakování a úpravy.&lt;/p&gt;&lt;p&gt;Shift-klepnutí pro smazání opakování nebo oblasti.&lt;/p&gt;&lt;p&gt;Dvojité klepnutí pro spuštění přehrávání.&lt;/p&gt;&lt;/qt&gt;</translation>
-    </message>
     <message>
         <location filename="../../src/gui/rulers/LoopRuler.cpp" line="80"/>
         <source>&lt;qt&gt;&lt;p&gt;Click and drag to move the playback pointer.&lt;/p&gt;&lt;p&gt;Shift-click and drag to set a range for looping or editing.&lt;/p&gt;&lt;p&gt;Shift-click to clear the loop or range.&lt;/p&gt;&lt;p&gt;Ctrl-click and drag to move the playback pointer with snap to beat.&lt;/p&gt;&lt;p&gt;Double-click to start playback.&lt;/p&gt;&lt;/qt&gt;</source>
@@ -17481,37 +16525,9 @@ bude obvykle spojeno zpoždění začátku přehrávání, protože se bude nap�
 <context>
     <name>Rosegarden::MIDIInstrumentParameterPanel</name>
     <message>
-        <source>&lt;qt&gt;Set the MIDI bank from which programs will be selected upon loading a new file or (if so configured) at the start of playback&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;Nastavit banku MIDI, ze které budou vybrány programy při nahrávání nového souboru nebo (v případě, že by tak byl Rosegarden nastaven) při spuštění přehrávání&lt;/qt&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;qt&gt;&lt;p&gt;Set the MIDI channel number.&lt;/p&gt;&lt;p&gt;Before changing this, consider switching to a different instrument instead.  Instruments #1 through #16 match MIDI channels 1 through 16 by default.  You may change this relationship using this control if you wish, but this can lead to confusion&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Nastavit číslo kanálu MIDI.&lt;/p&gt;&lt;p&gt;Předtím, než se toto změní, zvažte místo toho přepnutí na jiný nástroj. Nástroje od #1 po #16 odpovídají ve výchozím nastavení kanálům MIDI od 1 po 16. Pokud budete chtít, můžete zde, pomocí tohoto ovládacího prvku, tento vztah změnit. Ale toto by mohl vést k zmatení&lt;/p&gt;&lt;/qt&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;qt&gt;Set the MIDI program or &amp;quot;patch&amp;quot;&lt;/p&gt;&lt;p&gt;This will be transmitted upon loading a new file and (if Rosegarden is so configured) at the start of playback&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;Nastavit program MIDI nebo &amp;quot;cestu&amp;quot;&lt;/p&gt;&lt;p&gt;Toto bude změněno při nahrání nového souboru a (v případě, že by tak byl Rosegarden nastaven) při spuštění přehrávání&lt;/p&gt;&lt;/qt&gt;</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/editors/parameters/MIDIInstrumentParameterPanel.cpp" line="194"/>
         <source>&lt;qt&gt;Set variations on the program above, if available in the studio&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;Nastavit obměny programu výše, pokud jsou dostupné ve studiu.&lt;/qt&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;qt&gt;Enable the control to the right&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;Zapnout ovladač na pravé straně&lt;/qt&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;qt&gt;&lt;p&gt;Check this to tell Rosegarden that this is a percussion instrument.  This allows you access to any percussion key maps and/or Roland-style drum kits you may have configured in the studio&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Zapněte tuto volbu, abyste tím pověděl Rosegardenu, že toto je nástroj bicích. Toto vám umožní přístup k jakémukoli přiřazení kláves bicích a/nebo bicím ve stylu Roland, které by vámi byly nastaveny ve studiu&lt;/p&gt;&lt;/qt&gt;</translation>
-    </message>
-    <message>
-        <source>auto</source>
-        <translation type="obsolete">Automaticky</translation>
-    </message>
-    <message>
-        <source>fixed</source>
-        <translation type="obsolete">Pevný</translation>
     </message>
     <message>
         <location filename="../../src/gui/editors/parameters/MIDIInstrumentParameterPanel.cpp" line="142"/>
@@ -17547,10 +16563,6 @@ bude obvykle spojeno zpoždění začátku přehrávání, protože se bude nap�
         <location filename="../../src/gui/editors/parameters/MIDIInstrumentParameterPanel.cpp" line="153"/>
         <source>Program</source>
         <translation>Program</translation>
-    </message>
-    <message>
-        <source>Channel out</source>
-        <translation type="obsolete">Výstupní kanál</translation>
     </message>
     <message>
         <location filename="../../src/gui/editors/parameters/MIDIInstrumentParameterPanel.cpp" line="107"/>
@@ -17596,10 +16608,6 @@ bude obvykle spojeno zpoždění začátku přehrávání, protože se bude nap�
         <location filename="../../src/gui/editors/parameters/MIDIInstrumentParameterPanel.cpp" line="226"/>
         <source>Receive external</source>
         <translation>Příjem od vnějšího</translation>
-    </message>
-    <message>
-        <source>[ %1 ]</source>
-        <translation type="obsolete">[ %1 ]</translation>
     </message>
     <message>
         <location filename="../../src/gui/editors/parameters/MIDIInstrumentParameterPanel.cpp" line="314"/>
@@ -17740,10 +16748,6 @@ bude obvykle spojeno zpoždění začátku přehrávání, protože se bude nap�
         <translation>Takty, doby a vedlejší doby</translation>
     </message>
     <message>
-        <source>Bars, beats, and divisions</source>
-        <translation type="obsolete">Taktové čáry, doby a figurace</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/dialogs/ManageMetronomeDialog.cpp" line="143"/>
         <source>Bar velocity</source>
         <translation>Síla tónu taktu</translation>
@@ -17822,10 +16826,6 @@ bude obvykle spojeno zpoždění začátku přehrávání, protože se bude nap�
         <location filename="../../src/gui/dialogs/ManageMetronomeDialog.cpp" line="194"/>
         <source>Recording</source>
         <translation>Probíhá záznam</translation>
-    </message>
-    <message>
-        <source>Synth plugin </source>
-        <translation type="obsolete">Přídavné moduly syntetizátorů</translation>
     </message>
     <message>
         <location filename="../../src/gui/dialogs/ManageMetronomeDialog.cpp" line="318"/>
@@ -18212,12 +17212,12 @@ Poklepáním otevřete editor značek.</translation>
         <translation>Změnit síly tónů</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/matrix/MatrixVelocity.cpp" line="257"/>
+        <location filename="../../src/gui/editors/matrix/MatrixVelocity.cpp" line="260"/>
         <source>Click and drag to scale velocity of selected notes</source>
         <translation>Klepnutím a tažením přizpůsobíte sílu tónu vybraných not</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/matrix/MatrixVelocity.cpp" line="259"/>
+        <location filename="../../src/gui/editors/matrix/MatrixVelocity.cpp" line="262"/>
         <source>Click and drag to scale velocity of note</source>
         <translation>Klepnutím a tažením přizpůsobíte sílu tónu noty</translation>
     </message>
@@ -18225,77 +17225,9 @@ Poklepáním otevřete editor značek.</translation>
 <context>
     <name>Rosegarden::MatrixView</name>
     <message>
-        <source>Instrument Parameters</source>
-        <translation type="obsolete">Parametry nástroje</translation>
-    </message>
-    <message>
-        <source>Couldn&apos;t apply piano roll layout</source>
-        <translation type="obsolete">Nebylo možné použít rozložení klavírního válce</translation>
-    </message>
-    <message>
-        <source>  No selection </source>
-        <translation type="obsolete">  Žádný výběr </translation>
-    </message>
-    <message>
-        <source>Quantizing...</source>
-        <translation type="obsolete">Probíhá kvantizace...</translation>
-    </message>
-    <message>
-        <source>Collapsing notes...</source>
-        <translation type="obsolete">Probíhá sjednocování not...</translation>
-    </message>
-    <message>
-        <source>Making legato...</source>
-        <translation type="obsolete">Probíhá vytváření legata...</translation>
-    </message>
-    <message>
-        <source>Note: %1 (%2.%3s)</source>
-        <translation type="obsolete">Nota: %1 (%2.%3s)</translation>
-    </message>
-    <message>
-        <source>%1 (%2)</source>
-        <translation type="obsolete">%1 (%2)</translation>
-    </message>
-    <message>
-        <source>Time: %1 (%2.%3s)</source>
-        <translation type="obsolete">Čas: %1 (%2.%3s)</translation>
-    </message>
-    <message>
-        <source>Cutting selection to clipboard...</source>
-        <translation type="obsolete">Probíhá vyjmutí výběru do schránky...</translation>
-    </message>
-    <message>
-        <source>Copying selection to clipboard...</source>
-        <translation type="obsolete">Probíhá kopírování výběru do schránky...</translation>
-    </message>
-    <message>
-        <source>Clipboard is empty</source>
-        <translation type="obsolete">Schránka je prázdná</translation>
-    </message>
-    <message>
-        <source>Inserting clipboard contents...</source>
-        <translation type="obsolete">Probíhá vkládání obsahu schránky...</translation>
-    </message>
-    <message>
-        <source>Couldn&apos;t paste at this point</source>
-        <translation type="obsolete">Nebylo možné provést vložení na tomto místě</translation>
-    </message>
-    <message>
-        <source>Deleting selection...</source>
-        <translation type="obsolete">Probíhá odstranění výběru...</translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="1829"/>
+        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="1830"/>
         <source>Unknown note insert action %1</source>
         <translation>Krok vložení neznámé noty %1</translation>
-    </message>
-    <message>
-        <source>Inserting note</source>
-        <translation type="obsolete">Probíhá vložení noty</translation>
-    </message>
-    <message>
-        <source>Unquantizing...</source>
-        <translation type="obsolete">Probíhá rušení kvantizace...</translation>
     </message>
     <message>
         <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="326"/>
@@ -18320,18 +17252,6 @@ Poklepáním otevřete editor značek.</translation>
             <numerusform>%1%2 - %n Části - %3</numerusform>
             <numerusform>%1%2 - %n Částí - %3</numerusform>
         </translation>
-    </message>
-    <message>
-        <source>%1 Controller %2 %3</source>
-        <translation type="obsolete">%1 Ovládací prvek %2 %3</translation>
-    </message>
-    <message>
-        <source>Pitch Bend</source>
-        <translation type="obsolete">Ohýbání výšky tónu</translation>
-    </message>
-    <message>
-        <source>Unsupported Event Type</source>
-        <translation type="obsolete">Nepodporovaný typ události</translation>
     </message>
     <message>
         <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="603"/>
@@ -18374,78 +17294,53 @@ Poklepáním otevřete editor značek.</translation>
         <translation>Vypnuto</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="1552"/>
+        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="1554"/>
         <source>http://rosegardenmusic.com/wiki/doc:matrix-en</source>
         <translation>http://rosegardenmusic.com/wiki/doc:matrix-en</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="1559"/>
+        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="1561"/>
         <source>http://www.rosegardenmusic.com/tutorials/en/chapter-0.html</source>
         <translation>http://www.rosegardenmusic.com/tutorials/en/chapter-0.html</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="1566"/>
+        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="1568"/>
         <source>http://rosegarden.sourceforge.net/tutorial/bug-guidelines.html</source>
         <translation>http://rosegarden.sourceforge.net/tutorial/bug-guidelines.html</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="1579"/>
-        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="1734"/>
-        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="1829"/>
+        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="1581"/>
+        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="1830"/>
         <source>Rosegarden</source>
         <translation>Rosegarden</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="2211"/>
+        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="2212"/>
         <source>Estimated key signature shown</source>
         <translation>Ukazuje se zjištěné předznamenání</translation>
     </message>
     <message>
-        <source>  Zoom:  </source>
-        <translation type="obsolete">  Zoom:  </translation>
-    </message>
-    <message>
-        <source>%1%</source>
-        <translation type="obsolete">%1%</translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="1347"/>
+        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="1349"/>
         <source>Estimated time signature shown</source>
         <translation>Ukazuje se odhadované označení taktu</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="1435"/>
+        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="1437"/>
         <source>Transpose</source>
         <translation>Převést</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="1436"/>
+        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="1438"/>
         <source>By number of semitones: </source>
         <translation>Zadejte počet půltónů, o které se má převádět:</translation>
     </message>
     <message>
-        <source>Raising velocities...</source>
-        <translation type="obsolete">Probíhá zvětšování rychlostí...</translation>
-    </message>
-    <message>
-        <source>Lowering velocities...</source>
-        <translation type="obsolete">Probíhá zmenšování rychlostí...</translation>
-    </message>
-    <message>
-        <source>Set Event Velocities</source>
-        <translation type="obsolete">Nastavit rychlosti událostí</translation>
-    </message>
-    <message>
-        <source>Setting Velocities...</source>
-        <translation type="obsolete">Probíhá nastavování rychlostí...</translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="1116"/>
+        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="1118"/>
         <source>Trigger Segment</source>
         <translation>Spustit část</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="1126"/>
+        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="1128"/>
         <source>Remove Triggers</source>
         <translation>Odebrat spouštěcí značky</translation>
     </message>
@@ -18454,57 +17349,36 @@ Poklepáním otevřete editor značek.</translation>
         <source>Matrix</source>
         <translation>Tabulka</translation>
     </message>
-    <message>
-        <source>Percussion</source>
-        <translation type="obsolete">Bicí</translation>
-    </message>
-    <message>
-        <source>%1 - Segment Track #%2 - %3</source>
-        <translation type="obsolete">%1 - Stopa segmentu #%2 - %3</translation>
-    </message>
-    <message>
-        <source>%1 - All Segments - %2</source>
-        <translation type="obsolete">%1 - Všechny segmenty - %2</translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="1734"/>
-        <source>Can&apos;t insert note: No grid duration selected</source>
-        <translation>Nelze vložit notu: nebyla vybrána doba trvání v mřížce</translation>
-    </message>
-    <message>
-        <source> Chord </source>
-        <translation type="obsolete"> Akord</translation>
-    </message>
 </context>
 <context>
     <name>Rosegarden::MatrixWidget</name>
     <message>
-        <location filename="../../src/gui/editors/matrix/MatrixWidget.cpp" line="195"/>
+        <location filename="../../src/gui/editors/matrix/MatrixWidget.cpp" line="196"/>
         <source>Zoom</source>
         <translation>Zvětšení</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/matrix/MatrixWidget.cpp" line="211"/>
+        <location filename="../../src/gui/editors/matrix/MatrixWidget.cpp" line="212"/>
         <source>Horizontal Zoom</source>
         <translation>Vodorovné zvětšení</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/matrix/MatrixWidget.cpp" line="223"/>
+        <location filename="../../src/gui/editors/matrix/MatrixWidget.cpp" line="224"/>
         <source>Vertical Zoom</source>
         <translation>Svislé zvětšení</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/matrix/MatrixWidget.cpp" line="236"/>
+        <location filename="../../src/gui/editors/matrix/MatrixWidget.cpp" line="237"/>
         <source>Reset Zoom</source>
         <translation>Nastavit znovu zvětšení</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/matrix/MatrixWidget.cpp" line="1360"/>
+        <location filename="../../src/gui/editors/matrix/MatrixWidget.cpp" line="1366"/>
         <source>&lt;qt&gt;Rotate wheel to change the active segment&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;Otáčet kolečkem kvůli změně činné části&lt;/qt&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/matrix/MatrixWidget.cpp" line="1361"/>
+        <location filename="../../src/gui/editors/matrix/MatrixWidget.cpp" line="1367"/>
         <source>&lt;qt&gt;Segment: &quot;%1&quot;&lt;br&gt;Track: %2 &quot;%3&quot;&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;Část: &quot;%1&quot;&lt;br&gt;Stopa: %2 &quot;%3&quot;&lt;/qt&gt;</translation>
     </message>
@@ -18603,13 +17477,6 @@ Poklepáním otevřete editor značek.</translation>
         <location filename="../../src/gui/seqmanager/MidiFilterDialog.cpp" line="228"/>
         <source>http://rosegardenmusic.com/wiki/doc:midi-filter-en</source>
         <translation>http://rosegardenmusic.com/wiki/doc:midi-filter-en</translation>
-    </message>
-</context>
-<context>
-    <name>Rosegarden::MidiKeyMapTreeWidgetItem</name>
-    <message>
-        <source>Key Mapping</source>
-        <translation type="obsolete">Tabulka přiřazení kláves v tónině</translation>
     </message>
 </context>
 <context>
@@ -18925,291 +17792,9 @@ Poklepáním otevřete editor značek.</translation>
 <context>
     <name>Rosegarden::NameSetEditor</name>
     <message>
-        <source>Librarian</source>
-        <translation type="obsolete">Knihovník</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation type="obsolete">Jméno</translation>
-    </message>
-    <message>
-        <source>Email</source>
-        <translation type="obsolete">E-mail</translation>
-    </message>
-    <message>
-        <source>The librarian maintains the Rosegarden device data for this device.
-If you&apos;ve made modifications to suit your own device, it might be worth
-liaising with the librarian in order to publish your information for the benefit
-of others.</source>
-        <translation type="obsolete">Knihovník udržuje data o zařízení aplikace Rosegarden pro toto zařízení.
-Pokud jste provedli úpravy dat tak, aby vyhovovala vašemu zařízení, bylo by dobré
-tyto úpravy sdělit knihovníkovi, aby je mohl publikovat pro využití
-dalšími uživateli.</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/studio/NameSetEditor.cpp" line="67"/>
         <source>Provided by</source>
         <translation>Poskytnuto</translation>
-    </message>
-</context>
-<context>
-    <name>Rosegarden::NewMatrixView</name>
-    <message>
-        <source>Matrix</source>
-        <translation type="obsolete">Matice</translation>
-    </message>
-    <message>
-        <source>&lt;untitled&gt;</source>
-        <translation type="obsolete">&lt;bez názvu&gt;</translation>
-    </message>
-    <message>
-        <source>%1 - All Segments - %2</source>
-        <translation type="obsolete">%1 - Všechny segmenty - %2</translation>
-    </message>
-    <message>
-        <source> Grid: </source>
-        <translation type="obsolete"> Rastr: </translation>
-    </message>
-    <message>
-        <source>None</source>
-        <translation type="obsolete">Žádný</translation>
-    </message>
-    <message>
-        <source>Unit</source>
-        <translation type="obsolete">Jednotka</translation>
-    </message>
-    <message>
-        <source>Beat</source>
-        <translation type="obsolete">Doba</translation>
-    </message>
-    <message>
-        <source>Bar</source>
-        <translation type="obsolete">Taktová čára</translation>
-    </message>
-    <message>
-        <source> Velocity: </source>
-        <translation type="obsolete"> Rychlost:</translation>
-    </message>
-    <message>
-        <source> Quantize: </source>
-        <translation type="obsolete"> Kvantizovat: </translation>
-    </message>
-    <message>
-        <source>  Zoom:  </source>
-        <translation type="obsolete">  Zoom:  </translation>
-    </message>
-    <message>
-        <source>%1%</source>
-        <translation type="obsolete">%1%</translation>
-    </message>
-    <message>
-        <source>Set Event Velocities</source>
-        <translation type="obsolete">Nastavit rychlosti událostí</translation>
-    </message>
-    <message>
-        <source>Trigger Segment</source>
-        <translation type="obsolete">Spouštěcí segment</translation>
-    </message>
-    <message>
-        <source>Remove Triggers</source>
-        <translation type="obsolete">Odebrat spouštěcí značky</translation>
-    </message>
-    <message>
-        <source>Estimated time signature shown</source>
-        <translation type="obsolete">Zobrazené odhadované označení taktu</translation>
-    </message>
-    <message>
-        <source>Transpose</source>
-        <translation type="obsolete">Transponovat</translation>
-    </message>
-    <message>
-        <source>By number of semitones: </source>
-        <translation type="obsolete">Zadejte o kolik půltónů:</translation>
-    </message>
-    <message>
-        <source>Can&apos;t insert note: No grid duration selected</source>
-        <translation type="obsolete">Nelze vložit notu: nebyla vybrána doba trvání v rastru</translation>
-    </message>
-</context>
-<context>
-    <name>Rosegarden::NewNotationView</name>
-    <message>
-        <source>Note &amp;Font</source>
-        <translation type="obsolete">Notové &amp;písmo</translation>
-    </message>
-    <message>
-        <source>Si&amp;ze</source>
-        <translation type="obsolete">V&amp;elikost</translation>
-    </message>
-    <message>
-        <source>S&amp;pacing</source>
-        <translation type="obsolete">&amp;Rozestupy</translation>
-    </message>
-    <message>
-        <source>  Font:  </source>
-        <translation type="obsolete">  Písmo:  </translation>
-    </message>
-    <message>
-        <source>Unknown font &quot;%1&quot;, using default</source>
-        <translation type="obsolete">Písmo &quot;%1&quot; je neznámé, použije se výchozí</translation>
-    </message>
-    <message>
-        <source>  Size:  </source>
-        <translation type="obsolete">  Velikost:  </translation>
-    </message>
-    <message>
-        <source>  Spacing:  </source>
-        <translation type="obsolete">  Rozestupy:  </translation>
-    </message>
-    <message>
-        <source>LilyPond Preview Options</source>
-        <translation type="obsolete">Možnosti zobrazení náhledu pro aplikaci LilyPond</translation>
-    </message>
-    <message>
-        <source>LilyPond preview options</source>
-        <translation type="obsolete">Možnosti zobrazení náhledu pro aplikaci LilyPond</translation>
-    </message>
-    <message>
-        <source>Export failed.  The file could not be opened for writing.</source>
-        <translation type="obsolete">Export selhal.  Soubor nebylo možné otevřít pro zápis.</translation>
-    </message>
-    <message>
-        <source>Unknown font action %1</source>
-        <translation type="obsolete">Akce s neznámým písmem - %1</translation>
-    </message>
-    <message>
-        <source>Unknown font size action %1</source>
-        <translation type="obsolete">Akce s neznámou velikostí písma - %1</translation>
-    </message>
-    <message>
-        <source>Unknown spacing action %1</source>
-        <translation type="obsolete">Akce s neznámými rozestupy - %1</translation>
-    </message>
-    <message>
-        <source>Can&apos;t paste multiple Segments into one</source>
-        <translation type="obsolete">Nelze vložit několik segmentů do jednoho</translation>
-    </message>
-    <message>
-        <source>Rosegarden</source>
-        <translation type="obsolete">Rosegarden</translation>
-    </message>
-    <message>
-        <source>Couldn&apos;t paste at this point.</source>
-        <translation type="obsolete">Nebylo možné provést vložení na tomto místě.</translation>
-    </message>
-    <message>
-        <source>The Restricted paste type requires enough empty space (containing only rests) at the paste position to hold all of the events to be pasted.
-Not enough space was found.
-If you want to paste anyway, consider using one of the other paste types from the &quot;Paste...&quot; option on the Edit menu.  You can also change the default paste type to something other than Restricted if you wish.</source>
-        <translation type="obsolete">Omezený typ vkládání vyžaduje dostatek volného místa (obsahující pouze pomlky) na místě vložení, aby se do něj všechny události vešly.
-Nebylo nalezeno dost místa.
-Chcete-li i přesto provést vložení, zvažte použití jednoho z dalších typů vkládání pod možností &quot;Vložit&quot; v nabídce Upravit. Pokud chcete, můžete také změnit výchozí typ vkládání na jiný než Omezený.</translation>
-    </message>
-    <message>
-        <source>Clipboard is empty</source>
-        <translation type="obsolete">Schránka je prázdná</translation>
-    </message>
-    <message>
-        <source>Inserting clipboard contents...</source>
-        <translation type="obsolete">Probíhá vkládání obsahu schránky...</translation>
-    </message>
-    <message>
-        <source>Raising velocities...</source>
-        <translation type="obsolete">Probíhá zvětšování rychlostí...</translation>
-    </message>
-    <message>
-        <source>Lowering velocities...</source>
-        <translation type="obsolete">Probíhá zmenšování rychlostí...</translation>
-    </message>
-    <message>
-        <source>Set Event Velocities</source>
-        <translation type="obsolete">Nastavit rychlosti událostí</translation>
-    </message>
-    <message>
-        <source>Setting Velocities...</source>
-        <translation type="obsolete">Probíhá nastavování rychlostí...</translation>
-    </message>
-    <message>
-        <source>Unknown note insert action %1</source>
-        <translation type="obsolete">Akce vložení neznámé noty %1</translation>
-    </message>
-    <message>
-        <source>Inserting note</source>
-        <translation type="obsolete">Probíhá vložení noty</translation>
-    </message>
-    <message>
-        <source>Ornament track %1 bar %2</source>
-        <translation type="obsolete">Melodická ozdoba - stopa %1, taktová čára %2</translation>
-    </message>
-    <message>
-        <source>Ornament bar %1</source>
-        <translation type="obsolete">Taktová čára melodické ozdoby %1</translation>
-    </message>
-    <message>
-        <source>Make Ornament</source>
-        <translation type="obsolete">Vytvořit melodickou ozdobu</translation>
-    </message>
-    <message>
-        <source>Use Ornament</source>
-        <translation type="obsolete">Použít melodickou ozdobu</translation>
-    </message>
-    <message>
-        <source>Remove Ornaments</source>
-        <translation type="obsolete">Odstranit melodické ozdoby</translation>
-    </message>
-    <message>
-        <source>Estimated key signature shown</source>
-        <translation type="obsolete">Zobrazené odhadované předznamenání</translation>
-    </message>
-    <message>
-        <source>Sustain</source>
-        <translation type="obsolete">Držet tón</translation>
-    </message>
-    <message>
-        <source>There is no sustain controller defined for this device.
-Please ensure the device is configured correctly in the Manage MIDI Devices dialog in the main window.</source>
-        <translation type="obsolete">Pro toto zařízení není definován žádný ovládací prvek pro držení tónu.
-Ujistěte se, že je zařízení správně konfigurováno v dialogu Správa zařízení MIDI v hlavním okně.</translation>
-    </message>
-    <message>
-        <source>Estimated time signature shown</source>
-        <translation type="obsolete">Zobrazené odhadované označení taktu</translation>
-    </message>
-    <message>
-        <source>Can&apos;t insert note: No note duration selected</source>
-        <translation type="obsolete">Nelze vložit notu. Nebyla vybrána doba trvání noty</translation>
-    </message>
-    <message>
-        <source>Time: %1 (%2.%3s)</source>
-        <translation type="obsolete">Čas: %1 (%2.%3s)</translation>
-    </message>
-    <message>
-        <source>%1 - Segment Track #%2 - Notation</source>
-        <translation type="obsolete">%1 - Stopa segmentu #%2 - Notový zápis</translation>
-    </message>
-    <message>
-        <source>%1 - All Segments - Notation</source>
-        <translation type="obsolete">%1 - Všechny segmenty - Notový zápis</translation>
-    </message>
-    <message>
-        <source>Triplet</source>
-        <translation type="obsolete">Triola</translation>
-    </message>
-    <message>
-        <source>Chord</source>
-        <translation type="obsolete">Akord</translation>
-    </message>
-    <message>
-        <source>Grace</source>
-        <translation type="obsolete">Respektovat</translation>
-    </message>
-    <message>
-        <source>Transpose</source>
-        <translation type="obsolete">Transponovat</translation>
-    </message>
-    <message>
-        <source>By number of semitones: </source>
-        <translation type="obsolete">Zadejte o kolik půltónů:</translation>
     </message>
 </context>
 <context>
@@ -19223,322 +17808,306 @@ Ujistěte se, že je zařízení správně konfigurováno v dialogu Správa zař
 <context>
     <name>Rosegarden::NotationConfigurationPage</name>
     <message>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.h" line="52"/>
         <location filename="../../src/gui/configuration/NotationConfigurationPage.h" line="53"/>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.h" line="54"/>
         <source>Notation</source>
         <translation>Zápis</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="81"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="80"/>
         <source>Default layout mode</source>
         <translation>Výchozí režim rozvržení</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="86"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="85"/>
         <source>Linear layout</source>
         <translation>Čárové rozvržení</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="87"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="86"/>
         <source>Continuous page layout</source>
         <translation>Rozvržení na jednu nepřetržitou stranu</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="88"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="87"/>
         <source>Multiple page layout</source>
         <translation>Rozvržení na více stran</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="96"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="95"/>
         <source>Default spacing</source>
         <translation>Výchozí rozestupy</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="109"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="108"/>
         <source>%1 % (normal)</source>
         <translation>%1 % (normální)</translation>
     </message>
     <message>
-        <source>Default duration factor</source>
-        <translation type="obsolete">Výchozí faktor doby trvání</translation>
-    </message>
-    <message>
-        <source>None</source>
-        <translation type="obsolete">Žádný</translation>
-    </message>
-    <message>
-        <source>Full</source>
-        <translation type="obsolete">Úplná</translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="121"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="120"/>
         <source>Show track headers (linear layout only)</source>
         <translation>Ukázat hlavičky stop (pouze čárové rozvržení)</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="128"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="127"/>
         <source>Never</source>
         <translation>Nikdy</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="129"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="128"/>
         <source>When needed</source>
         <translation>V případě potřeby</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="130"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="129"/>
         <source>Always</source>
         <translation>Vždy</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="138"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="137"/>
         <source>&quot;Always&quot; and &quot;Never&quot; mean what they usually mean
 &quot;When needed&quot; means &quot;when staves are too many to all fit in the current window&quot;</source>
         <translation>&quot;Vždy&quot; a &quot;Nikdy&quot; znamená to, co obvykle
 &quot;V případě potřeby&quot; znamená &quot;je-li příliš mnoho osnov k tomu, aby se vešly do současného okna&quot;</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="151"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="150"/>
         <source>Show non-notation events as question marks</source>
         <translation>Ukázat události ne-notové povahy jako otazníky</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="162"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="161"/>
         <source>Show notation-quantized notes in a different color</source>
         <translation>Ukázat kvantizované noty notace jinou barvou</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="173"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="172"/>
         <source>Show &quot;invisible&quot; events in grey</source>
         <translation>Ukázat &quot;neviditelné&quot; události šedou barvou</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="184"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="183"/>
         <source>Show notes outside suggested playable range in red</source>
         <translation>Ukázat noty mimo navržený hratelný rozsah červeně</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="195"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="194"/>
         <source>Highlight superimposed notes with a halo effect</source>
         <translation>Zvýraznit překrývající se noty efektem kola (halo)</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="209"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="208"/>
         <source>When recording MIDI, split-and-tie long notes at barlines</source>
         <translation>Při nahrávání přes MIDI, rozdělujte a svazujte dlouhé noty na taktových čarách</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="225"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="224"/>
         <source>Layout</source>
         <translation>Rozvržení</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="238"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="237"/>
         <source>Default note style for new notes</source>
         <translation>Výchozí styl not pro nové noty</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="270"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="269"/>
         <source>When inserting notes...</source>
         <translation>Při vkládání not...</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="278"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="277"/>
         <source>Split notes into ties to make durations match</source>
         <translation>Rozdělit noty ligaturou tak, aby odpovídaly doby trvání</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="279"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="278"/>
         <source>Ignore existing durations</source>
         <translation>Přehlížet stávající doby trvání</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="289"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="288"/>
         <source>Auto-beam on insert when appropriate</source>
         <translation>Provést automatické spojení trámcem při vkládání tam, kde je to vhodné</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="302"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="301"/>
         <source>Tie notes at barlines automatically</source>
         <translation>Svázat noty ligaturou na taktových čárách automaticky</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="316"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="315"/>
         <source>Collapse rests after erase</source>
         <translation>Sjednotit pomlky po vymazání</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="328"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="327"/>
         <source>Default paste type</source>
         <translation>Výchozí typ vložení</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="352"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="351"/>
         <source>Editing</source>
         <translation>Úpravy</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="364"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="363"/>
         <source>Accidentals in one octave...</source>
         <translation>Posuvky v jedné oktávě...</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="367"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="366"/>
         <source>Affect only that octave</source>
         <translation>Ovlivní pouze tuto oktávu</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="368"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="367"/>
         <source>Require cautionaries in other octaves</source>
         <translation>Vyžadovat varovné posuvky v dalších oktávách</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="369"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="368"/>
         <source>Affect all subsequent octaves</source>
         <translation>Ovlivní všechny následující oktávy</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="377"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="376"/>
         <source>Accidentals in one bar...</source>
         <translation>Posuvky v jedné taktové čáře...</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="380"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="379"/>
         <source>Affect only that bar</source>
         <translation>Ovlivní pouze tuto taktovou čáru</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="381"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="380"/>
         <source>Require cautionary resets in following bar</source>
         <translation>Vyžadovat varovná nová nastavení na následující taktové čáře</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="382"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="381"/>
         <source>Require explicit resets in following bar</source>
         <translation>Vyžadovat výslovné odrážky na následující taktové čáře</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="390"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="389"/>
         <source>Key signature cancellation style</source>
         <translation>Styl rušení předznamenání</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="393"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="392"/>
         <source>Cancel only when entering C major or A minor</source>
         <translation>Zrušit pouze při zadávání C dur nebo A moll</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="394"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="393"/>
         <source>Cancel whenever removing sharps or flats</source>
         <translation>Zrušit při každém odstraňování křížků nebo béček</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="395"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="394"/>
         <source>Cancel always</source>
         <translation>Zrušit pokaždé</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="406"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="405"/>
         <source>Accidentals</source>
         <translation>Posuvky</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="417"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="416"/>
         <source>Notation font</source>
         <translation>Písmo notace</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="423"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="422"/>
         <source>View</source>
         <translation>Pohled</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="444"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="443"/>
         <source>Origin:</source>
         <translation>Původ:</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="448"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="447"/>
         <source>Copyright:</source>
         <translation>Autorské právo:</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="452"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="451"/>
         <source>Mapped by:</source>
         <translation>Přiřazeno:</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="456"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="455"/>
         <source>Type:</source>
         <translation>Typ:</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="482"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="481"/>
         <source>Font size for single-staff views</source>
         <translation>Velikost písma pro zobrazení s jednou osnovou</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="491"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="490"/>
         <source>Font size for multi-staff views</source>
         <translation>Velikost písma pro zobrazení s více osnovami</translation>
     </message>
     <message>
-        <source>Font size for printing (pt)</source>
-        <translation type="obsolete">Velikost písma pro tisk (v bodech)</translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="509"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="508"/>
         <source>Text font</source>
         <translation>Písmo textu</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="521"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="520"/>
         <source>Sans-serif font</source>
         <translation>Písmo Sans-serif</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="534"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="533"/>
         <source>Font</source>
         <translation>Písmo</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="551"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="550"/>
         <source>Show repeated segments</source>
         <translation>Ukázat opakované části</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="564"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="563"/>
         <source>Allow direct edition of repeated segments</source>
         <translation>Povolit přímé úpravy opakovaných částí</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="577"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="576"/>
         <source>Hide redundant clefs and keys</source>
         <translation>Skrýt nadbytečné klíče a tóniny</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="590"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="589"/>
         <source>Distribute verses among repeated segments</source>
         <translation>Rozdělovat sloky mezi opakované části</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="605"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="604"/>
         <source>Segments</source>
         <translation>Části</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="632"/>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="712"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="631"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="711"/>
         <source>Rosegarden</source>
         <translation>Rosegarden</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="704"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="703"/>
         <source>%1 (smooth)</source>
         <translation>%1 (vyhlazený)</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="706"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="705"/>
         <source>%1 (jaggy)</source>
         <translation>%1 (nerovný)</translation>
     </message>
@@ -19797,18 +18366,6 @@ Jedná se o chybu programu (program již pravděpodobně v této chvíli havarov
 <context>
     <name>Rosegarden::NotationView</name>
     <message>
-        <source>Close track headers</source>
-        <translation type="obsolete">Uzavřít hlavičky stop</translation>
-    </message>
-    <message>
-        <source>Starting...</source>
-        <translation type="obsolete">Spouští se...</translation>
-    </message>
-    <message>
-        <source>Preparing to print...</source>
-        <translation type="obsolete">Probíhá příprava tisku...</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1028"/>
         <source>Note &amp;Font</source>
         <translation>Notové &amp;písmo</translation>
@@ -19823,14 +18380,6 @@ Jedná se o chybu programu (program již pravděpodobně v této chvíli havarov
         <source>S&amp;pacing</source>
         <translation>&amp;Rozestupy</translation>
     </message>
-    <message>
-        <source>Du&amp;ration Factor</source>
-        <translation type="obsolete">Faktor doby &amp;trvání</translation>
-    </message>
-    <message>
-        <source>None</source>
-        <translation type="obsolete">Žádný</translation>
-    </message>
     <message numerus="yes">
         <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1068"/>
         <source>%n pixel(s)</source>
@@ -19841,40 +18390,24 @@ Jedná se o chybu programu (program již pravděpodobně v této chvíli havarov
         </translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1218"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1220"/>
         <source>  Font:  </source>
         <translation>  Písmo:  </translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1253"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1255"/>
         <source>Unknown font &quot;%1&quot;, using default</source>
         <translation>Písmo &quot;%1&quot; je neznámé, použije se výchozí</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1261"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1263"/>
         <source>  Size:  </source>
         <translation>  Velikost:  </translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1285"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1287"/>
         <source>  Spacing:  </source>
         <translation>  Rozestupy:  </translation>
-    </message>
-    <message>
-        <source>  Ready.</source>
-        <translation type="obsolete">  Připraven.</translation>
-    </message>
-    <message>
-        <source>Laying out score...</source>
-        <translation type="obsolete">Probíhá uspořádání partitury...</translation>
-    </message>
-    <message>
-        <source>Laying out staff %1...</source>
-        <translation type="obsolete">Probíhá uspořádání osnovy %1...</translation>
-    </message>
-    <message>
-        <source>Reconciling staffs...</source>
-        <translation type="obsolete">Probíhá vyrovnání osnov...</translation>
     </message>
     <message>
         <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1170"/>
@@ -19882,134 +18415,54 @@ Jedná se o chybu programu (program již pravděpodobně v této chvíli havarov
         <translation>  Žádný výběr </translation>
     </message>
     <message>
-        <source>Sizing and allocating canvas...</source>
-        <translation type="obsolete">Probíhá nastavení velikosti a přidělení zobrazovací plochy...</translation>
-    </message>
-    <message>
-        <source>note</source>
-        <translation type="obsolete">nota</translation>
-    </message>
-    <message>
-        <source>rest</source>
-        <translation type="obsolete">pomlka</translation>
-    </message>
-    <message>
-        <source>%1 - Segment Track #%2 - Notation</source>
-        <translation type="obsolete">%1 - Stopa segmentu #%2 - Notový zápis</translation>
-    </message>
-    <message>
-        <source>%1 - All Segments - Notation</source>
-        <translation type="obsolete">%1 - Všechny segmenty - Notový zápis</translation>
-    </message>
-    <message>
-        <source>Triplet</source>
-        <translation type="obsolete">Triola</translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3843"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3846"/>
         <source>Chord</source>
         <translation>Akord</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3844"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3847"/>
         <source>Grace</source>
         <translation>Příraz</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3851"/>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3855"/>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3859"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3854"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3858"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3862"/>
         <source>%1 %2</source>
         <translation>%1 %2</translation>
     </message>
     <message>
-        <source>Hidden annotations</source>
-        <translation type="obsolete">Skryté anotace</translation>
-    </message>
-    <message>
-        <source>Hidden LilyPond directives</source>
-        <translation type="obsolete">Skryté direktivy aplikace LilyPond</translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1586"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1588"/>
         <source>Unknown spacing action %1</source>
         <translation>Krok s neznámými rozestupy - %1</translation>
     </message>
     <message>
-        <source>Unknown proportion action %1</source>
-        <translation type="obsolete">Akce s neznámými proporcemi - %1</translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1535"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1537"/>
         <source>Unknown font action %1</source>
         <translation>Krok s neznámým písmem - %1</translation>
     </message>
     <message>
-        <source>Unknown font size %1</source>
-        <translation type="obsolete">Neznámá velikost písma - %1</translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1561"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1563"/>
         <source>Unknown font size action %1</source>
         <translation>Krok s neznámou velikostí písma - %1</translation>
     </message>
     <message>
-        <source>Printing...</source>
-        <translation type="obsolete">Probíhá tisk...</translation>
-    </message>
-    <message>
-        <source>Previewing...</source>
-        <translation type="obsolete">Náhled...</translation>
-    </message>
-    <message>
-        <source>Printing LilyPond file...</source>
-        <translation type="obsolete">Probíhá tisk souboru aplikace LilyPond...</translation>
-    </message>
-    <message>
-        <source>Failed to open a temporary file for LilyPond export.</source>
-        <translation type="obsolete">Nepodařilo se otevřít dočasný soubor pro export do aplikace LilyPond.</translation>
-    </message>
-    <message>
-        <source>Previewing LilyPond file...</source>
-        <translation type="obsolete">Zobrazuje se náhled souboru aplikace LilyPond...</translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1414"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1416"/>
         <source>LilyPond Preview Options</source>
         <translation>Možnosti zobrazení náhledu pro program LilyPond</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1415"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1417"/>
         <source>LilyPond preview options</source>
         <translation>Možnosti zobrazení náhledu pro program LilyPond</translation>
     </message>
     <message>
-        <source>Exporting LilyPond file...</source>
-        <translation type="obsolete">Probíhá export souboru aplikace LilyPond...</translation>
-    </message>
-    <message>
-        <source>Export failed.  The file could not be opened for writing.</source>
-        <translation type="obsolete">Vyvedení se nezdařilo.  Soubor nebylo možné otevřít pro zápis.</translation>
-    </message>
-    <message>
-        <source>Cutting selection to clipboard...</source>
-        <translation type="obsolete">Probíhá vyjmutí výběru do schránky...</translation>
-    </message>
-    <message>
-        <source>Deleting selection...</source>
-        <translation type="obsolete">Probíhá odstranění výběru...</translation>
-    </message>
-    <message>
-        <source>Copying selection to clipboard...</source>
-        <translation type="obsolete">Probíhá kopírování výběru do schránky...</translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1711"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1713"/>
         <source>Clipboard is empty</source>
         <translation>Schránka je prázdná</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1658"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1660"/>
         <source>Can&apos;t paste multiple Segments into one</source>
         <translation>Nelze vložit několik částí do jedné</translation>
     </message>
@@ -20028,200 +18481,167 @@ Jedná se o chybu programu (program již pravděpodobně v této chvíli havarov
         </translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1253"/>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1426"/>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1478"/>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1535"/>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1561"/>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1586"/>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1689"/>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1745"/>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="2643"/>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3372"/>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4222"/>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4491"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1255"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1428"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1480"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1537"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1563"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1588"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1691"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1747"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="2645"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3375"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4486"/>
         <source>Rosegarden</source>
         <translation>Rosegarden</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1436"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1438"/>
         <source>Printing with LilyPond...</source>
         <translation>Probíhá tisk s LilyPondem...</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1454"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1456"/>
         <source>Previewing with LilyPond...</source>
         <translation>Probíhá náhled s LilyPondem...</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1479"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1481"/>
         <source>&lt;qt&gt;&lt;p&gt;Failed to open a temporary file for LilyPond export.&lt;/p&gt;&lt;p&gt;This probably means you have run out of disk space on &lt;pre&gt;%1&lt;/pre&gt;&lt;/p&gt;&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;&lt;p&gt;Nepodařilo se otevřít dočasný soubor pro vyvedení z LilyPondu.&lt;/p&gt;&lt;p&gt;Pravděpodobně to znamená, že ukládací prostor na disku &lt;pre&gt;%1&lt;/pre&gt;je zcela zaplněn.&lt;/p&gt;&lt;/qt&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1692"/>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1748"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1694"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1750"/>
         <source>&lt;qt&gt;&lt;p&gt;The Restricted paste type requires enough empty space (containing only rests) at the paste position to hold all of the events to be pasted.&lt;/p&gt;&lt;p&gt;Not enough space was found.&lt;/p&gt;&lt;p&gt;If you want to paste anyway, consider using one of the other paste types from the &lt;b&gt;Paste...&lt;/b&gt; option on the Edit menu.  You can also change the default paste type to something other than Restricted if you wish.&lt;/p&gt;&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;&lt;p&gt;Omezený typ vložení vyžaduje dostatek prázdného prostoru (obsahuje pouze pomlky) v poloze vložení kvůli držení všech událostí, které se vloží.&lt;/p&gt;&lt;p&gt;Nebylo nalezeno dost místa.&lt;/p&gt;&lt;p&gt;Jestliže přesto hodláte vložení provést, zvažte, zda nepoužít jiný z typů vložení z nabídky &lt;b&gt;Vložit...&lt;/b&gt; v nabídce Úpravy. Pokud byste si to přál, můžete rovněž změnit typ vložení z Omezený na nějaký jiný.&lt;/p&gt;&lt;/qt&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1715"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1717"/>
         <source>Inserting clipboard contents...</source>
         <translation>Probíhá vkládání obsahu schránky...</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1691"/>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1747"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1693"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1749"/>
         <source>Couldn&apos;t paste at this point.</source>
         <translation>Nebylo možné provést vložení na tomto místě.</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4578"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4573"/>
         <source>Move Events to Staff Above</source>
         <translation>Přesunout události na osnovu výše</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1888"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1890"/>
         <source>Raising velocities...</source>
         <translation>Probíhá zvětšování rychlostí...</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1899"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="1901"/>
         <source>Lowering velocities...</source>
         <translation>Probíhá zmenšování rychlostí...</translation>
     </message>
     <message>
-        <source>Set Event Velocities</source>
-        <translation type="obsolete">Nastavit rychlosti událostí</translation>
-    </message>
-    <message>
-        <source>Setting Velocities...</source>
-        <translation type="obsolete">Probíhá nastavování rychlostí...</translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4736"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4731"/>
         <source>Edit Text Event</source>
         <translation>Upravit textovou událost</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4784"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4779"/>
         <source>Normalizing rests...</source>
         <translation>Probíhá normalizace pomlk...</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4797"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4792"/>
         <source>Collapsing notes...</source>
         <translation>Probíhá sjednocování not...</translation>
     </message>
     <message>
-        <source>No note duration selected</source>
-        <translation type="obsolete">Nebyla vybrána doba trvání noty</translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="2643"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="2645"/>
         <source>Unknown note insert action %1</source>
         <translation>Krok vložení neznámé noty %1</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="2647"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="2649"/>
         <source>Inserting note</source>
         <translation>Probíhá vložení noty</translation>
     </message>
     <message>
-        <source>No rest duration selected</source>
-        <translation type="obsolete">Nebyla vybrána doba trvání pomlky</translation>
-    </message>
-    <message>
-        <source>No note or rest duration selected</source>
-        <translation type="obsolete">Nebyla vybrána doba trvání noty nebo pomlky</translation>
-    </message>
-    <message>
-        <source>Quantizing...</source>
-        <translation type="obsolete">Probíhá kvantizace...</translation>
-    </message>
-    <message>
-        <source>Interpreting selection...</source>
-        <translation type="obsolete">Probíhá interpretace výběru...</translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4975"/>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4985"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4970"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4980"/>
         <source>Adding dot...</source>
         <translation>Probíhá přidání tečky...</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3036"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3038"/>
         <source>Ornament track %1 bar %2</source>
         <translation>Melodická ozdoba - stopa %1, takt %2</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3038"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3040"/>
         <source>Ornament bar %1</source>
         <translation>Takt melodické ozdoby %1</translation>
     </message>
     <message>
-        <source>Make Ornament</source>
-        <translation type="obsolete">Vytvořit melodickou ozdobu</translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3076"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3078"/>
         <source>Use Ornament</source>
         <translation>Použít melodickou ozdobu</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3087"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3089"/>
         <source>Remove Ornaments</source>
         <translation>Odstranit melodické ozdoby</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3123"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3125"/>
         <source>Edit ornament inline</source>
         <translation>Upravit ozdobu řadově</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3150"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3152"/>
         <source>Show ornament expansion</source>
         <translation>Ukázat rozklad ozdoby</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3183"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3185"/>
         <source>Unadopt Segment</source>
         <translation>Zrušit přijetí části</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3299"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3301"/>
         <source>Estimated key signature shown</source>
         <translation>Ukazuje se zjištěné předznamenání</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3356"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3358"/>
         <source>Sustain</source>
         <translation>Držet tón</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3372"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3375"/>
         <source>There is no sustain controller defined for this device.
 Please ensure the device is configured correctly in the Manage MIDI Devices dialog in the main window.</source>
         <translation>Pro toto zařízení není určenn žádný ovládací prvek pro držení tónu.
 Ujistěte se, že je zařízení správně nastaveno v dialogu Správa zařízení MIDI v hlavním okně.</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3541"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3544"/>
         <source>Estimated time signature shown</source>
         <translation>Ukazuje se odhadované označení taktu</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3709"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3712"/>
         <source>%1%2 - Segment Track #%3 - Notation</source>
         <translation>%1%2 - Stopa části #%3 - Notový zápis</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3716"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3719"/>
         <source>%1%2 - All Segments - Notation</source>
         <translation>%1%2 -  - Všechny části - Notový zápis</translation>
     </message>
     <message numerus="yes">
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3722"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3725"/>
         <source>%1%2 - %n Segment(s) - Notation</source>
         <translation>
             <numerusform>%1%2 část - Notový zápis</numerusform>
@@ -20230,111 +18650,106 @@ Ujistěte se, že je zařízení správně nastaveno v dialogu Správa zařízen
         </translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3842"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="3845"/>
         <source>Tuplet</source>
         <translation>Rytmická notová skupina</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4006"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4009"/>
         <source>Transpose</source>
         <translation>Převést</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4007"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4010"/>
         <source>By number of semitones: </source>
         <translation>Zadejte počet půltónů, o které se má převádět:</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4386"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4381"/>
         <source>Time: %1 (%2.%3s)</source>
         <translation>Čas: %1 (%2.%3s)</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4464"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4459"/>
         <source>http://rosegardenmusic.com/wiki/doc:notation-en</source>
         <translation>http://rosegardenmusic.com/wiki/doc:notation-en</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4471"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4466"/>
         <source>http://www.rosegardenmusic.com/tutorials/en/chapter-0.html</source>
         <translation>http://www.rosegardenmusic.com/tutorials/en/chapter-0.html</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4478"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4473"/>
         <source>http://rosegarden.sourceforge.net/tutorial/bug-guidelines.html</source>
         <translation>http://rosegarden.sourceforge.net/tutorial/bug-guidelines.html</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4579"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4574"/>
         <source>Move Events to Staff Below</source>
         <translation>Posunout události na notovou osnovu dole</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4658"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4653"/>
         <source>Edit Generated region mark</source>
         <translation>Upravit značku vytvořené oblasti</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4682"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4677"/>
         <source>Updated tags for aborted edit</source>
         <translation>Aktualizované značky pro zrušenou úpravu</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="5000"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4995"/>
         <source>Set Note Type...</source>
         <translation>Nastavit typ noty...</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="5024"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="5019"/>
         <source>Set Note Type notation only...</source>
         <translation>Nastavit typ noty pouze pro notový zápis...</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="5044"/>
+        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="5039"/>
         <source>Cycling slashes...</source>
         <translation>Točení šikmých čar...</translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/editors/notation/NotationView.cpp" line="4222"/>
-        <source>Can&apos;t insert note: No note duration selected</source>
-        <translation>Nelze vložit notu. Nebyla vybrána doba trvání noty</translation>
     </message>
 </context>
 <context>
     <name>Rosegarden::NotationWidget</name>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationWidget.cpp" line="221"/>
+        <location filename="../../src/gui/editors/notation/NotationWidget.cpp" line="222"/>
         <source>Zoom</source>
         <translation>Zvětšení</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationWidget.cpp" line="237"/>
+        <location filename="../../src/gui/editors/notation/NotationWidget.cpp" line="238"/>
         <source>Horizontal Zoom</source>
         <translation>Vodorovné zvětšení</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationWidget.cpp" line="249"/>
+        <location filename="../../src/gui/editors/notation/NotationWidget.cpp" line="250"/>
         <source>Vertical Zoom</source>
         <translation>Svislé zvětšení</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationWidget.cpp" line="262"/>
+        <location filename="../../src/gui/editors/notation/NotationWidget.cpp" line="263"/>
         <source>Reset Zoom</source>
         <translation>Nastavit znovu zvětšení</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationWidget.cpp" line="301"/>
+        <location filename="../../src/gui/editors/notation/NotationWidget.cpp" line="302"/>
         <source>Close track headers</source>
         <translation>Uzavřít hlavičky stop</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationWidget.cpp" line="1746"/>
-        <location filename="../../src/gui/editors/notation/NotationWidget.cpp" line="1747"/>
+        <location filename="../../src/gui/editors/notation/NotationWidget.cpp" line="1773"/>
+        <location filename="../../src/gui/editors/notation/NotationWidget.cpp" line="1774"/>
         <source>&lt;qt&gt;Rotate wheel to change the active segment&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;Otáčet kolečkem kvůli změně činné části&lt;/qt&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationWidget.cpp" line="1748"/>
+        <location filename="../../src/gui/editors/notation/NotationWidget.cpp" line="1775"/>
         <source>&lt;qt&gt;Segment: &quot;%1&quot;&lt;br&gt;Track: %2 &quot;%3&quot;&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;Část: &quot;%1&quot;&lt;br&gt;Stopa: %2 &quot;%3&quot;&lt;/qt&gt;</translation>
     </message>
@@ -20550,10 +18965,6 @@ Ujistěte se, že je zařízení správně nastaveno v dialogu Správa zařízen
 <context>
     <name>Rosegarden::PitchBendSequenceDialog</name>
     <message>
-        <source>Pitch Bend Sequence</source>
-        <translation type="obsolete">Pořadí změn výšek tónů</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/dialogs/PitchBendSequenceDialog.cpp" line="129"/>
         <source>Preset</source>
         <translation>Přednastavit</translation>
@@ -20562,10 +18973,6 @@ Ujistěte se, že je zařízení správně nastaveno v dialogu Správa zařízen
         <location filename="../../src/gui/dialogs/PitchBendSequenceDialog.cpp" line="134"/>
         <source>Preset:</source>
         <translation>Přednastavit:</translation>
-    </message>
-    <message>
-        <source>User</source>
-        <translation type="obsolete">Uživatel</translation>
     </message>
     <message>
         <location filename="../../src/gui/dialogs/PitchBendSequenceDialog.cpp" line="67"/>
@@ -20790,21 +19197,9 @@ Ujistěte se, že je zařízení správně nastaveno v dialogu Správa zařízen
         <translation>http://rosegardenmusic.com/wiki/doc:pitchbendsequencedialog-controllerbranch-en</translation>
     </message>
     <message>
-        <source>User %1</source>
-        <translation type="obsolete">Uživatel %1</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/dialogs/PitchBendSequenceDialog.cpp" line="160"/>
         <source>Pre Bend</source>
         <translation>Před oblouk</translation>
-    </message>
-    <message>
-        <source>Value (%):</source>
-        <translation type="obsolete">Hodnota (%):</translation>
-    </message>
-    <message>
-        <source>Duration (%):</source>
-        <translation type="obsolete">Doba trvání (%):</translation>
     </message>
     <message>
         <location filename="../../src/gui/dialogs/PitchBendSequenceDialog.cpp" line="210"/>
@@ -20827,29 +19222,9 @@ Ujistěte se, že je zařízení správně nastaveno v dialogu Správa zařízen
         <translation>Koncová hodnota (%):</translation>
     </message>
     <message>
-        <source>Vibrato start amplitude (%):</source>
-        <translation type="obsolete">Rozkmit počátku vibrata (%):</translation>
-    </message>
-    <message>
-        <source>Vibrato end amplitude (%):</source>
-        <translation type="obsolete">Rozkmit konce vibrata (%):</translation>
-    </message>
-    <message>
-        <source>http://rosegardenmusic.com/wiki/doc:pitchBendSequenceDialog-en</source>
-        <translation type="obsolete">http://rosegardenmusic.com/wiki/doc:pitchBendSequenceDialog-en</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/dialogs/PitchBendSequenceDialog.cpp" line="198"/>
         <source>Bend Sequence</source>
         <translation>Pořadí stoupání</translation>
-    </message>
-    <message>
-        <source>Vibrato wavelength:</source>
-        <translation type="obsolete">Délka vlny vibrata:</translation>
-    </message>
-    <message>
-        <source>Resolution:</source>
-        <translation type="obsolete">Rozlišení:</translation>
     </message>
     <message>
         <location filename="../../src/gui/dialogs/PitchBendSequenceDialog.cpp" line="388"/>
@@ -21182,17 +19557,9 @@ Ujistěte se, že je zařízení správně nastaveno v dialogu Správa zařízen
 <context>
     <name>Rosegarden::ProgressDialog</name>
     <message>
-        <source>Processing...</source>
-        <translation type="obsolete">Probíhá zpracování...</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/widgets/ProgressDialog.cpp" line="65"/>
         <source>Rosegarden</source>
         <translation>Rosegarden</translation>
-    </message>
-    <message>
-        <source>&lt;qt&gt;&lt;h3&gt;Processing...&lt;/h3&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;h3&gt;Zpracovává se...&lt;/h3&gt;&lt;/qt&gt;</translation>
     </message>
 </context>
 <context>
@@ -21259,10 +19626,6 @@ Ujistěte se, že je zařízení správně nastaveno v dialogu Správa zařízen
         <translation>&lt;qt&gt;&lt;p&gt;Nelze vytvořit seznam se soubory.&lt;/p&gt;%1&lt;/qt&gt;</translation>
     </message>
     <message>
-        <source>&lt;qt&gt;&lt;p&gt;The &lt;b&gt;flac&lt;/b&gt; command was not found.&lt;/p&gt;&lt;p&gt;FLAC is a lossless audio compression format used to reduce the size of Rosegarden project packages with no loss of audio quality.  Please install FLAC and try again.  This utility is typically available to most distros as a package called &quot;flac&quot;.&lt;/p&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Příkaz &lt;b&gt;flac&lt;/b&gt; nebyl nalezen.&lt;/p&gt;&lt;p&gt;FLAC je formátem pro bezztrátovou kompresi zvuku používaný pro omezení velikosti balíků s projekty programu Rosegarden, aniž by došlo ke ztrátě kvality. Nainstalujte, prosím, FLAC a zkuste to znovu. Tento program je přítomen ve většině distribucí pod názvem &quot;flac&quot;.&lt;/p&gt;</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/general/ProjectPackager.cpp" line="585"/>
         <location filename="../../src/gui/general/ProjectPackager.cpp" line="791"/>
         <source>Packing project...</source>
@@ -21290,17 +19653,9 @@ Ujistěte se, že je zařízení správně nastaveno v dialogu Správa zařízen
         <translation>&lt;qt&gt;&lt;p&gt;Získání a rozluštění souborů se nezdařilo. Stav ukončení %1. Provádí se kontrola %2 kvůli řádkům končícím na &quot;exit %1&quot;. Může to být užitečné při hledání a nalézání příčin potíží.&lt;/p&gt;%3&lt;/qt&gt;</translation>
     </message>
     <message>
-        <source>&lt;qt&gt;&lt;p&gt;Fatal error.&lt;/p&gt;&lt;p&gt;Processing aborted.&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Nepříjemná chyba.&lt;/p&gt;&lt;p&gt;Provedení zrušeno.&lt;/p&gt;&lt;/qt&gt;</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/general/ProjectPackager.cpp" line="127"/>
         <source>Rosegarden - Fatal Processing Error</source>
         <translation>Rosegarden - Nepříjemná chyba při provedení</translation>
-    </message>
-    <message>
-        <source>&lt;qt&gt;Could not remove&lt;br&gt;%1&lt;br&gt;&lt;br&gt;Processing aborted.&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Nepodařilo se odstranit&lt;/p&gt;%1&lt;p&gt;Provedení zrušeno.&lt;/p&gt;&lt;/qt&gt;</translation>
     </message>
     <message>
         <location filename="../../src/gui/general/ProjectPackager.cpp" line="661"/>
@@ -21340,10 +19695,6 @@ Ujistěte se, že je zařízení správně nastaveno v dialogu Správa zařízen
         <translation>&lt;qt&gt;&lt;p&gt;Příkaz &lt;b&gt;wvunpack&lt;/b&gt; nebyl nalezen.&lt;/p&gt;&lt;p&gt;WavPack je formátem pro kompresi zvuku používaný pro omezení velikosti balíků s projekty programu Rosegarden, aniž by došlo ke ztrátě kvality. Nainstalujte, prosím, WavPack a zkuste to znovu. Tento program je přítomen ve většině distribucí pod názvem &quot;wavpack&quot;.&lt;/p&gt;</translation>
     </message>
     <message>
-        <source>&lt;qt&gt;&lt;p&gt;Could not create temporary working directory.&lt;/p&gt;&lt;p&gt;Processing aborted.&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Nepodařilo se vytvořit dočasný pracovní adresář&lt;/p&gt;&lt;p&gt;Provedení zrušeno.&lt;/p&gt;&lt;/qt&gt;</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/general/ProjectPackager.cpp" line="625"/>
         <source>Copying audio files...</source>
         <translation>Probíhá kopírování zvukových souborů...</translation>
@@ -21376,42 +19727,14 @@ Ujistěte se, že je zařízení správně nastaveno v dialogu Správa zařízen
         <translation>Probíhá kopírování dat přídavného modulu a dalších souborů...</translation>
     </message>
     <message>
-        <source>&lt;qt&gt;&lt;p&gt;Unable to write to temporary backend processing script %1.&lt;/p&gt;&lt;p&gt;Processing aborted.&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Nelze zapisovat do dočasného skriptu %1.&lt;/p&gt;&lt;p&gt;Zpracování zrušeno.&lt;/p&gt;&lt;/qt&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;qt&gt;&lt;p&gt;Encoding and compressing files failed with exit status %1. Checking %2 for the line that ends with &quot;exit %1&quot; may be useful for diagnostic purposes.&lt;/p&gt;&lt;p&gt;Processing aborted.&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Zakódování a komprese souborů se nezdařila. Stav ukončení %1. Provádí se kontrola %2 kvůli řádkům končícím na &quot;exit %1&quot;. Může to být užitečné při hledání a nalézání příčin potíží.&lt;/p&gt;&lt;p&gt;Zpracování zrušeno.&lt;/p&gt;&lt;/qt&gt;</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/general/ProjectPackager.cpp" line="934"/>
         <source>&lt;qt&gt;&lt;p&gt;Unable to obtain list of files using tar.&lt;/p&gt;&lt;p&gt;Process exited with status code %1&lt;/p&gt;&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;&lt;p&gt;Nelze získat seznam souborů používajících tar.&lt;/p&gt;&lt;p&gt;Proces byl ukončen s kódem stavu %1&lt;/p&gt;&lt;/qt&gt;</translation>
     </message>
     <message>
-        <source>&lt;qt&gt;&lt;p&gt;Unable to read to temporary file list.&lt;/p&gt;&lt;p&gt;Processing aborted.&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Nelze číst ze seznamu s dočasnými soubory.&lt;/p&gt;&lt;p&gt;Provedení zrušeno.&lt;/p&gt;&lt;/qt&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;qt&gt;&lt;p&gt;Extracting and decoding files failed with exit status %1. Checking %2 for the line that ends with &quot;exit %1&quot; may be useful for diagnostic purposes.&lt;/p&gt;&lt;p&gt;Processing aborted.&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Získání a rozluštění souborů se nezdařilo. Stav ukončení %1. Provádí se kontrola %2 kvůli řádkům končícím na &quot;exit %1&quot;. Může to být užitečné při hledání a nalézání příčin potíží.&lt;/p&gt;&lt;p&gt;Zpracování zrušeno.&lt;/p&gt;&lt;/qt&gt;</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/general/ProjectPackager.cpp" line="895"/>
         <source>Unpacking project...</source>
         <translation>Rozbaluje se projekt...</translation>
-    </message>
-    <message>
-        <source>&lt;qt&gt;&lt;p&gt;Unable to read %1.&lt;/p&gt;&lt;p&gt;Processing aborted.&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Nelze číst %1.&lt;/p&gt;&lt;p&gt;Provedení zrušeno.&lt;/p&gt;&lt;/qt&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;qt&gt;&lt;p&gt;Could not write&lt;br&gt;%1.&lt;/p&gt;&lt;p&gt;Processing aborted.&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Nepodařilo se zapsat&lt;/p&gt;%1&lt;p&gt;Provedení zrušeno.&lt;/p&gt;&lt;/qt&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;qt&gt;&lt;p&gt;Could not remove&lt;br&gt;%1.&lt;/p&gt;&lt;p&gt;Processing aborted.&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Nepodařilo se odstranit&lt;/p&gt;%1&lt;p&gt;Provedení zrušeno.&lt;/p&gt;&lt;/qt&gt;</translation>
     </message>
     <message>
         <location filename="../../src/gui/general/ProjectPackager.cpp" line="989"/>
@@ -21430,22 +19753,11 @@ Ujistěte se, že je zařízení správně nastaveno v dialogu Správa zařízen
     </message>
 </context>
 <context>
-    <name>Rosegarden::PropertyViewRuler</name>
-    <message>
-        <source>%1 controller</source>
-        <translation type="obsolete">Ovládací prvek %1</translation>
-    </message>
-</context>
-<context>
     <name>Rosegarden::QuantizeDialog</name>
     <message>
         <location filename="../../src/gui/dialogs/QuantizeDialog.cpp" line="36"/>
         <source>Quantize</source>
         <translation>Kvantizovat</translation>
-    </message>
-    <message>
-        <source>Advanced</source>
-        <translation type="obsolete">Rozšířené možnosti</translation>
     </message>
 </context>
 <context>
@@ -21528,7 +19840,7 @@ Ujistěte se, že je zařízení správně nastaveno v dialogu Správa zařízen
     </message>
     <message>
         <location filename="../../src/gui/widgets/QuantizeParameters.cpp" line="109"/>
-        <location filename="../../src/gui/widgets/QuantizeParameters.cpp" line="249"/>
+        <location filename="../../src/gui/widgets/QuantizeParameters.cpp" line="227"/>
         <source>None</source>
         <translation>Žádný</translation>
     </message>
@@ -21578,10 +19890,6 @@ Ujistěte se, že je zařízení správně nastaveno v dialogu Správa zařízen
         <translation>Po kvantizaci</translation>
     </message>
     <message>
-        <source>Show advanced options</source>
-        <translation type="obsolete">Zobrazit rozšířené možnosti</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/widgets/QuantizeParameters.cpp" line="152"/>
         <source>Re-beam</source>
         <translation>Znovu upravit trámce</translation>
@@ -21602,17 +19910,9 @@ Ujistěte se, že je zařízení správně nastaveno v dialogu Správa zařízen
         <translation>Rozdělit-a-svázat ligaturou překrývající se akordy</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/QuantizeParameters.cpp" line="255"/>
+        <location filename="../../src/gui/widgets/QuantizeParameters.cpp" line="233"/>
         <source>Full quantize</source>
         <translation>Úplná kvantizace</translation>
-    </message>
-    <message>
-        <source>Show Advanced Options</source>
-        <translation type="obsolete">Zobrazit rozšířené možnosti</translation>
-    </message>
-    <message>
-        <source>Hide Advanced Options</source>
-        <translation type="obsolete">Skrýt rozšířené možnosti</translation>
     </message>
 </context>
 <context>
@@ -21911,10 +20211,6 @@ Formáty souborů mohou být z tohoto důvodu neslučitelné.</translation>
         <translation>Rosegarden</translation>
     </message>
     <message>
-        <source>Open Directory</source>
-        <translation type="obsolete">Otevřít adresář</translation>
-    </message>
-    <message>
         <location filename="../../src/document/RoseXmlHandler.cpp" line="1789"/>
         <source>Loading plugins...</source>
         <translation>Probíhá načítání přídavných modulů...</translation>
@@ -21930,12 +20226,6 @@ Formáty souborů mohou být z tohoto důvodu neslučitelné.</translation>
 </context>
 <context>
     <name>Rosegarden::RosegardenDocument</name>
-    <message>
-        <source>The current file has been modified.
-Do you want to save it?</source>
-        <translation type="obsolete">Aktuální soubor byl změněn.
-Chcete jej uložit?</translation>
-    </message>
     <message>
         <location filename="../../src/document/RosegardenDocument.cpp" line="345"/>
         <source>Rosegarden - Warning</source>
@@ -21961,14 +20251,14 @@ Chcete jej uložit?</translation>
         <location filename="../../src/document/RosegardenDocument.cpp" line="638"/>
         <location filename="../../src/document/RosegardenDocument.cpp" line="680"/>
         <location filename="../../src/document/RosegardenDocument.cpp" line="1085"/>
-        <location filename="../../src/document/RosegardenDocument.cpp" line="1740"/>
-        <location filename="../../src/document/RosegardenDocument.cpp" line="1765"/>
+        <location filename="../../src/document/RosegardenDocument.cpp" line="1743"/>
         <location filename="../../src/document/RosegardenDocument.cpp" line="1768"/>
-        <location filename="../../src/document/RosegardenDocument.cpp" line="1805"/>
-        <location filename="../../src/document/RosegardenDocument.cpp" line="1815"/>
-        <location filename="../../src/document/RosegardenDocument.cpp" line="1844"/>
-        <location filename="../../src/document/RosegardenDocument.cpp" line="1857"/>
-        <location filename="../../src/document/RosegardenDocument.cpp" line="2877"/>
+        <location filename="../../src/document/RosegardenDocument.cpp" line="1771"/>
+        <location filename="../../src/document/RosegardenDocument.cpp" line="1808"/>
+        <location filename="../../src/document/RosegardenDocument.cpp" line="1818"/>
+        <location filename="../../src/document/RosegardenDocument.cpp" line="1847"/>
+        <location filename="../../src/document/RosegardenDocument.cpp" line="1860"/>
+        <location filename="../../src/document/RosegardenDocument.cpp" line="2880"/>
         <source>Rosegarden</source>
         <translation>Rosegarden</translation>
     </message>
@@ -22074,12 +20364,12 @@ Vyberte kterékoli z těch, které chcete z pevného disku trvale odstranit.
         <translation>Chyba při přejmenovávání dočasného výstupního souboru &apos;%1&apos; na požadovaný výstupní soubor &apos;%2&apos;</translation>
     </message>
     <message>
-        <location filename="../../src/document/RosegardenDocument.cpp" line="3072"/>
+        <location filename="../../src/document/RosegardenDocument.cpp" line="3076"/>
         <source>Warning</source>
         <translation>Upozornění</translation>
     </message>
     <message>
-        <location filename="../../src/document/RosegardenDocument.cpp" line="3073"/>
+        <location filename="../../src/document/RosegardenDocument.cpp" line="3077"/>
         <source>The audio file path does not exist or is not writable.
 Please set the audio file path to a valid directory in Document Properties before recording audio.
 Would you like to set it now?</source>
@@ -22088,61 +20378,57 @@ Nastavte, prosím, platný adresář jako cestu ke zvukovému souboru ve Vlastno
 Chcete cestu nastavit nyní?</translation>
     </message>
     <message>
-        <source>Saving file...</source>
-        <translation type="obsolete">Ukládá se soubor...</translation>
-    </message>
-    <message>
-        <location filename="../../src/document/RosegardenDocument.cpp" line="1441"/>
+        <location filename="../../src/document/RosegardenDocument.cpp" line="1444"/>
         <source>Error while writing on &apos;%1&apos;</source>
         <translation>Chyba při zápisu do &apos;%1&apos;</translation>
     </message>
     <message>
-        <location filename="../../src/document/RosegardenDocument.cpp" line="1495"/>
+        <location filename="../../src/document/RosegardenDocument.cpp" line="1498"/>
         <source>Could not open file &apos;%1&apos; for writing</source>
         <translation>Nepodařilo se otevřít soubor &apos;%1&apos; pro zápis</translation>
     </message>
     <message>
-        <location filename="../../src/document/RosegardenDocument.cpp" line="1740"/>
+        <location filename="../../src/document/RosegardenDocument.cpp" line="1743"/>
         <source>File load cancelled</source>
         <translation>Načítání souboru bylo zrušeno</translation>
     </message>
     <message>
-        <location filename="../../src/document/RosegardenDocument.cpp" line="1765"/>
+        <location filename="../../src/document/RosegardenDocument.cpp" line="1768"/>
         <source>&lt;h3&gt;Audio and plugins not available&lt;/h3&gt;&lt;p&gt;This composition uses audio files or plugins, but Rosegarden is currently running without audio because the JACK audio server was not available on startup.&lt;/p&gt;&lt;p&gt;Please exit Rosegarden, start the JACK audio server and re-start Rosegarden if you wish to load this complete composition.&lt;/p&gt;&lt;p&gt;&lt;b&gt;WARNING:&lt;/b&gt; If you re-save this composition, all audio and plugin data and settings in it will be lost.&lt;/p&gt;</source>
         <translation>&lt;h3&gt;Zvuk a přídavné moduly nejsou dostupné.&lt;/h3&gt;&lt;p&gt;Tato skladba používá zvukové soubory nebo přídavné moduly, avšak program Rosegarden je teď spuštěna bez podpory zvuku, protože při spuštění nebyl dostupný server JACK.&lt;/p&gt;&lt;p&gt;Ukončete program Rosegarden, spusťte zvukový server JACK a znovuspusťte Rosegarden, přejete-li si načíst tuto úplnou skladbu. &lt;/p&gt;&lt;p&gt;&lt;b&gt;VAROVÁNÍ:&lt;/b&gt; Pokud tuto skladbu znovu uložíte, bude ztracen veškerý zvukový obsah i data přídavných modulů s nastaveními.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/document/RosegardenDocument.cpp" line="1768"/>
+        <location filename="../../src/document/RosegardenDocument.cpp" line="1771"/>
         <source>&lt;h3&gt;Audio and plugins not available&lt;/h3&gt;&lt;p&gt;This composition uses audio files or plugins, but you are running a version of Rosegarden that was compiled without audio support.&lt;/p&gt;&lt;p&gt;&lt;b&gt;WARNING:&lt;/b&gt; If you re-save this composition from this version of Rosegarden, all audio and plugin data and settings in it will be lost.&lt;/p&gt;</source>
         <translation>&lt;h3&gt;Zvuk a přídavné moduly nejsou dostupné&lt;/h3&gt;&lt;p&gt;Tato skladba používá zvukové soubory nebo přídavné moduly, avšak vy používáte program Rosegarden, která byla sestavena bez podpory zvuku.&lt;/p&gt;&lt;p&gt;&lt;b&gt;VAROVÁNÍ:&lt;/b&gt; Pokud tuto skladbu znovu uložíte, bude ztracen veškerý zvukový obsah i data přídavných modulů s nastaveními.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/document/RosegardenDocument.cpp" line="1805"/>
+        <location filename="../../src/document/RosegardenDocument.cpp" line="1808"/>
         <source>&lt;h3&gt;Incorrect audio sample rate&lt;/h3&gt;&lt;p&gt;This composition contains audio files that were recorded or imported with the audio server running at a different sample rate (%1 Hz) from the current JACK server sample rate (%2 Hz).&lt;/p&gt;&lt;p&gt;Rosegarden will play this composition at the correct speed, but any audio files in it will probably sound awful.&lt;/p&gt;&lt;p&gt;Please consider re-starting the JACK server at the correct rate (%3 Hz) and re-loading this composition before you do any more work with it.&lt;/p&gt;</source>
         <translation>&lt;h3&gt;Nesprávný vzorkovací kmitočet zvuku&lt;/h3&gt;&lt;p&gt;Tato skladba obsahuje zvukové soubory, které byly nahrány nebo zavedeny pomocí zvukového serveru nastaveného na jiný vzorkovací kmitočet (%1 Hz) - odlišný od aktuálního vzorkovacího kmitočtu serveru JACK (%2 Hz).&lt;/p&gt;&lt;p&gt;Program Rosegarden přehraje tuto skladbu správnou rychlostí, ale jakékoli zvukové soubory v ní budou pravděpodobně znít velmi nehezky.&lt;/p&gt;&lt;p&gt; Zvažte, zda nespustit server JACK se správným kmitočtem (%3 Hz) a nenačíst tuto skladbu před jakoukoli další prací s ní znovu.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/document/RosegardenDocument.cpp" line="1815"/>
+        <location filename="../../src/document/RosegardenDocument.cpp" line="1818"/>
         <source>&lt;h3&gt;Inconsistent audio sample rates&lt;/h3&gt;&lt;p&gt;This composition contains audio files at more than one sample rate.&lt;/p&gt;&lt;p&gt;Rosegarden will play them at the correct speed, but any audio files that were recorded or imported at rates different from the current JACK server sample rate (%1 Hz) will probably sound awful.&lt;/p&gt;&lt;p&gt;Please see the audio file manager dialog for more details, and consider resampling any files that are at the wrong rate.&lt;/p&gt;</source>
         <translation>&lt;h3&gt;Nedůsledný vzorkovací kmitočet zvuku&lt;/h3&gt;&lt;p&gt;Tato skladba obsahuje zvukové soubory, které mají více vzorkovacích kmitočtů.&lt;/p&gt;&lt;p&gt;Program Rosegarden je přehraje správnou rychlostí, ale jakékoli zvukové soubory nahrané nebo zavedené s odlišnými kmitočty, než je současný vzorkovací kmitočet serveru JACK (%1 Hz), budou pravděpodobně znít velmi nehezky.&lt;/p&gt;&lt;p&gt;Více informací naleznete v dialogu správce zvukových souborů. Zvažte také možnost převzorkování všech souborů, které mají nyní chybný kmitočet.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/document/RosegardenDocument.cpp" line="1816"/>
+        <location filename="../../src/document/RosegardenDocument.cpp" line="1819"/>
         <source>Inconsistent sample rates</source>
         <translation>Nedůsledné vzorkovací kmitočty</translation>
     </message>
     <message>
-        <location filename="../../src/document/RosegardenDocument.cpp" line="1830"/>
+        <location filename="../../src/document/RosegardenDocument.cpp" line="1833"/>
         <source>&lt;h3&gt;Plugins not found&lt;/h3&gt;&lt;p&gt;The following audio plugins could not be loaded:&lt;/p&gt;&lt;ul&gt;</source>
         <translation>&lt;h3&gt;Přídavné moduly nenalezeny&lt;/h3&gt;&lt;p&gt;Následující přídavné moduly nebylo možné načíst: &lt;/p&gt;&lt;ul&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/document/RosegardenDocument.cpp" line="1838"/>
+        <location filename="../../src/document/RosegardenDocument.cpp" line="1841"/>
         <source>&lt;li&gt;%1 (from %2)&lt;/li&gt;</source>
         <translation>&lt;li&gt;%1 (od %2)&lt;/li&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/document/RosegardenDocument.cpp" line="1852"/>
+        <location filename="../../src/document/RosegardenDocument.cpp" line="1855"/>
         <source>This file contains one or more old element types that are now deprecated.
 Support for these elements may disappear in future versions of Rosegarden.
 We recommend you re-save this file from this version of Rosegarden to ensure that it can still be re-loaded in future versions.</source>
@@ -22151,32 +20437,24 @@ Podpora těchto prvků nemusí být v budoucích verzích programu Rosegarden do
 Doporučujeme, abyste znovu uložili tento soubor v této verzi programu Rosegarden a zajistili si tak možnost načíst jej v budoucích verzích.</translation>
     </message>
     <message>
-        <source>&lt;qt&gt;&lt;h2&gt;Channels were remapped&lt;/h2&gt;&lt;p&gt;Beginning with version 10.02, Rosegarden no longer provides controls for changing the channel associated with each MIDI instrument.  Instead, each instrument uses the same channel as its instrument number.  For example, &quot;MIDI Input System Device #12&quot; always uses channel 12.&lt;/p&gt;&lt;p&gt;The file you just loaded contained instruments whose channels differed from the instrument numbers.  These channels have been reassigned so that instrument #1 will always use channel 1, regardless of what channel it might have used previously.  In most cases, you will experience no difference, but you may have to make some small changes to this file in order for it to play as intended.  We recommend that you save this file in order to avoid seeing this warning in the future.&lt;/p&gt;&lt;p&gt;We apologize for any inconvenience.&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;h2&gt;Kanály byly vyznačeny znovu&lt;/h2&gt;&lt;p&gt;Počínaje verzí 10.02 Rosegarden nadále neposkytuje ovládací prvky pro změnu kanálu sdruženého s každým nástrojem MIDI. Namísto toho používá každý nástroj tentýž kanál jako své číslo nástroje. Například &quot;MIDI vstupní systémové zařízení 12&quot; vždy používá kanál 12.&lt;/p&gt;&lt;p&gt;Soubor, který jste pouze nahrál, obsahoval nástroje, jejichž kanály se lišily od čísel nástrojů. tyto kanály byly znovu přiřazeny, takže nástroj #1 bude vždy používat kanál 1, bez ohledu na to, jaký kanál používal předtím. Ve většině případů, nezažijete žádný rozdíl, ale možná musíte  s tímto souborem udělat nějaké malé změny, aby hrál tak, jak je zamýšleno. Doporučujeme, abyste tento soubor uložil, a tak se vyhnul pohledu na toto varování v budoucnosti.&lt;/p&gt;&lt;p&gt;Omlouváme se za jakékoli nepohodlí.&lt;/p&gt;&lt;/qt&gt;</translation>
-    </message>
-    <message>
-        <location filename="../../src/document/RosegardenDocument.cpp" line="2502"/>
+        <location filename="../../src/document/RosegardenDocument.cpp" line="2505"/>
         <source>Insert Recorded MIDI</source>
         <translation>Vložit zaznamenané MIDI</translation>
     </message>
     <message>
-        <location filename="../../src/document/RosegardenDocument.cpp" line="2629"/>
-        <location filename="../../src/document/RosegardenDocument.cpp" line="2713"/>
+        <location filename="../../src/document/RosegardenDocument.cpp" line="2632"/>
+        <location filename="../../src/document/RosegardenDocument.cpp" line="2716"/>
         <source>(recorded)</source>
         <translation>(nahráno)</translation>
     </message>
     <message>
-        <location filename="../../src/document/RosegardenDocument.cpp" line="2862"/>
+        <location filename="../../src/document/RosegardenDocument.cpp" line="2865"/>
         <source>Generating audio preview...</source>
         <translation>Probíhá vytváření náhledu na zvuk...</translation>
     </message>
 </context>
 <context>
     <name>Rosegarden::RosegardenMainViewWidget</name>
-    <message>
-        <source>No non-audio segments in composition</source>
-        <translation type="obsolete">Ve skladbě nejsou žádné nezvukové části</translation>
-    </message>
     <message>
         <location filename="../../src/gui/application/RosegardenMainViewWidget.cpp" line="292"/>
         <source>Selection must contain only audio or non-audio segments</source>
@@ -22207,21 +20485,11 @@ Doporučujeme, abyste znovu uložili tento soubor v této verzi programu Rosegar
         <translation>Nebyly vybrány žádné nezvukové části</translation>
     </message>
     <message>
-        <source>You&apos;ve not yet defined an audio editor for Rosegarden to use.
-See Settings -&gt; Configure Rosegarden -&gt; Audio.</source>
-        <translation type="obsolete">Dosud jste nestanovil zvukový editor, který má aplikace Rosegarden použít.
-Viz Nastavení -&gt; Nastavení aplikace Rosegarden -&gt; Zvuk.</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/application/RosegardenMainViewWidget.cpp" line="986"/>
         <source>You&apos;ve not yet defined an audio editor for Rosegarden to use.
 See Edit -&gt; Preferences -&gt; Audio.</source>
         <translation>Dosud jste nestanovil zvukový editor, který má program Rosegarden použít.
 Podívejte se na Úpravy -&gt; Nastavení -&gt; Zvuk.</translation>
-    </message>
-    <message>
-        <source>importing a remote audio file</source>
-        <translation type="obsolete">Probíhá zavedení vzdáleného zvukového souboru</translation>
     </message>
     <message>
         <location filename="../../src/gui/application/RosegardenMainViewWidget.cpp" line="547"/>
@@ -22301,10 +20569,6 @@ Podívejte se na Úpravy -&gt; Nastavení -&gt; Zvuk.</translation>
         <location filename="../../src/gui/application/RosegardenMainWindow.cpp" line="1006"/>
         <source>  Zoom:  </source>
         <translation>  Zvětšení:  </translation>
-    </message>
-    <message>
-        <source>status</source>
-        <translation type="obsolete">stav</translation>
     </message>
     <message>
         <location filename="../../src/gui/application/RosegardenMainWindow.cpp" line="1145"/>
@@ -22458,10 +20722,6 @@ Chyba byla: %2</translation>
         <translation>Ukládá se soubor...</translation>
     </message>
     <message>
-        <source>Save File</source>
-        <translation type="obsolete">Uložit soubor</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/application/RosegardenMainWindow.cpp" line="2218"/>
         <source>&lt;qt&gt;Sorry.&lt;br&gt;&quot;%1&quot; is not a valid filename.&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;Promiňte.&lt;br&gt;&quot;%1&quot; není platným souborovým názvem.&lt;/qt&gt;</translation>
@@ -22475,10 +20735,6 @@ Chyba byla: %2</translation>
         <location filename="../../src/gui/application/RosegardenMainWindow.cpp" line="2234"/>
         <source>The specified file exists.  Overwrite?</source>
         <translation>Zadaný soubor již existuje. Chcete jej přepsat?</translation>
-    </message>
-    <message>
-        <source>Saving file%1with a new filename...</source>
-        <translation type="obsolete">Probíhá ukládání souboru %1 pod novým názvem...</translation>
     </message>
     <message>
         <location filename="../../src/gui/application/RosegardenMainWindow.cpp" line="2261"/>
@@ -22499,14 +20755,6 @@ Chyba byla: %2</translation>
         <location filename="../../src/gui/application/RosegardenMainWindow.cpp" line="2317"/>
         <source>Closing file...</source>
         <translation>Zavírá se soubor...</translation>
-    </message>
-    <message>
-        <source>Printing...</source>
-        <translation type="obsolete">Probíhá tisk...</translation>
-    </message>
-    <message>
-        <source>Previewing...</source>
-        <translation type="obsolete">Náhled...</translation>
     </message>
     <message>
         <location filename="../../src/gui/application/RosegardenMainWindow.cpp" line="2330"/>
@@ -22847,74 +21095,6 @@ Chcete cestu nastavit nyní?</translation>
         <translation>Nelze nahrát soubor programu Rosegarden X 11. Vypadá to, že je poškozen.</translation>
     </message>
     <message>
-        <source>Open Hydrogen File</source>
-        <translation type="obsolete">Otevřít soubor Hydrogen</translation>
-    </message>
-    <message>
-        <source>Importing Hydrogen file...</source>
-        <translation type="obsolete">Probíhá zavedení souboru Hydrogen...</translation>
-    </message>
-    <message>
-        <source>Can&apos;t load Hydrogen file.  It appears to be corrupted.</source>
-        <translation type="obsolete">Nelze nahrát soubor Hydrogen.  Zdá se, že je poškozený.</translation>
-    </message>
-    <message>
-        <source>Export and import of Rosegarden Project files</source>
-        <translation type="obsolete">Export a import souborů projektu aplikace Rosegarden</translation>
-    </message>
-    <message>
-        <source>The Rosegarden Project Packager helper script</source>
-        <translation type="obsolete">Skript pomocníka balíčkovače Rosegarden Project Packager</translation>
-    </message>
-    <message>
-        <source>%1 - for project file support</source>
-        <translation type="obsolete">%1 - pro podporu projektového souboru</translation>
-    </message>
-    <message>
-        <source>Notation previews through LilyPond</source>
-        <translation type="obsolete">Náhled s aplikací Lily&amp;Pond...</translation>
-    </message>
-    <message>
-        <source>The Rosegarden LilyPondView helper script</source>
-        <translation type="obsolete">Skript pomocníka prohlížeče Rosegarden LilyPondView</translation>
-    </message>
-    <message>
-        <source>%1 - for LilyPond preview support</source>
-        <translation type="obsolete">%1 - pro podporu náhledů pro aplikaci LilyPond</translation>
-    </message>
-    <message>
-        <source>The Rosegarden Audio File Importer helper script</source>
-        <translation type="obsolete">Skript pomocníka importu zvukového souboru Rosegarden</translation>
-    </message>
-    <message>
-        <source>%1 - for audio file import</source>
-        <translation type="obsolete">%1 - pro import zvukového souboru</translation>
-    </message>
-    <message>
-        <source>&lt;h3&gt;Helper programs not found&lt;/h3&gt;&lt;p&gt;Rosegarden could not find one or more helper programs which it needs to provide some features.  The following features will not be available:&lt;/p&gt;</source>
-        <translation type="obsolete">&lt;h3&gt;Programy pomocníků nebyly nalezeny&lt;/h3&gt;&lt;p&gt;Aplikace Rosegarden nenalezla jeden nebo více programů pomocníků, které potřebuje k některým funkcím. Následující funkce proto nebudou dostupné:&lt;/p&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;ul&gt;</source>
-        <translation type="obsolete">&lt;ul&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;li&gt;%1&lt;/li&gt;</source>
-        <translation type="obsolete">&lt;li&gt;%1&lt;/li&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;/ul&gt;</source>
-        <translation type="obsolete">&lt;/ul&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;p&gt;To fix this, you should install the following additional programs:&lt;/p&gt;</source>
-        <translation type="obsolete">&lt;p&gt;K napravení tohoto stavu byste měli nainstalovat dodatečné programy:&lt;/p&gt;</translation>
-    </message>
-    <message>
-        <source>Helper programs not found</source>
-        <translation type="obsolete">Programy pomocníků nebyly nalezeny</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/application/RosegardenMainWindow.cpp" line="5391"/>
         <source>&lt;qt&gt;&lt;p&gt;Failed to open a temporary file for LilyPond export.&lt;/p&gt;&lt;p&gt;This probably means you have run out of disk space on &lt;pre&gt;%1&lt;/pre&gt;&lt;/p&gt;&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;&lt;p&gt;Nepodařilo se otevřít dočasný soubor pro vyvedení z LilyPondu.&lt;/p&gt;&lt;p&gt;Pravděpodobně to znamená, že ukládací prostor na disku &lt;pre&gt;%1&lt;/pre&gt;je zcela zaplněn.&lt;/p&gt;&lt;/qt&gt;</translation>
@@ -23201,10 +21381,6 @@ Chcete cestu nastavit nyní?</translation>
         <location filename="../../src/gui/application/RosegardenMainWindow.cpp" line="7976"/>
         <source>Play List</source>
         <translation>Seznam přehrávání</translation>
-    </message>
-    <message>
-        <source>http://www.rosegardenmusic.com/tutorials/en/chapter-0.html</source>
-        <translation type="obsolete">http://www.rosegardenmusic.com/tutorials/en/chapter-0.html</translation>
     </message>
     <message>
         <location filename="../../src/gui/application/RosegardenMainWindow.cpp" line="8027"/>
@@ -23544,10 +21720,6 @@ Chyba byla: %2</translation>
         <translation>&lt;qt&gt;Upravit označení části pro jakoukoli vybranou část&lt;/qt&gt;</translation>
     </message>
     <message>
-        <source>&lt;qt&gt;&lt;p&gt;When checked,     any selected segments will repeat until they run into another segment,  or the end of the composition.&lt;/p&gt;&lt;p&gt;When viewed in the notation editor or printed via LilyPond, the segments will be bracketed by repeat signs.&lt;/p&gt;&lt;p&gt;&lt;center&gt;&lt;img src=&quot;:pixmaps/tooltip/repeats.png&quot;&lt;/img&gt;&lt;/center&gt;&lt;/p&gt;&lt;br&gt;These can be used in conjunction with special LilyPond export directives to create repeats with first and second alternate endings. See rosegardenmusic.com for a tutorial. [Ctrl+Shift+R] &lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Když je zapnuto, budou se všechny vybrané části opakovat do té doby, než začne další část, nebo dokud skladba neskončí.&lt;/p&gt;&lt;p&gt;Při prohlížení v editoru notového zápisu nebo při tisku prostřednictvím programu LilyPond, budou tyto části označeny opakovacími závorkami.&lt;/p&gt;&lt;p&gt;&lt;center&gt;&lt;img src=&quot;:pixmaps/tooltip/repeats.png&quot;&lt;/img&gt;&lt;/center&gt;&lt;/p&gt;&lt;br&gt;Tyto lze používat ve spojení se zvláštními směrnicemi programu LilyPond pro vyvedení pro vytvoření opakování s prvními a druhými náhradními zakončeními. Prohlédněte si návod na rosegardenmusic.com. [Ctrl+Shift+R] &lt;/qt&gt;</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/editors/parameters/SegmentParameterBox.cpp" line="176"/>
         <source>&lt;qt&gt;&lt;p&gt;When checked,     any selected segments will repeat until they run into another segment,  or the end of the composition.&lt;/p&gt;&lt;p&gt;When viewed in the notation editor or printed via LilyPond, the segments will be bracketed by repeat signs.&lt;/p&gt;&lt;p&gt;&lt;center&gt;&lt;img src=&quot;:pixmaps/tooltip/repeats.png&quot;&gt;&lt;/img&gt;&lt;/center&gt;&lt;/p&gt;&lt;br&gt;These can be used in conjunction with special LilyPond export directives to create repeats with first and second alternate endings. See rosegardenmusic.com for a tutorial. [Ctrl+Shift+R] &lt;/qt&gt;</source>
         <translation>&lt;qt&gt;&lt;p&gt;Když je zapnuto, budou se všechny vybrané části opakovat do té doby, než začne další část, nebo dokud skladba neskončí.&lt;/p&gt;&lt;p&gt;Při prohlížení v editoru notového zápisu nebo při tisku prostřednictvím programu LilyPond, budou tyto části označeny opakovacími závorkami.&lt;/p&gt;&lt;p&gt;&lt;center&gt;&lt;img src=&quot;:pixmaps/tooltip/repeats.png&quot;&gt;&lt;/img&gt;&lt;/center&gt;&lt;/p&gt;&lt;br&gt;Tyto lze používat ve spojení se zvláštními směrnicemi programu LilyPond pro vyvedení pro vytvoření opakování s prvními a druhými náhradními zakončeními. Prohlédněte si návod na rosegardenmusic.com. [Ctrl+Shift+R] &lt;/qt&gt;</translation>
@@ -23822,56 +21994,52 @@ Chcete cestu nastavit nyní?</translation>
         <source>Click and drag to select segments</source>
         <translation>Klepnutím a tažením části vyberete</translation>
     </message>
-    <message>
-        <location filename="../../src/gui/editors/segment/compositionview/SegmentSelector.cpp" line="287"/>
-        <source>Move Segment(s)</source>
-        <translation type="unfinished">Přesunout % část</translation>
+    <message numerus="yes">
+        <location filename="../../src/gui/editors/segment/compositionview/SegmentSelector.cpp" line="288"/>
+        <source>Move %n Segment(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/segment/compositionview/SegmentSelector.cpp" line="428"/>
+        <location filename="../../src/gui/editors/segment/compositionview/SegmentSelector.cpp" line="429"/>
         <source>Hold Shift to avoid snapping to beat grid</source>
         <translation>Podržte tlačítko Shift, abyste se vyhnuli přichytávání na mřížku dob</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/segment/compositionview/SegmentSelector.cpp" line="548"/>
+        <location filename="../../src/gui/editors/segment/compositionview/SegmentSelector.cpp" line="549"/>
         <source>Click and drag to select segments; middle-click and drag to draw an empty segment</source>
         <translation>Klepnutím a tažením části vyberete; klepnutím prostředním tlačítkem a tažením nakreslíte prázdnou část</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/segment/compositionview/SegmentSelector.cpp" line="565"/>
+        <location filename="../../src/gui/editors/segment/compositionview/SegmentSelector.cpp" line="566"/>
         <source>Click and drag to resize a segment; hold Ctrl as well to rescale its contents</source>
         <translation>Klepnutím a tažením změníte velikost části; podržíte-li tlačítko Ctrl, změníte také délku jeho obsahu</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/segment/compositionview/SegmentSelector.cpp" line="567"/>
+        <location filename="../../src/gui/editors/segment/compositionview/SegmentSelector.cpp" line="568"/>
         <source>Click and drag to rescale segment</source>
         <translation>Klepnutím a tažením změníte délku části</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/segment/compositionview/SegmentSelector.cpp" line="572"/>
+        <location filename="../../src/gui/editors/segment/compositionview/SegmentSelector.cpp" line="573"/>
         <source>Click and drag to move segments; hold Ctrl as well to copy them; Ctrl + Alt for linked copies</source>
         <translation>Klepnutím a tažením přesunete části; podržíte-li tlačítko Ctrl, můžete je také kopírovat; Ctrl+Alt pro propojené kopie</translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/segment/compositionview/SegmentSelector.cpp" line="578"/>
+        <location filename="../../src/gui/editors/segment/compositionview/SegmentSelector.cpp" line="579"/>
         <source>Click and drag to move segment; hold Ctrl as well to copy it; Ctrl + Alt for a linked copy; double-click to edit</source>
         <translation>Klepnutím a tažením přesunete části; podržíte-li tlačítko Ctrl, můžete je také kopírovat; Ctrl+Alt pro propojené kopie; dvojité klepnutí pro úpravy</translation>
     </message>
     <message>
-        <source>Click and drag to move segments; hold Ctrl as well to copy them</source>
-        <translation type="obsolete">Klepnutím a tažením přesunete části; podržíte-li tlačítko Ctrl, můžete je také kopírovat</translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/editors/segment/compositionview/SegmentSelector.cpp" line="574"/>
+        <location filename="../../src/gui/editors/segment/compositionview/SegmentSelector.cpp" line="575"/>
         <source>Click and drag to copy segments</source>
         <translation>Klepnutím a tažením zkopírujete části</translation>
     </message>
     <message>
-        <source>Click and drag to move segment; hold Ctrl as well to copy it; double-click to edit</source>
-        <translation type="obsolete">Klepnutím a tažením přesunete části; podržíte-li tlačítko Ctrl, můžete je také kopírovat; poklepáním je lze upravovat</translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/editors/segment/compositionview/SegmentSelector.cpp" line="580"/>
+        <location filename="../../src/gui/editors/segment/compositionview/SegmentSelector.cpp" line="581"/>
         <source>Click and drag to copy segment</source>
         <translation>Klepnutím a tažením zkopírujete část</translation>
     </message>
@@ -23941,22 +22109,11 @@ Chcete cestu nastavit nyní?</translation>
     </message>
 </context>
 <context>
-    <name>Rosegarden::SegmentSplitTwiceCommand</name>
-    <message>
-        <source>Split Twice Segment</source>
-        <translation type="obsolete">Rozdělit část</translation>
-    </message>
-</context>
-<context>
     <name>Rosegarden::SegmentSplitter</name>
     <message>
         <location filename="../../src/gui/editors/segment/compositionview/SegmentSplitter.cpp" line="61"/>
         <source>Click on a segment to split it in two; hold Shift to avoid snapping to beat grid</source>
         <translation>Chcete-li část rozdělit na dvě, klepněte na ni; podržte přitom tlačítko Shift, abyste se vyhnuli přichytávání na mřížku dob</translation>
-    </message>
-    <message>
-        <source>Click on a segment to split it in two</source>
-        <translation type="obsolete">Chcete-li část rozdělit na dva, klepněte na ni</translation>
     </message>
 </context>
 <context>
@@ -24072,8 +22229,8 @@ Chcete cestu nastavit nyní?</translation>
 <context>
     <name>Rosegarden::SequenceManager</name>
     <message>
-        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="926"/>
-        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1076"/>
+        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="928"/>
+        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1078"/>
         <source>The JACK Audio subsystem has failed or it has stopped Rosegarden from processing audio.
 Please restart Rosegarden to continue working with audio.
 Quitting other running applications may improve Rosegarden&apos;s performance.</source>
@@ -24082,8 +22239,8 @@ Pro pokračování v práci se zvukem spusťte program Rosegarden znovu.
 Ukončení ostatních běžících programů by mohlo zlepšit výkon programu Rosegarden.</translation>
     </message>
     <message>
-        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="932"/>
-        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1085"/>
+        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="934"/>
+        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1087"/>
         <source>The JACK Audio subsystem has stopped Rosegarden from processing audio, probably because of a processing overload.
 An attempt to restart the audio service has been made, but some problems may remain.
 Quitting other running applications may improve Rosegarden&apos;s performance.</source>
@@ -24092,87 +22249,87 @@ Byl proveden pokus o opětovné spuštění zvukových služeb, některé probl�
 Ukončení ostatních běžících programů by mohlo zlepšit výkon programu Rosegarden.</translation>
     </message>
     <message>
-        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="943"/>
+        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="945"/>
         <source>Out of processor power for real-time audio processing.  Cannot continue.</source>
         <translation>Rychlost procesoru nestačí na zpracovávání zvukových dat ve skutečném čase.  Nelze pokračovat.</translation>
     </message>
     <message>
-        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="969"/>
+        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="971"/>
         <source>A serious error has occurred in the ALSA MIDI subsystem.  It may not be possible to continue sequencing.  Please check console output for more information.</source>
         <translation>V subsystému ALSA MIDI došlo k vážné chybě. Nemusí být dále možné pokračovat v práci (sekvencer). Více informací naleznete na výstupu z ovládacího panelu (konzole).</translation>
     </message>
     <message>
-        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="995"/>
+        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="997"/>
         <source>JACK Audio subsystem is losing sample frames.</source>
         <translation>Zvukový subsystém JACK ztrácí vzorkové rámce.</translation>
     </message>
     <message>
-        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1013"/>
+        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1015"/>
         <source>Failed to read audio data from disk in time to service the audio subsystem.</source>
         <translation>Nepodařilo se včas přečíst zvuková data na disku pro posloužení zvukovému podsystému.</translation>
     </message>
     <message>
-        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1017"/>
+        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1019"/>
         <source>Failed to write audio data to disk fast enough to service the audio subsystem.</source>
         <translation>Nepodařilo se dostatečně rychle zapsat zvuková data na disk pro posloužení zvukovému podsystému.</translation>
     </message>
     <message>
-        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1069"/>
+        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1071"/>
         <source>&lt;h3&gt;System timer resolution is too low!&lt;/h3&gt;</source>
         <translation>&lt;h3&gt;Rozlišení systémového časovače je příliš nízké!&lt;/h3&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1104"/>
+        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1106"/>
         <source>&lt;p&gt;Rosegarden was unable to find a high-resolution timing source for MIDI performance.&lt;/p&gt;&lt;p&gt;This may mean you are using a Linux system with the kernel timer resolution set too low.  Please contact your Linux distributor for more information.&lt;/p&gt;&lt;p&gt;Some Linux distributors already provide low latency kernels, see the &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/wiki/low-latency_kernels&quot;&gt;Rosegarden website&lt;/a&gt; for instructions.&lt;/p&gt;</source>
         <translation>&lt;p&gt;Rosegarden nebyl schopen nalézt pro provedení MIDI časovací zdroj ve vysokém rozlišení.&lt;/p&gt;&lt;p&gt;Může to znamenat, že používáte linuxový systém s rozlišením časovače v jádru nastaveným na příliš nízkou hodnotu. Spojte se, prosím, s vaším distributorem Linuxu kvůli více informacím.&lt;/p&gt;&lt;p&gt;Někteří z distributorů Linuxu již poskytují jádra s nízkou prodlevou. Kvůli dalším pokynům se podívejte na &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/wiki/low-latency_kernels&quot;&gt;stránky programu Rosegarden&lt;/a&gt;.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1129"/>
+        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1131"/>
         <source>&lt;p&gt;Rosegarden was unable to find a high-resolution timing source for MIDI performance.&lt;/p&gt;&lt;p&gt;You may be able to solve this problem by loading the RTC timer kernel module.  To do this, try running &lt;b&gt;sudo modprobe snd-rtctimer&lt;/b&gt; in a terminal window and then restarting Rosegarden.&lt;/p&gt;&lt;p&gt;Alternatively, check whether your Linux distributor provides a multimedia-optimized kernel.  See the &lt;a style=&quot;color:gold&quot;  href=&quot;http://www.rosegardenmusic.com/wiki/low-latency_kernels&quot;&gt;Rosegarden website&lt;/a&gt; for notes about this.&lt;/p&gt;</source>
         <translation>&lt;p&gt;Rosegarden nebyl schopen nalézt pro provedení MIDI časovací zdroj ve vysokém rozlišení.&lt;/p&gt;&lt;p&gt;Tento problém můžete vyřešit nahráním modulu jádra s RTC časovačem. Abyste to udělali, zkuste spustit &lt;b&gt;sudo modprobe snd-rtctimer&lt;/b&gt; v okně ovládacího panelu příkazového řádku a potom Rosegarden spusťte znovu.&lt;/p&gt;&lt;p&gt;Jako náhradní řešení můžete ověřit, zda váš distributor Linuxu poskytuje jádro vyladěné pro práci s multimédii Kvůli dalším poznámkám k této věci se podívejte na &lt;a style=&quot;color:gold&quot;  href=&quot;http://www.rosegardenmusic.com/wiki/low-latency_kernels&quot;&gt;stránky programu Rosegarden&lt;/a&gt;.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1239"/>
+        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1241"/>
         <source>&lt;h3&gt;Sequencer engine unavailable!&lt;/h3&gt;</source>
         <translation>&lt;h3&gt;Stroj sekvenceru je nedostupný!&lt;/h3&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1240"/>
+        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1242"/>
         <source>&lt;p&gt;Both MIDI and Audio subsystems have failed to initialize.&lt;/p&gt;&lt;p&gt;If you wish to run with no sequencer by design, then use &quot;rosegarden --nosequencer&quot; to avoid seeing this error in the future.  Otherwise, we recommend that you repair your system configuration and start Rosegarden again.&lt;/p&gt;</source>
         <translation>&lt;p&gt;Nepodařilo se spustit ani MIDI ani zvukový podsystém.&lt;/p&gt;&lt;p&gt;Pokud chcete jet dál bez sekvenceru, použijte příkaz &quot;rosegarden --nosequencer&quot;, abyste se na hlášení o této chybě nemuseli v budocnu koukat. Jinak vám doporučujeme opravit nastavení systému a spustit Rosegarden znovu.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1242"/>
+        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1244"/>
         <source>&lt;h3&gt;MIDI sequencing unavailable!&lt;/h3&gt;</source>
         <translation>&lt;h3&gt;Sekvenční zpracování MIDI není dostupné!&lt;/h3&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1260"/>
+        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1262"/>
         <source>&lt;h3&gt;Audio sequencing and synth plugins unavailable!&lt;/h3&gt;</source>
         <translation>&lt;h3&gt;Sekvenční zpracování zvuku a syntetizátorové přídavné moduly nejsou dostupné!&lt;/h3&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1261"/>
+        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1263"/>
         <source>&lt;p&gt;Rosegarden could not connect to the JACK audio server.  This probably means that Rosegarden was unable to start the audio server due to a problem with your configuration, your system installation, or both.&lt;/p&gt;&lt;p&gt;If you want to be able to play or record audio files or use plugins, we suggest that you exit Rosegarden and use the JACK Control utility (qjackctl) to try different settings until you arrive at a configuration that permits JACK to start.  You may also need to install a realtime kernel, edit your system security configuration, and so on.  Unfortunately, this is an extremely complex subject.&lt;/p&gt;&lt;p&gt; Once you establish a working JACK configuration, Rosegarden will be able to start the audio server automatically in the future.&lt;/p&gt;</source>
         <translation>&lt;p&gt;Rosegardenu se nepodařilo spojit se zvukovým serverem JACK. Pravděpodobně to znamená, že Rosegardenu se nepodařilo spustit zvukový server kvůli problému s vaším nastavením, instalací vašeho systému, anebo kvůli obojímu.&lt;/p&gt;&lt;p&gt;Pokud chcete být schopen přehrávat a nahrávat zvukové soubory nebo používat přídavné moduly, navrhujeme vám ukončit Rosegarden a použít pomůcku pro ovládání serveru JACK (qjackctl) a vyzkoušet různá nastavení, dokud nepřijdete na to, které umožní spuštění serveru JACK. Možná budete rovněž muset nainstalovat jádro pracující ve skutečném čase, upravit nastavení bezpečnosti vašeho systému, atd. Naneštěstí je toto celé velice složitá věc.&lt;/p&gt;&lt;p&gt; Jakmile se vám podaří vytvořit nastavení serveru JACK, které bude pracovat, Rosegarden bude do budoucna schopen spustit zvukový server automaticky.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1021"/>
+        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1023"/>
         <source>The audio mixing subsystem is failing to keep up.</source>
         <translation>Zvukový směšovací subsystém nestačí svým výkonem držet krok.</translation>
     </message>
     <message>
-        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1025"/>
+        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1027"/>
         <source>The audio subsystem is failing to keep up.</source>
         <translation>Zvukový subsystém nestačí svým výkonem držet krok.</translation>
     </message>
     <message>
-        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1029"/>
+        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1031"/>
         <source>Unknown sequencer failure mode!</source>
         <translation>Neznámý režim selhání sekvenceru!</translation>
     </message>
     <message>
-        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1243"/>
+        <location filename="../../src/gui/seqmanager/SequenceManager.cpp" line="1245"/>
         <source>&lt;p&gt;The MIDI subsystem has failed to initialize.&lt;/p&gt;&lt;p&gt;You may continue without the sequencer, but we suggest closing Rosegarden, running &quot;modprobe snd-seq-midi&quot; as root, and starting Rosegarden again.  If you wish to run with no sequencer by design, then use &quot;rosegarden --nosequencer&quot; to avoid seeing this error in the future.&lt;/p&gt;</source>
         <translation>&lt;p&gt;Spuštění subsystému MIDI selhalo.&lt;/p&gt;&lt;p&gt;Můžete pokračovat bez sekvenceru, ale doporučujeme spíše zavřít program Rosegarden, spustit jako uživatel root &quot;modprobe snd-seq-midi&quot; a znovu spustit Rosegarden. Pokud chcete pracovat bez sekvenceru záměrně, použijte možnost spuštění &quot;rosegarden --nosequencer&quot;, abyste se s touto chybou v budoucnosti již nesetkávali.&lt;/p&gt;</translation>
     </message>
@@ -24788,54 +22945,6 @@ Ukončení ostatních běžících programů by mohlo zlepšit výkon programu R
         <translation>Rosegarden</translation>
     </message>
     <message>
-        <source>C</source>
-        <translation type="obsolete">C</translation>
-    </message>
-    <message>
-        <source>C#</source>
-        <translation type="obsolete">C#</translation>
-    </message>
-    <message>
-        <source>D</source>
-        <translation type="obsolete">D</translation>
-    </message>
-    <message>
-        <source>Eb</source>
-        <translation type="obsolete">Eb</translation>
-    </message>
-    <message>
-        <source>E</source>
-        <translation type="obsolete">E</translation>
-    </message>
-    <message>
-        <source>F</source>
-        <translation type="obsolete">F</translation>
-    </message>
-    <message>
-        <source>F#</source>
-        <translation type="obsolete">F#</translation>
-    </message>
-    <message>
-        <source>G</source>
-        <translation type="obsolete">G</translation>
-    </message>
-    <message>
-        <source>G#</source>
-        <translation type="obsolete">G#</translation>
-    </message>
-    <message>
-        <source>A</source>
-        <translation type="obsolete">A</translation>
-    </message>
-    <message>
-        <source>Bb</source>
-        <translation type="obsolete">Bb</translation>
-    </message>
-    <message>
-        <source>B</source>
-        <translation type="obsolete">H</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/editors/notation/StaffHeader.cpp" line="685"/>
         <source>%1: %2</source>
         <translation>%1: %2</translation>
@@ -24844,17 +22953,6 @@ Ukončení ostatních běžících programů by mohlo zlepšit výkon programu R
         <location filename="../../src/gui/editors/notation/StaffHeader.cpp" line="688"/>
         <source> in %1</source>
         <translation> v %1</translation>
-    </message>
-</context>
-<context>
-    <name>Rosegarden::Studio</name>
-    <message>
-        <source>Audio</source>
-        <translation type="obsolete">Zvuk</translation>
-    </message>
-    <message>
-        <source>Synth plugin</source>
-        <translation type="obsolete">Přídavné moduly syntetizátorů</translation>
     </message>
 </context>
 <context>
@@ -24904,14 +23002,6 @@ Ukončení ostatních běžících programů by mohlo zlepšit výkon programu R
         <location filename="../../src/gui/studio/SynthPluginManagerDialog.cpp" line="251"/>
         <source>http://rosegardenmusic.com/wiki/doc:synth-plugin-manager-en</source>
         <translation>http://rosegardenmusic.com/wiki/doc:synth-plugin-manager-en</translation>
-    </message>
-    <message>
-        <source>Help for the Synth-Plugin Management Dialog</source>
-        <translation type="obsolete">Nápověda k dialogu pro správu přídavných modulů syntetizátorů</translation>
-    </message>
-    <message>
-        <source>Create plugin instances here, e.g. software synthesizers and effects. </source>
-        <translation type="obsolete">Zde vytvořit instanci přídavného modulu, např. programové syntetizátory a efekty. </translation>
     </message>
 </context>
 <context>
@@ -25754,18 +23844,6 @@ Ukončení ostatních běžících programů by mohlo zlepšit výkon programu R
         <translation>&lt;bez názvu&gt;</translation>
     </message>
     <message>
-        <source>Warning</source>
-        <translation type="obsolete">Upozornění</translation>
-    </message>
-    <message>
-        <source>The audio file path does not exist or is not writable.
-Please set the audio file path to a valid directory in Document Properties before recording audio.
-Would you like to set it now?</source>
-        <translation type="obsolete">Cesta ke zvukovému souboru neexistuje nebo se do ní nedá zapisovat.
-Nastavte platný adresář jako cestu ke zvukovému souboru ve Vlastnostech dokumentu před pořizováním zvukového záznamu.
-Chcete cestu nastavit nyní?</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/editors/segment/TrackButtons.cpp" line="1052"/>
         <source>Mute track</source>
         <translation>Ztlumit stopu</translation>
@@ -25778,14 +23856,6 @@ Chcete cestu nastavit nyní?</translation>
 </context>
 <context>
     <name>Rosegarden::TrackEditor</name>
-    <message>
-        <source>Turn Repeating Segment into Real Copies</source>
-        <translation type="obsolete">Převést opakující se část na skutečné kopie</translation>
-    </message>
-    <message>
-        <source>Turn Repeating Segments into Real Copies</source>
-        <translation type="obsolete">Převést opakující se části na skutečné kopie</translation>
-    </message>
     <message>
         <location filename="../../src/gui/editors/segment/TrackEditor.cpp" line="379"/>
         <source>Delete Tracks</source>
@@ -25824,17 +23894,9 @@ Chcete cestu nastavit nyní?</translation>
         <source>Rosegarden cannot accept dropped files of this type.</source>
         <translation>Rosegarden nemůže přijmout upuštěné soubory tohoto typu.</translation>
     </message>
-    <message>
-        <source>You can&apos;t drop files into Rosegarden from this client.  Try using Konqueror instead.</source>
-        <translation type="obsolete">Z tohoto klienta nelze do aplikace Rosegarden přetahovat soubory.  Zkuste použít aplikaci Konqueror.</translation>
-    </message>
 </context>
 <context>
     <name>Rosegarden::TrackLabel</name>
-    <message>
-        <source>&lt;qt&gt;Click and hold with either mouse button to assign this track to an instrument.&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;Klepněte a přitom podržte nějaké své oblíbené tlačítko na myši pro přiřazení této stopy nějakému nástroji.&lt;/qt&gt;</translation>
-    </message>
     <message>
         <location filename="../../src/gui/editors/segment/TrackLabel.cpp" line="61"/>
         <source>&lt;qt&gt;&lt;p&gt;Click to select all the segments on this track.&lt;/p&gt;&lt;p&gt;Shift+click to add to or to remove from the selection all the segments on this track.&lt;/p&gt;&lt;p&gt;Click and hold with either mouse button to assign this track to an instrument.&lt;/p&gt;&lt;/qt&gt;</source>
@@ -26026,10 +24088,6 @@ Chcete cestu nastavit nyní?</translation>
         <translation>&lt;qt&gt;&lt;p&gt;Nové části budou vytvořeny s tímto klíčem, který byl vložen na začátku&lt;/p&gt;&lt;/qt&gt;</translation>
     </message>
     <message>
-        <source>&lt;qt&gt;&lt;p&gt;New segments will be created with this transpose property set&lt;p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Nové části budou vytvořeny s těmito vlastnostmi převedení&lt;p&gt;&lt;/qt&gt;</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/editors/parameters/TrackParameterBox.cpp" line="385"/>
         <source>&lt;qt&gt;&lt;p&gt;Choose the lowest suggested playable note, using a staff&lt;/p&gt;&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;&lt;p&gt;S pomocí osnovy vyberte nejnižší navrženou hratelnou notu&lt;/p&gt;&lt;/qt&gt;</translation>
@@ -26045,10 +24103,6 @@ Chcete cestu nastavit nyní?</translation>
         <translation>&lt;qt&gt;&lt;p&gt;Vyberte zařízení, které tato stopa bude používat pro přehrávání.&lt;/p&gt;&lt;p&gt;Klepněte na &lt;img src=&quot;:pixmaps/toolbar/manage-midi-devices.xpm&quot;&gt; pro připojení tohoto zařízení k platnému výstupu, pokud neslyšíte zvuk&lt;/p&gt;&lt;/qt&gt;</translation>
     </message>
     <message>
-        <source>&lt;qt&gt;&lt;p&gt;This track will only record Audio/ MIDI from the selected device, filtering anything else out&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Do této stopy se budou nahrávat pouze Audio/ MIDI data z vybraného zařízení. Vše ostatní bude odfiltrováno&lt;/p&gt;&lt;/qt&gt;</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/editors/parameters/TrackParameterBox.cpp" line="223"/>
         <source>&lt;qt&gt;&lt;p&gt;This track will only record Audio/MIDI from the selected channel, filtering anything else out&lt;/p&gt;&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;&lt;p&gt;Do této stopy se budou nahrávat pouze Audio/ MIDI data z vybraného kanálu. Vše ostatní bude odfiltrováno&lt;/p&gt;&lt;/qt&gt;</translation>
@@ -26057,10 +24111,6 @@ Chcete cestu nastavit nyní?</translation>
         <location filename="../../src/gui/editors/parameters/TrackParameterBox.cpp" line="258"/>
         <source>&lt;qt&gt;&lt;p&gt;Choose normal, \small or \tiny font size for notation elements on this (normal-sized) staff when exporting to LilyPond.&lt;/p&gt;&lt;p&gt;This is as close as we get to enabling you to print parts in cue size&lt;/p&gt;&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;&lt;p&gt;Vybrat obvyklou, malou nebo drobnou velikost písma pro prvky not v tomto notovém zápisu (o obvyklé velikosti) při vyvedení do LilyPondu.&lt;/p&gt;&lt;p&gt;Toto je nejlepší možná volba pro tisk ve správné velikosti&lt;/p&gt;&lt;/qt&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;qt&gt;Bracket staffs in LilyPond&lt;br&gt;(fragile, use with caution)&lt;/p&gt;&lt;qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;Osnovy závorek v LilyPondu&lt;br&gt;(křehké, opatrně při použití)&lt;/p&gt;&lt;qt&gt;</translation>
     </message>
     <message>
         <location filename="../../src/gui/editors/parameters/TrackParameterBox.cpp" line="318"/>
@@ -26587,13 +24637,6 @@ Chcete cestu nastavit nyní?</translation>
     </message>
 </context>
 <context>
-    <name>Rosegarden::Ui</name>
-    <message>
-        <source>[ No port ]</source>
-        <translation type="obsolete">[ Žádná přípojka (port) ]</translation>
-    </message>
-</context>
-<context>
     <name>Rosegarden::UnGraceCommand</name>
     <message>
         <location filename="../../src/commands/notation/UnGraceCommand.h" line="43"/>
@@ -26827,28 +24870,6 @@ Chcete cestu nastavit nyní?</translation>
         <location filename="../../src/gui/widgets/WarningWidget.cpp" line="199"/>
         <source>&lt;qt&gt;&lt;p&gt;Rosegarden is using safe graphics mode.  This provides the greatest stability, but graphics performance is very slow.&lt;/p&gt;&lt;p&gt;You may wish to visit &lt;b&gt;Edit -&gt; Preferences -&gt; Behavior -&gt; Graphics performance&lt;/b&gt; and try &quot;Normal&quot; or &quot;Fast&quot; for better performance.&lt;/p&gt;&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;&lt;p&gt;Rosegarden používá bezpečný zobrazovací režim.  Tento režim poskytuje největší stabilitu, ale zobrazování je velmi pomalé.&lt;/p&gt;&lt;p&gt;Možná si budete přát navštívit &lt;b&gt;Úpravy -&gt; Nastavení -&gt; Chování -&gt; Zobrazovací výkon&lt;/b&gt; a vyzkoušet &quot;Normální&quot; nebo &quot;Rychlé&quot; kvůli lepšímu výkonu.&lt;/p&gt;&lt;/qt&gt;</translation>
-    </message>
-</context>
-<context>
-    <name>RosegardenApplication</name>
-    <message>
-        <source>Rosegarden - A sequencer and musical notation editor</source>
-        <translation type="obsolete">Aplikace Rosegarden - sekvencer a editor notového zápisu</translation>
-    </message>
-    <message>
-        <source>Rosegarden</source>
-        <translation type="obsolete">Rosegarden</translation>
-    </message>
-    <message>
-        <source>Welcome!</source>
-        <translation type="obsolete">Vítejte!</translation>
-    </message>
-</context>
-<context>
-    <name>RosegardenDocument</name>
-    <message>
-        <source>(recorded)</source>
-        <translation type="obsolete">(zaznamenáno)</translation>
     </message>
 </context>
 <context>

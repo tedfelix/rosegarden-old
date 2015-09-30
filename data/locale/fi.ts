@@ -2,13 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="fi_FI">
 <context>
-    <name></name>
-    <message>
-        <source>Rosegarden</source>
-        <translation type="obsolete">Rosegarden</translation>
-    </message>
-</context>
-<context>
     <name>:</name>
     <message>
         <source></source>
@@ -53,10 +46,6 @@
         <location filename="../../src/gui/studio/DeviceManagerDialogUi.h" line="-31"/>
         <source>Default playback device</source>
         <translation>Oletustoistolaite</translation>
-    </message>
-    <message>
-        <source>&lt;qt&gt;&lt;p&gt;Create new playback devices here. Click the device name to change it. Select a device here and connect it to a MIDI output port by clicking on a port to the right.&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Luo uusi toistolaite tässä. Napsauta laitteen nimeä muuttaaksesi sitä. Valitse laite tästä ja kytke se MIDI-ulostuloon napsauttamalla oikealla olevaa porttia.&lt;/p&gt;&lt;/qt&gt;</translation>
     </message>
     <message>
         <location line="+44"/>
@@ -423,10 +412,6 @@
         <translation>Äänen esikuuntelu</translation>
     </message>
     <message>
-        <source>Insert Into Selected Audio track</source>
-        <translation type="obsolete">Syötä valittuun ääniraitaan</translation>
-    </message>
-    <message>
         <location line="+3"/>
         <location line="+59"/>
         <location line="+1"/>
@@ -449,10 +434,6 @@
         <location line="+1"/>
         <source>&amp;Help</source>
         <translation>&amp;Ohje</translation>
-    </message>
-    <message>
-        <source>&amp;Rosegarden tutorial</source>
-        <translation type="obsolete">&amp;Rosegardenin esiopastus</translation>
     </message>
     <message>
         <location line="-3207"/>
@@ -1020,18 +1001,6 @@
         <translation>Vaihda Koonmuutos -työkaluun</translation>
     </message>
     <message>
-        <source>E&amp;dit</source>
-        <translation type="obsolete">&amp;Muokkaa</translation>
-    </message>
-    <message>
-        <source>Nothing to &amp;undo</source>
-        <translation type="obsolete">&amp;Ei peruttavaa</translation>
-    </message>
-    <message>
-        <source>Nothing to &amp;redo</source>
-        <translation type="obsolete">Ei &amp;palautettavaa</translation>
-    </message>
-    <message>
         <location line="-1133"/>
         <location line="+3341"/>
         <location line="+621"/>
@@ -1138,24 +1107,12 @@
         <translation>Lisää ta&amp;htilajin muutos...</translation>
     </message>
     <message>
-        <source>&amp;Segment</source>
-        <translation type="obsolete">&amp;Osa</translation>
-    </message>
-    <message>
         <location line="-3958"/>
         <location line="+1289"/>
         <location line="+2085"/>
         <location line="+371"/>
         <source>Open in &amp;Event List Editor</source>
         <translation>Avaa tapahtuma&amp;listamuokkaimessa</translation>
-    </message>
-    <message>
-        <source>Set Segment Start &amp;Time...</source>
-        <translation type="obsolete">Aseta osan &amp;alkuaika...</translation>
-    </message>
-    <message>
-        <source>Set Segment &amp;Duration...</source>
-        <translation type="obsolete">Aseta osan &amp;kesto...</translation>
     </message>
     <message>
         <location line="-3738"/>
@@ -1405,10 +1362,6 @@
         <translation>&amp;Toista </translation>
     </message>
     <message>
-        <source>Distribute Audio on Midi Segment</source>
-        <translation type="obsolete">Jaa äänidata Midi-osalle</translation>
-    </message>
-    <message>
         <location line="-3351"/>
         <location line="+764"/>
         <location line="+48"/>
@@ -1472,78 +1425,6 @@
         <location line="+1565"/>
         <source>P&amp;anic</source>
         <translation>&amp;Paniikki</translation>
-    </message>
-    <message>
-        <source>I&amp;nsert Note</source>
-        <translation type="obsolete">&amp;Syötä nuotti</translation>
-    </message>
-    <message>
-        <source>&amp;I</source>
-        <translation type="obsolete">&amp;I</translation>
-    </message>
-    <message>
-        <source>I &amp;sharp</source>
-        <translation type="obsolete">I &amp;ylennetty</translation>
-    </message>
-    <message>
-        <source>II &amp;flat</source>
-        <translation type="obsolete">II &amp;alennettu</translation>
-    </message>
-    <message>
-        <source>II</source>
-        <translation type="obsolete">II</translation>
-    </message>
-    <message>
-        <source>II sh&amp;arp</source>
-        <translation type="obsolete">II y&amp;lennetty</translation>
-    </message>
-    <message>
-        <source>III flat</source>
-        <translation type="obsolete">III alennettu</translation>
-    </message>
-    <message>
-        <source>III</source>
-        <translation type="obsolete">III</translation>
-    </message>
-    <message>
-        <source>IV</source>
-        <translation type="obsolete">IV</translation>
-    </message>
-    <message>
-        <source>IV sha&amp;rp</source>
-        <translation type="obsolete">IV yl&amp;ennetty</translation>
-    </message>
-    <message>
-        <source>&amp;V flat</source>
-        <translation type="obsolete">&amp;V alennettu</translation>
-    </message>
-    <message>
-        <source>V</source>
-        <translation type="obsolete">V</translation>
-    </message>
-    <message>
-        <source>V s&amp;harp</source>
-        <translation type="obsolete">V yle&amp;nnetty</translation>
-    </message>
-    <message>
-        <source>VI fla&amp;t</source>
-        <translation type="obsolete">VI alennett&amp;u</translation>
-    </message>
-    <message>
-        <source>VI</source>
-        <translation type="obsolete">VI</translation>
-    </message>
-    <message>
-        <source>VI shar&amp;p</source>
-        <translation type="obsolete">VI ylennett&amp;y</translation>
-    </message>
-    <message>
-        <source>VII flat</source>
-        <translation type="obsolete">VII alennettu</translation>
-    </message>
-    <message>
-        <source>VII</source>
-        <translation type="obsolete">VII</translation>
     </message>
     <message>
         <location line="-3126"/>
@@ -3013,14 +2894,6 @@
         <translation>Lisää pe&amp;daalin nosto</translation>
     </message>
     <message>
-        <source>&amp;Set Segment Start Time...</source>
-        <translation type="obsolete">Aseta osan &amp;alkuaika...</translation>
-    </message>
-    <message>
-        <source>Transpose by &amp;Inverval...</source>
-        <translation type="obsolete">Transponoi &amp;intervallilla...</translation>
-    </message>
-    <message>
         <location line="+15"/>
         <source>N&amp;ote</source>
         <translation>N&amp;uotti</translation>
@@ -4260,17 +4133,9 @@
         <translation>Näytä &amp;työkalut</translation>
     </message>
     <message>
-        <source>&amp;Events</source>
-        <translation type="obsolete">&amp;Tapahtumat</translation>
-    </message>
-    <message>
         <location line="+198"/>
         <source>Remove &amp;Triggers</source>
         <translation>Poista &amp;liipaisimet</translation>
-    </message>
-    <message>
-        <source>Pitch &amp;Bend Sequence...</source>
-        <translation type="obsolete">&amp;Taivutusjakso...</translation>
     </message>
     <message>
         <location line="-197"/>
@@ -4303,10 +4168,6 @@
         <translation>Näytä T&amp;aivutusviivain</translation>
     </message>
     <message>
-        <source>Add &amp;Control Ruler...</source>
-        <translation type="obsolete">Lisää &amp;ohjainviivain...</translation>
-    </message>
-    <message>
         <location line="-1104"/>
         <source>Cursor Back and Se&amp;lect</source>
         <translation>Kohdistin taakse ja &amp;valitse</translation>
@@ -4316,10 +4177,6 @@
         <location line="+2124"/>
         <source>Rulers Toolbar</source>
         <translation>Viivaimet -työkalupalkki</translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+V</source>
-        <translation type="obsolete">Ctrl+Shift+V</translation>
     </message>
     <message>
         <location line="-1748"/>
@@ -4650,10 +4507,6 @@
         <translation>Pisteellinen 32.osatauko</translation>
     </message>
     <message>
-        <source>Shift+Left</source>
-        <translation type="obsolete">Shift+Left</translation>
-    </message>
-    <message>
         <location line="+7"/>
         <source>Layout Toolbar</source>
         <translation>Taitto -työkalupalkki</translation>
@@ -4764,14 +4617,6 @@
         <translation>&amp;Tuo</translation>
     </message>
     <message>
-        <source>Import Rosegarden &amp;Project file...</source>
-        <translation type="obsolete">Tuo Rosegarden-&amp;projekti -tiedosto...</translation>
-    </message>
-    <message>
-        <source>Import &amp;MIDI file...</source>
-        <translation type="obsolete">Tuo &amp;MIDI-tiedosto...</translation>
-    </message>
-    <message>
         <location line="+6"/>
         <source>&amp;Merge</source>
         <translation>&amp;Sulauta</translation>
@@ -4780,10 +4625,6 @@
         <location line="+1"/>
         <source>Merge &amp;File...</source>
         <translation>Sulauta &amp;tiedosto...</translation>
-    </message>
-    <message>
-        <source>Merge &amp;MIDI file...</source>
-        <translation type="obsolete">Sulauta &amp;MIDI-tiedosto...</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -4796,26 +4637,6 @@
         <translation>&amp;Vie</translation>
     </message>
     <message>
-        <source>Export Rosegarden &amp;Project file...</source>
-        <translation type="obsolete">Vie Rosegarden-&amp;projekti -tiedosto...</translation>
-    </message>
-    <message>
-        <source>Export &amp;MIDI file...</source>
-        <translation type="obsolete">Vie &amp;MIDI-tiedosto...</translation>
-    </message>
-    <message>
-        <source>Export &amp;Csound score file...</source>
-        <translation type="obsolete">Vie &amp;Csound-nuotti -tiedosto...</translation>
-    </message>
-    <message>
-        <source>Export M&amp;up file...</source>
-        <translation type="obsolete">Vie M&amp;up-tiedosto...</translation>
-    </message>
-    <message>
-        <source>Export Music&amp;XML file...</source>
-        <translation type="obsolete">Vie Music&amp;XML-tiedosto...</translation>
-    </message>
-    <message>
         <location line="+7"/>
         <source>&amp;Open...</source>
         <translation>&amp;Avaa...</translation>
@@ -4824,10 +4645,6 @@
         <location line="+9"/>
         <source>Open &amp;Recent</source>
         <translation>Avaa &amp;edellinen</translation>
-    </message>
-    <message>
-        <source>Save &amp;As...</source>
-        <translation type="obsolete">Tallenna &amp;nimellä...</translation>
     </message>
     <message>
         <location line="+19"/>
@@ -4889,10 +4706,6 @@
         <location line="+9"/>
         <source>&amp;Insert Range...</source>
         <translation>&amp;Syötä alue...</translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+Ins</source>
-        <translation type="obsolete">Ctrl+Shift+Ins</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -4980,21 +4793,9 @@
         <translation>Tallenna &amp;nykyinen asiakirja oletusstudioksi</translation>
     </message>
     <message>
-        <source>Se&amp;gments</source>
-        <translation type="obsolete">&amp;Osat</translation>
-    </message>
-    <message>
         <location line="+2"/>
         <source>Toggle Repeat</source>
         <translation>Kytke toisto tai poista se</translation>
-    </message>
-    <message>
-        <source>Open in &amp;Default editor</source>
-        <translation type="obsolete">Avaa &amp;oletusmuokkaimessa</translation>
-    </message>
-    <message>
-        <source>Return</source>
-        <translation type="obsolete">Return</translation>
     </message>
     <message>
         <location line="+64"/>
@@ -5206,14 +5007,6 @@
         <translation>Näytä Toisto-osoittimen &amp;viivain</translation>
     </message>
     <message>
-        <source>Import &amp;X11 Rosegarden file...</source>
-        <translation type="obsolete">Tuo &amp;X11 Rosegarden tiedosto...</translation>
-    </message>
-    <message>
-        <source>Merge &amp;X11 Rosegarden file...</source>
-        <translation type="obsolete">Sulauta &amp;X11 Rosegarden-tiedosto...</translation>
-    </message>
-    <message>
         <location line="+63"/>
         <source>MIDI Mi&amp;xer</source>
         <translation>MIDI &amp;sekoitin</translation>
@@ -5222,10 +5015,6 @@
         <location line="-61"/>
         <source>Show Te&amp;mpo Ruler</source>
         <translation>Näytä T&amp;empo -viivain</translation>
-    </message>
-    <message>
-        <source>Export &amp;LilyPond file...</source>
-        <translation type="obsolete">Vie &amp;LilyPond-tiedosto...</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -7379,34 +7168,6 @@
         <location line="+1"/>
         <source>Pistol shot</source>
         <translation>Pistoolin laukaus</translation>
-    </message>
-    <message>
-        <source>C</source>
-        <translation type="obsolete">C</translation>
-    </message>
-    <message>
-        <source>D</source>
-        <translation type="obsolete">D</translation>
-    </message>
-    <message>
-        <source>E</source>
-        <translation type="obsolete">E</translation>
-    </message>
-    <message>
-        <source>F</source>
-        <translation type="obsolete">F</translation>
-    </message>
-    <message>
-        <source>G</source>
-        <translation type="obsolete">G</translation>
-    </message>
-    <message>
-        <source>A</source>
-        <translation type="obsolete">A</translation>
-    </message>
-    <message>
-        <source>B</source>
-        <translation type="obsolete">B</translation>
     </message>
     <message>
         <location filename="../AutoloadStrings.cpp" line="-24"/>
@@ -10699,10 +10460,6 @@
         <translation>yleiskartta</translation>
     </message>
     <message>
-        <source>Blue pastel</source>
-        <translation type="obsolete">Pastellinsininen</translation>
-    </message>
-    <message>
         <location line="+2"/>
         <source>Red pastel</source>
         <translation>Pastellinpunainen</translation>
@@ -10748,10 +10505,6 @@
         <translation>Tuntematon</translation>
     </message>
     <message>
-        <source>[ %1 ]</source>
-        <translation type="obsolete">[ %1 ]</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/editors/parameters/MIDIInstrumentParameterPanel.cpp" line="+716"/>
         <location line="+131"/>
         <source>%1. %2</source>
@@ -10776,9 +10529,9 @@
     </message>
     <message>
         <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="+468"/>
-        <location filename="../../src/gui/editors/matrix/MatrixWidget.cpp" line="+1043"/>
+        <location filename="../../src/gui/editors/matrix/MatrixWidget.cpp" line="+1049"/>
         <location filename="../../src/gui/editors/notation/NotationView.cpp" line="+907"/>
-        <location filename="../../src/gui/editors/notation/NotationWidget.cpp" line="+1656"/>
+        <location filename="../../src/gui/editors/notation/NotationWidget.cpp" line="+1683"/>
         <source>%1 Controller %2 %3</source>
         <translation>%1 Ohjain %2 %3</translation>
     </message>
@@ -10793,7 +10546,7 @@
         <translation>Rosegarden</translation>
     </message>
     <message>
-        <location line="+327"/>
+        <location line="+334"/>
         <source>Welcome!</source>
         <translation>Tervetuloa!</translation>
     </message>
@@ -10901,7 +10654,7 @@
         <translation>&lt;qt&gt;&lt;p&gt;Ainuttakaan raitaa ei ole kytketty nauhoitustilaan.&lt;/p&gt;&lt;p&gt;Ole hyvä ja aseta ainakin yksi tallennus LED &lt;img src=&quot;:pixmaps/tooltip/record-leds.png&quot;&gt; ja yritä uudelleen&lt;/p&gt;&lt;/qt&gt;</translation>
     </message>
     <message>
-        <location line="+179"/>
+        <location line="+181"/>
         <source>&lt;qt&gt;&lt;p&gt;Couldn&apos;t start recording audio.&lt;/p&gt;&lt;p&gt;Please set a valid recording path in &lt;b&gt;Composition -&gt; Edit Document Properties... -&gt; Audio&lt;/b&gt;&lt;/p&gt;&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;&lt;p&gt;Äänen nauhoitusta ei voitu käynnistää.&lt;/p&gt;&lt;p&gt;Ole hyvä ja aseta kelvollinen nauhoituspolku valikosta &lt;b&gt;Sävellys -&gt; Muokkaa dokumentin ominaisuuksia... -&gt; Ääni&lt;/b&gt;&lt;/p&gt;&lt;/qt&gt;</translation>
     </message>
@@ -11057,7 +10810,7 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/gui/editors/matrix/MatrixElement.cpp" line="+176"/>
+        <location filename="../../src/gui/editors/matrix/MatrixElement.cpp" line="+179"/>
         <source>This event is tied to another event.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11154,18 +10907,6 @@
         <source>&lt;p&gt;Copyright 2000-2015 the Rosegarden development team&lt;/p&gt;&lt;p&gt;Version: %1 &amp;nbsp; Qt version: %2&lt;br&gt;Build key: %3&lt;/p&gt;&lt;p&gt;Rosegarden was brought to you by a team of volunteers across the world.  For a list of contributors, visit &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/resources/authors&quot;&gt;http://www.rosegardenmusic.com/resources/authors&lt;/a&gt;.&lt;br&gt;For more information about Rosegarden, visit &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com&quot;&gt;http://www.rosegardenmusic.com&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;License: GNU General Public License Version 2 or later&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>&lt;p&gt;Copyright 2000-2011 the Rosegarden development team&lt;/p&gt;&lt;p&gt;Version: %1 &amp;nbsp; Qt version: %2&lt;br&gt;Build key: %3&lt;/p&gt;&lt;p&gt;Rosegarden was brought to you by a team of volunteers across the world.  For a list of contributors, visit &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/resources/authors&quot;&gt;http://www.rosegardenmusic.com/resources/authors&lt;/a&gt;.&lt;br&gt;For more information about Rosegarden, visit &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com&quot;&gt;http://www.rosegardenmusic.com&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;License: GNU General Public License Version 2&lt;/p&gt;</source>
-        <translation type="obsolete">&lt;p&gt;Copyright 2000-2009 Rosegarden-kehitystiimi&lt;/p&gt;&lt;p&gt;Versio: %1 &amp;nbsp; Qt versio:%2&lt;br&gt;Build-avain: %3&lt;/p&gt;&lt;p&gt;Rosegardenin sinulle tarjoavat ryhmä vapaaehtoisia ympäri maailman.  Nähdäksesi listan osallistuneista, katso &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/resources/authors&quot;&gt;http://www.rosegardenmusic.com/resources/authors&lt;/a&gt;.&lt;br&gt;Jos tarvitset lisätietoja Rosegardenista, katso &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com&quot;&gt;http://www.rosegardenmusic.com&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Lisenssi: GNU General Public License Version 2&lt;/p&gt; {2000-2011 ?} {1 ?} {2&lt;?} {3&lt;?} {2&lt;?}</translation>
-    </message>
-    <message>
-        <source>&lt;p&gt;Copyright 2000-2010 the Rosegarden development team&lt;/p&gt;&lt;p&gt;Version: %1 &amp;nbsp; Qt version: %2&lt;br&gt;Build key: %3&lt;/p&gt;&lt;p&gt;Rosegarden was brought to you by a team of volunteers across the world.  For a list of contributors, visit &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/resources/authors&quot;&gt;http://www.rosegardenmusic.com/resources/authors&lt;/a&gt;.&lt;br&gt;For more information about Rosegarden, visit &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com&quot;&gt;http://www.rosegardenmusic.com&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;License: GNU General Public License Version 2&lt;/p&gt;</source>
-        <translation type="obsolete">&lt;p&gt;Copyright 2000-2010 Rosegarden-kehitystiimi&lt;/p&gt;&lt;p&gt;Versio: %1 &amp;nbsp; Qt versio:%2&lt;br&gt;Build-avain: %3&lt;/p&gt;&lt;p&gt;Rosegardenin tarjoavat sinulle ryhmä vapaaehtoisia ympäri maailman.  Nähdäksesi listan osallistuneista, katso &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/resources/authors&quot;&gt;http://www.rosegardenmusic.com/resources/authors&lt;/a&gt;.&lt;br&gt;Jos tarvitset lisätietoja Rosegardenista, katso &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com&quot;&gt;http://www.rosegardenmusic.com&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Lisenssi: GNU General Public License Version 2&lt;/p&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;p&gt;Copyright 2000-2009 the Rosegarden development team&lt;/p&gt;&lt;p&gt;Version: %1 &amp;nbsp; Qt version: %2&lt;br&gt;Build key: %3&lt;/p&gt;&lt;p&gt;Rosegarden was brought to you by a team of volunteers across the world.  For a list of contributors, visit &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/resources/authors&quot;&gt;http://www.rosegardenmusic.com/resources/authors&lt;/a&gt;.&lt;br&gt;For more information about Rosegarden, visit &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com&quot;&gt;http://www.rosegardenmusic.com&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;License: GNU General Public License Version 2&lt;/p&gt;</source>
-        <translation type="obsolete">&lt;p&gt;Copyright 2000-2009 Rosegarden-kehitystiimi&lt;/p&gt;&lt;p&gt;Versio: %1 &amp;nbsp; Qt versio:%2&lt;br&gt;Build-avain: %3&lt;/p&gt;&lt;p&gt;Rosegardenin sinulle tarjoavat ryhmä vapaaehtoisia ympäri maailman.  Nähdäksesi listan osallistuneista, katso &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com/resources/authors&quot;&gt;http://www.rosegardenmusic.com/resources/authors&lt;/a&gt;.&lt;br&gt;Jos tarvitset lisätietoja Rosegardenista, katso &lt;a style=&quot;color:gold&quot; href=&quot;http://www.rosegardenmusic.com&quot;&gt;http://www.rosegardenmusic.com&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Lisenssi: GNU General Public License Version 2&lt;/p&gt;</translation>
-    </message>
 </context>
 <context>
     <name>Rosegarden::ActionCommandArgumentQuerier</name>
@@ -11225,12 +10966,12 @@
 <context>
     <name>Rosegarden::AddIndicationCommand</name>
     <message>
-        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="+107"/>
+        <location filename="../../src/commands/notation/AddIndicationCommand.cpp" line="+108"/>
         <source>Can&apos;t add identical overlapping indications</source>
         <translation>Ei voida lisätä identtisiä limittyviä merkintöjä</translation>
     </message>
     <message>
-        <location line="+114"/>
+        <location line="+134"/>
         <source>Add S&amp;lur</source>
         <translation>Lisää &amp;kaari</translation>
     </message>
@@ -11725,14 +11466,6 @@
         <translation type="unfinished">Muunnetaan äänitiedostoa...</translation>
     </message>
     <message>
-        <source>Resampling audio file...</source>
-        <translation type="obsolete">Muutetaan äänitiedoston näytteenottotaajuutta...</translation>
-    </message>
-    <message>
-        <source>Converting and resampling audio file...</source>
-        <translation type="obsolete">Muunnetaan ja mitoitetaan uudelleen äänitiedostoa...</translation>
-    </message>
-    <message>
         <location line="-30"/>
         <source>Importing audio file...</source>
         <translation>Tuodaan äänitiedostoa...</translation>
@@ -11814,10 +11547,6 @@
         <location line="+1"/>
         <source>File</source>
         <translation>Tiedosto</translation>
-    </message>
-    <message>
-        <source>&lt;no audio files&gt;</source>
-        <translation type="obsolete">&lt;ei äänitiedostoja&gt;</translation>
     </message>
     <message>
         <location line="+332"/>
@@ -11943,10 +11672,6 @@ Ole hyvä ja valitse halutessasi niistä joitakin poistaaksesi ne pysyvästi kov
         <location line="+1"/>
         <source>Enter new label</source>
         <translation>Syötä uusi nimi</translation>
-    </message>
-    <message>
-        <source>importing a remote audio file</source>
-        <translation type="obsolete">tuodaan ulkoista äänitiedostoa</translation>
     </message>
     <message>
         <location line="+172"/>
@@ -12659,7 +12384,7 @@ Ole hyvä ja valitse halutessasi niistä joitakin poistaaksesi ne pysyvästi kov
         <translation>Poistetaanko todella tämä pankki?</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+59"/>
         <source>Really delete this key mapping?</source>
         <translation>Poistetaanko todella tämä näppäinyhdistelmä?</translation>
     </message>
@@ -13505,7 +13230,7 @@ Ole hyvä ja valitse halutessasi niistä joitakin poistaaksesi ne pysyvästi kov
 <context>
     <name>Rosegarden::ControlRulerWidget</name>
     <message>
-        <location filename="../../src/gui/rulers/ControlRulerWidget.cpp" line="+325"/>
+        <location filename="../../src/gui/rulers/ControlRulerWidget.cpp" line="+330"/>
         <source>Velocity</source>
         <translation>Voimakkuus</translation>
     </message>
@@ -13521,7 +13246,7 @@ Ole hyvä ja valitse halutessasi niistä joitakin poistaaksesi ne pysyvästi kov
 <context>
     <name>Rosegarden::ControllerEventsRuler</name>
     <message>
-        <location filename="../../src/gui/rulers/ControllerEventsRuler.cpp" line="+288"/>
+        <location filename="../../src/gui/rulers/ControllerEventsRuler.cpp" line="+284"/>
         <source>Unsupported Event Type</source>
         <translation>Tukematon tapahtumatyyppi</translation>
     </message>
@@ -13536,13 +13261,13 @@ Ole hyvä ja valitse halutessasi niistä joitakin poistaaksesi ne pysyvästi kov
         <translation>Ohjaintapahtumia</translation>
     </message>
     <message>
-        <location line="+142"/>
+        <location line="+138"/>
         <location line="+22"/>
         <source>Insert Line of Controllers</source>
         <translation>Syötä ohjainjono</translation>
     </message>
     <message>
-        <location line="+122"/>
+        <location line="+119"/>
         <source>Controller Event Number</source>
         <translation>Ohjaintapahtumien määrä</translation>
     </message>
@@ -13560,7 +13285,7 @@ Ole hyvä ja valitse halutessasi niistä joitakin poistaaksesi ne pysyvästi kov
         <translation>(ote)</translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="+16"/>
         <source>(copied)</source>
         <translation>(kopioitu)</translation>
     </message>
@@ -13669,10 +13394,6 @@ Ole hyvä ja valitse halutessasi niistä joitakin poistaaksesi ne pysyvästi kov
 </context>
 <context>
     <name>Rosegarden::DeleteRangeCommand</name>
-    <message>
-        <source>Rejoin Command</source>
-        <translation type="obsolete">Uudelleenliittämiskomento</translation>
-    </message>
     <message>
         <location filename="../../src/commands/segment/DeleteRangeCommand.cpp" line="+322"/>
         <source>Delete Range</source>
@@ -14331,45 +14052,9 @@ Tämä voi aiheuttaa ongelmia, mikäli asetus ylikirjoitetaan myöhemmin toisess
         <translation>Kaava</translation>
     </message>
     <message>
-        <source>Flat - set %1 to value</source>
-        <translation type="obsolete">Alennus - aseta arvoksi %1</translation>
-    </message>
-    <message>
-        <source>Alternating - set %1 to max and min on alternate events</source>
-        <translation type="obsolete">Vaihteleva - aseta %1 vaihtelevien tapahtumien maksimiksi ja minimiksi</translation>
-    </message>
-    <message>
-        <source>Crescendo - set %1 rising from min to max</source>
-        <translation type="obsolete">Voimistuen - aseta %1 nousemaan minimistä maksimiin</translation>
-    </message>
-    <message>
-        <source>Diminuendo - set %1 falling from max to min</source>
-        <translation type="obsolete">Hiljentyen - aseta %1 laskemaan maksimasta minimiin</translation>
-    </message>
-    <message>
-        <source>Ringing - set %1 alternating from max to min with both dying to zero</source>
-        <translation type="obsolete">Huojuva - aseta %1 vaihtelemaan maksimin ja minimin välillä molempien häviten nollaan</translation>
-    </message>
-    <message>
         <location line="-81"/>
         <source>Value</source>
         <translation>Arvo</translation>
-    </message>
-    <message>
-        <source>First Value</source>
-        <translation type="obsolete">Ensimmäinen arvo</translation>
-    </message>
-    <message>
-        <source>Second Value</source>
-        <translation type="obsolete">Toinen arvo</translation>
-    </message>
-    <message>
-        <source>Low Value</source>
-        <translation type="obsolete">Matala arvo</translation>
-    </message>
-    <message>
-        <source>High Value</source>
-        <translation type="obsolete">Korkea arvo</translation>
     </message>
 </context>
 <context>
@@ -14765,22 +14450,6 @@ Haluatko yrittää paikallistaa tiedostoa vai sivuuttaa sen?</translation>
         <translation>Ladataan %1...</translation>
     </message>
     <message>
-        <source>Failed to connect to FTP server</source>
-        <translation type="obsolete">Yhteydenotto FTP-palvelimelle ei onnistunut</translation>
-    </message>
-    <message>
-        <source>Login failed</source>
-        <translation type="obsolete">Kirjautuminen epäonnistui</translation>
-    </message>
-    <message>
-        <source>Failed to change to correct directory</source>
-        <translation type="obsolete">Vaihto oikeaan hakemistoon epäonnistui</translation>
-    </message>
-    <message>
-        <source>FTP download aborted</source>
-        <translation type="obsolete">FTP-lataus keskeytettiin</translation>
-    </message>
-    <message>
         <location line="+292"/>
         <source>Download cancelled</source>
         <translation>Lataus peruutettiin</translation>
@@ -15026,10 +14695,6 @@ Haluatko yrittää paikallistaa tiedostoa vai sivuuttaa sen?</translation>
         <translation>Graafinen suorituskyky</translation>
     </message>
     <message>
-        <source>Normal</source>
-        <translation type="obsolete">Normaali</translation>
-    </message>
-    <message>
         <location line="+6"/>
         <source>Safe</source>
         <translation>Turvallinen</translation>
@@ -15098,10 +14763,6 @@ Haluatko yrittää paikallistaa tiedostoa vai sivuuttaa sen?</translation>
         <location line="+1"/>
         <source>Adobe Acrobat Reader (non-free)</source>
         <translation>Adobe Acrobat Reader (ei-vapaa ohjelma)</translation>
-    </message>
-    <message>
-        <source>KPDF (KDE 3.x)</source>
-        <translation type="obsolete">KPDF (KDE 3.x)</translation>
     </message>
     <message>
         <location line="+4"/>
@@ -15180,13 +14841,6 @@ Haluatko yrittää paikallistaa tiedostoa vai sivuuttaa sen?</translation>
         <location filename="../../src/commands/notation/GeneratedRegionInsertionCommand.cpp" line="+32"/>
         <source>Insert Generated Region</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Rosegarden::Guitar::Fingering</name>
-    <message>
-        <source>couldn&apos;t parse fingering &apos;%1&apos; in &apos;%2&apos;</source>
-        <translation type="obsolete">ei voitu jäsennellä sormitusta &apos;%1&apos; kohdassa &apos;%2&apos;</translation>
     </message>
 </context>
 <context>
@@ -15412,24 +15066,6 @@ Haluatko yrittää paikallistaa tiedostoa vai sivuuttaa sen?</translation>
 </context>
 <context>
     <name>Rosegarden::IdentifyTextCodecDialog</name>
-    <message>
-        <source>Choose Text Encoding</source>
-        <translation type="obsolete">Valitse tekstin koodiaus</translation>
-    </message>
-    <message>
-        <source>
-This file contains text in an unknown language encoding.
-
-Please select one of the following estimated text encodings
-for use with the text in this file:
-</source>
-        <translation type="obsolete">
-Tässä tiedostossa on tuntemattomassa kielikoodauksessa olevaa tekstiä.
-
-Ole hyvä ja valitse yksi seuraavista arvioiduista koodauksista
-tätä tekstiä varten käytettäväksi:
-</translation>
-    </message>
     <message>
         <location filename="../../src/gui/dialogs/IdentifyTextCodecDialog.cpp" line="+69"/>
         <source>Rosegarden</source>
@@ -16200,10 +15836,6 @@ sen sijaan?</translation>
         <translation>Perusasetukset</translation>
     </message>
     <message>
-        <source>Selected tracks</source>
-        <translation type="obsolete">Valitut raidat</translation>
-    </message>
-    <message>
         <location line="+31"/>
         <source>Compatibility level</source>
         <translation>Yhteensopivuustaso</translation>
@@ -16690,10 +16322,6 @@ sen sijaan?</translation>
 <context>
     <name>Rosegarden::LoopRuler</name>
     <message>
-        <source>&lt;qt&gt;&lt;p&gt;Click and drag to move the playback pointer.&lt;/p&gt;&lt;p&gt;Shift-click and drag to set a range for looping or editing.&lt;/p&gt;&lt;p&gt;Shift-click to clear the loop or range.&lt;/p&gt;&lt;p&gt;Double-click to start playback.&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Klikkaa ja vedä siirtääksesi toisto-osoitinta.&lt;/p&gt;&lt;p&gt;Shift-klikkaa ja vedä valitaksesi alueen silmukalle tai muokkaukselle.&lt;/p&gt;&lt;p&gt;Shift-klikkaa tyhjentääksesi silmukan tai alueen.&lt;/p&gt;&lt;p&gt;Tuplaklikkaa aloittaaksesi toiston.&lt;/p&gt;&lt;/qt&gt;</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/rulers/LoopRuler.cpp" line="+80"/>
         <source>&lt;qt&gt;&lt;p&gt;Click and drag to move the playback pointer.&lt;/p&gt;&lt;p&gt;Shift-click and drag to set a range for looping or editing.&lt;/p&gt;&lt;p&gt;Shift-click to clear the loop or range.&lt;/p&gt;&lt;p&gt;Ctrl-click and drag to move the playback pointer with snap to beat.&lt;/p&gt;&lt;p&gt;Double-click to start playback.&lt;/p&gt;&lt;/qt&gt;</source>
         <translation type="unfinished"></translation>
@@ -16890,10 +16518,6 @@ toiston alussa siirrettävän tiedon määrän takia.</translation>
 <context>
     <name>Rosegarden::MIDIInstrumentParameterPanel</name>
     <message>
-        <source>&lt;qt&gt;&lt;p&gt;Set the MIDI channel number.&lt;/p&gt;&lt;p&gt;Before changing this, consider switching to a different instrument instead.  Instruments #1 through #16 match MIDI channels 1 through 16 by default.  You may change this relationship using this control if you wish, but this can lead to confusion&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Aseta MIDI-kanavan numero.&lt;/p&gt;&lt;p&gt;Ennen kuin muutat tätä, harkitse instrumentin vaihtamista tämän sijaan.  Instrumentit #1 - #16 vastaavat oletuksena MIDI-kanavia 1 - 16.  Voit halutessasi muuttaa tätä vastaavuussuhdetta käyttäen tätä ohjainta, mutta se voi johtaa sekaannukseen&lt;/p&gt;&lt;/qt&gt;</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/editors/parameters/MIDIInstrumentParameterPanel.cpp" line="-653"/>
         <source>&lt;qt&gt;Set variations on the program above, if available in the studio&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;Aseta ylläolevan instrumentin variaatioita, jos saatavilla&lt;/qt&gt;</translation>
@@ -16932,10 +16556,6 @@ toiston alussa siirrettävän tiedon määrän takia.</translation>
         <location line="-26"/>
         <source>Program</source>
         <translation>Ohjelma</translation>
-    </message>
-    <message>
-        <source>Channel out</source>
-        <translation type="obsolete">Kanava ulos</translation>
     </message>
     <message>
         <location line="-46"/>
@@ -16981,10 +16601,6 @@ toiston alussa siirrettävän tiedon määrän takia.</translation>
         <location line="-2"/>
         <source>Receive external</source>
         <translation>Vastaanota ulkoinen</translation>
-    </message>
-    <message>
-        <source>[ %1 ]</source>
-        <translation type="obsolete">[ %1 ]</translation>
     </message>
     <message>
         <location line="+88"/>
@@ -17203,10 +16819,6 @@ toiston alussa siirrettävän tiedon määrän takia.</translation>
         <location line="+2"/>
         <source>Recording</source>
         <translation>Nauhoitetaan</translation>
-    </message>
-    <message>
-        <source>Synth plugin </source>
-        <translation type="obsolete">Synth-lisäosa </translation>
     </message>
     <message>
         <location line="+124"/>
@@ -17593,7 +17205,7 @@ Tupla-klikkaa avataksesi merkintöjen muokkaimen.</translation>
         <translation>Muuta voimakkuuksia</translation>
     </message>
     <message>
-        <location line="+31"/>
+        <location line="+34"/>
         <source>Click and drag to scale velocity of selected notes</source>
         <translation>Klikkaa ja vedä muuttaaksesi valittujen nuottien voimakkuutta</translation>
     </message>
@@ -17606,12 +17218,12 @@ Tupla-klikkaa avataksesi merkintöjen muokkaimen.</translation>
 <context>
     <name>Rosegarden::MatrixView</name>
     <message>
-        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="+1361"/>
+        <location filename="../../src/gui/editors/matrix/MatrixView.cpp" line="+1362"/>
         <source>Unknown note insert action %1</source>
         <translation>Tuntematon nuotinsyöttötapahtuma %1</translation>
     </message>
     <message>
-        <location line="-1503"/>
+        <location line="-1504"/>
         <source>&lt;untitled&gt;</source>
         <translation>&lt;ei nimeä&gt;</translation>
     </message>
@@ -17674,7 +17286,7 @@ Tupla-klikkaa avataksesi merkintöjen muokkaimen.</translation>
         <translation>Pois</translation>
     </message>
     <message>
-        <location line="+666"/>
+        <location line="+668"/>
         <source>Estimated time signature shown</source>
         <translation>Näytetään arvioitu tahtilaji</translation>
     </message>
@@ -17689,16 +17301,12 @@ Tupla-klikkaa avataksesi merkintöjen muokkaimen.</translation>
         <translation>Puolisävelten määrällä: </translation>
     </message>
     <message>
-        <location line="+775"/>
+        <location line="+774"/>
         <source>Estimated key signature shown</source>
         <translation>Näytetään arvioitu sävellajimerkintä</translation>
     </message>
     <message>
-        <source>Set Event Velocities</source>
-        <translation type="obsolete">Aseta tapahtumien voimakkuudet</translation>
-    </message>
-    <message>
-        <location line="-1095"/>
+        <location line="-1094"/>
         <source>Trigger Segment</source>
         <translation>Sysäävä osa</translation>
     </message>
@@ -17708,12 +17316,12 @@ Tupla-klikkaa avataksesi merkintöjen muokkaimen.</translation>
         <translation>Poista sysääjät</translation>
     </message>
     <message>
-        <location line="-824"/>
+        <location line="-826"/>
         <source>Matrix</source>
         <translation>Matriisi</translation>
     </message>
     <message>
-        <location line="+1250"/>
+        <location line="+1252"/>
         <source>http://rosegardenmusic.com/wiki/doc:matrix-en</source>
         <translation type="unfinished"></translation>
     </message>
@@ -17729,21 +17337,15 @@ Tupla-klikkaa avataksesi merkintöjen muokkaimen.</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location line="+155"/>
-        <location line="+95"/>
+        <location line="+249"/>
         <source>Rosegarden</source>
         <translation>Rosegarden</translation>
-    </message>
-    <message>
-        <location line="-95"/>
-        <source>Can&apos;t insert note: No grid duration selected</source>
-        <translation>Ei voitu syöttää nuottia: Ruudukon kestoa ei oltu valittu</translation>
     </message>
 </context>
 <context>
     <name>Rosegarden::MatrixWidget</name>
     <message>
-        <location filename="../../src/gui/editors/matrix/MatrixWidget.cpp" line="-848"/>
+        <location filename="../../src/gui/editors/matrix/MatrixWidget.cpp" line="-853"/>
         <source>Zoom</source>
         <translation>Suurennos</translation>
     </message>
@@ -17763,7 +17365,7 @@ Tupla-klikkaa avataksesi merkintöjen muokkaimen.</translation>
         <translation>Nollaa suurennos</translation>
     </message>
     <message>
-        <location line="+1124"/>
+        <location line="+1129"/>
         <source>&lt;qt&gt;Rotate wheel to change the active segment&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;Kierrä kiekkoa valitaksesi aktiivisen osan&lt;/qt&gt;</translation>
     </message>
@@ -17867,13 +17469,6 @@ Tupla-klikkaa avataksesi merkintöjen muokkaimen.</translation>
         <location line="+114"/>
         <source>http://rosegardenmusic.com/wiki/doc:midi-filter-en</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Rosegarden::MidiKeyMapTreeWidgetItem</name>
-    <message>
-        <source>Key Mapping</source>
-        <translation type="obsolete">Kosketinkuvaus</translation>
     </message>
 </context>
 <context>
@@ -18205,13 +17800,13 @@ Tupla-klikkaa avataksesi merkintöjen muokkaimen.</translation>
 <context>
     <name>Rosegarden::NotationConfigurationPage</name>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.h" line="+53"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.h" line="+52"/>
         <location line="+1"/>
         <source>Notation</source>
         <translation>Nuotinnus</translation>
     </message>
     <message>
-        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="+81"/>
+        <location filename="../../src/gui/configuration/NotationConfigurationPage.cpp" line="+80"/>
         <source>Default layout mode</source>
         <translation>Oletustaittotila</translation>
     </message>
@@ -18786,7 +18381,7 @@ Tämä on ohjelmointivirhe (aiemmin ohjelma kaatui tässä kohdassa)</translatio
         </translation>
     </message>
     <message>
-        <location line="+150"/>
+        <location line="+152"/>
         <source>  Font:  </source>
         <translation>  Kirjasin:  </translation>
     </message>
@@ -18806,7 +18401,7 @@ Tämä on ohjelmointivirhe (aiemmin ohjelma kaatui tässä kohdassa)</translatio
         <translation>  Välit:  </translation>
     </message>
     <message numerus="yes">
-        <location line="-118"/>
+        <location line="-120"/>
         <source>  %n event(s) selected </source>
         <translation>
             <numerusform>  %n tapahtuma valittuna</numerusform>
@@ -18819,11 +18414,7 @@ Tämä on ohjelmointivirhe (aiemmin ohjelma kaatui tässä kohdassa)</translatio
         <translation>  Ei valintaa </translation>
     </message>
     <message>
-        <source>Triplet</source>
-        <translation type="obsolete">Tripletti</translation>
-    </message>
-    <message>
-        <location line="+2673"/>
+        <location line="+2676"/>
         <source>Chord</source>
         <translation>Sointu</translation>
     </message>
@@ -18833,7 +18424,7 @@ Tämä on ohjelmointivirhe (aiemmin ohjelma kaatui tässä kohdassa)</translatio
         <translation>Grave</translation>
     </message>
     <message>
-        <location line="-2258"/>
+        <location line="-2259"/>
         <source>Unknown spacing action %1</source>
         <translation>Tuntematon välistystoiminto %1</translation>
     </message>
@@ -18858,10 +18449,6 @@ Tämä on ohjelmointivirhe (aiemmin ohjelma kaatui tässä kohdassa)</translatio
         <translation>LilyPond-esikatselun ominaisuudet</translation>
     </message>
     <message>
-        <source>Export failed.  The file could not be opened for writing.</source>
-        <translation type="obsolete">Vienti epäonnistui.  Tiedostoa ei voitu avata kirjoittamista varten.</translation>
-    </message>
-    <message>
         <location line="+296"/>
         <source>Clipboard is empty</source>
         <translation>Leikepöytä on tyhjä</translation>
@@ -18872,12 +18459,12 @@ Tämä on ohjelmointivirhe (aiemmin ohjelma kaatui tässä kohdassa)</translatio
         <translation>Ei voitu liittää useita osia yhteen</translation>
     </message>
     <message>
-        <location line="-784"/>
+        <location line="-786"/>
         <source>&lt;qt&gt;&lt;p&gt;Apply the interpretations selected on this toolbar to the selection.&lt;/p&gt;&lt;p&gt;If there is no selection, interpretations apply to the entire segment automatically.&lt;/p&gt;&lt;/qt&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+379"/>
+        <location line="+381"/>
         <location line="+173"/>
         <location line="+52"/>
         <location line="+57"/>
@@ -18886,14 +18473,13 @@ Tämä on ohjelmointivirhe (aiemmin ohjelma kaatui tässä kohdassa)</translatio
         <location line="+103"/>
         <location line="+56"/>
         <location line="+898"/>
-        <location line="+729"/>
-        <location line="+850"/>
-        <location line="+269"/>
+        <location line="+730"/>
+        <location line="+1111"/>
         <source>Rosegarden</source>
         <translation>Rosegarden</translation>
     </message>
     <message>
-        <location line="-3055"/>
+        <location line="-3048"/>
         <source>Printing with LilyPond...</source>
         <translation>Tulosta LilyPondilla...</translation>
     </message>
@@ -18925,12 +18511,12 @@ Tämä on ohjelmointivirhe (aiemmin ohjelma kaatui tässä kohdassa)</translatio
         <translation>Ei voitu liittää tähän paikkaan.</translation>
     </message>
     <message>
-        <location line="+2831"/>
+        <location line="+2824"/>
         <source>Move Events to Staff Above</source>
         <translation>Siirrä tapahtumat ylläpuoliseen viivastoon</translation>
     </message>
     <message>
-        <location line="-2690"/>
+        <location line="-2683"/>
         <source>Raising velocities...</source>
         <translation>Voimakkuuksien nosto...</translation>
     </message>
@@ -18940,15 +18526,7 @@ Tämä on ohjelmointivirhe (aiemmin ohjelma kaatui tässä kohdassa)</translatio
         <translation>Voimakkuuksien lasku...</translation>
     </message>
     <message>
-        <source>Set Event Velocities</source>
-        <translation type="obsolete">Aseta tapahtumien voimakkuudet</translation>
-    </message>
-    <message>
-        <source>Setting Velocities...</source>
-        <translation type="obsolete">Aseta voimakkuudet...</translation>
-    </message>
-    <message>
-        <location line="+2837"/>
+        <location line="+2830"/>
         <source>Edit Text Event</source>
         <translation>Muokkaa tekstiä</translation>
     </message>
@@ -18963,7 +18541,7 @@ Tämä on ohjelmointivirhe (aiemmin ohjelma kaatui tässä kohdassa)</translatio
         <translation>Luhistetaan kasaan nuotit...</translation>
     </message>
     <message>
-        <location line="-2154"/>
+        <location line="-2147"/>
         <source>Unknown note insert action %1</source>
         <translation>Tuntematon nuotinsyöttötapahtuma %1</translation>
     </message>
@@ -18981,10 +18559,6 @@ Tämä on ohjelmointivirhe (aiemmin ohjelma kaatui tässä kohdassa)</translatio
         <location line="+2"/>
         <source>Ornament bar %1</source>
         <translation>Koru tahdissa %1</translation>
-    </message>
-    <message>
-        <source>Make Ornament</source>
-        <translation type="obsolete">Tee koru</translation>
     </message>
     <message>
         <location line="+38"/>
@@ -19022,7 +18596,7 @@ Tämä on ohjelmointivirhe (aiemmin ohjelma kaatui tässä kohdassa)</translatio
         <translation>Pedaali</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+17"/>
         <source>There is no sustain controller defined for this device.
 Please ensure the device is configured correctly in the Manage MIDI Devices dialog in the main window.</source>
         <translation>Tälle laitteelle ei oltu määritelty pedaalin ohjainta.
@@ -19074,7 +18648,7 @@ Ole hyvä ja varmista, että laite on määritetty oikein pääikkunan Hallitse 
         <translation>Puolisävelten määrällä: </translation>
     </message>
     <message>
-        <location line="+379"/>
+        <location line="+371"/>
         <source>Time: %1 (%2.%3s)</source>
         <translation>Aika: %1 (%2.%3s)</translation>
     </message>
@@ -19129,16 +18703,11 @@ Ole hyvä ja varmista, että laite on määritetty oikein pääikkunan Hallitse 
         <source>Cycling slashes...</source>
         <translation>Kierrätetään vinoviivoja...</translation>
     </message>
-    <message>
-        <location line="-822"/>
-        <source>Can&apos;t insert note: No note duration selected</source>
-        <translation>Ei voitu lisätä nuottia: Kestoa ei oltu valittu</translation>
-    </message>
 </context>
 <context>
     <name>Rosegarden::NotationWidget</name>
     <message>
-        <location filename="../../src/gui/editors/notation/NotationWidget.cpp" line="-1435"/>
+        <location filename="../../src/gui/editors/notation/NotationWidget.cpp" line="-1461"/>
         <source>Zoom</source>
         <translation>Suurennos</translation>
     </message>
@@ -19163,7 +18732,7 @@ Ole hyvä ja varmista, että laite on määritetty oikein pääikkunan Hallitse 
         <translation>Sulje raitojen otsikot</translation>
     </message>
     <message>
-        <location line="+1445"/>
+        <location line="+1471"/>
         <location line="+1"/>
         <source>&lt;qt&gt;Rotate wheel to change the active segment&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;Kierrä kiekkoa valitaksesi aktiivisen osan&lt;/qt&gt;</translation>
@@ -19385,10 +18954,6 @@ Ole hyvä ja varmista, että laite on määritetty oikein pääikkunan Hallitse 
 <context>
     <name>Rosegarden::PitchBendSequenceDialog</name>
     <message>
-        <source>Pitch Bend Sequence</source>
-        <translation type="obsolete">Taivutusjakso</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/dialogs/PitchBendSequenceDialog.cpp" line="+129"/>
         <source>Preset</source>
         <translation>Esivalinta</translation>
@@ -19397,10 +18962,6 @@ Ole hyvä ja varmista, että laite on määritetty oikein pääikkunan Hallitse 
         <location line="+5"/>
         <source>Preset:</source>
         <translation>Esivalinta:</translation>
-    </message>
-    <message>
-        <source>User</source>
-        <translation type="obsolete">Käyttäjä</translation>
     </message>
     <message>
         <location line="-67"/>
@@ -19630,14 +19191,6 @@ Ole hyvä ja varmista, että laite on määritetty oikein pääikkunan Hallitse 
         <translation>Esitaivutus</translation>
     </message>
     <message>
-        <source>Value (%):</source>
-        <translation type="obsolete">Arvo (%):</translation>
-    </message>
-    <message>
-        <source>Duration (%):</source>
-        <translation type="obsolete">Kesto (%):</translation>
-    </message>
-    <message>
         <location line="+50"/>
         <source>Ramp duration (%):</source>
         <translation>Rampin kesto (%):</translation>
@@ -19658,25 +19211,9 @@ Ole hyvä ja varmista, että laite on määritetty oikein pääikkunan Hallitse 
         <translation>Loppuarvo (%):</translation>
     </message>
     <message>
-        <source>Vibrato start amplitude (%):</source>
-        <translation type="obsolete">Vibraaton alkuamplitudi (%):</translation>
-    </message>
-    <message>
-        <source>Vibrato end amplitude (%):</source>
-        <translation type="obsolete">Vibraaton loppuamplitudi (%):</translation>
-    </message>
-    <message>
         <location line="-28"/>
         <source>Bend Sequence</source>
         <translation>Taivutusjakso</translation>
-    </message>
-    <message>
-        <source>Vibrato wavelength:</source>
-        <translation type="obsolete">Vibraaton aallonpituus:</translation>
-    </message>
-    <message>
-        <source>Resolution:</source>
-        <translation type="obsolete">Tarkkuus:</translation>
     </message>
     <message>
         <location line="+190"/>
@@ -20009,17 +19546,9 @@ Ole hyvä ja varmista, että laite on määritetty oikein pääikkunan Hallitse 
 <context>
     <name>Rosegarden::ProgressDialog</name>
     <message>
-        <source>Processing...</source>
-        <translation type="obsolete">Käsitellään...</translation>
-    </message>
-    <message>
         <location filename="../../src/gui/widgets/ProgressDialog.cpp" line="+65"/>
         <source>Rosegarden</source>
         <translation type="unfinished">Rosegarden</translation>
-    </message>
-    <message>
-        <source>&lt;qt&gt;&lt;h3&gt;Processing...&lt;/h3&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;h3&gt;Käsitellään...&lt;/h3&gt;&lt;/qt&gt;</translation>
     </message>
 </context>
 <context>
@@ -20145,10 +19674,6 @@ Ole hyvä ja varmista, että laite on määritetty oikein pääikkunan Hallitse 
         <translation>&lt;qt&gt;&lt;p&gt;Tiedostojen pakkaus epäonnistui arvolla %1. Rivin &quot;exit %1&quot; etsiminen tiedostosta %2 voi olla hyödyllistä vian etsintää ajatellen.&lt;/p&gt;%3&lt;/qt&gt;</translation>
     </message>
     <message>
-        <source>&lt;qt&gt;&lt;p&gt;Unable to read to temporary file list.&lt;/p&gt;%1&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Ei voitu lukea väliaikaista tiedostolistaa.&lt;/p&gt;%1&lt;/qt&gt;</translation>
-    </message>
-    <message>
         <location line="+257"/>
         <source>&lt;qt&gt;&lt;p&gt;Extracting and decoding files failed with exit status %1. Checking %2 for the line that ends with &quot;exit %1&quot; may be useful for diagnostic purposes.&lt;/p&gt;%3&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;&lt;p&gt;Tiedostojen purku epäonnistui arvolla %1. Rivin &quot;exit %1&quot; etsiminen tiedostosta %2 voi olla hyödyllistä vian etsintää ajatellen.&lt;/p&gt;%3&lt;/qt&gt;</translation>
@@ -20214,13 +19739,6 @@ Ole hyvä ja varmista, että laite on määritetty oikein pääikkunan Hallitse 
         <location line="+2"/>
         <source>&lt;qt&gt;Could not start backend processing script %1.&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;Komentojonoa %1 ei voitu käynnistää.&lt;/qt&gt;</translation>
-    </message>
-</context>
-<context>
-    <name>Rosegarden::PropertyViewRuler</name>
-    <message>
-        <source>%1 controller</source>
-        <translation type="obsolete">%1 ohjaaja</translation>
     </message>
 </context>
 <context>
@@ -20311,12 +19829,12 @@ Ole hyvä ja varmista, että laite on määritetty oikein pääikkunan Hallitse 
     </message>
     <message>
         <location line="+2"/>
-        <location line="+140"/>
+        <location line="+118"/>
         <source>None</source>
         <translation>Ei mitään</translation>
     </message>
     <message>
-        <location line="-139"/>
+        <location line="-117"/>
         <source>2-in-the-time-of-3</source>
         <translation>2 ajassa 3</translation>
     </message>
@@ -20381,7 +19899,7 @@ Ole hyvä ja varmista, että laite on määritetty oikein pääikkunan Hallitse 
         <translation>Jaa-ja-sido päällekkäiset soinnut</translation>
     </message>
     <message>
-        <location line="+99"/>
+        <location line="+77"/>
         <source>Full quantize</source>
         <translation>Täysi yksiköinti</translation>
     </message>
@@ -20682,10 +20200,6 @@ Tiedostomuodossa voi olla joitain yhteensopimattomuuksia.</translation>
         <translation>Rosegarden</translation>
     </message>
     <message>
-        <source>Open Directory</source>
-        <translation type="obsolete">Avaa hakemisto</translation>
-    </message>
-    <message>
         <location line="+1335"/>
         <source>Loading plugins...</source>
         <translation>Ladataan lisäosat...</translation>
@@ -20726,7 +20240,7 @@ Tiedostomuodossa voi olla joitain yhteensopimattomuuksia.</translation>
         <location line="+45"/>
         <location line="+42"/>
         <location line="+405"/>
-        <location line="+655"/>
+        <location line="+658"/>
         <location line="+25"/>
         <location line="+3"/>
         <location line="+37"/>
@@ -20738,7 +20252,7 @@ Tiedostomuodossa voi olla joitain yhteensopimattomuuksia.</translation>
         <translation>Rosegarden</translation>
     </message>
     <message>
-        <location line="-2509"/>
+        <location line="-2512"/>
         <source>Could not save document at %1</source>
         <translation>Dokumenttia %1 ei voitu tallentaa</translation>
     </message>
@@ -20836,7 +20350,7 @@ Ole hyvä ja valitse haluamasi tiedostot poistaaksesi ne pysyvästi kovalevyltä
         <translation>Väliaikaisen tiedoston &apos;%1&apos; uudelleen nimeäminen halutuksi ulostulotiedostoksi &apos;%2&apos; epäonnistui</translation>
     </message>
     <message>
-        <location line="+1818"/>
+        <location line="+1822"/>
         <source>Warning</source>
         <translation type="unfinished">Varoitus</translation>
     </message>
@@ -20845,14 +20359,12 @@ Ole hyvä ja valitse haluamasi tiedostot poistaaksesi ne pysyvästi kovalevyltä
         <source>The audio file path does not exist or is not writable.
 Please set the audio file path to a valid directory in Document Properties before recording audio.
 Would you like to set it now?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Äänitiedostopolkua ei ole tai kirjoitus siihen ei onnistu.
+Ole hyvä ja aseta äänitiedostopoluksi kelpo hakemisto Asiakirjan ominaisuuksista ennen nauhoittamista.
+Haluatko asettaa sen nyt?</translation>
     </message>
     <message>
-        <source>Saving file...</source>
-        <translation type="obsolete">Tiedoston tallennus...</translation>
-    </message>
-    <message>
-        <location line="-1632"/>
+        <location line="-1633"/>
         <source>Error while writing on &apos;%1&apos;</source>
         <translation>Virhe kirjoitettaessa paikkaan &apos;%1&apos;</translation>
     </message>
@@ -20909,10 +20421,6 @@ We recommend you re-save this file from this version of Rosegarden to ensure tha
         <translation>Tämä tiedosto sisältää yhden tai useampia vanhoja osasten tyyppejä, jota ovat nyt vanhentuneita.
 Tuki näille osasille voi kadota tulevissa Rosegardenin versioissa.
 Suosittelemme, että talletat tämän tiedoston tällä Rosegarden-versiolla varmistaaksesi, että se voidaan ladata vielä tulevissa versioissa.</translation>
-    </message>
-    <message>
-        <source>&lt;qt&gt;&lt;h2&gt;Channels were remapped&lt;/h2&gt;&lt;p&gt;Beginning with version 10.02, Rosegarden no longer provides controls for changing the channel associated with each MIDI instrument.  Instead, each instrument uses the same channel as its instrument number.  For example, &quot;MIDI Input System Device #12&quot; always uses channel 12.&lt;/p&gt;&lt;p&gt;The file you just loaded contained instruments whose channels differed from the instrument numbers.  These channels have been reassigned so that instrument #1 will always use channel 1, regardless of what channel it might have used previously.  In most cases, you will experience no difference, but you may have to make some small changes to this file in order for it to play as intended.  We recommend that you save this file in order to avoid seeing this warning in the future.&lt;/p&gt;&lt;p&gt;We apologize for any inconvenience.&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;h2&gt;Kanavat järjesteltiin uudestaan&lt;/h2&gt;&lt;p&gt;Versiosta 10.02 alkaen Rosegardenissa ei ole mahdollista määritellä kunkin MIDI-instrumentin kanavaa.  Sitävastoin jokainen instrumentti käyttää instumenttinumeron mukaista kanavaa.  Esimerkiksi &quot;MIDI-järjestelmälaite #12&quot; käyttää aina kanavaa 12.&lt;/p&gt;&lt;p&gt;Juuri lataamasi tiedosto sisälsi instrumentteja joiden kanava poikkesi instrumenttinumerosta.  Nämä kanavat on määritelty uudelleen siten että instrumentti #1 käyttää aina kanavaa 1 riippumatta siitä mitä kanavaa se käytti aikaisemmin.  Useimmissa tapauksissa et havaitse eroa, mutta saatat joutua tekemään pieniä muutoksia tähän tiedostoon jotta se soi aiotulla tavalla.  Suosittelemme että tallennat tämän tiedoston välttääksesi näkemästä tätä varoitusta tulevaisuudessa.&lt;/p&gt;&lt;p&gt;Olemme pahoillamme mahdollisesta vaivasta.&lt;/p&gt;&lt;/qt&gt;</translation>
     </message>
     <message>
         <location line="+650"/>
@@ -20983,10 +20491,6 @@ Katso Muokkaa -&gt; Asetukset -&gt; Ääni.</translation>
         <location line="+3"/>
         <source>Cannot add dropped file.  This version of rosegarden was not built with audio support.</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>importing a remote audio file</source>
-        <translation type="obsolete">tuodaan ulkoista äänitiedostoa</translation>
     </message>
     <message>
         <location line="+28"/>
@@ -21204,10 +20708,6 @@ Virhe oli: %2</translation>
         <translation>Tiedoston tallennus...</translation>
     </message>
     <message>
-        <source>Save File</source>
-        <translation type="obsolete">Tallenna tiedosto</translation>
-    </message>
-    <message>
         <location line="+111"/>
         <source>&lt;qt&gt;Sorry.&lt;br&gt;&quot;%1&quot; is not a valid filename.&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;Valitan.&lt;br&gt;&quot;%1&quot; ei ole kelpo tiedostonnimi.&lt;/qt&gt;</translation>
@@ -21221,10 +20721,6 @@ Virhe oli: %2</translation>
         <location line="+8"/>
         <source>The specified file exists.  Overwrite?</source>
         <translation>Määritetty tiedosto on jo olemassa.  Kirjoitetaanko päälle?</translation>
-    </message>
-    <message>
-        <source>Saving file%1with a new filename...</source>
-        <translation type="obsolete">Tallennetaan tiedosto %1 uudella nimellä...</translation>
     </message>
     <message>
         <location line="+27"/>
@@ -21245,14 +20741,6 @@ Virhe oli: %2</translation>
         <location line="+54"/>
         <source>Closing file...</source>
         <translation>Suljetaan tiedosto...</translation>
-    </message>
-    <message>
-        <source>Printing...</source>
-        <translation type="obsolete">Tulostetaan...</translation>
-    </message>
-    <message>
-        <source>Previewing...</source>
-        <translation type="obsolete">Esikatsellaan...</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -21590,18 +21078,6 @@ Haluatko asettaa sen nyt?</translation>
         <location line="+21"/>
         <source>Can&apos;t load X11 Rosegarden file.  It appears to be corrupted.</source>
         <translation>Ei voitu ladata X11 Rosegarden -tiedostoa.  Se vaikuttaa olevan viallinen.</translation>
-    </message>
-    <message>
-        <source>Open Hydrogen File</source>
-        <translation type="obsolete">Avaa Hydrogen-tiedosto</translation>
-    </message>
-    <message>
-        <source>Importing Hydrogen file...</source>
-        <translation type="obsolete">Tuo Hydrogen-tiedosto...</translation>
-    </message>
-    <message>
-        <source>Can&apos;t load Hydrogen file.  It appears to be corrupted.</source>
-        <translation type="obsolete">Ei voitu ladata Hydrogen-tiedostoa.  Se vaikuttaa olevan viallinen.</translation>
     </message>
     <message>
         <location line="+1035"/>
@@ -22500,8 +21976,16 @@ Haluatko asettaa sen nyt?</translation>
         <source>Click and drag to select segments</source>
         <translation>Klikkaa ja vedä valitaksesi osia</translation>
     </message>
+    <message numerus="yes">
+        <location line="+207"/>
+        <source>Move %n Segment(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
     <message>
-        <location line="+347"/>
+        <location line="+141"/>
         <source>Hold Shift to avoid snapping to beat grid</source>
         <translation>Klikkaa Shift välttääksesi iskuruudukkoon lukkiutumisen</translation>
     </message>
@@ -22531,27 +22015,14 @@ Haluatko asettaa sen nyt?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Click and drag to move segments; hold Ctrl as well to copy them</source>
-        <translation type="obsolete">Klikkaa ja vedä siirtääksesi osat; pidä myös Ctrl pohjassa kopioidaksesi ne</translation>
-    </message>
-    <message>
         <location line="-4"/>
         <source>Click and drag to copy segments</source>
         <translation>Klikkaa ja vedä kopioidaksesi osat</translation>
     </message>
     <message>
-        <source>Click and drag to move segment; hold Ctrl as well to copy it; double-click to edit</source>
-        <translation type="obsolete">Klikkaa ja vedä siirtääksesi osan; pidä myös Ctrl pohjassa kopioidaksesi sen; tuplaklikkaa muokataksesi</translation>
-    </message>
-    <message>
         <location line="+6"/>
         <source>Click and drag to copy segment</source>
         <translation>Klikkaa ja vedä kopioidaksesi osan</translation>
-    </message>
-    <message>
-        <location line="-293"/>
-        <source>Move Segment(s)</source>
-        <translation type="unfinished">Siirrä osa</translation>
     </message>
 </context>
 <context>
@@ -22619,22 +22090,11 @@ Haluatko asettaa sen nyt?</translation>
     </message>
 </context>
 <context>
-    <name>Rosegarden::SegmentSplitTwiceCommand</name>
-    <message>
-        <source>Split Twice Segment</source>
-        <translation type="obsolete">Jaa osa kahtia</translation>
-    </message>
-</context>
-<context>
     <name>Rosegarden::SegmentSplitter</name>
     <message>
         <location filename="../../src/gui/editors/segment/compositionview/SegmentSplitter.cpp" line="+61"/>
         <source>Click on a segment to split it in two; hold Shift to avoid snapping to beat grid</source>
         <translation>Klikkaa osan päällä halkaistaksesi sen kahtia, pidä Shift pohjassa välttääksesi iskuruudukkoon lukkiutumisen</translation>
-    </message>
-    <message>
-        <source>Click on a segment to split it in two</source>
-        <translation type="obsolete">Klikkaa osaa halkaistaksesi sen kahtia</translation>
     </message>
 </context>
 <context>
@@ -23474,17 +22934,6 @@ Toisten ohjelmien lopettaminen saattaa parantaa Rosegardenin suorituskykyä.</tr
         <location line="+6"/>
         <source>Rosegarden</source>
         <translation>Rosegarden</translation>
-    </message>
-</context>
-<context>
-    <name>Rosegarden::Studio</name>
-    <message>
-        <source>Audio</source>
-        <translation type="obsolete">Ääni</translation>
-    </message>
-    <message>
-        <source>Synth plugin</source>
-        <translation type="obsolete">Synth-lisäosa</translation>
     </message>
 </context>
 <context>
@@ -24378,18 +23827,6 @@ Toisten ohjelmien lopettaminen saattaa parantaa Rosegardenin suorituskykyä.</tr
         <translation>&lt;ei nimeä&gt;</translation>
     </message>
     <message>
-        <source>Warning</source>
-        <translation type="obsolete">Varoitus</translation>
-    </message>
-    <message>
-        <source>The audio file path does not exist or is not writable.
-Please set the audio file path to a valid directory in Document Properties before recording audio.
-Would you like to set it now?</source>
-        <translation type="obsolete">Äänitiedostopolkua ei ole tai kirjoitus siihen ei onnistu.
-Ole hyvä ja aseta tiedostopoluksi kelvollinen hakemisto Asiakirjan ominaisuuksista ennen nauhoittamista.
-Haluatko asettaa sen nyt?</translation>
-    </message>
-    <message>
         <location line="+849"/>
         <source>Mute track</source>
         <translation>Vaienna raita</translation>
@@ -24402,14 +23839,6 @@ Haluatko asettaa sen nyt?</translation>
 </context>
 <context>
     <name>Rosegarden::TrackEditor</name>
-    <message>
-        <source>Turn Repeating Segment into Real Copies</source>
-        <translation type="obsolete">Muuta kertautuva osa todellisiksi kopioiksi</translation>
-    </message>
-    <message>
-        <source>Turn Repeating Segments into Real Copies</source>
-        <translation type="obsolete">Muuta kertautuvat osat todellisiksi kopioiksi</translation>
-    </message>
     <message>
         <location filename="../../src/gui/editors/segment/TrackEditor.cpp" line="+379"/>
         <source>Delete Tracks</source>
@@ -24446,17 +23875,9 @@ Haluatko asettaa sen nyt?</translation>
         <source>Rosegarden cannot accept dropped files of this type.</source>
         <translation>Rosegarden ei kelpuuta tämän tyyppisiä pudotettuja tiedostoja.</translation>
     </message>
-    <message>
-        <source>You can&apos;t drop files into Rosegarden from this client.  Try using Konqueror instead.</source>
-        <translation type="obsolete">Et voi pudottaa tiedostoja Rosegardenille tältä asiakasohjelmalta.  Yritä Konqueror:in käyttöä sen sijaan.</translation>
-    </message>
 </context>
 <context>
     <name>Rosegarden::TrackLabel</name>
-    <message>
-        <source>&lt;qt&gt;Click and hold with either mouse button to assign this track to an instrument.&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;Klikkaa ja pidä kumpaa hyvänsä hiiren nappia liittääksesi tämän raidan instrumenttiin.&lt;/qt&gt;</translation>
-    </message>
     <message>
         <location filename="../../src/gui/editors/segment/TrackLabel.cpp" line="+61"/>
         <source>&lt;qt&gt;&lt;p&gt;Click to select all the segments on this track.&lt;/p&gt;&lt;p&gt;Shift+click to add to or to remove from the selection all the segments on this track.&lt;/p&gt;&lt;p&gt;Click and hold with either mouse button to assign this track to an instrument.&lt;/p&gt;&lt;/qt&gt;</source>
@@ -24661,10 +24082,6 @@ Haluatko asettaa sen nyt?</translation>
         <location line="-227"/>
         <source>&lt;qt&gt;&lt;p&gt;Choose the device this track will use for playback.&lt;/p&gt;&lt;p&gt;Click &lt;img src=&quot;:pixmaps/toolbar/manage-midi-devices.xpm&quot;&gt; to connect this device to a useful output if you do not hear sound&lt;/p&gt;&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;&lt;p&gt;Valitse raidan toistoon käyttämä laite.&lt;/p&gt;&lt;p&gt;Klikkaa &lt;img src=&quot;:pixmaps/toolbar/manage-midi-devices.xpm&quot;&gt; kytkeäksesi tämä laite käyttökelpoiseen ulostuloon jos et kuule ääntä&lt;/p&gt;&lt;/qt&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;qt&gt;&lt;p&gt;This track will only record Audio/ MIDI from the selected device, filtering anything else out&lt;/p&gt;&lt;/qt&gt;</source>
-        <translation type="obsolete">&lt;qt&gt;&lt;p&gt;Tämä raita nauhoittaa ääntä/ MIDI-dataa vain valitusta laitteesta, kaikki muu suodatetaan pois&lt;/p&gt;&lt;/qt&gt;</translation>
     </message>
     <message>
         <location line="+55"/>
@@ -25199,13 +24616,6 @@ Haluatko asettaa sen nyt?</translation>
     </message>
 </context>
 <context>
-    <name>Rosegarden::Ui</name>
-    <message>
-        <source>[ No port ]</source>
-        <translation type="obsolete">[ Ei porttia ]</translation>
-    </message>
-</context>
-<context>
     <name>Rosegarden::UnGraceCommand</name>
     <message>
         <location filename="../../src/commands/notation/UnGraceCommand.h" line="+43"/>
@@ -25439,13 +24849,6 @@ Haluatko asettaa sen nyt?</translation>
         <location line="+1"/>
         <source>&lt;qt&gt;&lt;p&gt;Rosegarden is using safe graphics mode.  This provides the greatest stability, but graphics performance is very slow.&lt;/p&gt;&lt;p&gt;You may wish to visit &lt;b&gt;Edit -&gt; Preferences -&gt; Behavior -&gt; Graphics performance&lt;/b&gt; and try &quot;Normal&quot; or &quot;Fast&quot; for better performance.&lt;/p&gt;&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;&lt;p&gt;Rosegarden käyttää turvallista grafiikkatilaa.  Tämä on vaikain, mutta grafiikan piirtonopeus on hidas.&lt;/p&gt;&lt;p&gt;Saatat haluta kokeilla normaalia tai nopeata tilaa &lt;b&gt;Muokkaa -&gt; Asetukset... -&gt; Käytös -&gt; Graafinen suorituskyky&lt;/b&gt; -valikosta.&lt;/p&gt;&lt;/qt&gt;</translation>
-    </message>
-</context>
-<context>
-    <name>RosegardenDocument</name>
-    <message>
-        <source>(recorded)</source>
-        <translation type="obsolete">(nauhoitettu)</translation>
     </message>
 </context>
 <context>
