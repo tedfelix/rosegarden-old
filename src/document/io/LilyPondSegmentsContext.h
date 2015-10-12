@@ -97,7 +97,7 @@ public:
     timeT getFirstSegmentStartTime() { return m_firstSegmentStartTime; }
 
     /**
-     * Return the smaller start time of the segments being exported.
+     * Return the larger end time of the segments being exported.
      * Only valid after precompute() has been executed.
      */
     timeT getLastSegmentEndTime() { return m_lastSegmentEndTime; }
@@ -170,8 +170,17 @@ public:
      * Return the text of the current volta.
      */
     std::string getVoltaText();
+    
+    /**
+     * Return true if LilyPond automatic volta mode is usable.
+     * Valid as soon as precompute() has been executed.
+     * 
+     * Currently, this is a global flag: automatic and manual repeat/volta
+     * are not mixed in the same score.
+     */
+    bool isAutomaticVoltaUsable() { return m_automaticVoltaUsable; } 
 
-    /// Only for debug
+    /// Only for instrumentation while debugging
     void dump();
 
 protected :
@@ -277,6 +286,10 @@ private :
     */
     void sortAndGatherVolta(SegmentDataList &);
 
+    // Only for instrumentation while debugging
+    void dumpSDL(SegmentDataList & l);
+
+    
     TrackMap m_segments;
 
     LilyPondExporter * m_exporter;
@@ -285,6 +298,7 @@ private :
     timeT m_epsilon;
     timeT m_firstSegmentStartTime;
     timeT m_lastSegmentEndTime;
+    bool m_automaticVoltaUsable;
 
     TrackMap::iterator m_trackIterator;
     SegmentSet::iterator m_segIterator;
