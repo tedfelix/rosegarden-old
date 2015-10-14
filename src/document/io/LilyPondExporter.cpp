@@ -625,12 +625,12 @@ LilyPondExporter::write()
     if (illegalFilename) {
         CurrentProgressDialog::freeze();
         int reply = QMessageBox::question(
-                                          dynamic_cast<QWidget*>(qApp),
-                                          baseName, 
-                                          tr("LilyPond does not allow spaces or backslashes in filenames.\n\n"
-                                             "Would you like to use\n\n %1\n\n instead?"),
-                                          QMessageBox::Yes |QMessageBox::Cancel,
-                                          QMessageBox::Cancel);
+                dynamic_cast<QWidget*>(qApp),
+                baseName, 
+                QObject::tr("LilyPond does not allow spaces or backslashes in filenames.\n\n"
+                            "Would you like to use\n\n %1\n\n instead?"),
+                QMessageBox::Yes |QMessageBox::Cancel,
+                QMessageBox::Cancel);
         if (reply != QMessageBox::Yes)
             return false;
     }
@@ -638,7 +638,7 @@ LilyPondExporter::write()
     std::ofstream str(qstrtostr(tmpName).c_str(), std::ios::out);
     if (!str) {
         std::cerr << "LilyPondExporter::write() - can't write file " << tmpName << std::endl;
-        m_warningMessage = tr("Export failed.  The file could not be opened for writing.");
+        m_warningMessage = QObject::tr("Export failed.  The file could not be opened for writing.");
         return false;
     }
 
@@ -807,7 +807,7 @@ LilyPondExporter::write()
             << "<<" << " s4 " << ">>" << std::endl;
         str << indent(col) << "\\layout { }" << std::endl;
         str << indent(--col) << "}" << std::endl;
-        m_warningMessage = tr("Export succeeded, but the composition was empty.");
+        m_warningMessage = QObject::tr("Export succeeded, but the composition was empty.");
         return false;
     }
     timeT compositionStartTime = (*i)->getStartTime();
@@ -849,18 +849,18 @@ LilyPondExporter::write()
                 break;
                 
             case EXPORT_NONMUTED_TRACKS :
-                m_warningMessage = tr("Export of unmuted tracks failed.  There"
+                m_warningMessage = QObject::tr("Export of unmuted tracks failed.  There"
                                       " are no unmuted tracks or no segments on"
                                       " them.");
                 break;
                 
             case EXPORT_SELECTED_TRACK :
-                m_warningMessage = tr("Export of selected track failed.  There"
+                m_warningMessage = QObject::tr("Export of selected track failed.  There"
                                       " are no segments on the selected track.");
                 break;
                 
             case EXPORT_SELECTED_SEGMENTS :
-                m_warningMessage = tr("Export of selected segments failed.  No"
+                m_warningMessage = QObject::tr("Export of selected segments failed.  No"
                                       " segments are selected.");
                 break;
                 
@@ -1444,6 +1444,8 @@ LilyPondExporter::write()
                 str << std::endl << indent(col++) << "\\context Voice = \"" << voiceNumber.str()
                     << "\" {"; // indent+
 
+                str << std::endl << indent(col) << "% Segment: " << seg->getLabel();
+                
                 str << std::endl << indent(col) << "\\override Voice.TextScript #'padding = #2.0";
                 str << std::endl << indent(col) << "\\override MultiMeasureRest #'expand-limit = 1" << std::endl;
 
@@ -1593,12 +1595,36 @@ LilyPondExporter::write()
                          !haveRepeatingWithVolta &&
                          !haveVolta) {
                     if (!lsc.isVolta()) {
-                        str << std::endl << indent(col++) 
-                            << "\\repeat volta " << lsc.getNumberOfRepeats() << " {";
+                        str << std::endl << indent(col++); 
+                        if (lsc.isAutomaticVoltaUsable()) {
+                            str << "\\repeat volta "
+                                << lsc.getNumberOfRepeats() << " ";
+                        }
+                        // Opening of main repeating segment
+                        str << "{   % Repeating stegment start here";
+                        str << std::endl << indent(col)
+                            << "% Segment: " << seg->getLabel();
                         haveRepeatingWithVolta = true;
+                        if (!lsc.isAutomaticVoltaUsable()) {
+                           str << std::endl << indent(col)
+                               << "\\set Score.repeatCommands = #'(start-repeat)";
+                        }
                     } else {
+                        str << std::endl << indent(col) 
+                            << "{   % Alternative start here";
                         str << std::endl << indent(col++) 
-                            << "{     % Alternative start here";
+                            << "    % Segment: " << seg->getLabel();
+                        if (!lsc.isAutomaticVoltaUsable()) {
+                            str << std::endl << indent(col)
+                                << "\\set Score.repeatCommands = ";
+                            if (lsc.isFirstVolta()) {   
+                                str << "#'((volta \""
+                                    << lsc.getVoltaText() << "\"))";
+                            } else {
+                                str << "#'((volta #f) (volta \""
+                                    << lsc.getVoltaText() << "\") end-repeat)";
+                            }
+                        }
                         if (m_voltaBar) {
                             str << std::endl << indent(col) 
                                 << "\\bar \"|\" ";
@@ -1667,8 +1693,11 @@ LilyPondExporter::write()
             // Open alternate parts if repeat with volta from linked segments
             if (haveRepeatingWithVolta) {
                 if (!lsc.isVolta()) {
-                    str << std::endl << indent(--col) << "} \% close main repeat ";
-                    str << std::endl << indent (col++) << "\\alternative {" <<  std::endl;
+                    str << std::endl << indent(--col) << "} \% close main repeat";
+                    if (lsc.isAutomaticVoltaUsable()) {
+                        str << std::endl << indent (col++) << "\\alternative  {";
+                    }
+                    str <<  std::endl;
                 } else {
                     // Close alternative segment
                     str << std::endl << indent(--col) << "}";
@@ -1687,11 +1716,27 @@ LilyPondExporter::write()
 
             if (lsc.isVolta()) {
                 // close volta
+                if (!lsc.isAutomaticVoltaUsable() && lsc.isLastVolta()) {
+                    str << std::endl << indent (col)
+                        << "\\set Score.repeatCommands = ";
+                    if (lsc.getVoltaRepeatCount() > 1) {
+                        str << "#'((volta #f) end-repeat)";
+                    } else {
+                        str << "#'((volta #f))";
+                    }
+                    if (lsc.getVoltaRepeatCount() < 1) {
+                        std::cerr << "BUG in LilyPondExporter : "
+                                  << "lsc.getVoltaRepeatCount() = "
+                                  << lsc.getVoltaRepeatCount() << std::endl;
+                    }
+                }
                 str << std::endl << indent(--col) << "}" << std::endl;  // indent-
 
                 if (lsc.isLastVolta()) {
-                    // close alternative section
-                    str << std::endl << indent(--col) << "}" << std::endl;  // indent-
+                    if (lsc.isAutomaticVoltaUsable()) {
+                        // close alternative section
+                        str << std::endl << indent(--col) << "}" << std::endl;  // indent-
+                    }
 
                    // close Voice context
                     str << std::endl << indent(--col) << "} % Voice" << std::endl;  // indent-
@@ -2684,7 +2729,7 @@ LilyPondExporter::writeBar(Segment *s,
     if (overlong) {
         str << std::endl << indent(col) <<
             qstrtostr(QString("% %1").
-                      arg(tr("warning: overlong bar truncated here")));
+                      arg(QObject::tr("warning: overlong bar truncated here")));
     }
 
     //
@@ -2695,7 +2740,7 @@ LilyPondExporter::writeBar(Segment *s,
         fractionSmaller(durationRatioSum, barDurationRatio)) {
         str << std::endl << indent(col) <<
             qstrtostr(QString("% %1").
-                      arg(tr("warning: bar too short, padding with rests")));
+                      arg(QObject::tr("warning: bar too short, padding with rests")));
         str << std::endl << indent(col) <<
             qstrtostr(QString("% %1 + %2 < %3  &&  %4/%5 < %6/%7").
                       arg(barStart).
