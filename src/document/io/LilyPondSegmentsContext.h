@@ -25,7 +25,9 @@
  * This file defines a class which maintains the context of the segments
  * which have to be exported to LilyPond.
  *
- * This context is used to 
+ * This class is used to 
+ *      - Hide the segments of the composition which are not exported
+ *      - Simplify the access of voices inside a same track
  *      - See when a repeating segment may be printed inside
  *        repeat bars. (i.e. when no other unrepeating segment
  *        coexists at the same time on an other track).
@@ -120,13 +122,15 @@ public:
     int getTrackPos();
 
     /**
-     * Prepare to get the segments on the first voice of the first track.
+     * Prepare to get the segments on the first voice of the current track.
+     * Return the voice index of the first voice.
      * Return -1 if there is no track.
      */
     int useFirstVoice();
 
     /**
      * Go to the next voice.
+     * Return the voice index of this voice.
      * Return -1 if there is no more voice.
      */
     int useNextVoice();
@@ -200,6 +204,14 @@ public:
     int getVoltaRepeatCount();
     
     /**
+     * Return the last key signature defined on the last contiguous segment
+     * on the same voice.
+     * Return an undefined key (or default key) if the previous segment is
+     * not contiguous or if there is no previous segment.
+     */
+    Rosegarden::Key getPreviousKey();
+    
+    /**
      * Return true if LilyPond automatic volta mode is usable.
      * Valid as soon as precompute() has been executed.
      * 
@@ -211,28 +223,18 @@ public:
     /// Only for instrumentation while debugging
     void dump();
 
-protected :
-
-    /**
-     * Look in the specified voice of the specified track for linked segments
-     * which may be exported as repeat with volta and mark them accordingly.
-     */
-    void lookForRepeatedLinks(int trackId, int voiceIndex);
-
 
 private :
+    
+    struct SegmentData;
 
-    typedef std::list<Segment *> SegmentList;   /// CURRENTLY NOT USED
-  
     struct Volta {
-        Segment * segment;
-        timeT duration;
+        const SegmentData * data;
         std::set<int> voltaNumber;
 
-        Volta(Segment * seg, timeT voltaDuration, int number)
+        Volta(const SegmentData *sd, int number)
         {
-            segment = seg;
-            duration = voltaDuration;
+            data = sd;
             voltaNumber.insert(number);
         }
     };
@@ -263,6 +265,8 @@ private :
         mutable timeT startTime;              // In LilyPond output
         mutable timeT endTime;                // In LilyPond output
 
+        mutable Rosegarden::Key previousKey;  // Last key in the previous segment
+
         SegmentData(Segment * seg)
         {
             segment = seg;
@@ -281,6 +285,7 @@ private :
             sortedVoltaChain = 0;
             startTime = 0;
             endTime = 0;
+            previousKey = Rosegarden::Key("undefined");
         }
     };
 
@@ -288,13 +293,15 @@ private :
         bool operator()(const SegmentData &s1, const SegmentData &s2) const;
     };
     typedef std::multiset<SegmentData, LilyPondSegmentsContext::SegmentDataCmp> SegmentSet;
-    typedef std::map<int, SegmentSet> TrackMap;
+    typedef std::map<int, SegmentSet> VoiceMap;
+    typedef std::map<int, VoiceMap> TrackMap;
 
     typedef std::list<const SegmentData *> SegmentDataList;
 
 
    /**
-    * Begin to look on all tracks for all segments synchronous of the given one.
+    * Begin to look on all tracks/voices for all segments synchronous of the
+    * given one.
     * Return null if no segment found.
     */
     const SegmentData * getFirstSynchronousSegment(Segment * seg);
@@ -306,7 +313,14 @@ private :
     */
     const SegmentData * getNextSynchronousSegment();
 
-   /**
+    /**
+     * Look in the specified voice of the specified track for linked segments
+     * which may be exported as repeat with volta and mark them accordingly.
+     * The concerned segments are gathered in the set passed as argument.
+     */
+    void lookForRepeatedLinks(SegmentSet &segSet);
+
+    /**
     * Look for similar segments in the raw volta chain (on all tracks
     * simultaneously) and fill the sorted volta chain accordingly.
     * The argument is the list of the associated synchronous main repeat
@@ -314,21 +328,11 @@ private :
     */
     void sortAndGatherVolta(SegmentDataList &);
 
-   /**
-    * Initialize a SegmentSet::iterator looking at a given voiceIndex only
-    */
-    SegmentSet::iterator firstSlot(SegmentSet &segSet, int voiceIndex);
-
-   /**
-    * Increment a SegmentSet::iterator looking at a given voiceIndex only
-    */
-    SegmentSet::iterator nextSlot(SegmentSet &segSet,
-                                  int voiceIndex, SegmentSet::iterator it);
 
     // Only for instrumentation while debugging
     void dumpSDL(SegmentDataList & l);
 
-    
+
     TrackMap m_segments;
 
     LilyPondExporter * m_exporter;
@@ -340,16 +344,18 @@ private :
     bool m_automaticVoltaUsable;
 
     TrackMap::iterator m_trackIterator;
-    int m_voiceIndex;
+    VoiceMap::iterator m_voiceIterator;
     SegmentSet::iterator m_segIterator;
     VoltaChain::iterator m_voltaIterator;
 
     int m_nextRepeatId;
 
-    // Used by "Get Synchronous Segment" methods getFirstSynchronousSegment()
-    // and getNextSynchronousSegment()
+    // Used by "Get Synchronous Segment" (GSS) methods
+    // getFirstSynchronousSegment() and getNextSynchronousSegment() to remember
+    // the current position in maps and set.
     Segment * m_GSSSegment;
     TrackMap::iterator m_GSSTrackIterator;
+    VoiceMap::iterator m_GSSVoiceIterator;
     SegmentSet::iterator m_GSSSegIterator;
 
     bool m_repeatWithVolta; // Repeat with volta is usable in LilyPondExporter
