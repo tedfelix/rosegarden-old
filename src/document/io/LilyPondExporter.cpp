@@ -202,13 +202,13 @@ LilyPondExporter::handleStartingPreEvents(eventstartlist &preEventsToStart,
             Indication i(**m);
 
             if (i.getIndicationType() == Indication::QuindicesimaUp) {
-                str << "#(set-octavation 2) ";
+                str << "\\ottava #2 ";
             } else if (i.getIndicationType() == Indication::OttavaUp) {
-                str << "#(set-octavation 1) ";
+                str << "\\ottava #1 ";
             } else if (i.getIndicationType() == Indication::OttavaDown) {
-                str << "#(set-octavation -1) ";
+                str << "\\ottava #-1 ";
             } else if (i.getIndicationType() == Indication::QuindicesimaDown) {
-                str << "#(set-octavation -2) ";
+                str << "\\ottava #-2 ";
             }
 
         } catch (Event::BadType) {
@@ -251,18 +251,19 @@ LilyPondExporter::handleStartingPostEvents(eventstartlist &postEventsToStart,
                 str << "\\< ";
             } else if (i.getIndicationType() == Indication::Decrescendo) {
                 str << "\\> ";
-            } else if (i.getIndicationType() == Indication::QuindicesimaUp) {
-                // #(set-octavation 2) ... #(set-octavation 0)
-                str << "#(set-octavation 2) ";
-            } else if (i.getIndicationType() == Indication::OttavaUp) {
-                // #(set-octavation 1) ... #(set-octavation 0)
-                str << "#(set-octavation 1) ";
-            } else if (i.getIndicationType() == Indication::OttavaDown) {
-                // #(set-octavation -1) ... #(set-octavation 0)
-                str << "#(set-octavation -1) ";
-            } else if (i.getIndicationType() == Indication::QuindicesimaDown) {
-                // #(set-octavation -2) ... #(set-octavation 0)
-                str << "#(set-octavation -2) ";
+// Don't seem useful and sometimes are harmful
+//             } else if (i.getIndicationType() == Indication::QuindicesimaUp) {
+//                 // #(set-octavation 2) ... #(set-octavation 0)
+//                 //str << "\\ottava #2 ";
+//             } else if (i.getIndicationType() == Indication::OttavaUp) {
+//                 // #(set-octavation 1) ... #(set-octavation 0)
+//                 str << "\\ottava #1 ";
+//             } else if (i.getIndicationType() == Indication::OttavaDown) {
+//                 // #(set-octavation -1) ... #(set-octavation 0)
+//                 str << "\\ottava #-1 ";
+//             } else if (i.getIndicationType() == Indication::QuindicesimaDown) {
+//                 // #(set-octavation -2) ... #(set-octavation 0)
+//                 str << "\\ottava #-2 ";
             } else if (i.getIndicationType() == Indication::TrillLine) {
                 str << "\\startTrillSpan ";
             }
@@ -348,13 +349,13 @@ LilyPondExporter::handleEndingPreEvents(eventendlist &preEventsInProgress,
                  indicationEnd == eventEnd)) {
 
                 if (i.getIndicationType() == Indication::QuindicesimaUp) {
-                    str << "#(set-octavation 0) ";
+                    str << "\\ottava #0 ";
                 } else if (i.getIndicationType() == Indication::OttavaUp) {
-                    str << "#(set-octavation 0) ";
+                    str << "\\ottava #0 ";
                 } else if (i.getIndicationType() == Indication::OttavaDown) {
-                    str << "#(set-octavation 0) ";
+                    str << "\\ottava #0 ";
                 } else if (i.getIndicationType() == Indication::QuindicesimaDown) {
-                    str << "#(set-octavation 0) ";
+                    str << "\\ottava #0 ";
                 }
 
                 preEventsInProgress.erase(k);
@@ -1899,8 +1900,8 @@ LilyPondExporter::write()
     str << indent(col++) << "\\layout {" << std::endl;
 
     // indent instrument names
-    str << indent(col) <<  "indent = 3.0\\cm" << std::endl
-        << "short-indent = 1.5\\cm" << std::endl;
+    str << indent(col) << "indent = 3.0\\cm" << std::endl
+        << indent(col) << "short-indent = 1.5\\cm" << std::endl;
 
     if (!m_exportEmptyStaves) {
         str << indent(col) << "\\context { \\Staff \\RemoveEmptyStaves }" << std::endl;
