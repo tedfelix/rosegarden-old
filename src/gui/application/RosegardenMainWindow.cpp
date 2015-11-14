@@ -275,8 +275,8 @@ RosegardenMainWindow::RosegardenMainWindow(bool useSequencer,
     m_storedLoopEnd(0),
     m_useSequencer(useSequencer),
     m_dockVisible(true),
-    m_autoSaveTimer(new QTimer(static_cast<QObject *>(this))),
-    m_clipboard(new Clipboard),
+    m_autoSaveTimer(new QTimer(this)),
+    m_clipboard(Clipboard::mainClipboard()),
     m_playList(0),
     m_synthManager(0),
     m_audioMixer(0),
@@ -288,8 +288,8 @@ RosegardenMainWindow::RosegardenMainWindow(bool useSequencer,
     m_configDlg(0),
     m_docConfigDlg(0),
     m_pluginGUIManager(new AudioPluginOSCGUIManager(this)),
-    m_updateUITimer(new QTimer(static_cast<QObject *>(this))),
-    m_inputTimer(new QTimer(static_cast<QObject *>(this))),
+    m_updateUITimer(new QTimer(this)),
+    m_inputTimer(new QTimer(this)),
     m_startupTester(0),
     m_firstRun(false),
     m_haveAudioImporter(false),
@@ -301,7 +301,7 @@ RosegardenMainWindow::RosegardenMainWindow(bool useSequencer,
     m_tranzport(0),
 //  m_deviceManager(),  QPointer inits itself to 0.
     m_warningWidget(0),
-    m_cpuMeterTimer(new QTimer(static_cast<QObject *>(this)))
+    m_cpuMeterTimer(new QTimer(this))
 {
     setAttribute(Qt::WA_DeleteOnClose);
 
@@ -323,10 +323,6 @@ RosegardenMainWindow::RosegardenMainWindow(bool useSequencer,
     //
     emit startupStatusMessage(tr("Initializing plugin manager..."));
     m_pluginManager = new AudioPluginManager();
-
-
-    QPixmap dummyPixmap; // any icon will do
-   
 
     // start of docking code 
     this->setDockOptions(QMainWindow::AnimatedDocks);
@@ -577,16 +573,6 @@ RosegardenMainWindow::~RosegardenMainWindow()
     delete m_tranzport;    
     delete m_doc;
     Profiles::getInstance()->dump();
-
-    // ??? I don't think any of these need to be deleted.  They were created
-    //     and passed the "this" pointer as their parent QObject.  That means
-    //     that they will be deleted when their parent (this) goes away.
-    delete m_inputTimer;
-    delete m_updateUITimer;
-    delete m_autoSaveTimer;
-    delete m_cpuMeterTimer;
-
-    delete m_clipboard;
 }
 
 int RosegardenMainWindow::sigpipe[2];
@@ -1851,16 +1837,7 @@ RosegardenMainWindow::queryClose()
         return false;
 
     // Let the user save any unsaved changes.
-    return m_doc->saveIfModified();
-}
-
-void
-RosegardenMainWindow::slotFileNewWindow()
-{
-    TmpStatusMsg msg(tr("Opening a new application window..."), this);
-
-    RosegardenMainWindow *new_window = new RosegardenMainWindow();
-    new_window->show();
+    return saveIfModified();
 }
 
 void
@@ -1875,7 +1852,7 @@ RosegardenMainWindow::slotFileNew()
     if (!m_doc->isModified()) {
         makeNew = true;
         // m_doc->closeDocument();
-    } else if (m_doc->saveIfModified()) {
+    } else if (saveIfModified()) {
         makeNew = true;
     }
 
@@ -1909,7 +1886,7 @@ RosegardenMainWindow::slotOpenDroppedURL(QString url)
     // track editor is erased too soon - it is the originator of the signal
     // this slot is connected to.
 
-    if (!m_doc->saveIfModified())
+    if (!saveIfModified())
         return ;
 
     openURL(QUrl(url));
@@ -1962,7 +1939,7 @@ RosegardenMainWindow::openURL(const QUrl& url)
     
     RG_DEBUG << "RosegardenMainWindow::openURL: target : " << target << endl;
 
-    if (!m_doc->saveIfModified())
+    if (!saveIfModified())
         return ;
 
     source.waitForData();
@@ -2026,7 +2003,7 @@ RosegardenMainWindow::slotFileOpen()
     settings.setValue("open_file", directory);
     settings.endGroup();
 
-    if (m_doc && !m_doc->saveIfModified())
+    if (m_doc && !saveIfModified())
         return ;
 
     settings.beginGroup(GeneralOptionsConfigGroup);
@@ -2092,7 +2069,7 @@ RosegardenMainWindow::slotFileOpenRecent()
     TmpStatusMsg msg(tr("Opening file..."), this);
 
     if (m_doc) {
-        if (!m_doc->saveIfModified()) {
+        if (!saveIfModified()) {
             return ;
         }
     }
@@ -2318,7 +2295,7 @@ RosegardenMainWindow::slotFileClose()
 
     TmpStatusMsg msg(tr("Closing file..."), this);
 
-    if (m_doc->saveIfModified()) {
+    if (saveIfModified()) {
         setDocument(new RosegardenDocument(this, m_pluginManager));
     }
 
@@ -3901,7 +3878,7 @@ RosegardenMainWindow::slotRevertToSaved()
 void
 RosegardenMainWindow::slotImportProject()
 {
-    if (m_doc && !m_doc->saveIfModified())
+    if (m_doc && !saveIfModified())
         return ;
 
     QSettings settings;
@@ -3953,7 +3930,7 @@ RosegardenMainWindow::importProject(QString filePath)
 void
 RosegardenMainWindow::slotImportMIDI()
 {
-    if (m_doc && !m_doc->saveIfModified())
+    if (m_doc && !saveIfModified())
         return ;
 
     QSettings settings;
@@ -4111,7 +4088,7 @@ RosegardenMainWindow::fixTextEncodings(Composition *c)
 RosegardenDocument*
 RosegardenMainWindow::createDocumentFromMIDIFile(QString file)
 {
-    //if (!merge && !m_doc->saveIfModified()) return;
+    //if (!merge && !saveIfModified()) return;
 
     // Create new document (autoload is inherent)
     //
@@ -4251,7 +4228,7 @@ RosegardenMainWindow::createDocumentFromMIDIFile(QString file)
 void
 RosegardenMainWindow::slotImportRG21()
 {
-    if (m_doc && !m_doc->saveIfModified())
+    if (m_doc && !saveIfModified())
         return ;
 
     QSettings settings;
@@ -4373,7 +4350,7 @@ RosegardenMainWindow::createDocumentFromRG21File(QString file)
 void
 RosegardenMainWindow::slotImportHydrogen()
 {
-    if (m_doc && !m_doc->saveIfModified())
+    if (m_doc && !saveIfModified())
         return ;
 
     QSettings settings;
@@ -4494,7 +4471,7 @@ RosegardenMainWindow::createDocumentFromHydrogenFile(QString file)
 void
 RosegardenMainWindow::slotImportMusicXML()
 {
-    if (m_doc && !m_doc->saveIfModified())
+    if (m_doc && !saveIfModified())
         return ;
 
     QSettings settings;
@@ -5409,8 +5386,7 @@ RosegardenMainWindow::exportLilyPondFile(QString file, bool forPreview)
     ProgressDialog *progressDlg = new ProgressDialog(tr("Exporting LilyPond file..."),
                                (QWidget*)this);
 
-//    LilyPondExporter e(this, m_doc, std::string(QFile::encodeName(file)));
-    LilyPondExporter e(this, m_doc, std::string(file.toLocal8Bit()));
+    LilyPondExporter e(m_doc, m_view->getSelection(), std::string(QFile::encodeName(file)));
 
     connect(&e, SIGNAL(setValue(int)),
             progressDlg, SLOT(setValue(int)));
@@ -8695,6 +8671,73 @@ RosegardenMainWindow::checkAudioPath()
     slotDisplayWarning(WarningWidget::Other, "Misc. warning!", "Informative misc. warning!");
     slotDisplayWarning(WarningWidget::Info, "Information", "Informative information!");
 #endif
+}
+
+bool RosegardenMainWindow::saveIfModified()
+{
+    RG_DEBUG << "saveIfModified()" << endl;
+    bool completed = true;
+
+    if (!m_doc->isModified())
+        return completed;
+
+    int wantSave = QMessageBox::warning( this, tr("Rosegarden - Warning"), tr("<qt><p>The current file has been modified.</p><p>Do you want to save it?</p></qt>"), QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel, QMessageBox::Cancel );
+
+    RG_DEBUG << "wantSave = " << wantSave << endl;
+
+    switch (wantSave) {
+
+    case QMessageBox::Yes:
+
+        if (!m_doc->isRegularDotRGFile()) {
+
+            RG_DEBUG << "saveIfModified() : new or imported file\n";
+            completed = slotFileSaveAs();
+
+        } else {
+
+            RG_DEBUG << "saveIfModified() : regular file\n";
+            QString errMsg;
+            completed = m_doc->saveDocument(m_doc->getAbsFilePath(), errMsg);
+
+            if (!completed) {
+                if (!errMsg.isEmpty()) {
+                    QMessageBox::critical(this, tr("Rosegarden"), tr("Could not save document at %1\n(%2)").arg(m_doc->getAbsFilePath()).arg(errMsg));
+                } else {
+                    QMessageBox::critical(this, tr("Rosegarden"), tr("Could not save document at %1").arg(m_doc->getAbsFilePath()));
+                }
+            }
+        }
+
+        break;
+
+    case QMessageBox::No:
+        // delete the autosave file so it won't annoy
+        // the user when reloading the file.
+        m_doc->deleteAutoSaveFile();
+        completed = true;
+        break;
+
+    case QMessageBox::Cancel:
+        completed = false;
+        break;
+
+    default:
+        completed = false;
+        break;
+    }
+
+    if (completed) {
+        completed = m_doc->deleteOrphanedAudioFiles(wantSave == QMessageBox::No);
+        if (completed) {
+            m_doc->getAudioFileManager().resetRecentlyCreatedFiles();
+        }
+    }
+
+    if (completed)
+        m_doc->clearModifiedStatus();
+
+    return completed;
 }
 
 

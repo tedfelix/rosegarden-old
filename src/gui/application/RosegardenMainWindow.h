@@ -27,7 +27,6 @@
 #include "sound/AudioFile.h"
 #include "sound/Midi.h"
 #include "gui/general/ActionFileClient.h"
-#include "gui/studio/DeviceManagerDialogUi.h"
 
 #include <QDockWidget>
 #include <QString>
@@ -571,12 +570,6 @@ public slots:
      * Open the document properties dialog on the Audio page
      */
     virtual void slotOpenAudioPathSettings();
-
-    /**
-     * open a new application window by creating a new instance of
-     * RosegardenMainWindow
-     */
-    void slotFileNewWindow();
 
     /**
      * clears the document in the actual view to reuse it as the new
@@ -1637,6 +1630,12 @@ private:
      * problem, they might wind up dealing with testAudioPath() further on.
      */
     void checkAudioPath();
+
+    /**
+     * "save modified" - asks the user for saving if the document is
+     * modified
+     */
+    bool saveIfModified();
 
     //--------------- Data members ---------------------------------
 

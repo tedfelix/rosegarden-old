@@ -25,7 +25,6 @@
 #include "base/AudioDevice.h"
 #include "base/AudioPluginInstance.h"
 #include "base/BaseProperties.h"
-#include "base/Clipboard.h"
 #include "base/Composition.h"
 #include "base/Configuration.h"
 #include "base/Device.h"
@@ -119,6 +118,7 @@ RosegardenDocument::RosegardenDocument(QWidget *parent,
         m_modified(false),
         m_autoSaved(false),
         m_audioPeaksThread(&m_audioFileManager),
+        m_seqManager(0),
         m_pluginManager(pluginManager),
         m_audioRecordLatency(0, 0),
         m_quickMarkerTime(-1),
@@ -128,11 +128,7 @@ RosegardenDocument::RosegardenDocument(QWidget *parent,
 {
     checkSequencerTimer();
 
-//### FIX-qt4-removed: 
-//    m_viewList.setAutoDelete(false);
-//    m_editViewList.setAutoDelete(false);
-
-   connect(CommandHistory::getInstance(), SIGNAL(commandExecuted()),
+    connect(CommandHistory::getInstance(), SIGNAL(commandExecuted()),
             this, SLOT(slotDocumentModified()));
 
     connect(CommandHistory::getInstance(), SIGNAL(documentRestored()),
@@ -217,6 +213,11 @@ void RosegardenDocument::setTitle(const QString &title)
 const QString &RosegardenDocument::getAbsFilePath() const
 {
     return m_absFilePath;
+}
+
+void RosegardenDocument::deleteAutoSaveFile()
+{
+    QFile::remove(getAutoSaveFileName());
 }
 
 const QString& RosegardenDocument::getTitle() const
@@ -329,76 +330,6 @@ void RosegardenDocument::slotAutoSave()
 bool RosegardenDocument::isRegularDotRGFile()
 {
     return getAbsFilePath().right(3).toLower() == ".rg";
-}
-
-bool RosegardenDocument::saveIfModified()
-{
-    RG_DEBUG << "RosegardenDocument::saveIfModified()" << endl;
-    bool completed = true;
-
-    if (!isModified())
-        return completed;
-
-
-    RosegardenMainWindow *win = (RosegardenMainWindow *)parent();
-
-    int wantSave = QMessageBox::warning( dynamic_cast<QWidget*>(win), tr("Rosegarden - Warning"), tr("<qt><p>The current file has been modified.</p><p>Do you want to save it?</p></qt>"), QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel, QMessageBox::Cancel );
-
-    RG_DEBUG << "wantSave = " << wantSave << endl;
-
-    switch (wantSave) {
-
-    case QMessageBox::Yes:
-
-        if (!isRegularDotRGFile()) {
-
-            RG_DEBUG << "RosegardenDocument::saveIfModified() : new or imported file\n";
-            completed = win->slotFileSaveAs();
-
-        } else {
-
-            RG_DEBUG << "RosegardenDocument::saveIfModified() : regular file\n";
-            QString errMsg;
-            completed = saveDocument(getAbsFilePath(), errMsg);
-
-            if (!completed) {
-                if (!errMsg.isEmpty()) {
-                    QMessageBox::critical( dynamic_cast<QWidget *>(parent()), tr("Rosegarden"), tr("Could not save document at %1\n(%2)").arg(getAbsFilePath()).arg(errMsg));
-                } else {
-                    QMessageBox::critical( dynamic_cast<QWidget *>(parent()), tr("Rosegarden"), tr("Could not save document at %1").arg( getAbsFilePath() ));
-                }
-            }
-        }
-
-        break;
-
-    case QMessageBox::No:
-        // delete the autosave file so it won't annoy
-        // the user when reloading the file.
-        QFile::remove
-            (getAutoSaveFileName());
-        completed = true;
-        break;
-
-    case QMessageBox::Cancel:
-        completed = false;
-        break;
-
-    default:
-        completed = false;
-        break;
-    }
-
-    if (completed) {
-        completed = deleteOrphanedAudioFiles(wantSave == QMessageBox::No);
-        if (completed) {
-            m_audioFileManager.resetRecentlyCreatedFiles();
-        }
-    }
-
-    if (completed)
-        setModified(false);
-    return completed;
 }
 
 bool
@@ -1164,7 +1095,12 @@ void RosegardenDocument::initialiseStudio()
 SequenceManager *
 RosegardenDocument::getSequenceManager()
 {
-    return (dynamic_cast<RosegardenMainWindow*>(parent()))->getSequenceManager();
+    return m_seqManager;
+}
+
+void RosegardenDocument::setSequenceManager(SequenceManager *sm)
+{
+    m_seqManager = sm;
 }
 
 
@@ -1455,7 +1391,7 @@ bool RosegardenDocument::saveDocumentActual(const QString& filename,
         emit documentModified(false);
         setModified(false);
         CommandHistory::getInstance()->documentSaved();
-        }
+    }
     if (progress) {
         progress->close();     // is deleteOnClose
         progress = 0;
@@ -2981,13 +2917,6 @@ RosegardenDocument::clearAllPlugins()
             */
         }
     }
-}
-
-Clipboard*
-RosegardenDocument::getClipboard()
-{
-    RosegardenMainWindow *mainWindow = (RosegardenMainWindow*)parent();
-    return mainWindow->getClipboard();
 }
 
 void RosegardenDocument::slotDocColoursChanged()
