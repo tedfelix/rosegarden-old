@@ -110,10 +110,11 @@ namespace Rosegarden
 
 using namespace BaseProperties;
 
-RosegardenDocument::RosegardenDocument(QWidget *parent,
+RosegardenDocument::RosegardenDocument(QObject *parent,
                                    AudioPluginManager *pluginManager,
                                    bool skipAutoload,
-                                   bool clearCommandHistory)
+                                   bool clearCommandHistory,
+                                       bool useSequencer)
         : QObject(parent),
         m_modified(false),
         m_autoSaved(false),
@@ -124,7 +125,8 @@ RosegardenDocument::RosegardenDocument(QWidget *parent,
         m_quickMarkerTime(-1),
         m_autoSavePeriod(0),
         m_beingDestroyed(false),
-        m_clearCommandHistory(clearCommandHistory)
+        m_clearCommandHistory(clearCommandHistory),
+        m_useSequencer(useSequencer)
 {
     checkSequencerTimer();
 
@@ -242,7 +244,7 @@ void RosegardenDocument::slotUpdateAllViews(RosegardenMainViewWidget *sender)
 void RosegardenDocument::setModified(bool m)
 {
     m_modified = m;
-    RG_DEBUG << "RosegardenDocument[" << this << "]::setModified(" << m << ")\n";
+    RG_DEBUG << "[" << (void*)this << "] setModified(" << m << ")\n";
 }
 
 void RosegardenDocument::clearModifiedStatus()
@@ -1623,13 +1625,7 @@ void RosegardenDocument::saveSegment(QTextStream& outStream, Segment *segment,
 
 bool RosegardenDocument::isSequencerRunning()
 {
-    RosegardenMainWindow* parentApp = dynamic_cast<RosegardenMainWindow*>(parent());
-    if (!parentApp) {
-        RG_DEBUG << "RosegardenDocument::isSequencerRunning() : parentApp == 0\n";
-        return false;
-    }
-
-    return parentApp->isSequencerRunning();
+    return m_useSequencer;
 }
 
 bool

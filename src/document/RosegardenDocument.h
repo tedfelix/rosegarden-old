@@ -90,13 +90,14 @@ public:
      * clearing the command history here, or certain commands wipe out the
      * entire undo history needlessly.
      */
-    RosegardenDocument(QWidget *parent,
-                     AudioPluginManager *audioPluginManager = 0,
-                     bool skipAutoload = false,
-                     bool clearCommandHistory = true);
+    RosegardenDocument(QObject *parent,
+                       AudioPluginManager *audioPluginManager = 0,
+                       bool skipAutoload = false,
+                       bool clearCommandHistory = true,
+                       bool useSequencer = true);
 
 private:
-    RosegardenDocument(RosegardenDocument *doc);
+    RosegardenDocument(const RosegardenDocument &doc);
     RosegardenDocument& operator=(const RosegardenDocument &doc);
 
 public:
@@ -745,6 +746,8 @@ private:
      * construction.  Usually true.
      */
     bool m_clearCommandHistory;
+
+    bool m_useSequencer;
 };
 
 
