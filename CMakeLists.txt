@@ -18,6 +18,10 @@ set(ROSEGARDEN_CODENAME "Peace")
 #set(ROSEGARDEN_CODENAME "Yesterday")
 #set(ROSEGARDEN_CODENAME "Zepherine Drouhin")
 
+# Make the build type default to "Release"
+if(NOT CMAKE_BUILD_TYPE)
+   set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose the type of build, options are: Debug Release RelWithDebInfo MinSizeRel." FORCE)
+endif(NOT CMAKE_BUILD_TYPE)
 
 # Make it possible to use cmake files from the cmake subdir
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
@@ -32,6 +36,9 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # This takes care of installing into "lib64" on distros that use that, for instance,
 # by setting CMAKE_INSTALL_FULL_LIBDIR.
 include(GNUInstallDirs)
+
+# Tweak RPATH handling so that installed debug builds work out of the box
+include(RPathHandling)
 
 # Activate unit tests (this enables `make test`)
 enable_testing()
@@ -131,9 +138,9 @@ pkg_check_modules(LIBLO REQUIRED liblo>=0.7)
 
 pkg_check_modules(LRDF REQUIRED lrdf>=0.2)
 
-pkg_check_modules(FFTW3F fftw3f>=3.0.0)
+pkg_check_modules(FFTW3F REQUIRED fftw3f>=3.0.0)
 
-pkg_check_modules(SAMPLERATE samplerate>=0.1.2)
+pkg_check_modules(SAMPLERATE REQUIRED samplerate>=0.1.2)
 
 # Optional dependencies ---------------------------------------
 
@@ -170,7 +177,7 @@ feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 # BUILD_TESTING is a builtin option in cmake, which defaults to ON.
 # We'll set it to OFF in release mode, and let users (developers) choose in debug mode.
 
-if(CMAKE_BUILD_TYPE STREQUAL "Release")
+if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
     set(BUILD_TESTING OFF)
 endif()
 
