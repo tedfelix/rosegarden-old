@@ -1,20 +1,7 @@
 # Building the rosegarden executable
 
 # Compiler definitions
-# For now we do it the old way, passing -D to each and every file
-# TODO use this instead: configure_file(${CMAKE_CURRENT_SOURCE_DIR}/rosegarden-version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/src/rosegarden-version.h )
-# This way, only the files using that header will get rebuilt
-add_definitions(-DVERSION="${ROSEGARDEN_VERSION}")
-add_definitions(-DCODENAME="${ROSEGARDEN_CODENAME}")
-
-# Set CMAKE_AUTOMOC_RELAXED_MODE temporarily, until we can ditch the autoconf build system
-# at which point we can remove all #include "foo.moc", keeping an included moc file
-# only in the file with Q_PRIVATE_SLOT, or in future files with a Q_OBJECT in the .cpp file,
-# like this: #include "moc_SqueezedLabel.cpp".
-set(CMAKE_AUTOMOC_RELAXED_MODE ON)
-
-# This is also temporary
-add_definitions(-DCMAKE_BUILD)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/rosegarden-version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/rosegarden-version.h )
 
 # Define the include paths (-I...)
 include_directories(
@@ -44,6 +31,7 @@ endif()
 if(LIRCCLIENT_FOUND)
     include_directories(${LIRCCLIENT_INCLUDE_DIR})
     add_definitions(-DHAVE_LIRC)
+    set(CMAKE_AUTOMOC_MOC_OPTIONS ${CMAKE_AUTOMOC_MOC_OPTIONS} -DHAVE_LIRC) # for cmake 2.8.12, fixed in 2.8.12.1 (https://cmake.org/gitweb?p=cmake.git;a=commitdiff;h=a1b9465b)
     set(rg_OPTIONAL_LIBS ${rg_OPTIONAL_LIBS} ${LIRCCLIENT_LIBRARY})
 endif()
 
@@ -720,17 +708,17 @@ set(rg_SOURCES
   sequencer/RosegardenSequencer.cpp
 )
 
-set(rg_UIS
+qt4_wrap_ui(rg_SOURCES
   gui/dialogs/RosegardenTransportUi.ui
   gui/studio/DeviceManagerDialogUi.ui
 )
 
-set(rg_RCS
-  ../data/data.qrc
+qt4_add_resources(rg_SOURCES
+   ../data/data.qrc
 )
 
 # Define a static lib with the whole code
-add_library(rosegardenprivate ${RG_LIBRARY_TYPE} ${rg_SOURCES} ${rg_UIS} ${rg_RCS})
+add_library(rosegardenprivate ${RG_LIBRARY_TYPE} ${rg_SOURCES})
 
 # Link to the following libraries
 target_link_libraries(rosegardenprivate
@@ -739,7 +727,6 @@ target_link_libraries(rosegardenprivate
   ${QT_QTXML_LIBRARY}
   ${QT_QTNETWORK_LIBRARY}
   ${ZLIB_LIBRARY}
-  ${X11_LIBRARIES}
   ${CMAKE_DL_LIBS}
   ${LIBLO_LIBRARIES}
   ${LRDF_LIBRARIES}
@@ -773,7 +760,12 @@ add_dependencies(rosegardenprivate svnheader)
 # Define an executable called rosegarden, with just the main.cpp, linking to the lib with all the code
 add_executable(rosegarden gui/application/main.cpp)
 
-target_link_libraries(rosegarden rosegardenprivate)
+target_link_libraries(rosegarden
+  rosegardenprivate
+  ${QT_QTCORE_LIBRARY}
+  ${QT_QTGUI_LIBRARY}
+  ${X11_LIBRARIES}
+)
 
 # Install executable
 install(TARGETS rosegarden RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})

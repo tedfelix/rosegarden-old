@@ -23,6 +23,8 @@
 #include "gui/general/IconLoader.h"
 #include "gui/general/ResourceFinder.h"
 
+#include "rosegarden-version.h"
+
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QPainter>
@@ -149,7 +151,6 @@ void StartupLogo::hideIfStillThere()
 StartupLogo* StartupLogo::m_instance = 0;
 bool StartupLogo::m_wasClosed = false;
 
-#include "StartupLogo.moc"
 
 }
 

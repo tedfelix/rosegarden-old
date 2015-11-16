@@ -190,6 +190,8 @@
 #include "gui/widgets/InputDialog.h"
 #include "TranzportClient.h"
 
+#include "rosegarden-version.h"
+
 #include <QApplication>
 #include <QDesktopServices>
 #include <QSettings>
@@ -8763,4 +8765,3 @@ RosegardenMainWindow *RosegardenMainWindow::m_myself = 0;
 
 }// end namespace Rosegarden
 
-#include "RosegardenMainWindow.moc"

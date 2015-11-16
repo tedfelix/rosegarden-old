@@ -25,10 +25,6 @@ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 # Enable the really useful automoc feature from cmake
 set(CMAKE_AUTOMOC TRUE)
 
-# Handle .ui and .qrc files automatically too
-set(CMAKE_AUTOUIC TRUE)
-set(CMAKE_AUTORCC TRUE)
-
 # Find headers in "." as well
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -56,7 +52,7 @@ if(USE_QT4)
    set(QT_MIN_VERSION "4.8.0")
 
    # Locate Qt4 on the system.
-   find_package(Qt4 REQUIRED QtGui QtXml QtNetwork)
+   find_package(Qt4 REQUIRED QtCore QtGui QtXml QtNetwork QtTest)
 
    # properly set up compile flags (QT_DEBUG/QT_NO_DEBUG, ...)
    include(${QT_USE_FILE})

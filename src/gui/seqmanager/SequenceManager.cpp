@@ -63,6 +63,8 @@
 #include "sound/MappedInstrument.h"
 #include "sound/SoundDriver.h"
 
+#include "rosegarden-version.h"
+
 #include <QSettings>
 #include <QMessageBox>
 #include <QApplication>
@@ -2079,4 +2081,3 @@ makeTempMetaiterator(void)
 }
 
 }
-#include "SequenceManager.moc"

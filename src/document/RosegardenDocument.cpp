@@ -86,6 +86,8 @@
 #include "document/Command.h"
 #include "misc/ConfigGroups.h"
 
+#include "rosegarden-version.h"
+
 #include <QApplication>
 #include <QSettings>
 #include <QMessageBox>
@@ -3008,4 +3010,3 @@ RosegardenDocument::checkAudioPath(Track *track)
 }
 
 }
-#include "RosegardenDocument.moc"

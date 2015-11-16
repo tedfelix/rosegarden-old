@@ -23,6 +23,8 @@
 #include "gui/dialogs/LilyPondOptionsDialog.h"
 #include "gui/editors/notation/NoteFontFactory.h"
 
+#include "rosegarden-version.h"
+
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QProcess>
@@ -162,5 +164,4 @@ StartupTester::slotNetworkFinished(QNetworkReply *reply)
 
 }
 
-#include "StartupTester.moc"
 

@@ -29,9 +29,8 @@
 #include "gui/application/RosegardenApplication.h"
 #include "base/RealTime.h"
 
-#ifdef CMAKE_BUILD
 #include <svnversion.h> // generated file
-#endif
+#include "rosegarden-version.h"
 
 #include <QSettings>
 #include <QDesktopWidget>
@@ -321,9 +320,6 @@ and libRosegardenSound:
 The main Sequencer state machine is a good starting point and clearly
 visible at the bottom of rosegarden/sequencer/main.cpp.
 */
-
-static QString description =
-       QObject::tr("Rosegarden - A sequencer and musical notation editor");
 
 // -----------------------------------------------------------------
 

@@ -23,9 +23,8 @@
 #include <QLabel>
 #include <QDialogButtonBox>
 
-#ifdef CMAKE_BUILD
 #include <svnversion.h> // generated file
-#endif
+#include "rosegarden-version.h"
 
 namespace Rosegarden
 {
@@ -70,6 +69,5 @@ AboutDialog::AboutDialog(QWidget *parent): QDialog(parent, 0)
     this->exec();
 }
 }
-#include "AboutDialog.moc"
  
 
