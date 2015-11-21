@@ -11,7 +11,7 @@
 #(set-default-paper-size "a4")
 global = { 
     \time 4/4
-    \skip 1*2 
+    \skip 1*3 
 }
 globalTempo = {
     \override Score.MetronomeMark #'transparent = ##t
@@ -41,8 +41,9 @@ globalTempo = {
                 
                 \clef "treble"
                 \key c \major
-                \stemUp b' 4. g' 8 [ ] b' [ d'' ] b' [ g' ] \stemNeutral  |
-                R1  |
+                \stemUp b' 4. g' 8 b' [ d'' ] b' [ g' ] \stemNeutral  |
+                \stemUp d' 8 g 16 r r8 g r2 \stemNeutral  |
+                \stemUp g' 8 [ c'' ] r d' 4 a' 8 e' 4 \stemNeutral  |
                 \bar "|."
             } % Voice
         >> % Staff (final) ends

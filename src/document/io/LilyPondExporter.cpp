@@ -1926,8 +1926,7 @@ LilyPondExporter::calculateDuration(Segment *s,
     timeT duration = (*i)->getNotationDuration();
     timeT absTime = (*i)->getNotationAbsoluteTime();
 
-    RG_DEBUG << "LilyPondExporter::calculateDuration: first duration, absTime: "
-             << duration << ", " << absTime;
+    //RG_DEBUG << "calculateDuration: first duration, absTime:" << duration << "," << absTime;
 
     timeT durationCorrection = 0;
 
@@ -1943,8 +1942,7 @@ LilyPondExporter::calculateDuration(Segment *s,
 
     duration += durationCorrection;
 
-    RG_DEBUG << "LilyPondExporter::calculateDuration: now duration is "
-             << duration << " after correction of " << durationCorrection;
+    //RG_DEBUG << "calculateDuration: now duration is" << duration << "after correction of" << durationCorrection;
 
     soundingDuration = duration * tupletRatio.first/ tupletRatio.second;
 
@@ -1955,7 +1953,7 @@ LilyPondExporter::calculateDuration(Segment *s,
         overlong = true;
     }
 
-    RG_DEBUG << "LilyPondExporter::calculateDuration: time to barEnd is " << toNext;
+    //RG_DEBUG << "calculateDuration: time to barEnd is " << toNext;
 
     // Examine the following event, and truncate our duration
     // if we overlap it.
@@ -1998,7 +1996,7 @@ LilyPondExporter::calculateDuration(Segment *s,
     }
 
     if (s->isBeforeEndMarker(nextElt)) {
-        RG_DEBUG << "LilyPondExporter::calculateDuration: inside conditional";
+        //RG_DEBUG << "calculateDuration: inside conditional";
         toNext = (*nextElt)->getNotationAbsoluteTime() - absTime;
         // if the note was lengthened, assume it was lengthened to the left
         // when truncating to the beginning of the next note
@@ -2011,9 +2009,8 @@ LilyPondExporter::calculateDuration(Segment *s,
         }
     }
 
-    RG_DEBUG << "LilyPondExporter::calculateDuration: second toNext is" << toNext;
-
-    RG_DEBUG << "LilyPondExporter::calculateDuration: final duration, soundingDuration: " << duration << ", " << soundingDuration;
+    //RG_DEBUG << "calculateDuration: second toNext is" << toNext;
+    //RG_DEBUG << "calculateDuration: final duration, soundingDuration:" << duration << "," << soundingDuration;
 
     return duration;
 }
@@ -2096,14 +2093,14 @@ void LilyPondExporter::handleGuitarChord(Segment::iterator i, std::ofstream &str
     }
 }
 
-void LilyPondExporter::endBeamedGroup(std::string groupType, std::ofstream &str, int notesInBeamedGroup)
+void LilyPondExporter::endBeamedGroup(std::string groupType, std::ofstream &str, bool inBeamedGroup, bool newBeamedGroup)
 {
     if (groupType == GROUP_TYPE_TUPLED) {
-        if (m_exportBeams && notesInBeamedGroup > 0)
+        if (m_exportBeams && inBeamedGroup && !newBeamedGroup) // newBeamedGroup is false only once we generated a "["
             str << "] ";
         str << "} ";
     } else if (groupType == GROUP_TYPE_BEAMED) {
-        if (m_exportBeams && notesInBeamedGroup > 0)
+        if (m_exportBeams && inBeamedGroup && !newBeamedGroup)
             str << "] ";
     }
 }
@@ -2186,19 +2183,36 @@ LilyPondExporter::writeBar(Segment *s,
         QString startTupledStr;
 
         if (event->isa(Note::EventType) || event->isa(Note::EventRestType) ||
-            event->isa(Clef::EventType) || event->isa(Rosegarden::Key::EventType) ||
+            event->isa(Clef::EventType) || event->isa(Key::EventType) ||
             event->isa(Symbol::EventType)) {
 
             long newGroupId = -1;
-            event->get<Int>(BEAMED_GROUP_ID, newGroupId);
+            if (event->isa(Note::EventType)
+                    || event->isa(Note::EventRestType) // TODO don't consider first/last rests in the beam as beamed, to match the on-screen rendering
+                    ) {
 
-            //RG_DEBUG << "BEAMED_GROUP_ID" << newGroupId;
+                event->get<Int>(BEAMED_GROUP_ID, newGroupId);
+
+                // Is it really beamed? quarter and longer notes cannot be
+                // (ex: bug #1705430, beaming groups erroneous after merging notes)
+                // HJJ: This should be fixed in notation engine,
+                //      after which the workaround below should be removed.
+                std::string groupTypeProp = "";
+                event->get<String>(BEAMED_GROUP_TYPE, groupTypeProp); // might fail
+                if (groupTypeProp == GROUP_TYPE_BEAMED) {
+                    const int noteType = event->get<Int>(NOTE_TYPE);
+                    if (noteType >= Note::QuarterNote)
+                        newGroupId = -1;
+                }
+            }
+
+            //RG_DEBUG << event->toXmlString() << "BEAMED_GROUP_ID" << newGroupId;
             if (newGroupId != groupId) {
 
                 if (groupId != -1) {
                     //RG_DEBUG << "Leaving beamed group" << groupId << "notesInBeamedGroup=" << notesInBeamedGroup;
                     // leaving a beamed group
-                    endBeamedGroup(groupType, str, notesInBeamedGroup);
+                    endBeamedGroup(groupType, str, inBeamedGroup, newBeamedGroup);
                     tupletRatio = std::pair<int, int>(1, 1);
                     groupId = -1;
                     groupType = "";
@@ -2239,6 +2253,18 @@ LilyPondExporter::writeBar(Segment *s,
                     }
                     notesInBeamedGroup = 0;
                 }
+            } else if (inBeamedGroup
+                       && (event->isa(Note::EventType) || event->isa(Note::EventRestType))
+                       && (!event->has(SKIP_PROPERTY))) {
+
+                // This is the second note or rest in this beamed group -> add '[' after the first one.
+                if (m_exportBeams && newBeamedGroup && notesInBeamedGroup > 0) {
+                    str << "[ ";
+                    newBeamedGroup = false;
+                    //RG_DEBUG << "BEGIN" << notesInBeamedGroup;
+                }
+
+
             }
         } else if (event->isa(Controller::EventType) &&
                    event->has(Controller::NUMBER) &&
@@ -2443,26 +2469,8 @@ LilyPondExporter::writeBar(Segment *s,
             }
 
             if (inBeamedGroup) {
-                // This is a workaround for bug #1705430:
-                //   Beaming groups erroneous after merging notes
-                // There will be fewer "e4. [ ]" errors in LilyPond-compiling.
-                // HJJ: This should be fixed in notation engine,
-                //      after which the workaround below should be removed.
-                Note note(Note::getNearestNote(duration, MAX_DOTS));
-
-                switch (note.getNoteType()) {
-                case Note::SixtyFourthNote:
-                case Note::ThirtySecondNote:
-                case Note::SixteenthNote:
-                case Note::EighthNote:
-                    notesInBeamedGroup++;
-                    //RG_DEBUG << "notesInBeamedGroup++" << notesInBeamedGroup;
-                    break;
-                }
+                notesInBeamedGroup++;
             }
-            // // Old version before the workaround for bug #1705430:
-            // if (inBeamedGroup)
-            //    notesInBeamedGroup++;
         } else if (event->isa(Note::EventRestType)) {
 
             const bool hiddenRest = event->has(INVISIBLE) && event->get<Bool>(INVISIBLE);
@@ -2672,13 +2680,6 @@ LilyPondExporter::writeBar(Segment *s,
             handleGuitarChord(i, str);
         }
 
-        // LilyPond 2.0 introduces required postfix syntax for beaming
-        if (m_exportBeams && newBeamedGroup && notesInBeamedGroup > 0) {
-            str << "[ ";
-            newBeamedGroup = false;
-            //RG_DEBUG << "BEGIN" << notesInBeamedGroup;
-        }
-
         if (event->isa(Indication::EventType)) {
             preEventsToStart.insert(event);
             preEventsInProgress.insert(event);
@@ -2690,8 +2691,8 @@ LilyPondExporter::writeBar(Segment *s,
     } // end of the gigantic while loop, I think
 
     if (groupId != -1) {
-        //RG_DEBUG << "End of bar, ending beaming group" << groupId << groupType << notesInBeamedGroup;
-        endBeamedGroup(groupType, str, notesInBeamedGroup);
+        //RG_DEBUG << "End of bar, ending beaming group" << groupId << groupType;
+        endBeamedGroup(groupType, str, inBeamedGroup, newBeamedGroup);
     }
 
     if (isGrace == 1) {
