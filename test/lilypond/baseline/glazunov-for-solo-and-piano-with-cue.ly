@@ -34,6 +34,7 @@ globalTempo = {
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 1" {
                 % Segment: Cello (PIANO CUE)
@@ -72,9 +73,9 @@ globalTempo = {
                 fis' 8 \! [ dis' ) ] e' 4 ^( _~ e' 8 \< [ cis' ) ] d' 4  |
                 gis 4. \! _( ais 8 [ fis ) ] r b 4 -\mf  |
 %% 25
-                fis' 2 _~ fis' 8 [ e' 16 ^( d' ] \times 4/6 { cis' b cis' d' e' fis' }  |
+                fis' 2 _~ fis' 8 [ e' 16 ^( d' ] \times 4/6 { cis' [ b cis' d' e' fis' ] }  |
                 gis' 8 ) r16 a' fis' 4 _~ fis' 8 r fis' 4 -\f  |
-                b' 2 _~ b' 8 [ a' 16 ^( gis' ] \times 4/6 { fis' e' fis' gis' a' b' }  |
+                b' 2 _~ b' 8 [ a' 16 ^( gis' ] \times 4/6 { fis' [ e' fis' gis' a' b' ] }  |
                 cis'' 8 ) [ r16 d'' ] b' 2 b' 8 -\tenuto [ cis'' -\tenuto ]  |
                 b' 4 \< a' 8 -\tenuto [ b' -\tenuto ] a' 4 gis' 8 -\tenuto [ a' -\tenuto ]  |
 %% 30
@@ -106,9 +107,9 @@ globalTempo = {
                 \key a \major
                 fis 8 ^\markup { \bold \large "Tempo I" } \! cis -\p -\staccato _( [ dis -\staccato f -\staccato ) ] fis -\staccato _( [ gis -\staccato ] a 4 -\tenuto )  |
 %% 50
-                r8 [ gis -\staccato ^( a -\staccato b -\staccato ) ] cis' -\staccato ^( [ d' -\staccato ] e' 4 -\tenuto )  |
-                r8 [ fis -\staccato _( gis -\staccato a -\staccato ) ] b -\staccato ^( [ cis' -\staccato ] d' 4 -\tenuto )  |
-                r8 [ b -\staccato ^( cis' -\staccato d' -\staccato ) ] e' -\staccato ^( [ fis' -\staccato ) ] g' 4 ^( _~  |
+                r8 gis -\staccato ^( [ a -\staccato b -\staccato ) ] cis' -\staccato ^( [ d' -\staccato ] e' 4 -\tenuto )  |
+                r8 fis -\staccato _( [ gis -\staccato a -\staccato ) ] b -\staccato ^( [ cis' -\staccato ] d' 4 -\tenuto )  |
+                r8 b -\staccato ^( [ cis' -\staccato d' -\staccato ) ] e' -\staccato ^( [ fis' -\staccato ) ] g' 4 ^( _~  |
                 g' 8 [ e' ) ] fis' 4 ^( _~ fis' 8 [ d' ) ] e' 4  |
                 f' 8 ^( \< [ fis' gis' cis'' ) ] b' -\f \! \> ^( [ a' ) ] d' -\p \! [ e' ]  |
 %% 55
@@ -135,6 +136,7 @@ globalTempo = {
                 \set Staff.printKeyCancellation = ##f
                 \new Voice \global
                 \new Voice \globalTempo
+                \set Staff.autoBeaming = ##f % turns off all autobeaming
 
                 \context Voice = "voice 2" {
                     % Segment: Piano - Right Hand
@@ -159,7 +161,7 @@ globalTempo = {
                     < b cis' > 2 -\mf \! \> < cis' a > 4 < a' a'' > 8 \! ^( < b' b'' > -\p )  |
                     < gis'' gis' > 4. ^( \< < a' a'' > 8 ) < fis'' fis' > 4 < fis' fis'' > 8 ^( [ < d'' d''' > ) ]  |
                     < d'' d''' > 8 -\f \! ^( [ < cis'' cis''' > < e' e'' > < fis'' fis' > ) ] < gis' gis'' > 2 \> _~  |
-                    < gis'' gis' > 8 \! r r-\mf  [ < fis' b' > -\accent _( ] < gis' b' > 4 ) r  |
+                    < gis'' gis' > 8 \! r r-\mf  < fis' b' > -\accent _( < gis' b' > 4 ) r  |
                     r4 r8 < fis' b' > -\accent _( < b' gis' > 4 ) r  |
 %% 15
                     r4 < d' b > 2 -\p \< < b d' > 4  |
@@ -168,16 +170,16 @@ globalTempo = {
                     r8 < cis'' gis'' > -\staccato [ < gis'' a'' cis'' > -\staccato < b'' cis'' gis'' > -\staccato ] < cis'' gis'' cis''' > -\staccato [ < e'' e''' > -\staccato ] r4  |
                     r8 < cis'' fis'' cis''' > -\staccato [ < d'' fis'' d''' > -\staccato < e'' e''' cis''' > -\staccato ] < fis''' fis'' cis''' > -\staccato [ < a'' a''' > -\staccato ] r4  |
 %% 20
-                    r8 [ < e'' cis'' e' > -\staccato < fis' cis'' fis'' > -\staccato < gis' cis'' gis'' > -\staccato ] < a' a'' cis'' > -\staccato [ < cis'' cis''' > -\staccato ] cis' 4 _( _~  |
+                    r8 < e'' cis'' e' > -\staccato [ < fis' cis'' fis'' > -\staccato < gis' cis'' gis'' > -\staccato ] < a' a'' cis'' > -\staccato [ < cis'' cis''' > -\staccato ] cis' 4 _( _~  |
                     cis' 8 [ ais ) ] b 4 _( _~ b 8 \< [ gis ) ] a 4  |
                     < cis' b > 2 \! _( \> < cis' a > 4 ) < a' a'' > 8 -\p \! ^( [ < b'' b' > ) ]  |
                     < gis' gis'' > 4. ^( < a'' a' > 8 ) < fis' fis'' > 4 \< < fis' fis'' > 8 ^( [ < d'' d''' > ) ]  |
                     < d'' fis'' d''' > 8 -\mf \! ^( [ < e'' fis'' e''' > ] < cis'' fis'' cis''' > 4 \> _~ < cis'' fis'' cis''' > 8 [ < d'' fis'' d''' > ] < b' b'' > 4 )  |
 %% 25
                     r4 \! < fis' b' b d' > -\mf < d'' fis'' b' fis' > 2  |
-                    r4 \times 8/9 { fis'' 32 -\p ^( e'' d'' cis'' b' cis'' d'' e'' fis'' } gis'' 8 ) [ r16 a'' ] fis'' 8 r  |
+                    r4 \times 8/9 { fis'' 32 -\p ^( [ e'' d'' cis'' b' cis'' d'' e'' fis'' ] } gis'' 8 ) [ r16 a'' ] fis'' 8 r  |
                     r4 < b' fis' fis'' d'' > -\f < b'' b' d'' fis'' > 2  |
-                    r4 \times 8/9 { b'' 32 -\mf ^( a'' gis'' fis'' e'' fis'' gis'' a'' b'' } \stemDown cis''' 8 ) [ r16 d''' ] \stemNeutral b'' 8 r  |
+                    r4 \times 8/9 { b'' 32 -\mf ^( [ a'' gis'' fis'' e'' fis'' gis'' a'' b'' ] } \stemDown cis''' 8 ) [ r16 d''' ] \stemNeutral b'' 8 r  |
                     r8 < b fis' d' > -\mf r4 \< r8 < fis d' b > r4  |
 %% 30
                     < a fis cis' > 2 -\f \! \stemDown < a' cis'' gis'' > 8 -\mf ^( [ < cis'' a' fis'' > ) < fis' a' > < fis' b' a' > ] \stemNeutral  |
@@ -185,7 +187,7 @@ globalTempo = {
                     < cis'' fis' fis'' > 4 ) \! < fis'' gis'' d''' > ^( < fis'' fis''' a'' > 8 ) r r4  |
                     \clef "treble"
                     \key d \major
-                    < fis' d' a fis > 2 -\mf r8 [ a' ^( b' cis'' ]  |
+                    < fis' d' a fis > 2 -\mf r8 a' ^( [ b' cis'' ]  |
                     < d'' fis' d' > 4 ) < e' b' e'' > < e' a' cis' > 8 _( \> [ < e' e'' cis' > < cis' fis'' e' > < cis' g'' e' > ) ]  |
 %% 35
                     < a' a'' > 4 \! _( < a fis' a' a'' > \< r < a e' g' a'' >  |
@@ -235,6 +237,7 @@ globalTempo = {
                 \set Staff.printKeyCancellation = ##f
                 \new Voice \global
                 \new Voice \globalTempo
+                \set Staff.autoBeaming = ##f % turns off all autobeaming
 
                 \context Voice = "voice 3" {
                     % Segment: Piano - Left Hand

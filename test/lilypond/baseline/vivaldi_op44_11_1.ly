@@ -33,6 +33,7 @@ globalTempo = {
                 \set Staff.printKeyCancellation = ##f
                 \new Voice \global
                 \new Voice \globalTempo
+                \set Staff.autoBeaming = ##f % turns off all autobeaming
 
                 \context Voice = "voice 1" {
                     % Segment: 
@@ -43,9 +44,9 @@ globalTempo = {
                     
                     \clef "treble^8"
                     g''' 4 ^\markup { \bold \large "Allegro" } g''' g'''  |
-                    g''' 4 r8 [ e''' 16 f''' ] g''' 8 [ a''' 16 b''' ]  |
+                    g''' 4 r8 e''' 16 [ f''' ] g''' 8 [ a''' 16 b''' ]  |
                     c'''' 4 g''' g'''  |
-                    g''' 4 r8 [ e''' 16 f''' ] g''' 8 [ a''' 16 b''' ]  |
+                    g''' 4 r8 e''' 16 [ f''' ] g''' 8 [ a''' 16 b''' ]  |
 %% 5
                     c'''' 4 c''' r  |
                     g''' 8 [ f''' 16 g''' ] e''' 8 [ d''' 16 e''' ] c''' 8 [ b'' 16 c''' ]  |
@@ -92,10 +93,10 @@ globalTempo = {
                     a''' 16 [ a''' gis''' a''' ] e''' [ c'''' b''' c'''' ] e''' [ e'''' d'''' e'''' ]  |
                     e''' 16 [ a''' gis''' a''' ] c''' [ a''' gis''' a''' ] b'' [ gis''' fis''' gis''' ]  |
                     a''' 4 e''' e'''  |
-                    e''' 4 r8 [ c''' 16 d''' ] e''' 8 [ fis''' 16 gis''' ]  |
+                    e''' 4 r8 c''' 16 [ d''' ] e''' 8 [ fis''' 16 gis''' ]  |
                     a''' 4 e''' e'''  |
 %% 45
-                    e''' 4 r8 [ c''' 16 d''' ] e''' 8 [ fis''' 16 gis''' ]  |
+                    e''' 4 r8 c''' 16 [ d''' ] e''' 8 [ fis''' 16 gis''' ]  |
                     a''' 4 a'' r  |
                     c''' 8 [ c''' 16 d''' ] e''' 8 [ a''' ] e''' [ c''' ]  |
                     a'' 8 [ c''' 16 d''' ] e''' 8 [ a''' ] e''' [ c''' ]  |
@@ -121,18 +122,18 @@ globalTempo = {
 %% 65
                     d'''' 16 [ bes''' g''' c''' ] c''' [ g''' bes''' d'''' ] c''' [ g''' bes''' d'''' ]  |
                     e'''' 16 [ c'''' g''' c''' ] c''' [ g''' c'''' e'''' ] c''' [ g''' c'''' e'''' ]  |
-                    f'''' 4 f''' r8 \times 2/3 { f''' 16 ^\( g''' a''' \) }  |
-                    d''' 8 \times 2/3 { d''' 16 ^\( e''' f''' \) } bes'' 8 \times 2/3 { bes'' 16 ^\( c''' d''' \) } g'' 8 \times 2/3 { g'' 16 _\( a'' bes'' \) }  |
-                    e''' 8 \times 2/3 { e''' 16 ^\( f''' g''' \) } c''' 8 \times 2/3 { c''' 16 ^\( d''' e''' \) } a'' 8 \times 2/3 { a'' 16 _\( b'' c''' \) }  |
+                    f'''' 4 f''' r8 \times 2/3 { f''' 16 ^\( [ g''' a''' \) ] }  |
+                    d''' 8 \times 2/3 { d''' 16 ^\( [ e''' f''' \) ] } bes'' 8 \times 2/3 { bes'' 16 ^\( [ c''' d''' \) ] } g'' 8 \times 2/3 { g'' 16 _\( [ a'' bes'' \) ] }  |
+                    e''' 8 \times 2/3 { e''' 16 ^\( [ f''' g''' \) ] } c''' 8 \times 2/3 { c''' 16 ^\( [ d''' e''' \) ] } a'' 8 \times 2/3 { a'' 16 _\( [ b'' c''' \) ] }  |
 %% 70
-                    f''' 8 \times 2/3 { f''' 16 ^\( g''' a''' \) } d''' 8 \times 2/3 { d''' 16 ^\( e''' f''' \) } bes'' 8 \times 2/3 { bes'' 16 ^\( c''' d''' \) }  |
-                    g''' 8 \times 2/3 { g''' 16 ^\( a''' bes''' \) } a''' 8 \times 2/3 { a''' 16 ^\( bes''' c'''' \) } bes''' 8 \times 2/3 { bes''' 16 ^\( c'''' d'''' \) }  |
-                    c'''' 16 [ bes''' ] \times 2/3 { a''' ^\( g''' f''' \) } g''' 2 -\trill  |
+                    f''' 8 \times 2/3 { f''' 16 ^\( [ g''' a''' \) ] } d''' 8 \times 2/3 { d''' 16 ^\( [ e''' f''' \) ] } bes'' 8 \times 2/3 { bes'' 16 ^\( [ c''' d''' \) ] }  |
+                    g''' 8 \times 2/3 { g''' 16 ^\( [ a''' bes''' \) ] } a''' 8 \times 2/3 { a''' 16 ^\( [ bes''' c'''' \) ] } bes''' 8 \times 2/3 { bes''' 16 ^\( [ c'''' d'''' \) ] }  |
+                    c'''' 16 [ bes''' ] \times 2/3 { a''' ^\( [ g''' f''' \) ] } g''' 2 -\trill  |
                     f''' 4 c'''' c''''  |
-                    c'''' 4 r8 [ f''' 16 g''' ] a''' 8 [ a''' 16 bes''' ]  |
+                    c'''' 4 r8 f''' 16 [ g''' ] a''' 8 [ a''' 16 bes''' ]  |
 %% 75
                     c'''' 4 c'''' c''''  |
-                    c'''' 4 r8 [ f''' 16 g''' ] a''' 8 [ a''' 16 bes''' ]  |
+                    c'''' 4 r8 f''' 16 [ g''' ] a''' 8 [ a''' 16 bes''' ]  |
                     c'''' 8 [ bes''' 16 c'''' ] a''' 8 [ g''' 16 a''' ] f''' 8 [ e''' 16 f''' ]  |
                     d''' 8 [ c''' 16 d''' ] bes'' 8 [ a'' 16 bes'' ] g'' 8 [ f'' 16 g'' ]  |
                     e'' 8 [ e''' ] g''' [ bes''' ] g''' [ e''' ]  |
@@ -171,7 +172,7 @@ globalTempo = {
                     d'''' 8 [ c'''' 16 d'''' ] b''' 8 [ a''' 16 b''' ] g''' 8 [ fis''' 16 g''' ]  |
                     e'''' 8 [ e''' ] g''' [ e''' ] g''' [ c'''' ]  |
                     e'''' 8 [ d'''' 16 e'''' ] c'''' 8 [ b''' 16 c'''' ] a''' 8 [ gis''' 16 a''' ]  |
-                    a''' 4 r8 [ dis''' 16 e''' ] fis''' [ g''' a''' b''' ]  |
+                    a''' 4 r8 dis''' 16 [ e''' ] fis''' [ g''' a''' b''' ]  |
 %% 110
                     c'''' 4 ^\( b''' a''' \)  |
                     g''' 8 [ g''' 16 a''' ] b''' 8 [ g''' ] a''' [ fis''' ]  |
@@ -221,7 +222,7 @@ globalTempo = {
                     c'''' 8 [ c''' ] e''' [ c''' ] e''' [ a''' ]  |
                     c'''' 8 [ b''' 16 c'''' ] a''' 8 [ g''' 16 a''' ] f''' 8 [ e''' 16 f''' ]  |
 %% 150
-                    f''' 4 r8 [ b'' 16 c''' ] d''' [ e''' f''' g''' ]  |
+                    f''' 4 r8 b'' 16 [ c''' ] d''' [ e''' f''' g''' ]  |
                     a''' 4 ^\( g''' f''' \)  |
                     e''' 8 [ e''' 16 f''' ] g''' 8 [ c'''' ] g''' [ e''' ]  |
                     c''' 8 [ e''' 16 f''' ] g''' 8 [ c'''' ] g''' [ e''' ]  |
@@ -240,6 +241,7 @@ globalTempo = {
                     \set Staff.printKeyCancellation = ##f
                     \new Voice \global
                     \new Voice \globalTempo
+                    \set Staff.autoBeaming = ##f % turns off all autobeaming
 
                     \context Voice = "voice 2" {
                         % Segment: 
@@ -250,9 +252,9 @@ globalTempo = {
                         
                         \clef "treble"
                         g'' 4 g'' g''  |
-                        g'' 4 r8 [ e'' 16 f'' ] g'' 8 [ a'' 16 b'' ]  |
+                        g'' 4 r8 e'' 16 [ f'' ] g'' 8 [ a'' 16 b'' ]  |
                         c''' 4 g'' g''  |
-                        g'' 4 r8 [ e'' 16 f'' ] g'' 8 [ a'' 16 b'' ]  |
+                        g'' 4 r8 e'' 16 [ f'' ] g'' 8 [ a'' 16 b'' ]  |
 %% 5
                         c''' 4 c'' r  |
                         g'' 8 [ f'' 16 g'' ] e'' 8 [ d'' 16 e'' ] c'' 8 [ b' 16 c'' ]  |
@@ -288,10 +290,10 @@ globalTempo = {
                         a'' 8 [ a' ] c'' [ a' ] e'' [ c'' ]  |
                         R2.*10  |
                         e'' 4 e'' e''  |
-                        e'' 4 r8 [ c'' 16 d'' ] e'' 8 [ fis'' 16 gis'' ]  |
+                        e'' 4 r8 c'' 16 [ d'' ] e'' 8 [ fis'' 16 gis'' ]  |
                         a'' 4 e'' e''  |
 %% 45
-                        e'' 4 r8 [ c'' 16 d'' ] e'' 8 [ fis'' 16 gis'' ]  |
+                        e'' 4 r8 c'' 16 [ d'' ] e'' 8 [ fis'' 16 gis'' ]  |
                         a'' 4 a' r  |
                         c'' 8 [ c'' 16 d'' ] e'' 8 [ a'' ] e'' [ c'' ]  |
                         a' 8 [ c'' 16 d'' ] e'' 8 [ a'' ] e'' [ c'' ]  |
@@ -299,31 +301,31 @@ globalTempo = {
 %% 50
                         a'' 4 r r  |
                         c'' 8 [ e'' ] a'' [ c'' ] e'' [ a'' ]  |
-                        r8 [ gis'' ] b'' [ d'' ] gis'' [ b'' ]  |
-                        r8 [ gis'' ] b'' [ d'' ] gis'' [ b'' ]  |
-                        r8 [ e'' ] a'' [ c'' ] e'' [ a'' ]  |
+                        r8 gis'' b'' [ d'' ] gis'' [ b'' ]  |
+                        r8 gis'' b'' [ d'' ] gis'' [ b'' ]  |
+                        r8 e'' a'' [ c'' ] e'' [ a'' ]  |
 %% 55
-                        r8 [ e'' ] a'' [ c'' ] e'' [ e''' ]  |
-                        r8 [ e'' ] a'' [ c'' ] e'' [ a'' ]  |
-                        r8 [ d'' ] a'' [ d'' ] fis'' [ d''' ]  |
-                        r8 [ d'' ] g'' [ d'' ] g'' [ d''' ]  |
-                        r8 [ d'' ] f'' [ d'' ] f'' [ d''' ]  |
+                        r8 e'' a'' [ c'' ] e'' [ e''' ]  |
+                        r8 e'' a'' [ c'' ] e'' [ a'' ]  |
+                        r8 d'' a'' [ d'' ] fis'' [ d''' ]  |
+                        r8 d'' g'' [ d'' ] g'' [ d''' ]  |
+                        r8 d'' f'' [ d'' ] f'' [ d''' ]  |
 %% 60
-                        r8 [ c'' ] e'' [ c'' ] e'' [ c''' ]  |
-                        r8 [ c'' ] e'' [ c'' ] e'' [ bes'' ]  |
-                        r8 [ f'' ] a'' [ c'' ] f'' [ a'' ]  |
-                        r8 [ g'' ] bes'' [ e'' ] g'' [ bes'' ]  |
-                        r8 [ c'' ] f'' [ c'' ] f'' [ c''' ]  |
+                        r8 c'' e'' [ c'' ] e'' [ c''' ]  |
+                        r8 c'' e'' [ c'' ] e'' [ bes'' ]  |
+                        r8 f'' a'' [ c'' ] f'' [ a'' ]  |
+                        r8 g'' bes'' [ e'' ] g'' [ bes'' ]  |
+                        r8 c'' f'' [ c'' ] f'' [ c''' ]  |
 %% 65
-                        r8 [ c'' ] e'' [ c'' ] e'' [ g'' ]  |
-                        r8 [ c'' ] e'' [ c'' ] e'' [ g'' ]  |
+                        r8 c'' e'' [ c'' ] e'' [ g'' ]  |
+                        r8 c'' e'' [ c'' ] e'' [ g'' ]  |
                         a'' 4 r r  |
                         R2.*5  |
                         c''' 4 c''' c'''  |
-                        c''' 4 r8 [ f'' 16 g'' ] a'' 8 [ a'' 16 bes'' ]  |
+                        c''' 4 r8 f'' 16 [ g'' ] a'' 8 [ a'' 16 bes'' ]  |
 %% 75
                         c''' 4 c''' c'''  |
-                        c''' 4 r8 [ f'' 16 g'' ] a'' 8 [ a'' 16 bes'' ]  |
+                        c''' 4 r8 f'' 16 [ g'' ] a'' 8 [ a'' 16 bes'' ]  |
                         c''' 8 [ bes'' 16 c''' ] a'' 8 [ g'' 16 a'' ] f'' 8 [ e'' 16 f'' ]  |
                         d'' 8 [ c'' 16 d'' ] bes' 8 [ a' 16 bes' ] g' 8 [ f' 16 g' ]  |
                         e' 8 [ e'' ] g'' [ bes'' ] g'' [ e'' ]  |
@@ -347,7 +349,7 @@ globalTempo = {
                         d''' 8 [ c''' 16 d''' ] b'' 8 [ a'' 16 b'' ] g'' 8 [ fis'' 16 g'' ]  |
                         e''' 8 [ e'' ] g'' [ e'' ] g'' [ c''' ]  |
                         e''' 8 [ d''' 16 e''' ] c''' 8 [ b'' 16 c''' ] a'' 8 [ gis'' 16 a'' ]  |
-                        a'' 4 r8 [ dis'' 16 e'' ] fis'' [ g'' a'' b'' ]  |
+                        a'' 4 r8 dis'' 16 [ e'' ] fis'' [ g'' a'' b'' ]  |
 %% 110
                         c''' 4 ^\( b'' a'' \)  |
                         g'' 8 [ g'' 16 a'' ] b'' 8 [ g'' ] a'' [ fis'' ]  |
@@ -387,7 +389,7 @@ globalTempo = {
                         c''' 8 [ c'' ] e'' [ c'' ] e'' [ a'' ]  |
                         c''' 8 [ b'' 16 c''' ] a'' 8 [ g'' 16 a'' ] f'' 8 [ e'' 16 f'' ]  |
 %% 150
-                        f'' 4 r8 [ b' 16 c'' ] d'' [ e'' f'' g'' ]  |
+                        f'' 4 r8 b' 16 [ c'' ] d'' [ e'' f'' g'' ]  |
                         a'' 4 ^\( g'' f'' \)  |
                         e'' 8 [ e'' 16 f'' ] g'' 8 [ c''' ] g'' [ e'' ]  |
                         c'' 8 [ e'' 16 f'' ] g'' 8 [ c''' ] g'' [ e'' ]  |
@@ -405,6 +407,7 @@ globalTempo = {
                     \set Staff.printKeyCancellation = ##f
                     \new Voice \global
                     \new Voice \globalTempo
+                    \set Staff.autoBeaming = ##f % turns off all autobeaming
 
                     \context Voice = "voice 3" {
                         % Segment:  
@@ -416,10 +419,10 @@ globalTempo = {
                         \clef "treble"
                         R2.  |
                         g'' 4 g'' g''  |
-                        g'' 4 r8 [ e'' 16 f'' ] g'' 8 [ a'' 16 b'' ]  |
+                        g'' 4 r8 e'' 16 [ f'' ] g'' 8 [ a'' 16 b'' ]  |
                         c''' 4 g'' g''  |
 %% 5
-                        g'' 4 r8 [ e'' 16 f'' ] g'' 8 [ a'' 16 b'' ]  |
+                        g'' 4 r8 e'' 16 [ f'' ] g'' 8 [ a'' 16 b'' ]  |
                         c''' 4 c'' r  |
                         c'' 8 [ b' 16 c'' ] a' 8 [ g' 16 a' ] f' 8 [ e' 16 f' ]  |
                         d'' 8 [ d' ] fis' [ d' ] fis' [ a' ]  |
@@ -453,39 +456,39 @@ globalTempo = {
                         e'' 8 [ e' ] a' [ e' ] c'' [ a' ]  |
                         R2.*11  |
                         e'' 4 e'' e''  |
-                        e'' 4 r8 [ c'' 16 d'' ] e'' 8 [ fis'' 16 gis'' ]  |
+                        e'' 4 r8 c'' 16 [ d'' ] e'' 8 [ fis'' 16 gis'' ]  |
 %% 45
                         a'' 4 e'' e''  |
-                        e'' 4 r8 [ c'' 16 d'' ] e'' 8 [ fis'' 16 gis'' ]  |
+                        e'' 4 r8 c'' 16 [ d'' ] e'' 8 [ fis'' 16 gis'' ]  |
                         a'' 8 [ a' 16 b' ] c'' 8 [ e'' ] c'' [ a' ]  |
                         e' 8 [ a' 16 b' ] c'' 8 [ e'' ] c'' [ a' ]  |
                         e' 8 [ c'' ] a' [ c'' ] gis' [ b' ]  |
 %% 50
                         c'' 4 r r  |
                         a' 8 [ c'' ] e'' [ a' ] c'' [ e'' ]  |
-                        r8 [ e'' ] gis'' [ b' ] e'' [ gis'' ]  |
-                        r8 [ e'' ] gis'' [ b' ] e'' [ gis'' ]  |
-                        r8 [ c'' ] e'' [ a' ] c'' [ e'' ]  |
+                        r8 e'' gis'' [ b' ] e'' [ gis'' ]  |
+                        r8 e'' gis'' [ b' ] e'' [ gis'' ]  |
+                        r8 c'' e'' [ a' ] c'' [ e'' ]  |
 %% 55
-                        r8 [ c'' ] e'' [ a' ] c'' [ a'' ]  |
-                        r8 [ c'' ] e'' [ a' ] c'' [ e'' ]  |
-                        r8 [ a' ] d'' [ a' ] d'' [ a'' ]  |
-                        r8 [ b' ] d'' [ b' ] d'' [ b'' ]  |
-                        r8 [ b' ] d'' [ b' ] d'' [ b'' ]  |
+                        r8 c'' e'' [ a' ] c'' [ a'' ]  |
+                        r8 c'' e'' [ a' ] c'' [ e'' ]  |
+                        r8 a' d'' [ a' ] d'' [ a'' ]  |
+                        r8 b' d'' [ b' ] d'' [ b'' ]  |
+                        r8 b' d'' [ b' ] d'' [ b'' ]  |
 %% 60
-                        r8 [ a' ] c'' [ a' ] c'' [ g'' ]  |
-                        r8 [ g' ] c'' [ g' ] c'' [ g'' ]  |
-                        r8 [ a' ] f'' [ a' ] c'' [ f'' ]  |
-                        r8 [ e'' ] g'' [ c'' ] e'' [ g'' ]  |
-                        r8 [ a' ] c'' [ a' ] c'' [ a'' ]  |
+                        r8 a' c'' [ a' ] c'' [ g'' ]  |
+                        r8 g' c'' [ g' ] c'' [ g'' ]  |
+                        r8 a' f'' [ a' ] c'' [ f'' ]  |
+                        r8 e'' g'' [ c'' ] e'' [ g'' ]  |
+                        r8 a' c'' [ a' ] c'' [ a'' ]  |
 %% 65
-                        r8 [ g' ] c'' [ g' ] c'' [ e'' ]  |
-                        r8 [ g' ] c'' [ g' ] c'' [ e'' ]  |
+                        r8 g' c'' [ g' ] c'' [ e'' ]  |
+                        r8 g' c'' [ g' ] c'' [ e'' ]  |
                         c'' 4 r r  |
                         R2.*6  |
                         c''' 4 c''' c'''  |
 %% 75
-                        c''' 4 r8 [ f'' 16 g'' ] a'' 8 [ a'' 16 bes'' ]  |
+                        c''' 4 r8 f'' 16 [ g'' ] a'' 8 [ a'' 16 bes'' ]  |
                         c''' 4 c''' c'''  |
                         a'' 8 [ g'' 16 a'' ] f'' 8 [ e'' 16 f'' ] d'' 8 [ c'' 16 d'' ]  |
                         f'' 8 [ e'' 16 f'' ] d'' 8 [ c'' 16 d'' ] b' 8 [ a' 16 b' ]  |
@@ -509,7 +512,7 @@ globalTempo = {
                         g'' 8 [ g' ] b' [ g' ] b' [ d'' ]  |
                         g'' 8 [ fis'' 16 g'' ] e'' 8 [ d'' 16 e'' ] c'' 8 [ b' 16 c'' ]  |
                         a'' 8 [ a' ] c'' [ a' ] c'' [ e'' ]  |
-                        fis'' 4 r8 [ b' 16 cis'' ] dis'' [ e'' fis'' g'' ]  |
+                        fis'' 4 r8 b' 16 [ cis'' ] dis'' [ e'' fis'' g'' ]  |
 %% 110
                         a'' 4 ^\( g'' fis'' \)  |
                         e'' 8 [ e'' 16 fis'' ] g'' 8 [ e'' ] fis'' [ dis'' ]  |
@@ -549,7 +552,7 @@ globalTempo = {
                         e'' 8 [ d'' 16 e'' ] c'' 8 [ b' 16 c'' ] a' 8 [ g' 16 a' ]  |
                         f'' 8 [ f' ] a' [ f' ] a' [ c'' ]  |
 %% 150
-                        d'' 4 r8 [ g' 16 a' ] b' [ c'' d'' e'' ]  |
+                        d'' 4 r8 g' 16 [ a' ] b' [ c'' d'' e'' ]  |
                         f'' 4 ^\( e'' d'' \)  |
                         c'' 8 [ c'' 16 d'' ] e'' 8 [ g'' ] e'' [ c'' ]  |
                         g' 8 [ c'' 16 d'' ] e'' 8 [ g'' ] e'' [ c'' ]  |
@@ -568,6 +571,7 @@ globalTempo = {
                 \set Staff.printKeyCancellation = ##f
                 \new Voice \global
                 \new Voice \globalTempo
+                \set Staff.autoBeaming = ##f % turns off all autobeaming
 
                 \context Voice = "voice 4" {
                     % Segment:  
@@ -733,6 +737,7 @@ globalTempo = {
                 \set Staff.printKeyCancellation = ##f
                 \new Voice \global
                 \new Voice \globalTempo
+                \set Staff.autoBeaming = ##f % turns off all autobeaming
 
                 \context Voice = "voice 5" {
                     % Segment: 

@@ -70,104 +70,103 @@ HeadersConfigurationPage::HeadersConfigurationPage(QWidget *parent,
     headersBox->setLayout(headersBoxLayout);
 
     // grab user headers from metadata
-    Configuration metadata = (&m_doc->getComposition())->getMetadata();
+    Configuration metadata = m_doc->getComposition().getMetadata();
     std::vector<std::string> propertyNames = metadata.getPropertyNames();
-    std::vector<PropertyName> fixedKeys =
-    CompositionMetadataKeys::getFixedKeys();
+    std::vector<PropertyName> fixedKeys = CompositionMetadataKeys::getFixedKeys();
 
     std::set<std::string> shown;
 
     for (unsigned int index = 0; index < fixedKeys.size(); index++) {
-    std::string key = fixedKeys[index].getName();
-    std::string header = "";
-    QString headerStr("");
-    for (unsigned int i = 0; i < propertyNames.size(); ++i) {
-        std::string property = propertyNames [i];
-        if (property == key) {
+        std::string key = fixedKeys[index].getName();
+        std::string header = "";
+        QString headerStr("");
+        for (unsigned int i = 0; i < propertyNames.size(); ++i) {
+            std::string property = propertyNames [i];
+            if (property == key) {
 
-            // get the std::string from metadata
-            header = strtoqstr(metadata.get<String>(property)).toStdString();
+                // get the std::string from metadata
+                header = strtoqstr(metadata.get<String>(property)).toStdString();
 
-            //@@@ dtb: tr() only works with char* now, so I'm going to try
-            // using header directly instead of a QString version of header.
-            headerStr = QObject::tr(header.c_str());
+                //@@@ dtb: tr() only works with char* now, so I'm going to try
+                // using header directly instead of a QString version of header.
+                headerStr = QObject::tr(header.c_str());
+            }
         }
-    }
 
-    unsigned int row = 0, col = 0, width = 1;
-    LineEdit *editHeader = new LineEdit(headerStr, frameHeaders);
-    QString trName;
-    if (key == headerDedication) {  
-        m_editDedication = editHeader;
-        row = 0; col = 2; width = 2;
-        trName = tr("Dedication");
-    } else if (key == headerTitle) {       
-        m_editTitle = editHeader;    
-        row = 1; col = 1; width = 4;
-        trName = tr("Title");
-    } else if (key == headerSubtitle) {
-        m_editSubtitle = editHeader;
-        row = 2; col = 1; width = 4;
-        trName = tr("Subtitle");
-    } else if (key == headerSubsubtitle) { 
-        m_editSubsubtitle = editHeader;
-        row = 3; col = 2; width = 2;
-        trName = tr("Subsubtitle");
-    } else if (key == headerPoet) {        
-        m_editPoet = editHeader;
-        row = 4; col = 0; width = 2;
-        trName = tr("Poet");
-    } else if (key == headerInstrument) {  
-        m_editInstrument = editHeader;
-        row = 4; col = 2; width = 2;
-        trName = tr("Instrument");
-    } else if (key == headerComposer) {    
-        m_editComposer = editHeader;
-        row = 4; col = 4; width = 2; 
-        trName = tr("Composer");
-    } else if (key == headerMeter) {       
-        m_editMeter = editHeader;
-        row = 5; col = 0; width = 3; 
-        trName = tr("Meter");
-    } else if (key == headerArranger) {    
-        m_editArranger = editHeader;
-        row = 5; col = 3; width = 3; 
-        trName = tr("Arranger");
-    } else if (key == headerPiece) {       
-        m_editPiece = editHeader;
-        row = 6; col = 0; width = 3; 
-        trName = tr("Piece");
-    } else if (key == headerOpus) {        
-        m_editOpus = editHeader;
-        row = 6; col = 3; width = 3; 
-        trName = tr("Opus");
-    } else if (key == headerCopyright) {   
-        m_editCopyright = editHeader;
-        row = 8; col = 1; width = 4; 
-        trName = tr("Copyright");
-    } else if (key == headerTagline) {     
-        m_editTagline = editHeader;
-        row = 9; col = 1; width = 4; 
-        trName = tr("Tagline");
-    }
+        unsigned int row = 0, col = 0, width = 1;
+        LineEdit *editHeader = new LineEdit(headerStr, frameHeaders);
+        QString trName;
+        if (key == headerDedication) {
+            m_editDedication = editHeader;
+            row = 0; col = 2; width = 2;
+            trName = tr("Dedication");
+        } else if (key == headerTitle) {
+            m_editTitle = editHeader;
+            row = 1; col = 1; width = 4;
+            trName = tr("Title");
+        } else if (key == headerSubtitle) {
+            m_editSubtitle = editHeader;
+            row = 2; col = 1; width = 4;
+            trName = tr("Subtitle");
+        } else if (key == headerSubsubtitle) {
+            m_editSubsubtitle = editHeader;
+            row = 3; col = 2; width = 2;
+            trName = tr("Subsubtitle");
+        } else if (key == headerPoet) {
+            m_editPoet = editHeader;
+            row = 4; col = 0; width = 2;
+            trName = tr("Poet");
+        } else if (key == headerInstrument) {
+            m_editInstrument = editHeader;
+            row = 4; col = 2; width = 2;
+            trName = tr("Instrument");
+        } else if (key == headerComposer) {
+            m_editComposer = editHeader;
+            row = 4; col = 4; width = 2;
+            trName = tr("Composer");
+        } else if (key == headerMeter) {
+            m_editMeter = editHeader;
+            row = 5; col = 0; width = 3;
+            trName = tr("Meter");
+        } else if (key == headerArranger) {
+            m_editArranger = editHeader;
+            row = 5; col = 3; width = 3;
+            trName = tr("Arranger");
+        } else if (key == headerPiece) {
+            m_editPiece = editHeader;
+            row = 6; col = 0; width = 3;
+            trName = tr("Piece");
+        } else if (key == headerOpus) {
+            m_editOpus = editHeader;
+            row = 6; col = 3; width = 3;
+            trName = tr("Opus");
+        } else if (key == headerCopyright) {
+            m_editCopyright = editHeader;
+            row = 8; col = 1; width = 4;
+            trName = tr("Copyright");
+        } else if (key == headerTagline) {
+            m_editTagline = editHeader;
+            row = 9; col = 1; width = 4;
+            trName = tr("Tagline");
+        }
 
-    // editHeader->setReadOnly(true);
-    editHeader->setAlignment((col == 0 ? Qt::AlignLeft : (col >= 3 ? Qt::AlignRight : Qt::AlignCenter)));
+        // editHeader->setReadOnly(true);
+        editHeader->setAlignment((col == 0 ? Qt::AlignLeft : (col >= 3 ? Qt::AlignRight : Qt::AlignCenter)));
 
-    layoutHeaders->addWidget(editHeader, row, col, 1, width);
+        layoutHeaders->addWidget(editHeader, row, col, 1, width);
 
-    //
-    // ToolTips
-    //
-    // (These particular LineEdit objects were still taking a mixture of styles
-    // from the external sheet and the internal hard coded stylesheet in the
-    // subclass LineEdit.  I guess I should have re-implemented QLineEdit
-    // instead of subclassing it.
-    QString localStyle("QToolTip {background-color: #FFFBD4; color: #000000;} QLineEdit {background-color: #FFFFFF; color: #000000;}");
-    editHeader->setStyleSheet(localStyle); 
-    editHeader->setToolTip(trName);
+        //
+        // ToolTips
+        //
+        // (These particular LineEdit objects were still taking a mixture of styles
+        // from the external sheet and the internal hard coded stylesheet in the
+        // subclass LineEdit.  I guess I should have re-implemented QLineEdit
+        // instead of subclassing it.
+        QString localStyle("QToolTip {background-color: #FFFBD4; color: #000000;} QLineEdit {background-color: #FFFFFF; color: #000000;}");
+        editHeader->setStyleSheet(localStyle);
+        editHeader->setToolTip(trName);
 
-    shown.insert(key);
+        shown.insert(key);
     }
     QLabel *separator = new QLabel(tr("The composition comes here."), frameHeaders);
     separator->setAlignment(Qt::AlignCenter);
@@ -213,14 +212,7 @@ HeadersConfigurationPage::HeadersConfigurationPage(QWidget *parent,
     
     m_metadata->setHorizontalHeaderItem( 0, new QTableWidgetItem(tr("Name"))  ); // column, item
     m_metadata->setHorizontalHeaderItem( 1, new QTableWidgetItem(tr("Value"))  ); // column, item
-//    m_metadata->setFullWidth(true);
     m_metadata->setMinimumSize(40, 40); // width, height
-//    m_metadata->setItemsRenameable(true);  //&&& disabled item renaming  ||use: openPersistentEditor (QTableWidgetItem * item)
-//    m_metadata->setRenameable(0);
-//    m_metadata->setRenameable(1);
-//    m_metadata->setItemMargin(5);
-//    m_metadata->setDefaultRenameAction(QListWidget::Accept);
-//    m_metadata->setShowSortIndicator(true);
 
     std::vector<std::string> names(metadata.getPropertyNames());
     
@@ -229,18 +221,16 @@ HeadersConfigurationPage::HeadersConfigurationPage(QWidget *parent,
     
     for (unsigned int i = 0; i < names.size(); ++i) {
 
-        m_metadata->setRowCount(row + 1);
-
         if (shown.find(names[i]) != shown.end())
             continue;
+
+        m_metadata->setRowCount(row + 1);
 
         QString name(strtoqstr(names[i]));
 
         // property names stored in lower case
         name = name.left(1).toUpper() + name.right(name.length() - 1);
 
-//        new QListWidgetItem(m_metadata, name, strtoqstr(metadata.get<String>(names[i])));
-        // qt4: icon, text, type
         tabItem = new QTableWidgetItem(name);
         m_metadata->setItem(row, 0, tabItem);
         tabItem = new QTableWidgetItem(strtoqstr(metadata.get<String>(names[i])));
@@ -250,7 +240,7 @@ HeadersConfigurationPage::HeadersConfigurationPage(QWidget *parent,
         row++;
     }
 
-    layoutOtherHeaders->addWidget(m_metadata, 0, 0, 0- 0+1, 1-0+ 1);
+    layoutOtherHeaders->addWidget(m_metadata, 0, 0, 1, 2);
 
     QPushButton* addPropButton = new QPushButton(tr("Add New Property"),
                                                  frameOtherHeaders);
@@ -275,12 +265,11 @@ HeadersConfigurationPage::slotAddNewProperty()
     QString propertyName;
     int i = 0;
     
-    QList<QTableWidgetItem*> foundItems;
     while (1) {
         propertyName =
             (i > 0 ? tr("{new property %1}").arg(i) : tr("{new property}"));
-        //<QTableWidgetItem*>
-        foundItems = m_metadata->findItems(propertyName, Qt::MatchContains | Qt::MatchCaseSensitive);
+        QList<QTableWidgetItem*> foundItems = m_metadata->findItems(
+                    propertyName, Qt::MatchContains | Qt::MatchCaseSensitive);
     
         if (!m_doc->getComposition().getMetadata().has(qstrtostr(propertyName)) &&
                      foundItems.isEmpty()){
@@ -289,26 +278,28 @@ HeadersConfigurationPage::slotAddNewProperty()
         ++i;
     }
 
-    //new QTableWidgetItem(m_metadata, propertyName, tr("{undefined}"));
     int rc = m_metadata->rowCount();
-    int col = 0;
     m_metadata->setRowCount(rc + 1);
-    m_metadata->setItem(rc, col, new QTableWidgetItem(propertyName));
+    m_metadata->setItem(rc, 0, new QTableWidgetItem(propertyName));
+    m_metadata->setItem(rc, 1, new QTableWidgetItem()); // empty value
 }
 
 void
 HeadersConfigurationPage::slotDeleteProperty()
 {
-    //delete m_metadata->currentIndex();
     m_metadata->removeRow(m_metadata->currentRow());
+}
+
+static void setMetadataString(Configuration &metadata, const PropertyName &property, const QString &value)
+{
+    // Don't set empty values (this is to match the XML loading code)
+    if (!value.isEmpty()) {
+        metadata.set<String>(property, qstrtostr(value));
+    }
 }
 
 void HeadersConfigurationPage::apply()
 {
-    //@@@ Next two lines not needed in this function.  Commented out
-    //@@@ QSettings settings;
-    //@@@ settings.beginGroup(NotationViewConfigGroup);
-
     // If one of the items still has focus, it won't remember edits.
     // Switch between two fields in order to lose the current focus.
     m_editTitle->setFocus();
@@ -318,48 +309,39 @@ void HeadersConfigurationPage::apply()
     // Update header fields
     //
 
-    Configuration &metadata = (&m_doc->getComposition())->getMetadata();
+    Configuration &metadata = m_doc->getComposition().getMetadata();
+    const Configuration origmetadata = metadata;
     metadata.clear();
 
-    metadata.set<String>(CompositionMetadataKeys::Dedication, qstrtostr(m_editDedication->text()));
-    metadata.set<String>(CompositionMetadataKeys::Title, qstrtostr(m_editTitle->text()));
-    metadata.set<String>(CompositionMetadataKeys::Subtitle, qstrtostr(m_editSubtitle->text()));
-    metadata.set<String>(CompositionMetadataKeys::Subsubtitle, qstrtostr(m_editSubsubtitle->text()));
-    metadata.set<String>(CompositionMetadataKeys::Poet, qstrtostr(m_editPoet->text()));
-    metadata.set<String>(CompositionMetadataKeys::Composer, qstrtostr(m_editComposer->text()));
-    metadata.set<String>(CompositionMetadataKeys::Meter, qstrtostr(m_editMeter->text()));
-    metadata.set<String>(CompositionMetadataKeys::Opus, qstrtostr(m_editOpus->text()));
-    metadata.set<String>(CompositionMetadataKeys::Arranger, qstrtostr(m_editArranger->text()));
-    metadata.set<String>(CompositionMetadataKeys::Instrument, qstrtostr(m_editInstrument->text()));
-    metadata.set<String>(CompositionMetadataKeys::Piece, qstrtostr(m_editPiece->text()));
-    metadata.set<String>(CompositionMetadataKeys::Copyright, qstrtostr(m_editCopyright->text()));
-    metadata.set<String>(CompositionMetadataKeys::Tagline, qstrtostr(m_editTagline->text()));
+    setMetadataString(metadata, CompositionMetadataKeys::Dedication, m_editDedication->text());
+    setMetadataString(metadata, CompositionMetadataKeys::Title, m_editTitle->text());
+    setMetadataString(metadata, CompositionMetadataKeys::Subtitle, m_editSubtitle->text());
+    setMetadataString(metadata, CompositionMetadataKeys::Subsubtitle, m_editSubsubtitle->text());
+    setMetadataString(metadata, CompositionMetadataKeys::Poet, m_editPoet->text());
+    setMetadataString(metadata, CompositionMetadataKeys::Composer, m_editComposer->text());
+    setMetadataString(metadata, CompositionMetadataKeys::Meter, m_editMeter->text());
+    setMetadataString(metadata, CompositionMetadataKeys::Opus, m_editOpus->text());
+    setMetadataString(metadata, CompositionMetadataKeys::Arranger, m_editArranger->text());
+    setMetadataString(metadata, CompositionMetadataKeys::Instrument, m_editInstrument->text());
+    setMetadataString(metadata, CompositionMetadataKeys::Piece, m_editPiece->text());
+    setMetadataString(metadata, CompositionMetadataKeys::Copyright, m_editCopyright->text());
+    setMetadataString(metadata, CompositionMetadataKeys::Tagline, m_editTagline->text());
 
-//    for (QTableWidgetItem *item = m_metadata->firstChild();
-//            item != 0; item = item->nextSibling()) {
-    
-    QTableWidgetItem* tabItem;
-    QTableWidgetItem* tabItem2;
-    int c = 0;
     for(int r=0; r < m_metadata->rowCount(); r++){
-        //for(int c=0; c < m_metadata->columnCount(); c++){
-            
-        tabItem = m_metadata->item(r, c);
-        tabItem2 = m_metadata->item(r, c+1);
+        QTableWidgetItem* tabItem = m_metadata->item(r, 0);
+        QTableWidgetItem* tabItem2 = m_metadata->item(r, 1);
         
         if((!tabItem) || (!tabItem2)){
             RG_DEBUG << "ERROR: Any TableWidgetItem is NULL in HeadersConfigurationPage::apply() " << endl;
             continue;
         }
-            
-        metadata.set<String>(qstrtostr(tabItem->text().toLower()),
-                              qstrtostr(tabItem2->text()));
-//        metadata.set<String>(qstrtostr(item->text(0).toLower()),
-//                             qstrtostr(item->text(1)));
-        //}//end for(c)
-    }//end for(r)
 
-    m_doc->slotDocumentModified();
+        setMetadataString(metadata, qstrtostr(tabItem->text().toLower()), tabItem2->text());
+    }
+
+    if (metadata != origmetadata) {
+        m_doc->slotDocumentModified();
+    }
 }
 
 }

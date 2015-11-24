@@ -25,12 +25,12 @@ globalTempo = {
         \override Score.Fingering #'staff-padding = #'()
 
         \context Staff = "track 1" << 
-            \set Staff.instrumentName = \markup { \center-column { " " } }
             \set Staff.midiInstrument = "Acoustic Grand Piano"
             \set Score.skipBars = ##t
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 1" {
                 % Segment: -
@@ -97,8 +97,6 @@ globalTempo = {
     >> % notes
 
     \layout {
-        indent = 3.0\cm
-        short-indent = 1.5\cm
         \context { \Staff \RemoveEmptyStaves }
         \context { \GrandStaff \accepts "Lyrics" }
     }

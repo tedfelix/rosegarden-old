@@ -134,6 +134,81 @@ LilyPondExporter::readConfigVariables(void)
     settings.endGroup();
 }
 
+// Return true if @p event is allowed to start or end a beam group.
+// Only called for GROUP_TYPE_BEAMED.
+static bool canStartOrEndBeam(Event *event)
+{
+    // Rests cannot start or end beams
+    if (!event->isa(Note::EventType))
+        return false;
+
+    // Is it really beamed? quarter and longer notes cannot be
+    // (ex: bug #1705430, beaming groups erroneous after merging notes)
+    // HJJ: This should be fixed in notation engine,
+    //      after which the workaround below should be removed.
+    const int noteType = event->get<Int>(NOTE_TYPE);
+    if (noteType >= Note::QuarterNote)
+        return false;
+
+    return true;
+}
+
+Event *LilyPondExporter::nextNoteInGroup(Segment *s, Segment::iterator it, const std::string &groupType, int barEnd) const
+{
+    Event *currentEvent = *it;
+    long currentGroupId = -1;
+    currentEvent->get<Int>(BEAMED_GROUP_ID, currentGroupId);
+    Q_ASSERT(currentGroupId != -1);
+    const bool tuplet = groupType == GROUP_TYPE_TUPLED;
+    timeT currentTime = m_composition->getNotationQuantizer()->getQuantizedAbsoluteTime(currentEvent);
+
+    ++it;
+    for ( ; s->isBeforeEndMarker(it) ; ++it ) {
+        Event *event = *it;
+
+        if (event->getNotationAbsoluteTime() >= barEnd)
+            break;
+
+        // Grace notes are not beamed, but shouldn't break the beaming group
+        if (event->has(IS_GRACE_NOTE) && event->get<Bool>(IS_GRACE_NOTE))
+            continue;
+
+        if (event->has(SKIP_PROPERTY))
+            continue;
+
+        const bool isNote = event->isa(Note::EventType);
+
+        // Rests at the end of a beam are not included into it.
+        // Rests in the middle of a beam are included, so we keep looking.
+        // Same thing for symbols, etc.
+        if (!tuplet && !isNote)
+            continue;
+        // Tuplets don't get broken by non-notes (e.g. pitchbend)
+        if (tuplet && (!isNote && !event->isa(Note::EventRestType)))
+            continue;
+
+        // Within a chord, keep moving ahead
+        const timeT eventTime = m_composition->getNotationQuantizer()->getQuantizedAbsoluteTime(event);
+        if (eventTime == currentTime) {
+            continue;
+        }
+        currentTime = eventTime;
+
+        long newGroupId = -1;
+        event->get<Int>(BEAMED_GROUP_ID, newGroupId);
+
+        if (!tuplet && !canStartOrEndBeam(event)) {
+            newGroupId = -1;
+        }
+
+        if (newGroupId == -1 || newGroupId != currentGroupId) {
+            return 0;
+        }
+        return event;
+    }
+    return 0;
+}
+
 LilyPondExporter::~LilyPondExporter()
 {
     delete(m_language);
@@ -1099,6 +1174,7 @@ LilyPondExporter::write()
     int pianoStaffCounter = 0;
     int bracket = 0;
     int prevBracket = -1;
+    bool hasInstrumentNames = false;
 
     // Write out all segments for each Track, in track order.
     // This involves a hell of a lot of loops through all tracks
@@ -1315,8 +1391,7 @@ LilyPondExporter::write()
                         // In the case of colliding note heads, user may define
                         //  - DISPLACED_X -- for a note/chord
                         //  - INVISIBLE -- for a rest
-                        std::ostringstream staffName;
-                        staffName << protectIllegalChars(m_composition->
+                        const std::string staffName = protectIllegalChars(m_composition->
                                                         getTrackById(lastTrackIndex)->getLabel());
 
                         std::string shortStaffName = protectIllegalChars(m_composition->
@@ -1327,50 +1402,54 @@ LilyPondExporter::write()
                         */
                         str << std::endl << indent(col)
                             << "\\context Staff = \"track "
-                            << (trackPos + 1) << (staffName.str() == "" ? "" : ", ")
-                            << staffName.str() << "\" ";
+                            << (trackPos + 1) << (staffName == "" ? "" : ", ")
+                            << staffName << "\" ";
 
                         str << "<< " << std::endl;
+                        ++col;
 
-                        // The octavation is omitted in the instrument name.
-                        // HJJ: Should it be automatically added to the clef: G^8 ?
-                        // What if two segments have different transpose in a track?
-                        std::ostringstream staffNameWithTranspose;
-                        staffNameWithTranspose << "\\markup { \\center-column { \"" << staffName.str() << " \"";
-                        if ((seg->getTranspose() % 12) != 0) {
-                            staffNameWithTranspose << " \\line { ";
-                            int t = seg->getTranspose();
-                            t %= 12;
-                            if (t < 0) t+= 12;
-                            switch (t) {
-                            case 1 : staffNameWithTranspose << "\"in D\" \\smaller \\flat"; break;
-                            case 2 : staffNameWithTranspose << "\"in D\""; break;
-                            case 3 : staffNameWithTranspose << "\"in E\" \\smaller \\flat"; break;
-                            case 4 : staffNameWithTranspose << "\"in E\""; break;
-                            case 5 : staffNameWithTranspose << "\"in F\""; break;
-                            case 6 : staffNameWithTranspose << "\"in G\" \\smaller \\flat"; break;
-                            case 7 : staffNameWithTranspose << "\"in G\""; break;
-                            case 8 : staffNameWithTranspose << "\"in A\" \\smaller \\flat"; break;
-                            case 9 : staffNameWithTranspose << "\"in A\""; break;
-                            case 10 : staffNameWithTranspose << "\"in B\" \\smaller \\flat"; break;
-                            case 11 : staffNameWithTranspose << "\"in B\""; break;
+                        if (staffName.size()) {
+                            hasInstrumentNames = true;
+                            // The octavation is omitted in the instrument name.
+                            // HJJ: Should it be automatically added to the clef: G^8 ?
+                            // What if two segments have different transpose in a track?
+                            std::ostringstream staffNameWithTranspose;
+                            staffNameWithTranspose << "\\markup { \\center-column { \"" << staffName << " \"";
+                            if ((seg->getTranspose() % 12) != 0) {
+                                staffNameWithTranspose << " \\line { ";
+                                int t = seg->getTranspose();
+                                t %= 12;
+                                if (t < 0) t+= 12;
+                                switch (t) {
+                                case 1 : staffNameWithTranspose << "\"in D\" \\smaller \\flat"; break;
+                                case 2 : staffNameWithTranspose << "\"in D\""; break;
+                                case 3 : staffNameWithTranspose << "\"in E\" \\smaller \\flat"; break;
+                                case 4 : staffNameWithTranspose << "\"in E\""; break;
+                                case 5 : staffNameWithTranspose << "\"in F\""; break;
+                                case 6 : staffNameWithTranspose << "\"in G\" \\smaller \\flat"; break;
+                                case 7 : staffNameWithTranspose << "\"in G\""; break;
+                                case 8 : staffNameWithTranspose << "\"in A\" \\smaller \\flat"; break;
+                                case 9 : staffNameWithTranspose << "\"in A\""; break;
+                                case 10 : staffNameWithTranspose << "\"in B\" \\smaller \\flat"; break;
+                                case 11 : staffNameWithTranspose << "\"in B\""; break;
+                                }
+                                staffNameWithTranspose << " }";
                             }
-                            staffNameWithTranspose << " }";
-                        }
-                        staffNameWithTranspose << " } }";
-                        if (m_languageLevel < LILYPOND_VERSION_2_10) {
-                            str << indent(++col) << "\\set Staff.instrument = " << staffNameWithTranspose.str()
-                                << std::endl;
-                        } else {
-                            // always write long staff name
-                            str << indent(++col) << "\\set Staff.instrumentName = "
-                                << staffNameWithTranspose.str() << std::endl;
+                            staffNameWithTranspose << " } }";
+                            if (m_languageLevel < LILYPOND_VERSION_2_10) {
+                                str << indent(col) << "\\set Staff.instrument = " << staffNameWithTranspose.str()
+                                    << std::endl;
+                            } else {
+                                // always write long staff name
+                                str << indent(col) << "\\set Staff.instrumentName = "
+                                    << staffNameWithTranspose.str() << std::endl;
 
-                            // write short staff name if user desires, and if
-                            // non-empty
-                            if (m_useShortNames && shortStaffName.size()) {
-                                str << indent(col) << "\\set Staff.shortInstrumentName = \""
-                                    << shortStaffName << "\"" << std::endl;
+                                // write short staff name if user desires, and if
+                                // non-empty
+                                if (m_useShortNames && shortStaffName.size()) {
+                                    str << indent(col) << "\\set Staff.shortInstrumentName = \""
+                                        << shortStaffName << "\"" << std::endl;
+                                }
                             }
                         }
 
@@ -1411,6 +1490,9 @@ LilyPondExporter::write()
                             str << indent(col) << "\\new Voice \\markers" << std::endl;
                         }
 
+                        if (m_exportBeams) {
+                            str << indent(col) << "\\set Staff.autoBeaming = ##f % turns off all autobeaming" << std::endl;
+                        }
                     }
                 } /// if (!lsc.isVolta())
 
@@ -1418,9 +1500,7 @@ LilyPondExporter::write()
                 // ex. LilyPond expects signals when a decrescendo starts
                 // as well as when it ends
                 eventendlist preEventsInProgress;
-                eventstartlist preEventsToStart;
                 eventendlist postEventsInProgress;
-                eventstartlist postEventsToStart;
 
                 // If the segment doesn't start at 0, add a "skip" to the start
                 // No worries about overlapping segments, because Voices can overlap
@@ -1882,8 +1962,10 @@ LilyPondExporter::write()
     str << indent(col++) << "\\layout {" << std::endl;
 
     // indent instrument names
-    str << indent(col) << "indent = 3.0\\cm" << std::endl
-        << indent(col) << "short-indent = 1.5\\cm" << std::endl;
+    if (hasInstrumentNames) {
+        str << indent(col) << "indent = 3.0\\cm" << std::endl
+            << indent(col) << "short-indent = 1.5\\cm" << std::endl;
+    }
 
     if (!m_exportEmptyStaves) {
         str << indent(col) << "\\context { \\Staff \\RemoveEmptyStaves }" << std::endl;
@@ -2093,18 +2175,6 @@ void LilyPondExporter::handleGuitarChord(Segment::iterator i, std::ofstream &str
     }
 }
 
-void LilyPondExporter::endBeamedGroup(std::string groupType, std::ofstream &str, bool inBeamedGroup, bool newBeamedGroup)
-{
-    if (groupType == GROUP_TYPE_TUPLED) {
-        if (m_exportBeams && inBeamedGroup && !newBeamedGroup) // newBeamedGroup is false only once we generated a "["
-            str << "] ";
-        str << "} ";
-    } else if (groupType == GROUP_TYPE_BEAMED) {
-        if (m_exportBeams && inBeamedGroup && !newBeamedGroup)
-            str << "] ";
-    }
-}
-
 void
 LilyPondExporter::writeBar(Segment *s,
                            int barNo, timeT barStart, timeT barEnd, int col,
@@ -2126,6 +2196,8 @@ LilyPondExporter::writeBar(Segment *s,
         SegmentNotationHelper(*s).findNotationAbsoluteTime(barStart);
     if (!s->isBeforeEndMarker(i))
         return ;
+
+    //RG_DEBUG << "===== Writing bar" << barNo;
 
     if (MultiMeasureRestCount == 0) {
         str << std::endl;
@@ -2166,9 +2238,11 @@ LilyPondExporter::writeBar(Segment *s,
     std::pair<int, int> tupletRatio(1, 1);
 
     bool overlong = false;
-    bool newBeamedGroup = false;
+
     bool inBeamedGroup = false;
-    int notesInBeamedGroup = 0;
+    bool startingBeamedGroup = false;
+    Event *nextBeamedNoteInGroup = 0;
+    Event *nextNoteInTuplet = 0;
 
     while (s->isBeforeEndMarker(i)) {
 
@@ -2182,51 +2256,41 @@ LilyPondExporter::writeBar(Segment *s,
         // for tuplets)
         QString startTupledStr;
 
-        if (event->isa(Note::EventType) || event->isa(Note::EventRestType) ||
+        const bool isNote = event->isa(Note::EventType);
+        const bool isRest = event->isa(Note::EventRestType);
+
+        if (isNote || isRest ||
             event->isa(Clef::EventType) || event->isa(Key::EventType) ||
             event->isa(Symbol::EventType)) {
 
-            long newGroupId = -1;
-            if (event->isa(Note::EventType)
-                    || event->isa(Note::EventRestType) // TODO don't consider first/last rests in the beam as beamed, to match the on-screen rendering
-                    ) {
+            // skip everything until the next beamed note in the current group
+            if (!nextBeamedNoteInGroup || event == nextBeamedNoteInGroup) {
+                nextBeamedNoteInGroup = 0;
 
-                event->get<Int>(BEAMED_GROUP_ID, newGroupId);
+                groupType = "";
+                event->get<String>(BEAMED_GROUP_TYPE, groupType); // might fail
+                const bool tuplet = groupType == GROUP_TYPE_TUPLED;
 
-                // Is it really beamed? quarter and longer notes cannot be
-                // (ex: bug #1705430, beaming groups erroneous after merging notes)
-                // HJJ: This should be fixed in notation engine,
-                //      after which the workaround below should be removed.
-                std::string groupTypeProp = "";
-                event->get<String>(BEAMED_GROUP_TYPE, groupTypeProp); // might fail
-                if (groupTypeProp == GROUP_TYPE_BEAMED) {
-                    const int noteType = event->get<Int>(NOTE_TYPE);
-                    if (noteType >= Note::QuarterNote)
-                        newGroupId = -1;
-                }
-            }
+                long newGroupId = -1;
+                if (!groupType.empty() && (isNote || isRest)) {
+                    event->get<Int>(BEAMED_GROUP_ID, newGroupId);
 
-            //RG_DEBUG << event->toXmlString() << "BEAMED_GROUP_ID" << newGroupId;
-            if (newGroupId != groupId) {
-
-                if (groupId != -1) {
-                    //RG_DEBUG << "Leaving beamed group" << groupId << "notesInBeamedGroup=" << notesInBeamedGroup;
-                    // leaving a beamed group
-                    endBeamedGroup(groupType, str, inBeamedGroup, newBeamedGroup);
-                    tupletRatio = std::pair<int, int>(1, 1);
-                    groupId = -1;
-                    groupType = "";
-                    inBeamedGroup = false;
+                    if (newGroupId != -1) {
+                        if (tuplet) {
+                            nextNoteInTuplet = nextNoteInGroup(s, i, groupType, barEnd);
+                        }
+                        nextBeamedNoteInGroup = nextNoteInGroup(s, i, GROUP_TYPE_BEAMED, barEnd);
+                    }
                 }
 
-                if (newGroupId != -1) {
+                if (newGroupId != -1 && newGroupId != groupId) {
                     // entering a new beamed group
                     groupId = newGroupId;
-                    groupType = "";
-                    event->get<String>(BEAMED_GROUP_TYPE, groupType); // might fail
+
+                    startingBeamedGroup = true;
 
                     //RG_DEBUG << "Entering group" << groupId << "type" << groupType;
-                    if (groupType == GROUP_TYPE_TUPLED) {
+                    if (tuplet) {
                         long numerator = 0;
                         long denominator = 0;
                         event->get<Int>(BEAMED_GROUP_TUPLED_COUNT, numerator);
@@ -2240,31 +2304,12 @@ LilyPondExporter::writeBar(Segment *s,
                         } else {
                             startTupledStr += QString("\\times %1/%2 { ").arg(numerator).arg(denominator);
                             tupletRatio = std::pair<int, int>(numerator, denominator);
-                            // Require explicit beamed groups,
-                            // fixes bug #1683205.
-                            // HJJ: Why line below was originally present?
-                            // newBeamedGroup = true;
                         }
                     } else if (groupType == GROUP_TYPE_BEAMED) {
-                        newBeamedGroup = true;
-                        inBeamedGroup = true;
                         // there can currently be only on group type, reset tuplet ratio
                         tupletRatio = std::pair<int, int>(1,1);
                     }
-                    notesInBeamedGroup = 0;
                 }
-            } else if (inBeamedGroup
-                       && (event->isa(Note::EventType) || event->isa(Note::EventRestType))
-                       && (!event->has(SKIP_PROPERTY))) {
-
-                // This is the second note or rest in this beamed group -> add '[' after the first one.
-                if (m_exportBeams && newBeamedGroup && notesInBeamedGroup > 0) {
-                    str << "[ ";
-                    newBeamedGroup = false;
-                    //RG_DEBUG << "BEGIN" << notesInBeamedGroup;
-                }
-
-
             }
         } else if (event->isa(Controller::EventType) &&
                    event->has(Controller::NUMBER) &&
@@ -2280,7 +2325,15 @@ LilyPondExporter::writeBar(Segment *s,
         if (event->has(IS_GRACE_NOTE) && event->get<Bool>(IS_GRACE_NOTE)) {
             if (isGrace == 0) { 
                 isGrace = 1;
-                str << "\\grace { ";
+
+                // LilyPond export hack:  If a grace note has one or more
+                // tremolo slashes, we export it as a slashed grace note instead
+                // of a plain one.
+                long slashes;
+                slashes = event->get<Int>(NotationProperties::SLASHES, slashes);
+                if (slashes > 0) str << "\\slashedGrace { ";
+                else str << "\\grace { ";
+
                 // str << "%{ grace starts %} "; // DEBUG
             }
         } else if (isGrace == 1) {
@@ -2319,7 +2372,7 @@ LilyPondExporter::writeBar(Segment *s,
                 str << "\\breathe ";
             }
 
-        } else if (event->isa(Note::EventType)) {
+        } else if (isNote) {
 
             Chord chord(*s, i, m_composition->getNotationQuantizer());
             Event *e = *chord.getInitialNote();
@@ -2468,10 +2521,14 @@ LilyPondExporter::writeBar(Segment *s,
                 str << "\\unHideNotes ";
             }
 
-            if (inBeamedGroup) {
-                notesInBeamedGroup++;
+            if (m_exportBeams && startingBeamedGroup && nextBeamedNoteInGroup && canStartOrEndBeam(event)) {
+                // starting a beamed group
+                str << "[ ";
+                startingBeamedGroup = false;
+                inBeamedGroup = true;
+                //RG_DEBUG << "BEGIN GROUP" << groupId;
             }
-        } else if (event->isa(Note::EventRestType)) {
+        } else if (isRest) {
 
             const bool hiddenRest = event->has(INVISIBLE) && event->get<Bool>(INVISIBLE);
 
@@ -2595,11 +2652,6 @@ LilyPondExporter::writeBar(Segment *s,
     
                 handleEndingPostEvents(postEventsInProgress, i, str);
                 handleStartingPostEvents(postEventsToStart, str);
-
-                if (inBeamedGroup) {
-                    notesInBeamedGroup++;
-                    //RG_DEBUG << "inBeamedGroup -> notesInBeamedGroup++" << notesInBeamedGroup;
-                }
             } else {
                 MultiMeasureRestCount--;
             }
@@ -2687,13 +2739,32 @@ LilyPondExporter::writeBar(Segment *s,
             postEventsInProgress.insert(event);
         }
 
+        if ((isNote || isRest)) {
+            bool endGroup = false;
+            if (!nextBeamedNoteInGroup) {
+                //RG_DEBUG << "Leaving beamed group" << groupId;
+                // ending a beamed group
+                if (m_exportBeams && inBeamedGroup) {
+                    str << "] ";
+                }
+                inBeamedGroup = false;
+                if (groupType == GROUP_TYPE_BEAMED)
+                    endGroup = true;
+            }
+            if (groupType == GROUP_TYPE_TUPLED && !nextNoteInTuplet) {
+                //RG_DEBUG << "Leaving tuplet group" << groupId;
+                str << "} ";
+                tupletRatio = std::pair<int, int>(1, 1);
+                endGroup = true;
+            }
+            if (endGroup) {
+                groupId = -1;
+                groupType = "";
+            }
+        }
+
         ++i;
     } // end of the gigantic while loop, I think
-
-    if (groupId != -1) {
-        //RG_DEBUG << "End of bar, ending beaming group" << groupId << groupType;
-        endBeamedGroup(groupType, str, inBeamedGroup, newBeamedGroup);
-    }
 
     if (isGrace == 1) {
         isGrace = 0;
@@ -3096,6 +3167,10 @@ LilyPondExporter::writeDuration(timeT duration,
 void
 LilyPondExporter::writeSlashes(const Event *note, std::ofstream &str)
 {
+    // if a grace note has tremolo slashes, they have already been used to turn
+    // the note into a slashed grace note, and need not be exported here
+    if (note->has(IS_GRACE_NOTE) && note->get<Bool>(IS_GRACE_NOTE)) return;
+
     // write slashes after text
     // / = 8 // = 16 /// = 32, etc.
     long slashes = 0;

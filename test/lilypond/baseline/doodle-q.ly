@@ -19,12 +19,12 @@ globalTempo = {
         \override Score.Fingering #'staff-padding = #'()
 
         \context Staff = "track 1" << 
-            \set Staff.instrumentName = \markup { \center-column { " " } }
             \set Staff.midiInstrument = "Viola"
             \set Score.skipBars = ##t
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 1" {
                 % Segment: 65 Emu8000 WaveTable #1
@@ -89,12 +89,12 @@ globalTempo = {
         >> % Staff ends
 
         \context Staff = "track 2" << 
-            \set Staff.instrumentName = \markup { \center-column { " " } }
             \set Staff.midiInstrument = "Viola"
             \set Score.skipBars = ##t
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 2" {
                 % Segment: 65 Emu8000 WaveTable #3
@@ -159,12 +159,12 @@ globalTempo = {
         >> % Staff ends
 
         \context Staff = "track 3" << 
-            \set Staff.instrumentName = \markup { \center-column { " " } }
             \set Staff.midiInstrument = "Cello"
             \set Score.skipBars = ##t
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 3" {
                 % Segment: 65 Emu8000 WaveTable #2
@@ -229,12 +229,12 @@ globalTempo = {
         >> % Staff ends
 
         \context Staff = "track 4" << 
-            \set Staff.instrumentName = \markup { \center-column { " " } }
             \set Staff.midiInstrument = "Cello"
             \set Score.skipBars = ##t
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 4" {
                 % Segment: 65 Emu8000 WaveTable #3
@@ -306,8 +306,6 @@ globalTempo = {
     >> % notes
 
     \layout {
-        indent = 3.0\cm
-        short-indent = 1.5\cm
         \context { \Staff \RemoveEmptyStaves }
         \context { \GrandStaff \accepts "Lyrics" }
     }

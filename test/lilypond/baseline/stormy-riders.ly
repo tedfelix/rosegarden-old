@@ -32,6 +32,7 @@ globalTempo = {
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 1" {
                 % Segment: rhythm fig 1 - gtr
@@ -73,6 +74,7 @@ globalTempo = {
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 3" {
                 % Segment: rhythm fig 2 - bass
@@ -114,6 +116,7 @@ globalTempo = {
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 5" {
                 % Segment: breather
@@ -197,6 +200,7 @@ globalTempo = {
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 9" {
                 % Segment: main theme
@@ -230,12 +234,12 @@ globalTempo = {
 
                 \skip 2.*54 
                 \key b \minor
-                d' 32 [ dis' ] e' 16 g' 8 [ b' ] g' [ e' ] fis' 16 [ g' ] g' 8 [ e' ] \times 2/3 { b' d'' fis'' } d'' 32 dis'' e'' 8. g'' 16 e'' d'' 8 a' 32 ais' b' 16 g' 8 d' 32 dis' e' 16 d' 8  |
+                d' 32 [ dis' ] e' 16 g' 8 [ b' ] g' [ e' ] fis' 16 [ g' ] g' 8 [ e' ] \times 2/3 { b' [ d'' fis'' ] } d'' 32 dis'' e'' 8. g'' 16 e'' d'' 8 a' 32 ais' b' 16 g' 8 d' 32 dis' e' 16 d' 8  |
 %% 20
                 d' 32 [ dis' ] e' 16 g' 8 [ d'' ] g' [ e' ] fis' 16 g' 8. [ fis' 16 ] g' 8. d' 8 d' 32 [ dis' ] e' 16 [ d' b a' ] g' e' 8 [ b' 16 a' ] g' [ e' ] d'' 8 [ b' ]  |
-                d' 32 [ dis' ] e' 16 a' 8 [ c'' ] a' [ e' ] cis'' 16 d'' 8. [ cis'' 16 ] d'' 8. c'' 8 d'' 32 [ e'' ] d'' 16 [ c'' a' ] \times 4/5 { dis'' e'' d'' c'' a' } \times 4/5 { g' a' e' d' c' } g' 32 gis' a' 8.  |
+                d' 32 [ dis' ] e' 16 a' 8 [ c'' ] a' [ e' ] cis'' 16 d'' 8. [ cis'' 16 ] d'' 8. c'' 8 d'' 32 [ e'' ] d'' 16 [ c'' a' ] \times 4/5 { dis'' [ e'' d'' c'' a' ] } \times 4/5 { g' [ a' e' d' c' ] } g' 32 gis' a' 8.  |
                 d' 32 [ dis' ] e' 16 g' 8 [ b' ] g' [ e' ] fis' 16 g' 8. [ fis' 16 ] g' 8. d' 8 dis' 32 [ e' ] g' 16 [ a' g' ais' ] a' [ g' a' d''' ] d''' 64 dis''' e''' 32 b'' 16 [ g'' b'' ] a'' [ g'' ] e''  |
-                c'' 64 cis'' d'' 32 e'' 16 fis'' a'' b'' d'' 64 dis'' e'' 32 fis'' 16 d'' b' a' a' 64 ais' b' 32 d'' 16 a' fis' e' e' 64 f' fis' 32 e' 16 a' ais' b' \times 4/5 { c'' g'' e'' g'' b' } \times 4/5 { a'' c'' e' c'' a'' } \times 2/3 { d'' e'' b' ais' a' g' } \times 2/3 { e' g' dis' e' g' b' }  |
+                c'' 64 cis'' d'' 32 e'' 16 fis'' a'' b'' d'' 64 dis'' e'' 32 fis'' 16 d'' b' a' a' 64 ais' b' 32 d'' 16 a' fis' e' e' 64 f' fis' 32 e' 16 a' ais' b' \times 4/5 { c'' [ g'' e'' g'' b' ] } \times 4/5 { a'' [ c'' e' c'' a'' ] } \times 2/3 { d'' [ e'' b' ais' a' g' ] } \times 2/3 { e' [ g' dis' e' g' b' ] }  |
                 d'' 32 [ dis'' ] e'' 16 d'' 8 [ b' ] g' [ e' ] fis' 16 g' 8. [ fis' 16 ] g' 8. d' 8 d' 32 [ dis' ] e' 8. _~ e' 2.  |
             } % Voice
 
@@ -296,6 +300,7 @@ globalTempo = {
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 15" {
                 % Segment: breather - horn (copied) (copied)
@@ -358,6 +363,7 @@ globalTempo = {
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 18" {
                 % Segment: Trombone
@@ -412,6 +418,7 @@ globalTempo = {
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 21" {
                 % Segment: main theme - gtr (copied)
@@ -472,6 +479,7 @@ globalTempo = {
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 24" {
                 % Segment: jazz guitar - bent
@@ -499,6 +507,7 @@ globalTempo = {
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 25" {
                 % Segment: ride
@@ -540,6 +549,7 @@ globalTempo = {
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 27" {
                 % Segment: kick & snare
@@ -580,6 +590,7 @@ globalTempo = {
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 29" {
                 % Segment: disclaimer (copied)
@@ -681,6 +692,7 @@ globalTempo = {
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 35" {
                 % Segment: Choir Aahs track by Aere Greenway

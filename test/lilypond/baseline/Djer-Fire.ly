@@ -32,6 +32,7 @@ globalTempo = {
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 1" {
                 % Segment: SBLive #3 (copied) (copied)
@@ -89,13 +90,13 @@ globalTempo = {
 
                 \skip 4.*102 
                 \clef "treble_8"
-                < e a, > 8 \times 2/3 { a' 64 _~ < a' e' > _~ < a' e' c' > _~ } < a' e' c' > 16. _~ < a' e' c' > 8 < e a a, > \times 2/3 { e 64 _~ < e a > _~ < e a c' > _~ } < c' a e > 16. _~ < c' a e > 8 a, a, < e a, > \times 2/3 { a' 64 _~ < a' e' > _~ < a' e' c' > _~ } < a' e' c' > 16. _~ < a' e' c' > 8 < a e a, > \times 2/3 { e 64 _~ < e a > _~ < e c' a > _~ } < a c' e > 16. _~ < c' e a > 8 a, 4 aes,  |
-                < d g, > 8 \times 2/3 { g' 64 _~ < g' d' > _~ < g' d' b > _~ } < g' d' b > 16. _~ < g' d' b > 8 < g d g, > \times 2/3 { d 64 _~ < d g > _~ < d b g > _~ } < g b d > 16. _~ < b d g > 8 g, g, < d g, > \times 2/3 { g' 64 _~ < g' d' > _~ < g' d' b > _~ } < g' d' b > 16. _~ < g' d' b > 8 < d g g, > \times 2/3 { d 64 _~ < d g > _~ < d g b > _~ } < b g d > 16. _~ < b g d > 8 g, 4 aes,  |
+                < e a, > 8 \times 2/3 { a' 64 _~ [ < a' e' > _~ < a' e' c' > _~ ] } < a' e' c' > 16. _~ < a' e' c' > 8 < e a a, > \times 2/3 { e 64 _~ [ < e a > _~ < e a c' > _~ ] } < c' a e > 16. _~ < c' a e > 8 a, a, < e a, > \times 2/3 { a' 64 _~ [ < a' e' > _~ < a' e' c' > _~ ] } < a' e' c' > 16. _~ < a' e' c' > 8 < a e a, > \times 2/3 { e 64 _~ [ < e a > _~ < e c' a > _~ ] } < a c' e > 16. _~ < c' e a > 8 a, 4 aes,  |
+                < d g, > 8 \times 2/3 { g' 64 _~ [ < g' d' > _~ < g' d' b > _~ ] } < g' d' b > 16. _~ < g' d' b > 8 < g d g, > \times 2/3 { d 64 _~ [ < d g > _~ < d b g > _~ ] } < g b d > 16. _~ < b d g > 8 g, g, < d g, > \times 2/3 { g' 64 _~ [ < g' d' > _~ < g' d' b > _~ ] } < g' d' b > 16. _~ < g' d' b > 8 < d g g, > \times 2/3 { d 64 _~ [ < d g > _~ < d g b > _~ ] } < b g d > 16. _~ < b g d > 8 g, 4 aes,  |
 %% 20
-                < e a, > 8 \times 2/3 { a' 64 _~ < a' e' > _~ < a' e' c' > _~ } < a' e' c' > 16. _~ < a' e' c' > 8 < a e a, > \times 2/3 { e 64 _~ < e a > _~ < e c' a > _~ } < a c' e > 16. _~ < c' e a > 8 a, a, < e a, > \times 2/3 { a' 64 _~ < a' e' > _~ < a' e' c' > _~ } < a' e' c' > 16. _~ < a' e' c' > 8 < e a a, > \times 2/3 { e 64 _~ < e a > _~ < e a c' > _~ } < c' a e > 16. _~ < c' a e > 8 a, 4 aes,  |
-                < d g, > 8 \times 2/3 { g' 64 _~ < d' g' > _~ < d' g' b > _~ } < d' g' b > 16. _~ < g' d' b > 8 < g d g, > \times 2/3 { d 64 _~ < d g > _~ < d g b > _~ } < b g d > 16. _~ < b g d > 8 g, g, < d g, > \times 2/3 { g' 64 _~ < d' g' > _~ < d' g' b > _~ } < d' g' b > 16. _~ < g' d' b > 8 < g d g, > \times 2/3 { d 64 _~ < d g > _~ < d b g > _~ } < b g d > 16. _~ < b g d > 8 g, 4 aes,  |
-                < e a, > 8 \times 2/3 { a' 64 _~ < a' e' > _~ < a' e' c' > _~ } < a' e' c' > 16. _~ < a' e' c' > 8 < a e a, > \times 2/3 { e 64 _~ < e a > _~ < e c' a > _~ } < a c' e > 16. _~ < c' e a > 8 a, a, < e a, > \times 2/3 { a' 64 _~ < a' e' > _~ < a' e' c' > _~ } < a' e' c' > 16. _~ < a' e' c' > 8 < e a a, > \times 2/3 { e 64 _~ < e a > _~ < e a c' > _~ } < c' a e > 16. _~ < c' a e > 8 a, 4 aes,  |
-                < d g, > 8 \times 2/3 { g' 64 _~ < d' g' > _~ < d' g' b > _~ } < d' g' b > 16. _~ < g' d' b > 8 < g d g, > \times 2/3 { d 64 _~ < d g > _~ < d g b > _~ } < b g d > 16. _~ < b g d > 8 g, g, < d g, > \times 2/3 { g' 64 _~ < d' g' > _~ < d' g' b > _~ } < d' g' b > 16. _~ < g' d' b > 8 < g d g, > \times 2/3 { d 64 _~ < d g > _~ < d b g > _~ } < b g d > 16. _~ < b g d > 8 g, 4 e,  |
+                < e a, > 8 \times 2/3 { a' 64 _~ [ < a' e' > _~ < a' e' c' > _~ ] } < a' e' c' > 16. _~ < a' e' c' > 8 < a e a, > \times 2/3 { e 64 _~ [ < e a > _~ < e c' a > _~ ] } < a c' e > 16. _~ < c' e a > 8 a, a, < e a, > \times 2/3 { a' 64 _~ [ < a' e' > _~ < a' e' c' > _~ ] } < a' e' c' > 16. _~ < a' e' c' > 8 < e a a, > \times 2/3 { e 64 _~ [ < e a > _~ < e a c' > _~ ] } < c' a e > 16. _~ < c' a e > 8 a, 4 aes,  |
+                < d g, > 8 \times 2/3 { g' 64 _~ [ < d' g' > _~ < d' g' b > _~ ] } < d' g' b > 16. _~ < g' d' b > 8 < g d g, > \times 2/3 { d 64 _~ [ < d g > _~ < d g b > _~ ] } < b g d > 16. _~ < b g d > 8 g, g, < d g, > \times 2/3 { g' 64 _~ [ < d' g' > _~ < d' g' b > _~ ] } < d' g' b > 16. _~ < g' d' b > 8 < g d g, > \times 2/3 { d 64 _~ [ < d g > _~ < d b g > _~ ] } < b g d > 16. _~ < b g d > 8 g, 4 aes,  |
+                < e a, > 8 \times 2/3 { a' 64 _~ [ < a' e' > _~ < a' e' c' > _~ ] } < a' e' c' > 16. _~ < a' e' c' > 8 < a e a, > \times 2/3 { e 64 _~ [ < e a > _~ < e c' a > _~ ] } < a c' e > 16. _~ < c' e a > 8 a, a, < e a, > \times 2/3 { a' 64 _~ [ < a' e' > _~ < a' e' c' > _~ ] } < a' e' c' > 16. _~ < a' e' c' > 8 < e a a, > \times 2/3 { e 64 _~ [ < e a > _~ < e a c' > _~ ] } < c' a e > 16. _~ < c' a e > 8 a, 4 aes,  |
+                < d g, > 8 \times 2/3 { g' 64 _~ [ < d' g' > _~ < d' g' b > _~ ] } < d' g' b > 16. _~ < g' d' b > 8 < g d g, > \times 2/3 { d 64 _~ [ < d g > _~ < d g b > _~ ] } < b g d > 16. _~ < b g d > 8 g, g, < d g, > \times 2/3 { g' 64 _~ [ < d' g' > _~ < d' g' b > _~ ] } < d' g' b > 16. _~ < g' d' b > 8 < g d g, > \times 2/3 { d 64 _~ [ < d g > _~ < d b g > _~ ] } < b g d > 16. _~ < b g d > 8 g, 4 e,  |
                 f, 8 _~ [ < c f, > ] < c' a > [ f ] < c f > [ < a c' > ] f [ < f c > _~ ] < a f c > [ c _~ ] < f c > _~ [ < a f c > ] < f' c' > [ a ] f < g c' > 32 _~ < a c' > 16. f 8 [ f, 16 fis, ]  |
 %% 25
                 g, 8 _~ [ < g, d > ] < b d' > [ g ] < d g > [ < b d' > ] g [ < d g > _~ ] < d b g > [ d _~ ] < d g > _~ [ < d b g > ] < g' d' > [ b ] g < d' a > 32 _~ < d' b > 16. g 8 [ g, 16 a, ]  |
@@ -133,6 +134,7 @@ globalTempo = {
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 8" {
                 % Segment: SBLive #3 (copied) (copied)
@@ -228,7 +230,7 @@ globalTempo = {
                 \override MultiMeasureRest #'expand-limit = 1
 
                 \skip 4.*198 
-                \times 2/3 { c' 64 _~ < c' g' > _~ < c' g' c'' > _~ } \times 2/3 { < c' g' c'' e'' > _~ < c' g' c'' e'' g'' > _~ < c' g' c'' e'' g'' c''' > _~ } < c''' g'' e'' c'' g' c' > 1 r16 r4. r r  |
+                \times 2/3 { c' 64 _~ [ < c' g' > _~ < c' g' c'' > _~ ] } \times 2/3 { < c' g' c'' e'' > _~ [ < c' g' c'' e'' g'' > _~ < c' g' c'' e'' g'' c''' > _~ ] } < c''' g'' e'' c'' g' c' > 1 r16 r4. r r  |
             } % Voice
         >> % Staff ends
 
@@ -239,6 +241,7 @@ globalTempo = {
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 16" {
                 % Segment: SBLive #3 (copied)
@@ -278,6 +281,7 @@ globalTempo = {
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 19" {
                 % Segment: SBLive #5 (copied)
@@ -287,11 +291,11 @@ globalTempo = {
                 \skip 4.*54 
 %% 10
                 \clef "treble"
-                c'' 4 r r8 r c'' 4 g' a' c'' r8 r [ c'' ] a' _~  |
+                c'' 4 r r8 r c'' 4 g' a' c'' r8 r c'' a' _~  |
                 a' 4 r8 r4. r r8 g' 4 b' d'' f'' 8 [ e'' _~ ]  |
                 e'' 8 c'' 4 r4. r8 r g' 4 a' c'' r8 r c'' a' _~  |
                 a' 4 r8 r4. r r8 g' 4 b' d'' f'' 8 [ e'' _~ ]  |
-                e'' 8 c'' 4 r4. r4 g' a' c'' r8 r [ c'' ] a' _~  |
+                e'' 8 c'' 4 r4. r4 g' a' c'' r8 r c'' a' _~  |
 %% 15
                 a' 4 r8 r4. r r8 b' 4 b' g' g'  |
                 g' 2. _~ g' 8 [ a' _~ ] a' 2. _~ a' 2  |
@@ -307,9 +311,9 @@ globalTempo = {
                 r2 r8 c'' d'' 4 e'' g'' 8 [ e'' _~ ] e'' 4 d'' 8 d'' 4 c'' 8  |
                 d'' 4. d'' 8 _~ [ d'' ] c'' [ d'' ] c'' d'' 4 e'' e'' 8 [ d'' _~ ] d'' 2  |
 %% 20
-                r2 r8 [ a' ] b' 4 e'' 4. g'' e'' 4 d'' 8 [ c'' _~ ]  |
+                r2 r8 a' b' 4 e'' 4. g'' e'' 4 d'' 8 [ c'' _~ ]  |
                 c'' 4 d'' d'' 8 [ c'' ] d'' [ c'' ] d'' 4 e'' e'' 8 [ d'' _~ ] d'' 4 r8 r  |
-                r2 r8 [ e' ] a' [ c'' _~ ] c'' e'' 4 g'' 8 [ e'' ] e'' [ d'' _~ ] d'' 4.  |
+                r2 r8 e' a' [ c'' _~ ] c'' e'' 4 g'' 8 [ e'' ] e'' [ d'' _~ ] d'' 4.  |
                 r2 r8 a' c'' 4 e'' 8 g'' 4 e'' 8 e'' 2.  |
                 r4. r c'' 4 c'' 8 b' 4 a' 8 _~ a' 4. r  |
 %% 25
@@ -323,12 +327,12 @@ globalTempo = {
 
                 \skip 4.*150 
                 \clef "treble"
-                c'' 4 r r8 r c'' 4 g' a' c'' r8 r [ c'' ] a' _~  |
+                c'' 4 r r8 r c'' 4 g' a' c'' r8 r c'' a' _~  |
                 a' 4 r8 r4. r r8 g' 4 b' d'' f'' 8 [ e'' _~ ]  |
                 e'' 8 c'' 4 r4. r8 r g' 4 a' c'' r8 r c'' a' _~  |
                 a' 4 r8 r4. r r8 g' 4 b' d'' f'' 8 [ e'' _~ ]  |
 %% 30
-                e'' 8 c'' 4 r4. r4 g' a' c'' r8 r [ c'' ] a' _~  |
+                e'' 8 c'' 4 r4. r4 g' a' c'' r8 r c'' a' _~  |
                 a' 4 r8 r4. r r8 b' 4 b' g' g'  |
                 g' 2. _~ g' 8 [ a' _~ ] a' 2. _~ a' 2  |
                 r4. r r r r r  |
@@ -342,6 +346,7 @@ globalTempo = {
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 22" {
                 % Segment: MIDI soundcard synth #4 (split) (split) (split)
@@ -438,6 +443,7 @@ globalTempo = {
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 26" {
                 % Segment: SBLive #7 (copied)
@@ -531,6 +537,7 @@ globalTempo = {
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 31" {
                 % Segment: SBLive #9 (split) (copied) (copied)
@@ -732,6 +739,7 @@ globalTempo = {
             \set Staff.printKeyCancellation = ##f
             \new Voice \global
             \new Voice \globalTempo
+            \set Staff.autoBeaming = ##f % turns off all autobeaming
 
             \context Voice = "voice 48" {
                 % Segment: Power (copied)
@@ -741,7 +749,7 @@ globalTempo = {
                 \time 18/8
                 
                 \clef "bass"
-                r8 [ d, ] d, [ d, ] d, 4 r d, r8 \times 2/3 { d, 16 d, d, } d, 8 d, c c b, b,  |
+                r8 d, d, [ d, ] d, 4 r d, r8 \times 2/3 { d, 16 [ d, d, ] } d, 8 d, c c b, b,  |
             } % Voice
 
             \context Voice = "voice 49" {
@@ -843,7 +851,7 @@ globalTempo = {
                 \skip 4.*102 
                 \clef "bass"
                 b,, 4 r8 c, d, 4 r8 c, b,, 4 r8 c, d, 4 r8 c, < b, e, > [ a, ]  |
-                b,, 4 r8 c, d, 4 r8 c, b,, 4 r8 c, d, 4 r8 [ c, ] < a, e, > [ g, ]  |
+                b,, 4 r8 c, d, 4 r8 c, b,, 4 r8 c, d, 4 r8 c, < a, e, > [ g, ]  |
             } % Voice
 
             \context Voice = "voice 58" {
@@ -855,7 +863,7 @@ globalTempo = {
 %% 20
                 \clef "bass"
                 b,, 8 c, r c, d, 4 r8 c, b,, c, r c, d, 4 r8 c, < b, e, > [ a, ]  |
-                c, 8 b,, r c, d, 4 r8 c, c, b,, r c, d, 4 r8 [ c, ] < a, e, > [ g, ]  |
+                c, 8 b,, r c, d, 4 r8 c, c, b,, r c, d, 4 r8 c, < a, e, > [ g, ]  |
             } % Voice
 
             \context Voice = "voice 59" {
@@ -866,7 +874,7 @@ globalTempo = {
                 \skip 4.*126 
                 \clef "bass"
                 b,, 8 c, r c, d, 4 r8 c, b,, c, r c, d, 4 r8 c, < b, e, > [ a, ]  |
-                c, 8 b,, r c, d, 4 r8 c, c, b,, r c, d, 4 r8 [ c, ] < a, e, > [ g, ]  |
+                c, 8 b,, r c, d, 4 r8 c, c, b,, r c, d, 4 r8 c, < a, e, > [ g, ]  |
             } % Voice
 
             \context Voice = "voice 60" {
@@ -878,7 +886,7 @@ globalTempo = {
                 \clef "bass"
                 b,, 8 c, r c, d, 4 r8 c, b,, c, r c, d, 4 r8 c, < b, e, > [ a, ]  |
 %% 25
-                c, 8 b,, r c, d, 4 r8 c, c, b,, r c, d, 4 r8 [ c, ] < a, e, > [ g, ]  |
+                c, 8 b,, r c, d, 4 r8 c, c, b,, r c, d, 4 r8 c, < a, e, > [ g, ]  |
             } % Voice
 
             \context Voice = "voice 61" {
@@ -933,7 +941,7 @@ globalTempo = {
 
                 \skip 4.*198 
                 \clef "bass"
-                r8 [ d, ] d, [ d, ] d, 4 r d, r8 \times 2/3 { d, 16 d, d, } d, 8 d, c c b, b,  |
+                r8 d, d, [ d, ] d, 4 r d, r8 \times 2/3 { d, 16 [ d, d, ] } d, 8 d, c c b, b,  |
 %% 35
                 < a, b,, d, cis > 4 r8 r4. r r  |
                 \bar "|."

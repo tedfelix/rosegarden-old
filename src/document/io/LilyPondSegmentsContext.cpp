@@ -258,7 +258,7 @@ LilyPondSegmentsContext::precompute()
     }
 
     // Check linked segment repeat consistency between tracks and mark
-    // inconsistant repeats
+    // inconsistent repeats
     for (tit = m_segments.begin(); tit != m_segments.end(); ++tit) {
         for (vit = tit->second.begin(); vit != tit->second.end(); ++vit) {
             for (sit = vit->second.begin(); sit != vit->second.end(); ++sit) {
@@ -288,7 +288,7 @@ LilyPondSegmentsContext::precompute()
     }
 
     // Then look again for repeats from linked segments
-    // (without looking at the inconsistant ones)
+    // (without looking at the inconsistent ones)
     for (tit = m_segments.begin(); tit != m_segments.end(); ++tit) {
         for (vit = tit->second.begin(); vit != tit->second.end(); ++vit) {
             lookForRepeatedLinks(vit->second);
@@ -304,6 +304,8 @@ LilyPondSegmentsContext::precompute()
         // int trackId = m_composition->getTrackByPosition(trackPos)->getId();
         for (vit = tit->second.begin(); vit != tit->second.end(); ++vit) {
             // int voiceIndex = vit->first;
+
+            // First pass: count the repetitions and remember the volta
             for (sit = vit->second.begin(); sit != vit->second.end(); ++sit) {
                 if (sit->repeatId) {
                     if (sit->repeatId != currentRepeatId) {
@@ -324,6 +326,26 @@ LilyPondSegmentsContext::precompute()
                             // Count more one repeat
                             currentMainSeg->numberOfRepeatLinks++;
                         }
+                    }
+                }
+            }
+
+            // Second pass: when the repeat count is 1, the repeat sequence is
+            // a false one and have to be removed.
+            for (sit = vit->second.begin(); sit != vit->second.end(); ++sit) {
+                if (sit->repeatId) {
+                    if (sit->numberOfRepeatLinks == 1) {
+                        // As numberOfRepeatLinks = 1 there is one and only
+                        // one volta
+                        Volta * volta = (*sit->rawVoltaChain)[0];
+                        volta->data->volta = false;
+                        volta->data->ignored = false;
+                        volta->data->repeatId = 0;
+                        delete volta;
+                        delete sit->rawVoltaChain;
+                        sit->rawVoltaChain = 0;
+                        sit->repeatId = 0;
+                        sit->numberOfRepeatLinks = 0;
                     }
                 }
             }
@@ -811,17 +833,20 @@ LilyPondSegmentsContext::lookForRepeatedLinks(SegmentSet & segSet)
             if (    sitv->segment->getStartTime()
                  != mainSegIt->segment->getEndMarkerTime()) break;
 
-            // The size of the volta should not be too large 
-            // (But a coda may be an exception...)
-            ///!!! TODO Needs ameliorations
-            if (sitv->duration >= sit->duration) break;
-
             // Is a new repetition following the volta ?
             bool again = false;
             if (sitm != segSet.end()) {
                 again = true;
 
-                // A repeated segment needs to be synchronous
+                // The size of the volta should not be too large.
+                // The last volta is a possible exception which breaks the
+                // repeat sequence.
+                if (sitv->duration >= sit->duration) again = false;
+
+                // The volta have to be synchronous, except the last one
+                if (!sitv->synchronous) again = false;
+
+                // A repeated segment have to be synchronous
                 if (!sitm->synchronous) again = false;
 
                 // A repeated segment can't be marked "no repeat"
