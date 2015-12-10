@@ -5327,6 +5327,7 @@ AlsaDriver::getAlsaModuleVersionString()
     if (v) {
         char buf[256];
         if (fgets(buf, 256, v) == NULL) {
+            fclose(v);
             return "(unknown)"; /* check fgets result */
         }
         fclose(v);
@@ -5357,6 +5358,7 @@ AlsaDriver::getKernelVersionString()
     if (v) {
         char buf[256];
         if (fgets(buf, 256, v) == NULL) {
+            fclose(v);
             return "(unknown)"; /* check fgets result */
         }
         fclose(v);
