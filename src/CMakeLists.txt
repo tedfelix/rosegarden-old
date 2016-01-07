@@ -49,8 +49,7 @@ if(ALSA_FOUND)
     set(rg_OPTIONAL_LIBS ${rg_OPTIONAL_LIBS} ${ALSA_LIBRARIES})
 endif()
 
-set(rg_SOURCES
-  ${CMAKE_CURRENT_BINARY_DIR}/svnversion.h
+set(rg_CPPS
   document/GzipFile.cpp
   document/LinkedSegmentsCommand.cpp
   document/Command.cpp
@@ -683,6 +682,7 @@ set(rg_SOURCES
   commands/segment/UpdateFigurationCommand.cpp
   commands/segment/SegmentLinkTransposeCommand.cpp
   commands/segment/SegmentSplitByPitchCommand.cpp
+  commands/segment/SegmentSplitByDrumCommand.cpp
   commands/segment/SegmentSyncClefCommand.cpp
   commands/segment/SegmentReconfigureCommand.cpp
   commands/segment/SegmentCommandRepeat.cpp
@@ -722,6 +722,8 @@ set(rg_UIS
   gui/dialogs/RosegardenTransportUi.ui
   gui/studio/DeviceManagerDialogUi.ui
 )
+
+set(rg_SOURCES ${rg_CPPS})
 
 if(USE_QT4)
   qt4_wrap_ui(rg_SOURCES ${rg_UIS})
@@ -770,7 +772,11 @@ qt5_add_resources(rg_SOURCES ../data/data.qrc)
 endif()
 
 # Define a static lib with the whole code
-add_library(rosegardenprivate ${RG_LIBRARY_TYPE} ${rg_SOURCES} ${localeqrc_outfile})
+add_library(rosegardenprivate ${RG_LIBRARY_TYPE}
+   ${rg_SOURCES}
+   ${localeqrc_outfile}
+   ${CMAKE_CURRENT_BINARY_DIR}/svnversion.h
+)
 
 # Link to the following libraries
 target_link_libraries(rosegardenprivate
@@ -788,6 +794,13 @@ target_link_libraries(rosegardenprivate
 )
 
 #########################
+# Generate list of source files, as input for buildkey.cmake to compute BUILDKEY at compile time
+file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/source_files_list "")
+foreach(source_file ${rg_CPPS} ${rg_UIS})
+   get_filename_component(abs_path ${source_file} ABSOLUTE)
+   file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/source_files_list "${abs_path} ")
+endforeach()
+
 # Magic for SVN revision number, found on
 # http://stackoverflow.com/questions/3780667/use-cmake-to-get-build-time-svn-revision
 
@@ -797,7 +810,7 @@ add_custom_target(svnheader ALL DEPENDS svn_header) # svn_header never gets crea
 # creates svnheader.h using cmake script
 add_custom_command(OUTPUT svn_header ${CMAKE_CURRENT_BINARY_DIR}/svnheader.h
     COMMAND ${CMAKE_COMMAND} -DSOURCE_DIR=${CMAKE_CURRENT_SOURCE_DIR}
-                         -P ${CMAKE_CURRENT_SOURCE_DIR}/getsvn.cmake)
+                         -P ${CMAKE_CURRENT_SOURCE_DIR}/buildkey.cmake)
 
 # svnversion.h is a generated file
 set_source_files_properties(${CMAKE_CURRENT_BINARY_DIR}/svnversion.h
