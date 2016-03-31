@@ -78,9 +78,21 @@
 namespace Rosegarden
 {
 
-using namespace BaseProperties;
+const char* headerDedication() { return "dedication"; }
+const char* headerTitle() { return "title"; }
+const char* headerSubtitle() { return "subtitle"; }
+const char* headerSubsubtitle() { return "subsubtitle"; }
+const char* headerPoet() { return "poet"; }
+const char* headerComposer() { return "composer"; }
+const char* headerMeter() { return "meter"; }
+const char* headerOpus() { return "opus"; }
+const char* headerArranger() { return "arranger"; }
+const char* headerInstrument() { return "instrument"; }
+const char* headerPiece() { return "piece"; }
+const char* headerCopyright() { return "copyright"; }
+const char* headerTagline() { return "tagline"; }
 
-const PropertyName LilyPondExporter::SKIP_PROPERTY = "LilyPondExportSkipThisEvent";
+using namespace BaseProperties;
 
 LilyPondExporter::LilyPondExporter(RosegardenDocument *doc,
                                    const SegmentSelection &selection,
@@ -90,7 +102,8 @@ LilyPondExporter::LilyPondExporter(RosegardenDocument *doc,
     m_doc(doc),
     m_fileName(fileName),
     m_lastClefFound(Clef::Treble),
-    m_selection(selection)
+    m_selection(selection),
+    SKIP_PROPERTY("LilyPondExportSkipThisEvent")
 {
     m_composition = &m_doc->getComposition();
     m_studio = &m_doc->getStudio();
@@ -271,7 +284,7 @@ LilyPondExporter::handleStartingPreEvents(eventstartlist &preEventsToStart,
         } catch (Event::BadType) {
             // Not an indication
         } catch (Event::NoData e) {
-            std::cerr << "Bad indication: " << e.getMessage() << std::endl;
+            RG_WARNING << "Bad indication: " << e.getMessage();
         }
 
         eventstartlist::iterator n(m);
@@ -367,7 +380,7 @@ LilyPondExporter::handleStartingPostEvents(eventstartlist &postEventsToStart,
                 }
             }
         } catch (Event::NoData e) {
-            std::cerr << "Bad indication: " << e.getMessage() << std::endl;
+            RG_WARNING << "Bad indication: " << e.getMessage();
         }
 
         eventstartlist::iterator n(m);
@@ -423,7 +436,7 @@ LilyPondExporter::handleEndingPreEvents(eventendlist &preEventsInProgress,
             // not an indication
 
         } catch (Event::NoData e) {
-            std::cerr << "Bad indication: " << e.getMessage() << std::endl;
+            RG_WARNING << "Bad indication: " << e.getMessage();
         }
     }
 }
@@ -475,7 +488,7 @@ LilyPondExporter::handleEndingPostEvents(eventendlist &postEventsInProgress,
             // not an indication
 
         } catch (Event::NoData e) {
-            std::cerr << "Bad indication: " << e.getMessage() << std::endl;
+            RG_WARNING << "Bad indication: " << e.getMessage();
         }
     }
 }
@@ -605,8 +618,7 @@ LilyPondExporter::composeLilyMark(std::string eventMark, bool stemUp)
             outStr += "\\prallprall";
         } else {
             outStr = "";
-            std::cerr << "LilyPondExporter::composeLilyMark() - unhandled mark:  "
-                      << eventMark << std::endl;
+            RG_WARNING << "LilyPondExporter::composeLilyMark() - unhandled mark: " << eventMark;
         }
     }
 
@@ -693,7 +705,7 @@ LilyPondExporter::write()
 
     std::ofstream str(qstrtostr(tmpName).c_str(), std::ios::out);
     if (!str) {
-        std::cerr << "LilyPondExporter::write() - can't write file " << tmpName << std::endl;
+        RG_WARNING << "LilyPondExporter::write() - can't write file " << tmpName;
         m_warningMessage = QObject::tr("Export failed.  The file could not be opened for writing.");
         return false;
     }
@@ -726,8 +738,8 @@ LilyPondExporter::write()
 
     default:
         // force the default version if there was an error
-        std::cerr << "ERROR: Unknown language level " << m_languageLevel
-                  << ", using \\version \"2.14.0\" instead" << std::endl;
+        RG_WARNING << "ERROR: Unknown language level " << m_languageLevel
+                  << ", using \\version \"2.14.0\" instead";
         str << "\\version \"2.14.0\"" << std::endl;
         m_languageLevel = LILYPOND_VERSION_2_14;
     }
@@ -752,15 +764,15 @@ LilyPondExporter::write()
 
         for (size_t index = 0; index < propertyNames.size(); ++index) {
             std::string property = propertyNames [index];
-            if (property == headerDedication || property == headerTitle ||
-                property == headerSubtitle || property == headerSubsubtitle ||
-                property == headerPoet || property == headerComposer ||
-                property == headerMeter || property == headerOpus ||
-                property == headerArranger || property == headerInstrument ||
-                property == headerPiece || property == headerCopyright ||
-                property == headerTagline) {
+            if (property == headerDedication() || property == headerTitle() ||
+                property == headerSubtitle() || property == headerSubsubtitle() ||
+                property == headerPoet() || property == headerComposer() ||
+                property == headerMeter() || property == headerOpus() ||
+                property == headerArranger() || property == headerInstrument() ||
+                property == headerPiece() || property == headerCopyright() ||
+                property == headerTagline()) {
                 std::string header = protectIllegalChars(metadata.get<String>(property));
-                if (property == headerCopyright) {
+                if (property == headerCopyright()) {
                     // replace a (c) or (C) with a real Copyright symbol
                     size_t posCpy = header.find("(c)");
                     if (posCpy == std::string::npos) posCpy = header.find("(C)");
@@ -779,7 +791,7 @@ LilyPondExporter::write()
                     str << indent(col) << property << " = \"" << header << "\"" << std::endl;
                     // let users override defaults, but allow for providing
                     // defaults if they don't:
-                    if (property == headerTagline)
+                    if (property == headerTagline())
                         userTagline = true;
                 }
             }
@@ -1791,9 +1803,9 @@ LilyPondExporter::write()
                             str << "#'((volta #f))";
                         }
                         if (lsc.getVoltaRepeatCount() < 1) {
-                            std::cerr << "BUG in LilyPondExporter : "
+                            RG_WARNING << "BUG in LilyPondExporter : "
                                     << "lsc.getVoltaRepeatCount() = "
-                                    << lsc.getVoltaRepeatCount() << std::endl;
+                                    << lsc.getVoltaRepeatCount();
                         }
                     }
                     str << std::endl << indent(--col) << "}" << std::endl;  // indent-
@@ -2294,9 +2306,8 @@ LilyPondExporter::writeBar(Segment *s,
                         event->get<Int>(BEAMED_GROUP_TUPLED_COUNT, numerator);
                         event->get<Int>(BEAMED_GROUP_UNTUPLED_COUNT, denominator);
                         if (numerator == 0 || denominator == 0) {
-                            std::cerr << "WARNING: LilyPondExporter::writeBar: "
-                                      << "tupled event without tupled/untupled counts"
-                                      << std::endl;
+                            RG_WARNING << "WARNING: LilyPondExporter::writeBar: "
+                                      << "tupled event without tupled/untupled counts";
                             groupId = -1;
                             groupType = "";
                         } else {
@@ -2683,7 +2694,7 @@ LilyPondExporter::writeBar(Segment *s,
                 str << "\"" << std::endl << indent(col);
 
             } catch (Exception e) {
-                std::cerr << "Bad clef: " << e.getMessage() << std::endl;
+                RG_WARNING << "Bad clef: " << e.getMessage();
             }
 
         } else if (event->isa(Rosegarden::Key::EventType)) {
@@ -2714,9 +2725,9 @@ LilyPondExporter::writeBar(Segment *s,
                     }
                     str << std::endl << indent(col);
                 }
-              
+
             } catch (Exception e) {
-                std::cerr << "Bad key: " << e.getMessage() << std::endl;
+                RG_WARNING << "Bad key: " << e.getMessage();
             }
 
         } else if (event->isa(Text::EventType)) {
@@ -3017,11 +3028,10 @@ LilyPondExporter::handleText(const Event *textEvent,
         } else {
             textEvent->get
                 <String>(Text::TextTypePropertyName, s);
-            std::cerr << "LilyPondExporter::write() - unhandled text type: "
-                      << s << std::endl;
+            RG_WARNING << "LilyPondExporter::write() - unhandled text type: " << s;
         }
     } catch (Exception e) {
-        std::cerr << "Bad text: " << e.getMessage() << std::endl;
+        RG_WARNING << "Bad text: " << e.getMessage();
     }
 }
 
