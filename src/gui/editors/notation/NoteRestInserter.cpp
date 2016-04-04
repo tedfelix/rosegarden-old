@@ -21,6 +21,7 @@
 
 #include "base/BaseProperties.h"
 #include "misc/Strings.h"
+#include "misc/Debug.h"
 #include "misc/ConfigGroups.h"
 #include "base/Event.h"
 #include "base/NotationTypes.h"
@@ -298,7 +299,7 @@ NoteRestInserter::handleMouseRelease(const NotationMouseEvent *e)
     m_leftButtonDown = false;
 
     NOTATION_DEBUG << "NoteRestInserter::handleMouseRelease: staff = " <<
-        m_clickStaff << ", clicked = " << m_clickHappened << endl;
+        m_clickStaff << ", clicked = " << m_clickHappened;
 
         NotationStaff *staff = m_clickStaff;
     if (!m_clickHappened || !staff) return;
@@ -362,7 +363,7 @@ NoteRestInserter::setCursorShape()
                          Accidentals::NoAccidental);
     
     NotePixmapFactory * pixmapFactory = m_scene->getNotePixmapFactory();
-    std::cout << "pixmap factory = " << pixmapFactory << "\n";
+    NOTATION_DEBUG << "pixmap factory =" << pixmapFactory;
 
     if (isaRestInserter()) {
         // In rest inserter mode, the preview doesn't work (currently) and
@@ -373,7 +374,7 @@ NoteRestInserter::setCursorShape()
 
         QGraphicsPixmapItem * gitem =
             dynamic_cast<QGraphicsPixmapItem *>(pixmapFactory->makeRest(params));
-        std::cout << "rest: gitem = " << gitem << "\n";
+        NOTATION_DEBUG << "rest: gitem =" << gitem;
 
         QPixmap pixmap = gitem->pixmap();
         QCursor cursor(pixmap);
@@ -449,8 +450,7 @@ NoteRestInserter::handleWheelTurned(int delta, const NotationMouseEvent *e)
 
 void NoteRestInserter::showMenu()
 {
-    NOTATION_DEBUG << "NoteRestInserter::showMenu() : enter."
-        << endl;
+    NOTATION_DEBUG << "NoteRestInserter::showMenu() : enter.";
     if (!hasMenu())
         return ;
 
@@ -458,8 +458,7 @@ void NoteRestInserter::showMenu()
         createMenu();
 
     if (m_menu) {
-        NOTATION_DEBUG << "NoteRestInserter::showMenu() : morphing menu."
-            << endl;
+        NOTATION_DEBUG << "NoteRestInserter::showMenu() : morphing menu.";
         //Morph Context menu.
         if (isaRestInserter()) {
             leaveActionState("in_note_mode");
@@ -485,8 +484,7 @@ void NoteRestInserter::showMenu()
         }
 
     } else {
-        NOTATION_DEBUG << "NoteRestInserter::showMenu() : no menu to show."
-            << endl;
+        NOTATION_DEBUG << "NoteRestInserter::showMenu() : no menu to show.";
     }
 }
 
@@ -537,13 +535,13 @@ NoteRestInserter::computeLocationAndPreview(const NotationMouseEvent *e,
                                             bool play)
 {
     if (!e->staff || !e->element) {
-        NOTATION_DEBUG << "computeLocationAndPreview: staff and/or element not supplied" << endl;
+        NOTATION_DEBUG << "computeLocationAndPreview: staff and/or element not supplied";
         clearPreview();
         return false;
     }
 
     if (m_clickHappened && (e->staff != m_clickStaff)) {
-        NOTATION_DEBUG << "computeLocationAndPreview: staff changed from originally clicked one (" << e->staff << " vs " << m_clickStaff << ")" << endl;
+        NOTATION_DEBUG << "computeLocationAndPreview: staff changed from originally clicked one (" << e->staff << " vs " << m_clickStaff << ")";
         // abandon
         clearPreview();
         return false;
@@ -559,7 +557,7 @@ NoteRestInserter::computeLocationAndPreview(const NotationMouseEvent *e,
     NotationElement *el = e->element;
     ViewElementList::iterator itr = e->staff->getViewElementList()->findSingle(el);
     if (itr == e->staff->getViewElementList()->end()) {
-        NOTATION_DEBUG << "computeLocationAndPreview: element provided is not found in staff" << endl;
+        NOTATION_DEBUG << "computeLocationAndPreview: element provided is not found in staff";
         return false;
     }
 
@@ -571,9 +569,9 @@ NoteRestInserter::computeLocationAndPreview(const NotationMouseEvent *e,
 
     if (grace && el->getItem()) {
 
-        std::cerr << "x=" << x << ", el->getSceneX()=" << el->getSceneX() << std::endl;
+        NOTATION_DEBUG << "x=" << x << ", el->getSceneX()=" << el->getSceneX();
 
-        if (el->isRest()) std::cerr << "elt is a rest" << std::endl;
+        if (el->isRest()) NOTATION_DEBUG << "elt is a rest";
         if (x - el->getSceneX() >
             e->staff->getNotePixmapFactory(false).getNoteBodyWidth()) {
             NotationElementList::iterator j(itr);
@@ -707,7 +705,7 @@ void NoteRestInserter::showPreview(bool play)
 
     // Get the start time of the bar where the insertion time is
     timeT startOfBar = segment.getBarStartForTime(m_clickTime);
-    
+
     // Get the clef and key signature in effect and the times of change
     timeT currentKeyTime;
     Key currentKey = segment.getKeyAtTime(m_clickTime, currentKeyTime);
@@ -746,19 +744,24 @@ void NoteRestInserter::showPreview(bool play)
         // Get an iterator of the first event of the bar
         Segment::iterator itFirst = segment.findTime(startOfBar);
         
-        // Get the elements of the bar in reverse order
+        // Prepare to get the elements of the bar in reverse order
         typedef std::reverse_iterator<Segment::iterator> RevIt;
         RevIt rit(it);
         RevIt last(itFirst);
 
+        // While done is false whe have to look back to some previous event
+        // which may modify the accidental preview
+        bool done = false;
+
+        // Walk through the bar
         for ( ; rit != last; ++rit) {
             Event *ev = *rit;
 
             if (ev->isa(Key::EventType)) {
                 if (lookForNoteOnSameOctave) {
 
-                    // If cautionnary and accidental is not one of the key
-                    // then remove cautionnary
+                    // If cautionary and accidental is not one of the key
+                    // then remove cautionary
                     if (cursorCautious) {
 
                         // Select a default accidental related to the current
@@ -781,6 +784,7 @@ void NoteRestInserter::showPreview(bool play)
                 }
                 
                 // Stop looking for notes as soon as a key signature is found
+                done = true;
                 break;
             }
 
@@ -815,7 +819,7 @@ void NoteRestInserter::showPreview(bool play)
                                 cursorAccidental = Accidentals::Natural;
                             }
                         }
-                    // Same height on staff but maybe cautionnary accidental
+                    // Same height on staff but maybe cautionary accidental
                     // is not needed
                     } else {
                         if (cursorCautious) {
@@ -844,6 +848,7 @@ void NoteRestInserter::showPreview(bool play)
                         }
                     }
                     // Then stop walking through the bar
+                    done = true;
                     break;
                 }
                 
@@ -890,7 +895,7 @@ void NoteRestInserter::showPreview(bool play)
                             }
                             if (cursorTestAccidental != accidentalForKey) {
                                 cursorCautious = true;
-                                // If cautionnary, force use of natural
+                                // If cautionary, force use of natural
                                 cursorAccidental = cursorTestAccidental;
                             }
 
@@ -900,6 +905,11 @@ void NoteRestInserter::showPreview(bool play)
                         // We don't break here because we have to look for
                         // another note with the same height in the same octave
                         lookForNoteOnSameOctave = true;
+                        
+                        // Nevertheless a preview related to the current bar
+                        // is already found : no need to look at the previous
+                        // bar in the next step.
+                        done = true;
 
                     } else if (m_octaveType == AccidentalTable::OctavesEquivalent) {
 
@@ -919,11 +929,94 @@ void NoteRestInserter::showPreview(bool play)
                                 cursorAccidental = Accidentals::Natural;
                             }
                         }
+                        done = true;
                         break;
 
                     } else {
                         // m_octaveType == AccidentalTable::OctavesIndependent
                         // Do nothing
+                    }
+                }
+            }
+        }
+
+        // Should we look at the previous bar ?
+        if (   // Yes if no preview accidental already found
+               // and if look at previous bar asked in preferences
+            !done && (m_barResetType != AccidentalTable::BarResetNone)
+               // and if no accidental explicitely specified
+                  && (cursorAccidental == Accidentals::NoAccidental)
+               // and if the previous bar exists
+                  && (segment.getStartTime() < startOfBar)) {
+
+            // Get the start time of the previous bar
+            int barNum = segment.getComposition()->getBarNumber(startOfBar);
+            timeT startOfPreviousBar = segment.getComposition()
+                                                ->getBarStart(barNum - 1);
+
+
+            // Get an iterator on the first event after the end of the previous
+            // bar (ie the first event of the current bar)
+            Segment::iterator itLast = itFirst;
+
+            // Get an iterator of the first event of the previous bar
+            itFirst = segment.findTime(startOfPreviousBar);
+
+            // Prepare to get the elements of the previous bar in reverse order
+            RevIt rit(itLast);
+            RevIt last(itFirst);
+
+            // Walk through the bar
+            for ( ; rit != last; ++rit) {
+                Event *ev = *rit;
+
+                if (ev->isa(Key::EventType)) {
+                    // Stop looking for notes as soon as a key signature is found
+                    done = true;
+                    break;
+                }
+
+                // We are only interested by notes (ie events with pitch)
+                if (!ev->has(BaseProperties::PITCH)) {
+                    // If the event is not a note, ignore it and continue
+                    continue;
+                } else {
+                    // Event is a note, get its performance pitch
+                    int p = ev->get<Int>(BaseProperties::PITCH);
+
+                    // get its accidental
+                    const NotationProperties &prop(m_scene->getProperties());
+                    Accidental accidental = Accidentals::NoAccidental;
+                    (void)ev->get<String>(prop.DISPLAY_ACCIDENTAL, accidental);
+
+                    Pitch notePitch(p, accidental);
+
+                    // If a note is found at the same height than the cursor
+                    if (notePitch.getHeightOnStaff(currentClef, currentKey)
+                                                            == cursorHeight) {
+
+                        if (p == pitch) {
+                            // If they have the same pitch, the accidental is
+                            // already drawn in the bar: no need to duplicate it
+                            cursorAccidental = Accidentals::NoAccidental;
+                        } else {
+                            // Else use the accidental the key signature requires
+                            cursorAccidental = cursorPitch.getAccidental(currentKey);
+                            // And if the key requires no accidental, use natural
+                            if (cursorAccidental == Accidentals::NoAccidental) {
+                                cursorAccidental = Accidentals::Natural;
+                            }
+
+                            // Cautionary wanted ?
+                            // If we are in this place, done should be false and
+                            // cursorCautious keeps its inital value (false).
+                            if (m_barResetType == AccidentalTable::BarResetCautionary) {
+                                cursorCautious = true;
+                            }
+                        }
+
+                        // Then stop walking through the bar
+                        break;
                     }
                 }
             }
@@ -1052,7 +1145,7 @@ NoteRestInserter::doAddCommand(Segment &segment, timeT time, timeT endTime,
 {
     NOTATION_DEBUG << "doAddCommand: time " << time << ", endTime " << endTime
                    << ", pitch " << pitch << ",isaRestInserter "
-                   << isaRestInserter() << endl;
+                   << isaRestInserter();
 
     Command *activeCommand = 0;  //Used in rest / note mode code
     NoteInsertionCommand *insertionCommand = 0; //Used in rest / note mode code
@@ -1133,7 +1226,7 @@ NoteRestInserter::doAddCommand(Segment &segment, timeT time, timeT endTime,
     CommandHistory::getInstance()->addCommand(activeCommand);
 
     NOTATION_DEBUG << "NoteRestInserter::doAddCommand: accidental is "
-                   << accidental << endl;
+                   << accidental;
 
     return insertionCommand->getLastInsertedEvent();
 }
@@ -1152,7 +1245,7 @@ void NoteRestInserter::slotSetAccidental(Accidental accidental,
                                      bool follow)
 {
     NOTATION_DEBUG << "NoteRestInserter::setAccidental: accidental is "
-                   << accidental << endl;
+                   << accidental;
     m_accidental = accidental;
     m_followAccidental = follow;
 }
@@ -1166,7 +1259,7 @@ void NoteRestInserter::slotToggleDot()
     // in parent view.  If changes, then a check
     // will need to be made.
     NOTATION_DEBUG << "NoteRestInserter::slotToggleDot: entered. "
-        << "Calling action name = " << actionName << endl;
+        << "Calling action name = " << actionName;
 
     invokeInParentView(actionName);
 
@@ -1196,7 +1289,7 @@ void NoteRestInserter::slotRestsSelected()
     QAction* action = findActionInParentView(actionName);
 
     if (!action) {
-        std::cerr << "WARNING: No such action as " << actionName << std::endl;
+        RG_WARNING << "WARNING: No such action as " << actionName;
     } else {
         setToRestInserter(true);
         action->setChecked(true);
@@ -1214,7 +1307,7 @@ void NoteRestInserter::slotNotesSelected()
     QAction *action = findActionInParentView(actionName);
 
     if (!action) {
-        std::cerr << "WARNING: No such action as " << actionName << std::endl;
+        RG_WARNING << "WARNING: No such action as " << actionName;
     } else {
         setToRestInserter(false);
         action->setChecked(true);
