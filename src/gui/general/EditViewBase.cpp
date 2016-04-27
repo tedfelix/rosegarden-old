@@ -42,9 +42,9 @@ namespace Rosegarden
 
 EditViewBase::EditViewBase(RosegardenDocument *doc,
                            std::vector<Segment *> segments,
-                           QWidget * parent) :
-   QMainWindow(parent),   // See following comment
-//     QMainWindow(0),
+                           QWidget * /* parent */) :
+    // QMainWindow(parent),   // See following comments
+    QMainWindow(0),
     m_doc(doc),
     m_segments(segments),
     m_configDialogPageIndex(0),
@@ -64,9 +64,7 @@ EditViewBase::EditViewBase(RosegardenDocument *doc,
     // So when passing 0 as parent to QMainWindow the editors are no more child
     // of the main window and the problem is fixed.
     //
-    //!!! Fix temporarily remove (it introduces various problems)
-    //
-    setAttribute(Qt::WA_ShowWithoutActivating);
+    // setAttribute(Qt::WA_ShowWithoutActivating);
 
     m_doc->attachEditView(this);
 
@@ -90,7 +88,7 @@ Clipboard *EditViewBase::getClipboard()
 void
 EditViewBase::slotSegmentDeleted(Segment *s)
 {
-    RG_DEBUG << "EditViewBase::slotSegmentDeleted" << endl;
+    RG_DEBUG << "EditViewBase::slotSegmentDeleted";
     for (std::vector<Segment *>::iterator i = m_segments.begin();
          i != m_segments.end(); ++i) {
         if (*i == s) {
@@ -129,8 +127,6 @@ void EditViewBase::setupBaseActions(bool haveClipboard)
 //    createAction("options_show_toolbar", SLOT(slotToggleToolBar()));
     createAction("options_show_statusbar", SLOT(slotToggleStatusBar()));
     createAction("options_configure", SLOT(slotConfigure()));
-//    createAction("options_configure_keybindings", SLOT(slotEditKeys()));
-//    createAction("options_configure_toolbars", SLOT(slotEditToolbars()));
 
     createAction("file_save", SIGNAL(saveFile()));
     createAction("file_close", SLOT(slotCloseWindow()));
@@ -156,28 +152,6 @@ void EditViewBase::slotConfigure()
         new ConfigureDialog(getDocument(), this);
 
     configDlg->show();
-}
-
-void EditViewBase::slotEditKeys()
-{
-//&&&    KKeyDialog::configure(actionCollection());
-}
-
-void EditViewBase::slotEditToolbars()
-{
-//&&&
-//    KEditToolbar dlg(actionCollection(), getRCFileName());
-
-//    connect(&dlg, SIGNAL(newToolbarConfig()),
-//            SLOT(slotUpdateToolbars()));
-
-//    dlg.exec();
-}
-
-void EditViewBase::slotUpdateToolbars()
-{
-//!!!    createGUI(getRCFileName());
-    //m_viewToolBar->setChecked(!toolBar()->isHidden());
 }
 
 void
@@ -268,11 +242,11 @@ void
 EditViewBase::slotTestClipboard()
 {
     if (getClipboard()->isEmpty()) {
-        RG_DEBUG << "EditViewBase::slotTestClipboard(): empty" << endl;
+        RG_DEBUG << "EditViewBase::slotTestClipboard(): empty";
         leaveActionState("have_clipboard");
         leaveActionState("have_clipboard_single_segment");
     } else {
-        RG_DEBUG << "EditViewBase::slotTestClipboard(): not empty" << endl;
+        RG_DEBUG << "EditViewBase::slotTestClipboard(): not empty";
         enterActionState("have_clipboard");
         if (getClipboard()->isSingleSegment()) {
             enterActionState("have_clipboard_single_segment");

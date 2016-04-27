@@ -27,13 +27,12 @@
 #include "base/SnapGrid.h"
 #include "document/RosegardenDocument.h"
 #include "document/CommandHistory.h"
-#include "gui/application/RosegardenMainWindow.h"
 #include "gui/dialogs/TempoDialog.h"
 #include "gui/general/GUIPalette.h"
+#include "gui/general/EditTempoController.h"
 #include "gui/widgets/TextFloat.h"
 #include "TempoColour.h"
 
-#include <QMainWindow>
 #include <QColor>
 #include <QCursor>
 #include <QEvent>
@@ -56,14 +55,11 @@
 
 
 
-
-
 namespace Rosegarden
 {
 
 TempoRuler::TempoRuler(RulerScale *rulerScale,
                        RosegardenDocument *doc,
-                       QMainWindow *parentMainWindow,
                        double xorigin,
                        int height,
                        bool small,
@@ -92,7 +88,7 @@ TempoRuler::TempoRuler(RulerScale *rulerScale,
         m_composition(&doc->getComposition()),
         m_rulerScale(rulerScale),
         m_menu(0),
-        m_parentMainWindow(parentMainWindow),
+        m_editTempoController(EditTempoController::self()),
         m_fontMetrics(m_boldFont),
         m_Thorn(Thorn)
 {
@@ -100,6 +96,8 @@ TempoRuler::TempoRuler(RulerScale *rulerScale,
     m_boldFont.setPixelSize(m_height * 2 / 5);
     m_boldFont.setBold(true);
     m_fontMetrics = QFontMetrics(m_boldFont);
+
+    m_editTempoController->setDocument(doc); // in case self() just created it
 
     QObject::connect
     (CommandHistory::getInstance(), SIGNAL(commandExecuted()),
@@ -122,53 +120,6 @@ TempoRuler::~TempoRuler()
 }
 
 void
-TempoRuler::connectSignals()
-{
-    connect(this,
-            SIGNAL(doubleClicked(timeT)),
-            RosegardenMainWindow::self(),
-            SLOT(slotEditTempos(timeT)));
-
-    connect(this,
-            SIGNAL(changeTempo(timeT,
-                               tempoT,
-                               tempoT,
-                               TempoDialog::TempoDialogAction)),
-            RosegardenMainWindow::self(),
-            SLOT(slotChangeTempo(timeT,
-                                 tempoT,
-                                 tempoT,
-                                 TempoDialog::TempoDialogAction)));
-
-    connect(this,
-            SIGNAL(moveTempo(timeT,
-                             timeT)),
-            RosegardenMainWindow::self(),
-            SLOT(slotMoveTempo(timeT,
-                               timeT)));
-
-    connect(this,
-            SIGNAL(deleteTempo(timeT)),
-            RosegardenMainWindow::self(),
-            SLOT(slotDeleteTempo(timeT)));
-
-    connect(this,
-            SIGNAL(editTempo(timeT)),
-            RosegardenMainWindow::self(),
-            SLOT(slotEditTempo(timeT)));
-
-    connect(this,
-            SIGNAL(editTimeSignature(timeT)),
-            RosegardenMainWindow::self(),
-            SLOT(slotEditTimeSignature(timeT)));
-
-    connect(this,
-            SIGNAL(editTempos(timeT)),
-            RosegardenMainWindow::self(),
-            SLOT(slotEditTempos(timeT)));
-}
-
-void
 TempoRuler::slotScrollHoriz(int x)
 {
     // int w = width();
@@ -187,8 +138,8 @@ TempoRuler::mousePressEvent(QMouseEvent *e)
         if (e->type() == QEvent::MouseButtonDblClick) {
             timeT t = m_rulerScale->getTimeForX
                       (e->x() - m_currentXOffset - m_xorigin);
-            emit doubleClicked(t);
-            return ;
+            m_editTempoController->emitEditTempos(t);
+            return;
         }
 
         int x = e->x() + 1;
@@ -276,12 +227,10 @@ TempoRuler::mouseReleaseEvent(QMouseEvent *e)
             m_composition->addTempoAtTime(m_dragStartTime,
                                           m_dragOriginalTempo,
                                           m_dragOriginalTarget);
-            emit changeTempo(m_dragStartTime, tc.second,
-                             tr.first ? tr.second : -1,
-                             TempoDialog::AddTempo);
+            m_editTempoController->changeTempo(m_dragStartTime, tc.second,
+                                               tr.first ? tr.second : -1,
+                                               TempoDialog::AddTempo);
         }
-
-        return ;
 
     } else if (m_dragHoriz) {
 
@@ -304,10 +253,8 @@ TempoRuler::mouseReleaseEvent(QMouseEvent *e)
                                           m_dragStartTempo,
                                           m_dragStartTarget);
 
-            emit moveTempo(m_dragStartTime, m_dragPreviousTime);
+            m_editTempoController->moveTempo(m_dragStartTime, m_dragPreviousTime);
         }
-
-        return ;
     }
 }
 
@@ -419,7 +366,7 @@ TempoRuler::mouseMoveEvent(QMouseEvent *e)
         int bar, beat, fraction, remainder;
         m_composition->getMusicalTimeForAbsoluteTime(tc.first, bar, beat,
                 fraction, remainder);
-        //RG_DEBUG << "Tempo change: tempo " << m_composition->getTempoQpm(tc.second) << " at " << bar << ":" << beat << ":" << fraction << ":" << remainder << endl;
+        //RG_DEBUG << "Tempo change: tempo " << m_composition->getTempoQpm(tc.second) << " at " << bar << ":" << beat << ":" << fraction << ":" << remainder;
 
         m_illuminate = tcn;
         m_illuminatePoint = false;
@@ -754,7 +701,7 @@ TempoRuler::paintEvent(QPaintEvent* e)
         paint.setBrush(colour);
 
         if (!m_refreshLinesOnly) {
-            //         RG_DEBUG << "TempoRuler: draw rect from " << x0 << " to " << x1 << endl;
+            //         RG_DEBUG << "TempoRuler: draw rect from " << x0 << " to " << x1;
             paint.drawRect(int(x0), 0, int(x1 - x0) + 1, height());
         }
 
@@ -944,7 +891,7 @@ TempoRuler::slotInsertTempoHere()
         tempo = tc.second;
     }
 
-    emit changeTempo(t, tempo, -1, TempoDialog::AddTempo);
+    m_editTempoController->changeTempo(t, tempo, -1, TempoDialog::AddTempo);
 }
 
 void
@@ -961,14 +908,14 @@ TempoRuler::slotInsertTempoAtPointer()
         tempo = tc.second;
     }
 
-    emit changeTempo(t, tempo, -1, TempoDialog::AddTempo);
+    m_editTempoController->changeTempo(t, tempo, -1, TempoDialog::AddTempo);
 }
 
 void
 TempoRuler::slotDeleteTempoChange()
 {
     timeT t = m_rulerScale->getTimeForX(m_clickX - m_currentXOffset - m_xorigin);
-    emit deleteTempo(t);
+    m_editTempoController->deleteTempoChange(t);
 }
 
 void
@@ -982,7 +929,7 @@ TempoRuler::slotRampToNext()
 
     std::pair<timeT, tempoT> tc = m_composition->getTempoChange(tcn);
 
-    emit changeTempo(tc.first, tc.second, 0, TempoDialog::AddTempo);
+    m_editTempoController->changeTempo(tc.first, tc.second, 0, TempoDialog::AddTempo);
 }
 
 void
@@ -996,28 +943,28 @@ TempoRuler::slotUnramp()
 
     std::pair<timeT, tempoT> tc = m_composition->getTempoChange(tcn);
 
-    emit changeTempo(tc.first, tc.second, -1, TempoDialog::AddTempo);
+    m_editTempoController->changeTempo(tc.first, tc.second, -1, TempoDialog::AddTempo);
 }
 
 void
 TempoRuler::slotEditTempo()
 {
-    timeT t = m_rulerScale->getTimeForX(m_clickX - m_currentXOffset - m_xorigin);
-    emit editTempo(t);
+    const timeT atTime = m_rulerScale->getTimeForX(m_clickX - m_currentXOffset - m_xorigin);
+    m_editTempoController->editTempo(this, atTime);
 }
 
 void
 TempoRuler::slotEditTimeSignature()
 {
     timeT t = m_rulerScale->getTimeForX(m_clickX - m_currentXOffset - m_xorigin);
-    emit editTimeSignature(t);
+    m_editTempoController->editTimeSignature(this, t);
 }
 
 void
 TempoRuler::slotEditTempos()
 {
     timeT t = m_rulerScale->getTimeForX(m_clickX - m_currentXOffset - m_xorigin);
-    emit editTempos(t);
+    m_editTempoController->emitEditTempos(t);
 }
 
 void
@@ -1038,4 +985,4 @@ TempoRuler::createMenu()
 }
 
 
-}
+} // namespace

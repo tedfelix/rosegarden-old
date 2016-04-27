@@ -82,6 +82,7 @@ MatrixScene::~MatrixScene()
     delete m_snapGrid;
     delete m_referenceScale;
     delete m_scale;
+    delete m_selection;
 
     RG_DEBUG << "MatrixScene::~MatrixScene() - end";
 }
@@ -501,7 +502,7 @@ MatrixScene::setupMouseEvent(QGraphicsSceneMouseEvent *e,
     mme.element = 0;
 
     QList<QGraphicsItem *> l = items(e->scenePos());
-//    MATRIX_DEBUG << "Found " << l.size() << " items at " << e->scenePos() << endl;
+//    MATRIX_DEBUG << "Found " << l.size() << " items at " << e->scenePos();
     for (int i = 0; i < l.size(); ++i) {
         MatrixElement *element = MatrixElement::getMatrixElement(l[i]);
         if (element) {
@@ -626,7 +627,7 @@ MatrixScene::checkUpdate()
 void
 MatrixScene::segmentEndMarkerTimeChanged(const Segment *, bool)
 {
-    MATRIX_DEBUG << "MatrixScene::segmentEndMarkerTimeChanged" << endl;
+    MATRIX_DEBUG << "MatrixScene::segmentEndMarkerTimeChanged";
     recreateLines();
 }
 
@@ -639,7 +640,7 @@ MatrixScene::timeSignatureChanged(const Composition *c)
 void
 MatrixScene::segmentRemoved(const Composition *c, Segment *s)
 {
-    MATRIX_DEBUG << "MatrixScene::segmentRemoved(" << c << "," << s << ")" << endl;
+    MATRIX_DEBUG << "MatrixScene::segmentRemoved(" << c << "," << s << ")";
 
     if (!m_document || !c || (c != &m_document->getComposition())) return;
 
@@ -654,7 +655,7 @@ MatrixScene::segmentRemoved(const Composition *c, Segment *s)
     }
 
     if (m_viewSegments.empty()) {
-        MATRIX_DEBUG << "(Scene is now empty)" << endl;
+        MATRIX_DEBUG << "(Scene is now empty)";
         emit sceneDeleted();
     }
 }
@@ -794,6 +795,7 @@ MatrixScene::previewSelection(EventSelection *s,
                               EventSelection *oldSelection)
 {
     if (!s) return;
+    if (!m_document->isSoundEnabled()) return;
 
     for (EventSelection::eventcontainer::iterator i = s->getSegmentEvents().begin();
          i != s->getSegmentEvents().end(); ++i) {
@@ -816,7 +818,7 @@ MatrixScene::previewSelection(EventSelection *s,
 void
 MatrixScene::updateCurrentSegment()
 {
-    MATRIX_DEBUG << "MatrixScene::updateCurrentSegment: current is " << m_currentSegmentIndex << endl;
+    MATRIX_DEBUG << "MatrixScene::updateCurrentSegment: current is " << m_currentSegmentIndex;
     for (int i = 0; i < (int)m_viewSegments.size(); ++i) {
         bool current = (i == m_currentSegmentIndex);
         ViewElementList *vel = m_viewSegments[i]->getViewElementList();
@@ -836,7 +838,7 @@ MatrixScene::updateCurrentSegment()
 void
 MatrixScene::setSnap(timeT t)
 {
-    MATRIX_DEBUG << "MatrixScene::slotSetSnap: time is " << t << endl;
+    MATRIX_DEBUG << "MatrixScene::slotSetSnap: time is " << t;
     m_snapGrid->setSnapTime(t);
 
     for (size_t i = 0; i < m_segments.size(); ++i) {

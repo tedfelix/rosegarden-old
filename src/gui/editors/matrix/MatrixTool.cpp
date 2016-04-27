@@ -136,7 +136,7 @@ MatrixTool::findActionInParentView(QString actionName)
     if (!m_widget) return 0;
     QWidget *w = m_widget;
     ActionFileClient *c = 0;
-    while (w->parentWidget() && !(c = dynamic_cast<ActionFileClient *>(w))) {
+    while (w && !(c = dynamic_cast<ActionFileClient *>(w))) {
         w = w->parentWidget();
     }
     if (!c) {
@@ -150,7 +150,7 @@ MatrixTool::findActionInParentView(QString actionName)
 void
 MatrixTool::createMenu()
 {
-    MATRIX_DEBUG << "MatrixTool::createMenu() " << m_rcFileName << " - " << m_menuName << endl;
+    MATRIX_DEBUG << "MatrixTool::createMenu() " << m_rcFileName << " - " << m_menuName;
 
     if (!createGUI(m_rcFileName)) {
         RG_WARNING << "MatrixTool::createMenu(" << m_rcFileName << "): menu creation failed";

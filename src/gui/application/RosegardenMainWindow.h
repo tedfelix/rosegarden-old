@@ -89,6 +89,7 @@ class AudioPluginManager;
 class AudioPluginDialog;
 class AudioMixerWindow;
 class AudioManagerDialog;
+class EditTempoController;
 class SequencerThread;
 class TranzportClient;
 class WarningWidget;
@@ -455,7 +456,7 @@ protected:
      * This is part of a legacy KDE mechanism, but has been left in place for
      * convenience
      */
-    virtual bool queryClose();
+    bool queryClose();
 
 
  //!!! I left the following code here, but this is related to KDE session
@@ -1325,17 +1326,6 @@ public slots:
     void slotConfigure();
 
     /**
-     * Show the key mappings
-     *
-     */
-    void slotEditKeys();
-
-    /**
-     * Edit toolbars
-     */
-    void slotEditToolbars();
-
-    /**
      * Update the toolbars after edition
      */
     void slotUpdateToolbars();
@@ -1347,25 +1337,6 @@ public slots:
 
     void slotZoomIn();
     void slotZoomOut();
-
-    /**
-     * Modify tempo
-     */
-    void slotChangeTempo(timeT time,
-                         tempoT value,      
-                         tempoT target,
-                         TempoDialog::TempoDialogAction action);
-
-    /**
-     * Move a tempo change
-     */
-    void slotMoveTempo(timeT oldTime,
-                       timeT newTime);
-
-    /**
-     * Remove a tempo change
-     */
-    void slotDeleteTempo(timeT time);
 
     /**
      * Add marker
@@ -1611,7 +1582,6 @@ protected slots:
     void setupRecentFilesMenu();
 
 private:
-
     /** Use QTemporaryFile to obtain a tmp filename that is guaranteed to be
      * unique
      */
@@ -1732,6 +1702,8 @@ private:
 
     QTimer *m_updateUITimer;
     QTimer *m_inputTimer;
+
+    EditTempoController *m_editTempoController;
 
     StartupTester *m_startupTester;
 

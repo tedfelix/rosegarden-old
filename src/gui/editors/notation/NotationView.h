@@ -33,11 +33,12 @@
 #include <vector>
 
 class QWidget;
-class Event;
+class TestNotationViewSelection;
 
 namespace Rosegarden
 {
 
+class Event;
 class RosegardenDocument;
 class NotationWidget;
 class NotationElement;
@@ -48,7 +49,7 @@ class ControlRulerWidget;
 class ControlParameter;
 class TriggerSegmentRec;
  
-class NotationView : public EditViewBase,
+class ROSEGARDENPRIVATE_EXPORT NotationView : public EditViewBase,
                         public SelectionManager
 {
     Q_OBJECT
@@ -69,7 +70,7 @@ public:
     virtual void initLayoutToolbar();
     void initRulersToolbar();
     virtual void initStatusBar();
-    virtual timeT getInsertionTime() const;
+    timeT getInsertionTime() const;
     
     bool hasSegment(Segment * seg) const;
 
@@ -95,10 +96,6 @@ signals:
     void panic();
     void editTriggerSegment(int);
     void stepByStepTargetRequested(QObject *);
-    void changeTempo(timeT,  // tempo change time
-                     tempoT,  // tempo value
-                     tempoT,  // target value
-                     TempoDialog::TempoDialogAction); // tempo action
 
 protected:
     virtual void readOptions();
@@ -375,6 +372,7 @@ protected slots:
     void slotCycleSlashes();
 
     void slotAddLayer();
+    void slotMagicLayer();
 
     virtual void slotConfigure();
 
@@ -391,6 +389,7 @@ protected slots:
     void slotInterpretActivate();
 
 private:
+    friend class ::TestNotationViewSelection;
     /**
      * export a LilyPond file (used by slotPrintLilyPond and
      * slotPreviewLilyPond)
@@ -481,6 +480,11 @@ private:
     void ForAllSelection(opOnEvent op);
     void setCurrentStaff(NotationStaff *staff);
 
+    /**
+     * Set the <<< << >> >>> buttons in the transport toolbar to auto repeat
+     */
+    void setRewFFwdToAutoRepeat();
+
 // FIXME: likely to be debated. --gp     Used for subclassing in pitchtracker
 protected:
     // !!! Duplicates m_doc in base class
@@ -532,12 +536,6 @@ private:
     // These Segments are not in Composition, they are dummies for
     // viewing a triggered segment's expansion.
     SegmentVector      m_adoptedSegments;    // I own these
-
-    /**
-     * Set the <<< << >> >>> buttons in the transport toolbar to auto repeat
-     */
-    void setRewFFwdToAutoRepeat();
-
 };
 
 }

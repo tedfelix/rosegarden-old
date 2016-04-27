@@ -34,6 +34,7 @@
 #include <QFrame>
 #include <QLabel>
 #include <QRadioButton>
+#include <QPushButton>
 #include <QString>
 #include <QWidget>
 #include <QVBoxLayout>
@@ -433,7 +434,7 @@ void
 TempoDialog::accept()
 {
     tempoT tempo = Composition::getTempoForQpm(m_tempoValueSpinBox->value());
-    RG_DEBUG << "Tempo is " << tempo << endl;
+    RG_DEBUG << "Tempo is " << tempo;
 
     tempoT target = -1;
     if (m_tempoRampToNext->isChecked()) {
@@ -442,7 +443,7 @@ TempoDialog::accept()
         target = Composition::getTempoForQpm(m_tempoTargetSpinBox->value());
     }
 
-    RG_DEBUG << "Target is " << target << endl;
+    RG_DEBUG << "Target is " << target;
 
     if (m_timeEditor) {
 

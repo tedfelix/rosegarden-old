@@ -168,22 +168,25 @@ static bool canStartOrEndBeam(Event *event)
 
 Event *LilyPondExporter::nextNoteInGroup(Segment *s, Segment::iterator it, const std::string &groupType, int barEnd) const
 {
-    Event *currentEvent = *it;
+    Event *event = *it;
     long currentGroupId = -1;
-    currentEvent->get<Int>(BEAMED_GROUP_ID, currentGroupId);
+    event->get<Int>(BEAMED_GROUP_ID, currentGroupId);
     Q_ASSERT(currentGroupId != -1);
     const bool tuplet = groupType == GROUP_TYPE_TUPLED;
-    timeT currentTime = m_composition->getNotationQuantizer()->getQuantizedAbsoluteTime(currentEvent);
+    const bool graceNotesGroup = event->has(IS_GRACE_NOTE) && event->get<Bool>(IS_GRACE_NOTE);
+    timeT currentTime = m_composition->getNotationQuantizer()->getQuantizedAbsoluteTime(event);
+    int subOrdering = event->getSubOrdering();
 
     ++it;
     for ( ; s->isBeforeEndMarker(it) ; ++it ) {
-        Event *event = *it;
+        event = *it;
 
         if (event->getNotationAbsoluteTime() >= barEnd)
             break;
 
-        // Grace notes are not beamed, but shouldn't break the beaming group
-        if (event->has(IS_GRACE_NOTE) && event->get<Bool>(IS_GRACE_NOTE))
+        // Grace notes shouldn't break the beaming group of real notes
+        const bool isGrace = (event->has(IS_GRACE_NOTE) && event->get<Bool>(IS_GRACE_NOTE));
+        if (!graceNotesGroup && isGrace)
             continue;
 
         if (event->has(SKIP_PROPERTY))
@@ -202,10 +205,11 @@ Event *LilyPondExporter::nextNoteInGroup(Segment *s, Segment::iterator it, const
 
         // Within a chord, keep moving ahead
         const timeT eventTime = m_composition->getNotationQuantizer()->getQuantizedAbsoluteTime(event);
-        if (eventTime == currentTime) {
+        if (eventTime == currentTime && subOrdering == event->getSubOrdering()) {
             continue;
         }
         currentTime = eventTime;
+        subOrdering = event->getSubOrdering();
 
         long newGroupId = -1;
         event->get<Int>(BEAMED_GROUP_ID, newGroupId);
@@ -1147,7 +1151,7 @@ LilyPondExporter::write()
             }
         
             timeT markerTime = m_composition->getBarStartForTime((*i_marker)->getTime());
-            RG_DEBUG << "Marker: " << (*i_marker)->getTime() << " previous: " << prevMarkerTime << endl;
+            RG_DEBUG << "Marker: " << (*i_marker)->getTime() << " previous: " << prevMarkerTime;
             // how to cope with time signature changes?
             if (markerTime > prevMarkerTime) {
                 str << indent(col);
@@ -2181,7 +2185,7 @@ void LilyPondExporter::handleGuitarChord(Segment::iterator i, std::ofstream &str
         str << "\" ";
 
     } catch (Exception e) { // GuitarChord ctor failed
-        RG_DEBUG << "Bad GuitarChord event in LilyPond export" << endl;
+        RG_DEBUG << "Bad GuitarChord event in LilyPond export";
     }
 }
 
@@ -2403,22 +2407,25 @@ LilyPondExporter::writeBar(Segment *s,
                 str << "\\hideNotes ";
             }
 
-            if (e->has(NotationProperties::STEM_UP)) {
-                if (e->get<Bool>(NotationProperties::STEM_UP)) {
-                    if (lastStem != 1) {
-                        str << "\\stemUp ";
-                        lastStem = 1;
+            // Export stem direction - but don't change it in the middle of a beamed group
+            if (!m_exportBeams || !inBeamedGroup || startingBeamedGroup) {
+                if (e->has(NotationProperties::STEM_UP)) {
+                    if (e->get<Bool>(NotationProperties::STEM_UP)) {
+                        if (lastStem != 1) {
+                            str << "\\stemUp ";
+                            lastStem = 1;
+                        }
+                    } else {
+                        if (lastStem != -1) {
+                            str << "\\stemDown ";
+                            lastStem = -1;
+                        }
                     }
                 } else {
-                    if (lastStem != -1) {
-                        str << "\\stemDown ";
-                        lastStem = -1;
+                    if (lastStem != 0) {
+                        str << "\\stemNeutral ";
+                        lastStem = 0;
                     }
-                }
-            } else {
-                if (lastStem != 0) {
-                    str << "\\stemNeutral ";
-                    lastStem = 0;
                 }
             }
 

@@ -246,7 +246,6 @@ set(rg_CPPS
   gui/editors/notation/NoteRestInserter.cpp
   gui/editors/notation/NoteStyleFactory.cpp
   gui/editors/notation/NoteStyleFileReader.cpp
-  gui/editors/notation/SystemFontXft.cpp
   gui/editors/notation/NotationTool.cpp
   gui/editors/notation/NotationProperties.cpp
   gui/editors/notation/NoteFontViewer.cpp
@@ -355,6 +354,7 @@ set(rg_CPPS
   gui/general/ThornStyle.cpp
   gui/general/ProjectPackager.cpp
   gui/general/FileSource.cpp
+  gui/general/EditTempoController.cpp
   gui/rulers/ControlItem.cpp
   gui/rulers/DefaultVelocityColour.cpp
   gui/rulers/ControllerEventsRuler.cpp

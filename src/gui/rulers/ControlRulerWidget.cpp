@@ -121,13 +121,6 @@ ControlRulerWidget::setSegments(RosegardenDocument *document, std::vector<Segmen
     SegmentSelection selection;
     selection.insert(segments.begin(), segments.end());
 
-    delete m_scale;
-
-    setRulerScale(new SegmentsRulerScale(&m_document->getComposition(),
-            selection,
-            0,
-            Note(Note::Shortest).getDuration() / 2.0));
-    
     // This is single segment code
     setSegment(segments[0]);
 }
@@ -141,7 +134,7 @@ ControlRulerWidget::setSegment(Segment *segment)
     }
     m_segment = segment;
 
-    RG_DEBUG << "ControlRulerWidget::setSegments Widget contains " << m_controlRulerList.size() << " rulers.";
+    RG_DEBUG << "ControlRulerWidget::setSegments Widget contains" << m_controlRulerList.size() << "rulers.";
 
     if (m_controlRulerList.size()) {
         std::list<ControlRuler *>::iterator it;

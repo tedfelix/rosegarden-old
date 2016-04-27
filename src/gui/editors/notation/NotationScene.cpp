@@ -110,6 +110,7 @@ NotationScene::~NotationScene()
     delete m_subtitle;
     delete m_composer;
     delete m_copyright;
+    delete m_selection;
 
     for (unsigned int i = 0; i < m_segments.size(); ++i)
         m_segments[i]->removeObserver(m_clefKeyContext);
@@ -354,6 +355,7 @@ NotationScene::setStaffs(RosegardenDocument *document,
     for (std::set<TrackId>::iterator i = trackIds.begin();
          i != trackIds.end(); ++i) {
         Track *track = composition->getTrackById(*i);
+        Q_ASSERT(track);
         m_trackLabels[*i] = track->getLabel();
     }
 
@@ -637,7 +639,7 @@ NotationScene::initCurrentStaffIndex(void)
     // any segments from)
     {
         const Track *track = composition.getTrackById(composition.getSelectedTrack());
-        NotationStaff *staff = getStaffbyTrackAndTime(track, targetTime);
+        NotationStaff *staff = track ? getStaffbyTrackAndTime(track, targetTime) : 0;
         if (staff) {
             setCurrentStaff(staff);
             return;
@@ -1502,10 +1504,11 @@ NotationScene::positionStaffs()
             m_staffs[i]->setLegerLineCount(legerLines);
 
             int height = m_staffs[i]->getHeightOfRow();
-            TrackId trackId = m_staffs[i]->getSegment().getTrack();
-            Track *track =
-                m_staffs[i]->getSegment().getComposition()->
-                getTrackById(trackId);
+            Segment &segment = m_staffs[i]->getSegment();
+            TrackId trackId = segment.getTrack();
+            Composition *composition = segment.getComposition();
+            Q_ASSERT(composition);
+            Track *track = composition->getTrackById(trackId);
 
             if (!track)
                 continue; // This Should Not Happen, My Friend
@@ -1872,7 +1875,7 @@ NotationScene::setSelection(EventSelection *s,
     delete oldSelection;
 
     emit selectionChanged(m_selection);
-    emit selectionChanged();
+    emit QGraphicsScene::selectionChanged();
 }
 
 void
@@ -1936,6 +1939,7 @@ NotationScene::previewSelection(EventSelection *s,
                                 EventSelection *oldSelection)
 {
     if (!s) return;
+    if (!m_document->isSoundEnabled()) return;
 
     for (EventSelection::eventcontainer::iterator i = s->getSegmentEvents().begin();
          i != s->getSegmentEvents().end(); ++i) {

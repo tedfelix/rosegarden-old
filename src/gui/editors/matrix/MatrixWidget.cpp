@@ -339,7 +339,7 @@ MatrixWidget::~MatrixWidget()
 
 void
 MatrixWidget::setSegments(RosegardenDocument *document,
-			  std::vector<Segment *> segments)
+                          std::vector<Segment *> segments)
 {
     if (m_document) {
         disconnect(m_document, SIGNAL(pointerPositionChanged(timeT)),
@@ -437,7 +437,6 @@ MatrixWidget::setSegments(RosegardenDocument *document,
 
     m_tempoRuler = new TempoRuler(m_referenceScale,
                                   document,
-                                  RosegardenMainWindow::self(),
                                   0.0,    // xorigin
                                   24,     // height
                                   true,   // small
@@ -472,8 +471,6 @@ MatrixWidget::setSegments(RosegardenDocument *document,
 
     connect(m_document, SIGNAL(pointerPositionChanged(timeT)),
             this, SLOT(slotPointerPositionChanged(timeT)));
-
-    m_tempoRuler->connectSignals();
 
     m_chordNameRuler->setReady();
 

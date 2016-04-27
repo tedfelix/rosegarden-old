@@ -33,9 +33,9 @@
 #include "commands/segment/RemoveTimeSignatureCommand.h"
 #include "document/RosegardenDocument.h"
 #include "misc/ConfigGroups.h"
-#include "gui/dialogs/TempoDialog.h"
 #include "gui/dialogs/TimeSignatureDialog.h"
 #include "gui/dialogs/AboutDialog.h"
+#include "gui/general/EditTempoController.h"
 #include "gui/general/ListEditView.h"
 #include "gui/general/IconLoader.h"
 #include "gui/widgets/TmpStatusMsg.h"
@@ -61,8 +61,9 @@
 namespace Rosegarden
 {
 
-TempoView::TempoView(RosegardenDocument *doc, QWidget *parent, timeT openTime):
+TempoView::TempoView(RosegardenDocument *doc, QWidget *parent, EditTempoController *editTempoController, timeT openTime):
         ListEditView(doc, std::vector<Segment *>(), 2, parent),
+        m_editTempoController(editTempoController),
         m_filter(Tempo | TimeSignature),
         m_ignoreUpdates(true)
 {
@@ -383,7 +384,7 @@ TempoView::refreshSegment(Segment * /*segment*/,
                           timeT /*startTime*/,
                           timeT /*endTime*/)
 {
-    RG_DEBUG << "TempoView::refreshSegment" << endl;
+    RG_DEBUG << "TempoView::refreshSegment";
     applyLayout();
 }
 
@@ -485,21 +486,7 @@ TempoView::slotEditInsertTempo()
             insertTime = item->getTime();
     }
 
-    TempoDialog dialog(this, getDocument(), true);
-    dialog.setTempoPosition(insertTime);
-
-    connect(&dialog,
-            SIGNAL(changeTempo(timeT,
-                               tempoT,
-                               tempoT,
-                               TempoDialog::TempoDialogAction)),
-            this,
-            SIGNAL(changeTempo(timeT,
-                               tempoT,
-                               tempoT,
-                               TempoDialog::TempoDialogAction)));
-
-    dialog.exec();
+    m_editTempoController->editTempo(this, insertTime, true /* timeEditable */);
 }
 
 void
@@ -539,7 +526,7 @@ TempoView::slotEditInsertTimeSignature()
 void
 TempoView::slotEdit()
 {
-    RG_DEBUG << "TempoView::slotEdit" << endl;
+    RG_DEBUG << "TempoView::slotEdit";
 
     QList<QTreeWidgetItem*> selection = m_list->selectedItems();
 
@@ -717,21 +704,7 @@ TempoView::slotPopupEditor(QTreeWidgetItem *qitem, int)
 
     case TempoListItem::Tempo:
     {
-        TempoDialog dialog(this, getDocument(), true);
-        dialog.setTempoPosition(time);
-        
-        connect(&dialog,
-                SIGNAL(changeTempo(timeT,
-                                   tempoT,
-                                   tempoT,
-                                   TempoDialog::TempoDialogAction)),
-                this,
-                SIGNAL(changeTempo(timeT,
-                                   tempoT,
-                                   tempoT,
-                                   TempoDialog::TempoDialogAction)));
-        
-        dialog.exec();
+        m_editTempoController->editTempo(this, time, true /* timeEditable */);
         break;
     }
 
