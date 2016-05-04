@@ -251,7 +251,7 @@ namespace Rosegarden
 {
 
 
-RosegardenMainWindow::RosegardenMainWindow(bool useSequencer,
+RosegardenMainWindow::RosegardenMainWindow(bool enableSound,
                                            QObject *startupStatusMessageReceiver) :
     QMainWindow(0),
     m_alwaysUseDefaultStudio(false),
@@ -276,7 +276,7 @@ RosegardenMainWindow::RosegardenMainWindow(bool useSequencer,
     m_originatingJump(false),
     m_storedLoopStart(0),
     m_storedLoopEnd(0),
-    m_useSequencer(useSequencer),
+    m_useSequencer(enableSound),
     m_dockVisible(true),
     m_autoSaveTimer(new QTimer(this)),
     m_clipboard(Clipboard::mainClipboard()),
@@ -329,7 +329,7 @@ RosegardenMainWindow::RosegardenMainWindow(bool useSequencer,
     // Plugin manager
     //
     emit startupStatusMessage(tr("Initializing plugin manager..."));
-    m_pluginManager = new AudioPluginManager();
+    m_pluginManager = new AudioPluginManager(enableSound);
 
     // start of docking code 
     this->setDockOptions(QMainWindow::AnimatedDocks);
@@ -414,21 +414,19 @@ RosegardenMainWindow::RosegardenMainWindow(bool useSequencer,
 //    connect(m_parameterArea, SIGNAL(hidden()),
 //            this, SLOT(slotParameterAreaHidden()));
 
+    m_seqManager = new SequenceManager();
+
     // Load the initial document (this includes doc's own autoload)
     //
     setDocument(doc);
 
     emit startupStatusMessage(tr("Starting sequence manager..."));
-
-    // transport is created by setupActions()
-    m_seqManager = new SequenceManager(getTransport());
     m_seqManager->setDocument(m_doc);
 
     connect(m_seqManager,
             SIGNAL(sendWarning(int, QString, QString)),
             this,
             SLOT(slotDisplayWarning(int, QString, QString)));
-
 
     if (m_useSequencer) {
         // Check the sound driver status and warn the user of any
@@ -467,6 +465,8 @@ RosegardenMainWindow::RosegardenMainWindow(bool useSequencer,
     // Send the transport control statuses for MMC and JACK
     //
     m_seqManager->sendTransportControlStatuses();
+
+    m_seqManager->setTrackEditor(m_view->getTrackEditor());
 
     // Now autoload
     //
@@ -1151,7 +1151,7 @@ RosegardenMainWindow::initView()
 
     // set the tempo in the transport
     //
-    getTransport()->setTempo(comp.getCurrentTempo());
+    m_seqManager->setTempo(comp.getCurrentTempo());
 
     // bring the transport to the front
     //
@@ -1251,6 +1251,9 @@ RosegardenMainWindow::initView()
             SIGNAL(showContextHelp(const QString &)),
             this,
             SLOT(slotShowToolHelp(const QString &)));
+
+    connect(m_seqManager, SIGNAL(signalAudioLevel(const MappedEvent*)),
+            m_view, SLOT(showVisuals(const MappedEvent*)));
 
     // We have to do this to make sure that the 2nd call ("select")
     // actually has any effect. Activating the same radio action
@@ -2910,9 +2913,14 @@ RosegardenMainWindow::createAndSetupTransport()
     connect(m_transport, SIGNAL(setLoopStartTime()), SLOT(slotSetLoopStart()));
     connect(m_transport, SIGNAL(setLoopStopTime()), SLOT(slotSetLoopStop()));
 
-    if (m_seqManager != 0)
-        m_seqManager->setTransport(m_transport);
-
+    if (m_seqManager != 0) {
+        connect(m_seqManager, SIGNAL(signalTempoChanged(tempoT)), m_transport, SLOT(slotTempoChanged(tempoT)));
+        connect(m_seqManager, SIGNAL(signalMidiInLabel(const MappedEvent*)), m_transport, SLOT(slotMidiInLabel(const MappedEvent*)));
+        connect(m_seqManager, SIGNAL(signalMidiOutLabel(const MappedEvent*)), m_transport, SLOT(slotMidiOutLabel(const MappedEvent*)));
+        connect(m_seqManager, SIGNAL(signalPlaying(bool)), m_transport, SLOT(slotPlaying(bool)));
+        connect(m_seqManager, SIGNAL(signalRecording(bool)), m_transport, SLOT(slotRecording(bool)));
+        connect(m_seqManager, SIGNAL(signalMetronomeActivated(bool)), m_transport, SLOT(slotMetronomeActivated(bool)));
+    }
 }
 
 void
@@ -4858,7 +4866,7 @@ RosegardenMainWindow::slotUpdateUI()
 
     MappedEvent ev;
     bool haveEvent = SequencerDataBlock::getInstance()->getVisual(ev);
-    if (haveEvent) getTransport()->setMidiOutLabel(&ev);
+    if (haveEvent) getTransport()->slotMidiOutLabel(&ev);
 
 
     // Update the playback position pointer
@@ -5010,7 +5018,7 @@ RosegardenMainWindow::slotSetPointerPosition(timeT t)
     getTransport()->setTimeSignature(comp.getTimeSignatureAt(t));
 
     // and the tempo
-    getTransport()->setTempo(comp.getTempoAtTime(t));
+    m_seqManager->setTempo(comp.getTempoAtTime(t));
 
     // and the time
     //
@@ -5100,12 +5108,6 @@ RosegardenMainWindow::slotRefreshTimeDisplay()
         return ; // it'll be refreshed in a moment anyway
     }
     slotSetPointerPosition(m_doc->getComposition().getPosition());
-}
-
-bool
-RosegardenMainWindow::isTrackEditorPlayTracking() const
-{
-    return m_view->getTrackEditor()->isTracking();
 }
 
 void

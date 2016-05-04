@@ -94,7 +94,7 @@ public:
                        AudioPluginManager *audioPluginManager = 0,
                        bool skipAutoload = false,
                        bool clearCommandHistory = true,
-                       bool useSequencer = true);
+                       bool enableSound = true);
 
 private:
     RosegardenDocument(const RosegardenDocument &doc);
@@ -284,18 +284,6 @@ public:
         { return m_config; }
 
     /**
-     * Returns whether the sequencer is running
-     */
-    bool isSequencerRunning() const;
-
-    /**
-     * Enables/disables playing sounds.
-     * Useful for the unittest to avoid initializing the sound system,
-     * and playing sounds when selecting notes.
-     */
-    void setSoundEnabled(bool b);
-
-    /**
      * Returns whether playing sound is enabled at all
      */
     bool isSoundEnabled() const;
@@ -449,7 +437,7 @@ public:
     /**
      * return the list of the views currently connected to the document
      */
-    QList<RosegardenMainViewWidget*>& getViewList() { return m_viewList; } //### prepended *
+    QList<RosegardenMainViewWidget*>& getViewList() { return m_viewList; }
 
     bool isBeingDestroyed() { return m_beingDestroyed; }
 
@@ -767,7 +755,7 @@ private:
      */
     bool m_clearCommandHistory;
 
-    bool m_useSequencer;
+    bool m_enableSound;
 
     /// Enable/disable playing sounds
     bool m_soundEnabled;

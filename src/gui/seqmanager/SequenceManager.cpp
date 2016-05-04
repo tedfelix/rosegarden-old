@@ -42,12 +42,9 @@
 #include "CompositionMapper.h"
 #include "document/RosegardenDocument.h"
 #include "document/CommandHistory.h"
-#include "gui/application/RosegardenApplication.h"
-#include "gui/application/RosegardenMainWindow.h"
-#include "gui/application/RosegardenMainViewWidget.h"
 #include "gui/dialogs/AudioManagerDialog.h"
 #include "gui/dialogs/CountdownDialog.h"
-#include "gui/dialogs/TransportDialog.h"
+#include "gui/editors/segment/TrackEditor.h"
 #include "gui/widgets/StartupLogo.h"
 #include "gui/studio/StudioControl.h"
 #include "gui/dialogs/DialogSuppressor.h"
@@ -84,15 +81,15 @@
 namespace Rosegarden
 {
 
-SequenceManager::SequenceManager(TransportDialog *transport) :
+SequenceManager::SequenceManager() :
     m_doc(0),
     m_compositionMapper(0),
     m_metronomeMapper(0),
     m_tempoSegmentMapper(0),
     m_timeSigSegmentMapper(0),
+    m_trackEditor(0),
     m_transportStatus(STOPPED),
     m_soundDriverStatus(NO_DRIVER),
-    m_transport(transport),
     m_lastRewoundAt(clock()),
     m_countdownDialog(0),
     m_countdownTimer(0),
@@ -104,7 +101,8 @@ SequenceManager::SequenceManager(TransportDialog *transport) :
     m_canReport(true),
     m_lastLowLatencySwitchSent(false),
     m_lastTransportStartPosition(0),
-    m_sampleRate(0)
+    m_sampleRate(0),
+    m_tempo(0)
 {
     // The owner of this sequence manager will need to call
     // checkSoundDriverStatus on it to set up its status appropriately
@@ -178,6 +176,12 @@ SequenceManager::setDocument(RosegardenDocument *doc)
     populateCompositionMapper();
 }
 
+void SequenceManager::setTrackEditor(TrackEditor *trackEditor)
+{
+    Q_ASSERT(trackEditor);
+    m_trackEditor = trackEditor;
+}
+
 void
 SequenceManager::setTransportStatus(const TransportStatus &status)
 {
@@ -216,7 +220,7 @@ SequenceManager::play()
 
     // make sure we toggle the play button
     //
-    m_transport->PlayButton()->setChecked(true);
+    emit signalPlaying(true);
 
     //!!! disable the record button, because recording while playing is horribly
     // broken, and disabling it is less complicated than fixing it
@@ -234,14 +238,7 @@ SequenceManager::play()
 
     // Send initial tempo
     //
-    double qnD = 60.0 / comp.getTempoQpm(comp.getCurrentTempo());
-    RealTime qnTime =
-        RealTime(long(qnD),
-                 long((qnD - double(long(qnD))) * 1000000000.0));
-    StudioControl::sendQuarterNoteLength(qnTime);
-
-    // set the tempo in the transport
-    m_transport->setTempo(comp.getCurrentTempo());
+    setTempo(comp.getCurrentTempo());
 
     // The arguments for the Sequencer
     RealTime startPos = comp.getElapsedRealTime(comp.getPosition());
@@ -329,9 +326,8 @@ SequenceManager::stopping()
     //
     if (m_transportStatus == RECORDING_ARMED) {
         m_transportStatus = STOPPED;
-        m_transport->RecordButton()->setChecked(false);
-        m_transport->MetronomeButton()->
-          setChecked(m_doc->getComposition().usePlayMetronome());
+        emit signalRecording(false);
+        emit signalMetronomeActivated(m_doc->getComposition().usePlayMetronome());
         return ;
     }
 
@@ -351,9 +347,8 @@ SequenceManager::stop()
     // Toggle off the buttons - first record
     //
     if (m_transportStatus == RECORDING) {
-        m_transport->RecordButton()->setChecked(false);
-        m_transport->MetronomeButton()->
-          setChecked(m_doc->getComposition().usePlayMetronome());
+        emit signalRecording(false);
+        emit signalMetronomeActivated(m_doc->getComposition().usePlayMetronome());
 
         // Remove the countdown dialog and stop the timer
         //
@@ -362,7 +357,7 @@ SequenceManager::stop()
     }
 
     // Now playback
-    m_transport->PlayButton()->setChecked(false);
+    emit signalPlaying(false);
 
     // re-enable the record button if it was previously disabled when
     // going into play mode - DMM
@@ -404,7 +399,7 @@ SequenceManager::stop()
 
     // always untoggle the play button at this stage
     //
-    m_transport->PlayButton()->setChecked(false);
+    emit signalPlaying(false);
     SEQMAN_DEBUG << "SequenceManager::stop() - stopped playing";
     // We don't reset controllers at this point - what happens with static
     // controllers the next time we play otherwise?  [rwb]
@@ -512,7 +507,7 @@ SequenceManager::record(bool toggled)
 
         if (instr && instr->getType() == Instrument::Audio) {
             if (!m_doc || !(m_soundDriverStatus & AUDIO_OK)) {
-                m_transport->RecordButton()->setChecked(false);
+                emit signalRecording(false);
                 throw(Exception(QObject::tr("Audio subsystem is not available - can't record audio")));
             }
             // throws BadAudioPathException if path is not valid:
@@ -528,8 +523,8 @@ SequenceManager::record(bool toggled)
             m_transportStatus = STOPPED;
 
             // Toggle the buttons
-            m_transport->MetronomeButton()->setChecked(comp.usePlayMetronome());
-            m_transport->RecordButton()->setChecked(false);
+            emit signalMetronomeActivated(comp.usePlayMetronome());
+            emit signalRecording(false);
 
             return ;
         }
@@ -539,8 +534,8 @@ SequenceManager::record(bool toggled)
             m_transportStatus = RECORDING_ARMED;
 
             // Toggle the buttons
-            m_transport->MetronomeButton()->setChecked(comp.useRecordMetronome());
-            m_transport->RecordButton()->setChecked(true);
+            emit signalMetronomeActivated(comp.useRecordMetronome());
+            emit signalRecording(true);
 
             return ;
         }
@@ -609,7 +604,6 @@ punchin:
         }
 
         if (!haveInstrument) {
-            m_transport->RecordButton()->setDown(false);
             // TRANSLATORS: the pixmap in this error string contains no English
             // text and is suitable for use by all languages
             throw(Exception(QObject::tr("<qt><p>No tracks were armed for recording.</p><p>Please arm at least one of the recording LEDs <img src=\":pixmaps/tooltip/record-leds.png\"> and try again</p></qt>")));
@@ -619,7 +613,7 @@ punchin:
         checkSoundDriverStatus(false);
 
         // toggle the Metronome button if it's in use
-        m_transport->MetronomeButton()->setChecked(comp.useRecordMetronome());
+        emit signalMetronomeActivated(comp.useRecordMetronome());
 
         // Update record metronome status
         //
@@ -687,8 +681,8 @@ punchin:
         }
 
         // set the buttons
-        m_transport->RecordButton()->setChecked(true);
-        m_transport->PlayButton()->setChecked(true);
+        emit signalRecording(true);
+        emit signalPlaying(true);
 
         if (comp.getCurrentTempo() == 0) {
             SEQMAN_DEBUG << "SequenceManager::play() - setting Tempo to Default value of 120.000";
@@ -699,7 +693,7 @@ punchin:
 
         // set the tempo in the transport
         //
-        m_transport->setTempo(comp.getCurrentTempo());
+        setTempo(comp.getCurrentTempo());
 
         // The arguments for the Sequencer - record is similar to playback,
         // we must being playing to record.
@@ -855,13 +849,13 @@ SequenceManager::processAsynchronousMidi(const MappedEventList &mC,
     // send to the MIDI labels (which can only hold one event at a time)
     i = mC.begin();
     if (i != mC.end()) {
-        m_transport->setMidiInLabel(*i);
+        emit signalMidiInLabel(*i);
     }
 
     i = tempMC.begin();
     while (i != tempMC.end()) {
         if ((*i)->getRecordedDevice() != Device::CONTROL_DEVICE) {
-            m_transport->setMidiOutLabel(*i);
+            emit signalMidiOutLabel(*i);
             break;
         }
         ++i;
@@ -1236,18 +1230,18 @@ SequenceManager::checkSoundDriverStatus(bool warnUser)
     StartupLogo::hideIfStillThere();
     CurrentProgressDialog::freeze();
 
-    QString text("");
-    QString informativeText("");
+    QString text;
+    QString informativeText;
 
     if (m_soundDriverStatus == NO_DRIVER) {
         text = tr("<h3>Sequencer engine unavailable!</h3>");
-        informativeText = tr("<p>Both MIDI and Audio subsystems have failed to initialize.</p><p>If you wish to run with no sequencer by design, then use \"rosegarden --nosequencer\" to avoid seeing this error in the future.  Otherwise, we recommend that you repair your system configuration and start Rosegarden again.</p>");
+        informativeText = tr("<p>Both MIDI and Audio subsystems have failed to initialize.</p><p>If you wish to run with no sequencer by design, then use \"rosegarden --nosound\" to avoid seeing this error in the future.  Otherwise, we recommend that you repair your system configuration and start Rosegarden again.</p>");
     } else if (!(m_soundDriverStatus & MIDI_OK)) {
         text = tr("<h3>MIDI sequencing unavailable!</h3>");
-        informativeText = tr("<p>The MIDI subsystem has failed to initialize.</p><p>You may continue without the sequencer, but we suggest closing Rosegarden, running \"modprobe snd-seq-midi\" as root, and starting Rosegarden again.  If you wish to run with no sequencer by design, then use \"rosegarden --nosequencer\" to avoid seeing this error in the future.</p>");
+        informativeText = tr("<p>The MIDI subsystem has failed to initialize.</p><p>You may continue without the sequencer, but we suggest closing Rosegarden, running \"modprobe snd-seq-midi\" as root, and starting Rosegarden again.  If you wish to run with no sequencer by design, then use \"rosegarden --nosound\" to avoid seeing this error in the future.</p>");
     }
 
-    if (text != "") {
+    if (!text.isEmpty()) {
         emit sendWarning(WarningWidget::Midi, text, informativeText);
         return;
     } 
@@ -1288,9 +1282,7 @@ SequenceManager::preparePlayback(bool /*forceProgramChanges*/)
 void
 SequenceManager::sendAudioLevel(MappedEvent *mE)
 {
-    foreach(RosegardenMainViewWidget* v, m_doc->getViewList()) {
-        v->showVisuals(mE);
-    }
+    emit signalAudioLevel(mE);
 }
 
 void
@@ -1403,12 +1395,32 @@ SequenceManager::panic()
     //    resetControllers();
 }
 
+void SequenceManager::setTempo(const tempoT tempo)
+{
+    if (m_tempo == tempo)
+        return;
+    m_tempo = tempo;
+
+    // Send the quarter note length to the sequencer.
+    // Quarter Note Length is sent (MIDI CLOCK) at 24ppqn.
+    //
+    double qnD = 60.0 / Composition::getTempoQpm(tempo);
+    RealTime qnTime =
+        RealTime(long(qnD),
+                 long((qnD - double(long(qnD))) * 1000000000.0));
+
+    StudioControl::sendQuarterNoteLength(qnTime);
+
+    // set the tempo in the transport
+    emit signalTempoChanged(tempo);
+}
+
 void
 SequenceManager::showVisuals(const MappedEventList &mC)
 {
     MappedEventList::const_iterator it = mC.begin();
     if (it != mC.end())
-        m_transport->setMidiOutLabel(*it);
+        emit signalMidiOutLabel(*it);
 }
 
 MappedEventList
@@ -1917,12 +1929,12 @@ void SequenceManager::tempoChanged(const Composition *c)
         // so that we don't jump about in the main window while the
         // user's trying to drag the tempo in it.  (That doesn't help
         // for matrix or notation though, sadly)
-        bool tracking = RosegardenMainWindow::self()->isTrackEditorPlayTracking();
+        bool tracking = m_trackEditor && m_trackEditor->isTracking();
         if (tracking)
-            RosegardenMainWindow::self()->slotToggleTracking();
+            m_trackEditor->toggleTracking();
         m_doc->slotSetPointerPosition(c->getPosition());
         if (tracking)
-            RosegardenMainWindow::self()->slotToggleTracking();
+            m_trackEditor->toggleTracking();
     }
 }
 

@@ -75,35 +75,28 @@ public:
     void displayFrameTime(const RealTime &rt);
     void displayBarTime(int bar, int beat, int unit);
 
-    void setTempo(const tempoT &tempo);
     void setTimeSignature(const TimeSignature &timeSig);
 
     void setSMPTEResolution(int framesPerSecond, int bitsPerFrame);
     void getSMPTEResolution(int &framesPerSecond, int &bitsPerFrame);
-
-    // Called indirectly from the sequencer and from the GUI to
-    // show incoming and outgoing MIDI events on the Transport
-    //
-    void setMidiInLabel(const MappedEvent *mE);
-    void setMidiOutLabel(const MappedEvent *mE);
 
     // Return the shortcut object
     //
     QShortcut* getShortcuts() { return m_shortcuts; }
 
     // RosegardenTransport member accessors
-    QPushButton* MetronomeButton()   { return m_transport->MetronomeButton; }
-    QPushButton* SoloButton()        { return m_transport->SoloButton; }
-    QPushButton* LoopButton()        { return m_transport->LoopButton; }
-    QPushButton* PlayButton()        { return m_transport->PlayButton; }
-    QPushButton* StopButton()        { return m_transport->StopButton; }
-    QPushButton* FfwdButton()        { return m_transport->FfwdButton; }
-    QPushButton* RewindButton()      { return m_transport->RewindButton; }
-    QPushButton* RecordButton()      { return m_transport->RecordButton; }
-    QPushButton* RewindEndButton()   { return m_transport->RewindEndButton; }
-    QPushButton* FfwdEndButton()     { return m_transport->FfwdEndButton; }
-    QPushButton* TimeDisplayButton() { return m_transport->TimeDisplayButton; }
-    QPushButton* ToEndButton()       { return m_transport->ToEndButton; }
+    QPushButton* MetronomeButton()   { return ui->MetronomeButton; }
+    QPushButton* SoloButton()        { return ui->SoloButton; }
+    QPushButton* LoopButton()        { return ui->LoopButton; }
+    QPushButton* PlayButton()        { return ui->PlayButton; }
+    QPushButton* StopButton()        { return ui->StopButton; }
+    QPushButton* FfwdButton()        { return ui->FfwdButton; }
+    QPushButton* RewindButton()      { return ui->RewindButton; }
+    QPushButton* RecordButton()      { return ui->RecordButton; }
+    QPushButton* RewindEndButton()   { return ui->RewindEndButton; }
+    QPushButton* FfwdEndButton()     { return ui->FfwdEndButton; }
+    QPushButton* TimeDisplayButton() { return ui->TimeDisplayButton; }
+    QPushButton* ToEndButton()       { return ui->ToEndButton; }
 
     virtual void show();
     virtual void hide();
@@ -142,6 +135,14 @@ public slots:
     void slotSetStartLoopingPointAtMarkerPos();
     void slotSetStopLoopingPointAtMarkerPos();
 
+    // Connected to SequenceManager
+    void slotTempoChanged(tempoT);
+    void slotMidiInLabel(const MappedEvent *event); // show incoming MIDI events on the Transport
+    void slotMidiOutLabel(const MappedEvent *event); // show outgoing  MIDI events on the Transport
+    void slotPlaying(bool checked);
+    void slotRecording(bool checked);
+    void slotMetronomeActivated(bool checked);
+
 signals:
     void closed();
 
@@ -166,7 +167,7 @@ private:
 
     //--------------- Data members ---------------------------------
 
-    Ui_RosegardenTransport* m_transport;
+    Ui_RosegardenTransport* ui;
 
     QHash<int, QPixmap> m_lcdList;
     QHash<int, QPixmap> m_lcdListDefault;
@@ -198,7 +199,6 @@ private:
     int m_thousandths;
     int m_tenThousandths;
 
-    tempoT m_tempo;
     int m_numerator;
     int m_denominator;
 

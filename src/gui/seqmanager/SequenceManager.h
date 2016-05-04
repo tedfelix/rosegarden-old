@@ -42,6 +42,7 @@ namespace Rosegarden
 
 class TransportDialog;
 class Track;
+class TrackEditor;
 class TimeSigSegmentMapper;
 class TempoSegmentMapper;
 class Segment;
@@ -62,7 +63,7 @@ public:
      * designed to operate without a document; you must call
      * setDocument before you do anything with it.
      */
-    SequenceManager(TransportDialog *transport);
+    SequenceManager();
     ~SequenceManager();
 
     /** Used to transmit the type of sequencer warning, so the WarningWidget
@@ -79,6 +80,12 @@ public:
      * Return the current internal document
      */
     RosegardenDocument* getDocument();
+
+    /**
+     * Lets SequenceManager know about the TrackEditor,
+     * for the special handling of "when the tempo changes during playback"
+     */
+    void setTrackEditor(TrackEditor *trackEditor);
 
     //
     // Transport controls
@@ -155,6 +162,9 @@ public:
     /// Send all note offs and resets to MIDI devices
     void panic();
 
+    /// Set tempo (also notifies StudioControl and TransportDialog)
+    void setTempo(const tempoT tempo);
+
     /// Send an MC to the view
     void showVisuals(const MappedEventList &mC);
 
@@ -202,8 +212,6 @@ public:
     void filtersChanged(MidiFilter thruFilter,
                         MidiFilter recordFilter);
 
-    void setTransport(TransportDialog* t) { m_transport = t; }
-    
     int getSampleRate(); // may return 0 if sequencer uncontactable
 
 public slots:
@@ -220,6 +228,17 @@ signals:
 
     /// signal RosegardenMainWindow to display a warning on the WarningWidget
     void sendWarning(int type, QString text, QString informativeText);
+
+    /// signal GUI changes to the TransportDialog
+    void signalTempoChanged(tempoT);
+    void signalMidiInLabel(const MappedEvent *event);
+    void signalMidiOutLabel(const MappedEvent *event);
+    void signalPlaying(bool checked);
+    void signalRecording(bool checked);
+    void signalMetronomeActivated(bool checked);
+
+    /// signals the view to show audio levels
+    void signalAudioLevel(const MappedEvent *event);
 
 protected slots:
     void slotCountdownTimerTimeout();
@@ -255,6 +274,7 @@ protected:
     MetronomeMapper       *m_metronomeMapper;
     TempoSegmentMapper    *m_tempoSegmentMapper;
     TimeSigSegmentMapper  *m_timeSigSegmentMapper;
+    TrackEditor           *m_trackEditor;
 
     std::vector<Segment *> m_addedSegments;
     std::vector<Segment *> m_removedSegments;
@@ -263,9 +283,6 @@ protected:
     // statuses
     TransportStatus            m_transportStatus;
     unsigned int               m_soundDriverStatus;
-
-    // pointer to the transport dialog
-    TransportDialog *m_transport;
 
     clock_t                    m_lastRewoundAt;
 
@@ -304,6 +321,7 @@ protected:
 
     int                        m_sampleRate;
 
+    tempoT m_tempo;
 };
 
 
