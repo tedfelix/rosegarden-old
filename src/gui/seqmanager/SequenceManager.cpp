@@ -120,13 +120,16 @@ SequenceManager::~SequenceManager()
 
     SEQMAN_DEBUG << "SequenceManager::~SequenceManager()";
     delete m_compositionMapper;
-    m_metronomeMapper->removeOwner();
-    m_tempoSegmentMapper->removeOwner();
-    m_timeSigSegmentMapper->removeOwner();
+    if (m_metronomeMapper)
+        m_metronomeMapper->removeOwner();
+    if (m_tempoSegmentMapper)
+        m_tempoSegmentMapper->removeOwner();
+    if (m_timeSigSegmentMapper)
+        m_timeSigSegmentMapper->removeOwner();
 }
 
 void
-SequenceManager::setDocument(RosegardenDocument *doc)
+SequenceManager::setDocument(RosegardenDocument *doc, QWidget *parentWidget)
 {
     SEQMAN_DEBUG << "SequenceManager::setDocument(" << doc << ")";
 
@@ -150,8 +153,7 @@ SequenceManager::setDocument(RosegardenDocument *doc)
     delete m_countdownTimer;
     //delete m_compositionMapperResetTimer;
 
-    m_countdownDialog = new CountdownDialog(dynamic_cast<QWidget*>
-                                            (m_doc->parent())->parentWidget());
+    m_countdownDialog = new CountdownDialog(parentWidget);
 
     // Bug 933041: no longer connect the CountdownDialog from
     // SequenceManager; instead let the RosegardenMainWindow connect it to
@@ -171,9 +173,10 @@ SequenceManager::setDocument(RosegardenDocument *doc)
     connect(CommandHistory::getInstance(), SIGNAL(commandExecuted()),
             this, SLOT(update()));
 
-    resetCompositionMapper();
-    
-    populateCompositionMapper();
+    if (doc->isSoundEnabled()) {
+        resetCompositionMapper();
+        populateCompositionMapper();
+    }
 }
 
 void SequenceManager::setTrackEditor(TrackEditor *trackEditor)

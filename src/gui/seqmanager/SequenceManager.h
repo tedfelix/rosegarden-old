@@ -54,7 +54,7 @@ class Composition;
 class AudioManagerDialog;
 class MappedBufMetaIterator;
 
-class SequenceManager : public QObject, public CompositionObserver
+class ROSEGARDENPRIVATE_EXPORT SequenceManager : public QObject, public CompositionObserver
 {
     Q_OBJECT
 public:
@@ -72,9 +72,9 @@ public:
     //typedef enum { Midi, Audio, Timer } WarningType;
 
     /**
-     * Replaces the internal document
+     * Sets (replaces) the internal document, and sets a parent widget for the CountDownDialog
      */
-    void setDocument(RosegardenDocument *);
+    void setDocument(RosegardenDocument *doc, QWidget *parentWidget);
 
     /**
      * Return the current internal document
@@ -100,11 +100,7 @@ public:
     void stop();
 
     void stopping();
-    void rewind();
-    void fastforward();
     void record(bool countIn);
-    void rewindToBeginning();
-    void fastForwardToEnd();
 
     void setLoop(const timeT &lhs, const timeT &rhs);
     void notifySequencerStatus(TransportStatus status);
@@ -217,6 +213,10 @@ public:
 public slots:
 
     void update();
+    void rewind();
+    void fastforward();
+    void rewindToBeginning();
+    void fastForwardToEnd();
 
 signals:
     void signalSelectProgramNoSend(int, int, int);
