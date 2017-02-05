@@ -1358,12 +1358,7 @@ public slots:
 
     /**
      * This slot is here to be connected to RosegardenMainViewWidget's
-     * stateChange signal. We use a bool for the 2nd arg rather than a
-     * KXMLGUIClient::ReverseStateChange to spare the include of
-     * kxmlguiclient.h just for one typedef.
-     *
-     * Hopefully we'll be able to get rid of this eventually,
-     * I should slip this in KMainWindow for KDE 4.
+     * stateChange signal.
      */
     void slotStateChanged(QString, bool noReverse);
 
@@ -1446,10 +1441,6 @@ public slots:
     // Auto-save update interval changes
     //
     void slotUpdateAutoSaveInterval(unsigned int interval);
-
-    // Update the side-bar when the configuration page changes its style.
-    //
-    void slotUpdateSidebarStyle(unsigned int style);
 
     /**
      * called when the PlayList is being closed
@@ -1609,7 +1600,6 @@ private:
 
     RosegardenMainViewWidget* m_view;
 
-    QDockWidget *m_mainDockWidget;
     QDockWidget* m_dockLeft;
     
 

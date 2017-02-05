@@ -255,7 +255,6 @@ RosegardenMainWindow::RosegardenMainWindow(bool enableSound,
     QMainWindow(0),
     m_actionsSetup(false),
     m_view(0),
-    m_mainDockWidget(0),
     m_dockLeft(0),
     m_doc(0),
     m_recentFiles(0),
@@ -370,13 +369,6 @@ RosegardenMainWindow::RosegardenMainWindow(bool enableSound,
     setupActions();
     initZoomToolbar();
     
-    QSettings settings;
-    settings.beginGroup(GeneralOptionsConfigGroup);
-
-    m_parameterArea->setArrangement((RosegardenParameterArea::Arrangement)
-                                    settings.value("sidebarstyle",
-                                    RosegardenParameterArea::CLASSIC_STYLE).toUInt());
-
     //!!! The parameter area amnesia problem that's been annoying me for the
     // longest time was caused by this connection/mechanism.
     //
@@ -523,10 +515,9 @@ RosegardenMainWindow::RosegardenMainWindow(bool enableSound,
 
     QTimer::singleShot(1000, this, SLOT(slotTestStartupTester()));
 
-    settings.endGroup();
-
     // Restore window geometry and toolbar/dock state
     RG_DEBUG << "[geometry] RosegardenMainWindow - Restoring saved main window geometry...";
+    QSettings settings;
     settings.beginGroup(WindowGeometryConfigGroup);
     this->restoreGeometry(settings.value("Main_Window_Geometry").toByteArray());
     this->restoreState(settings.value("Main_Window_State").toByteArray());
@@ -949,7 +940,6 @@ RosegardenMainWindow::initZoomToolbar()
     }
 
     QLabel *label = new QLabel(tr("  Zoom:  "));
-    label->setObjectName("Humbug");
     zoomToolbar->addWidget(label);
 
     std::vector<double> zoomSizes; // in units-per-pixel
@@ -964,7 +954,7 @@ RosegardenMainWindow::initZoomToolbar()
 
     // zoom labels
     QString minZoom = QString("%1%").arg(factors[0] * 100.0);
-    QString maxZoom = QString("%1%").arg(factors[(sizeof(factors) / sizeof(factors[0])) - 1] * 100.0);
+    //QString maxZoom = QString("%1%").arg(factors[(sizeof(factors) / sizeof(factors[0])) - 1] * 100.0);
 
     m_zoomSlider = new ZoomSlider<double>
                    (zoomSizes, -1, Qt::Horizontal, zoomToolbar);
@@ -972,7 +962,6 @@ RosegardenMainWindow::initZoomToolbar()
     m_zoomSlider->setFocusPolicy(Qt::NoFocus);
     m_zoomLabel = new QLabel(minZoom, zoomToolbar);
     m_zoomLabel->setIndent(10);
-    m_zoomLabel->setObjectName("Humbug");
 
     connect(m_zoomSlider, SIGNAL(valueChanged(int)),
             this, SLOT(slotChangeZoom(int)));
@@ -5995,8 +5984,6 @@ RosegardenMainWindow::slotConfigure()
 
         connect(m_configDlg, SIGNAL(updateAutoSaveInterval(unsigned int)),
                 this, SLOT(slotUpdateAutoSaveInterval(unsigned int)));
-        connect(m_configDlg, SIGNAL(updateSidebarStyle(unsigned int)),
-                this, SLOT(slotUpdateSidebarStyle(unsigned int)));
         
         // Close the dialog if the document is changed : fix a potential crash
         connect(this, SIGNAL(documentAboutToChange()),
@@ -8265,14 +8252,6 @@ RosegardenMainWindow::slotUpdateAutoSaveInterval(unsigned int interval)
     RG_DEBUG << "RosegardenMainWindow::slotUpdateAutoSaveInterval - "
     << "changed interval to " << interval << endl;
     m_autoSaveTimer->setInterval(int(interval) * 1000);
-}
-
-void
-RosegardenMainWindow::slotUpdateSidebarStyle(unsigned int style)
-{
-    RG_DEBUG << "RosegardenMainWindow::slotUpdateSidebarStyle - "
-    << "changed style to " << style << endl;
-    if (m_parameterArea) m_parameterArea->setArrangement((RosegardenParameterArea::Arrangement) style);
 }
 
 void
