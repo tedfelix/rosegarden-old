@@ -28,7 +28,6 @@
 #include "sound/Midi.h"
 #include "gui/general/ActionFileClient.h"
 
-#include <QDockWidget>
 #include <QString>
 #include <QVector>
 #include <QMainWindow>
@@ -49,7 +48,6 @@ class QTextCodec;
 class QShowEvent;
 class QObject;
 class QLabel;
-class QCursor;
 class QShortcut;
 class QTemporaryFile;
 class QProcess;
@@ -352,12 +350,6 @@ public:
      * Plug a widget into our common shortcuts
      */
     void plugShortcuts(QWidget *widget, QShortcut *shortcut);
-
-    /**
-     * Override from QWidget
-     * Toolbars and docks need special treatment
-     */
-    virtual void setCursor(const QCursor&);
 
     /** Query the AudioFileManager to see if the audio path exists, is readable,
      * writable, etc., and offer to dump the user in the document properties
@@ -1285,23 +1277,12 @@ public slots:
     /**
      * Re-dock the parameters box to its initial position
      */
-    void slotDockParametersBack();
-
-    /**
-     * The parameters box was closed
-     */
-    void slotParametersClosed();
+    void slotHideShowParameterArea();
 
     /**
      * The parameters box was hidden
      */
     void slotParameterAreaHidden();
-
-    /**
-     * The parameters box was docked back
-     */
-//    void slotParametersDockedBack(QDockWidget*, QDockWidget::DockPosition);    //&&& restore DockPosition
-    void slotParametersDockedBack(QDockWidget*, int );    
 
     /**
      * Display tip-of-day dialog on demand
@@ -1600,9 +1581,6 @@ private:
 
     RosegardenMainViewWidget* m_view;
 
-    QDockWidget* m_dockLeft;
-    
-
     /**
      * doc represents your actual document and is created only
      * once. It keeps information such as filename and does the
@@ -1657,7 +1635,6 @@ private:
     timeT m_storedLoopEnd;
 
     bool m_useSequencer;
-    bool m_dockVisible;
 
     AudioPluginManager *m_pluginManager;
 

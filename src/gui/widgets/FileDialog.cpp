@@ -27,10 +27,10 @@
 #include <QStandardPaths>
 #endif
 #include <QApplication>
-#include <QSettings>
 
 #include "misc/Debug.h"
 #include "misc/ConfigGroups.h"
+#include "gui/general/ThornStyle.h"
 
 namespace Rosegarden
 {
@@ -39,16 +39,14 @@ namespace Rosegarden
 FileDialog::FileDialog(QWidget *parent,
                        const QString &caption,
                        const QString &dir,
-                       const QString &filter) :
+                       const QString &filter,
+                       QFileDialog::Options options) :
         QFileDialog(parent,
                     caption,
                     dir,
                     filter)
 {
-    // Since we're here anyway, there may be a way to style the directory
-    // navigation arrows from inside here.  It never worked from the external
-    // stylesheet, and I can't even remember what I tried unsuccessfully in the
-    // past.
+    setOptions(options);
 
     // set up the sidebar stuff; the entire purpose of this class 
     QList<QUrl> urls;
@@ -97,22 +95,12 @@ FileDialog::getOpenFileName(QWidget *parent,
                             QString *selectedFilter,
                             QFileDialog::Options options)
 {
-    QSettings settings;
-    settings.beginGroup(GeneralOptionsConfigGroup);
-    bool Thorn = settings.value("use_thorn_style", true).toBool();
-    settings.endGroup();
-
-    if (!Thorn) {
+    if (!ThornStyle::isEnabled()) {
         return QFileDialog::getOpenFileName(parent, caption, dir, filter,
                                             selectedFilter, options);
     }
 
-    FileDialog dialog(parent, caption, dir, filter);
-
-#if QT_VERSION >= 0x040500
-    if (options)
-       dialog.setOptions(options);
-#endif
+    FileDialog dialog(parent, caption, dir, filter, options);
 
     // (code borrowed straight out of Qt 4.5.0 Copyright 2009 Nokia)
     if (selectedFilter)
@@ -136,22 +124,12 @@ FileDialog::getOpenFileNames(QWidget *parent,
                              QString *selectedFilter,
                              QFileDialog::Options options)
 {
-    QSettings settings;
-    settings.beginGroup(GeneralOptionsConfigGroup);
-    bool Thorn = settings.value("use_thorn_style", true).toBool();
-    settings.endGroup();
-
-    if (!Thorn) {
+    if (!ThornStyle::isEnabled()) {
         return QFileDialog::getOpenFileNames(parent, caption, dir, filter,
                                              selectedFilter, options);
     }
 
-    FileDialog dialog(parent, caption, dir, filter);
-
-#if QT_VERSION >= 0x040500
-    if (options)
-        dialog.setOptions(options);
-#endif
+    FileDialog dialog(parent, caption, dir, filter, options);
 
     // (code borrowed straight out of Qt 4.5.0 Copyright 2009 Nokia)
     if (selectedFilter)
@@ -176,22 +154,12 @@ FileDialog::getSaveFileName(QWidget *parent,
                             QString *selectedFilter,
                             QFileDialog::Options options)
 {
-    QSettings settings;
-    settings.beginGroup(GeneralOptionsConfigGroup);
-    bool Thorn = settings.value("use_thorn_style", true).toBool();
-    settings.endGroup();
-
-    if (!Thorn) {
+    if (!ThornStyle::isEnabled()) {
         return QFileDialog::getSaveFileName(parent, caption, dir, filter,
                                             selectedFilter, options);
     }
 
-    FileDialog dialog(parent, caption, dir, filter);
-
-#if QT_VERSION >= 0x040500
-    if (options)
-        dialog.setOptions(options);
-#endif
+    FileDialog dialog(parent, caption, dir, filter, options);
 
     dialog.selectFile(defaultName);
 
@@ -214,12 +182,7 @@ FileDialog::getExistingDirectory(QWidget *parent,
                                  const QString &caption,
                                  const QString &dir)
 {
-    QSettings settings;
-    settings.beginGroup(GeneralOptionsConfigGroup);
-    bool Thorn = settings.value("use_thorn_style", true).toBool();
-    settings.endGroup();
-
-    if (!Thorn) {
+    if (!ThornStyle::isEnabled()) {
         return QFileDialog::getExistingDirectory(parent, caption, dir, QFileDialog::ShowDirsOnly);
     }
 

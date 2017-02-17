@@ -37,6 +37,8 @@
 #include <QPushButton>
 #include <QComboBox>
 #include <QSpinBox>
+#include <QScrollBar>
+#include <QAbstractScrollArea>
 
 using namespace Rosegarden;
 
@@ -70,7 +72,8 @@ public:
 
     bool shouldIgnoreThornStyle(QWidget *widget) const {
         return qobject_cast<QFileDialog *>(widget)
-                || widget->inherits("KDEPlatformFileDialog");
+                || widget->inherits("KDEPlatformFileDialog")
+                || widget->inherits("KDirSelectDialog");
     }
 
     void polishWidget(QWidget *widget);
@@ -81,31 +84,65 @@ private:
     QStyle *m_systemStyle;
 };
 
+// Apply the style to widget and its children, recursively
+// Even though every widget goes through the event filter, this is needed
+// for the case where a whole widget hierarchy is suddenly reparented into the file dialog.
+// Then we need to apply the app style again. Testcase: scrollbars in file dialog.
+static void applyStyleRecursive(QWidget* widget, QStyle *style)
+{
+    if (widget->style() != style) {
+        widget->setStyle(style);
+    }
+    foreach (QObject* obj, widget->children()) {
+        if (obj->isWidgetType()) {
+            QWidget *w = static_cast<QWidget *>(obj);
+            applyStyleRecursive(w, style);
+        }
+    }
+}
+
+// when we ditch Qt4, we can switch to qCDebug...
+//#define DEBUG_EVENTFILTER
+
 bool AppEventFilter::eventFilter(QObject *watched, QEvent *event)
 {
-    if (watched->isWidgetType() && event->type() == QEvent::Polish) {
+    static bool s_insidePolish = false; // setStyle calls polish again, so skip doing the work twice
+    if (!s_insidePolish && watched->isWidgetType() && event->type() == QEvent::Polish) {
+        s_insidePolish = true;
         // This is called after every widget is created and just before being shown
         // (we use this so that it has a proper parent widget already)
         QWidget *widget = static_cast<QWidget *>(watched);
         if (shouldIgnoreThornStyle(widget)) {
             // The palette from the mainwindow propagated to the dialog, restore it.
             widget->setPalette(m_systemPalette);
-            // No need to call setStyle, it didn't propagate.
-            return false;
-        }
-        if (widget->style() == &m_style) {
-            // setStyle triggers polish again, no need to redo the checks below, exit
+#ifdef DEBUG_EVENTFILTER
+            qDebug() << widget << "now using app style (recursive)";
+#endif
+            applyStyleRecursive(widget, qApp->style());
+            s_insidePolish = false;
             return false;
         }
         QWidget *toplevel = widget->window();
-        if (!shouldIgnoreThornStyle(toplevel)) {
+#ifdef DEBUG_EVENTFILTER
+        qDebug() << "current widget style=" << widget->style() << "shouldignore=" << shouldIgnoreThornStyle(toplevel);
+#endif
+        if (shouldIgnoreThornStyle(toplevel)) {
+            // Here we should apply qApp->style() recursively on widget and its children, in case one was reparented
+#ifdef DEBUG_EVENTFILTER
+            qDebug() << widget << "in" << toplevel << "now using app style (recursive)";
+#endif
+            applyStyleRecursive(widget, qApp->style());
+        } else if (widget->style() != &m_style) {
             widget->setStyle(&m_style);
-            //qDebug() << widget << "now using style" << widget->style();
-            if (widget->isWindow()) {
+#ifdef DEBUG_EVENTFILTER
+            qDebug() << widget << "in" << toplevel << "now using style" << widget->style();
+#endif
+            if (widget->isWindow() && widget->parent() == 0) {
                 widget->setPalette(m_style.standardPalette());
             }
             polishWidget(widget);
         }
+        s_insidePolish = false;
     }
     return false; // don't eat the event
 }
@@ -278,12 +315,20 @@ QSize ThornStyle::pixmapSize(const QPixmap &pixmap) const
 #endif
 }
 
+static bool s_thornStyleEnabled = false;
+
 // This method currently only supports being called once
 void ThornStyle::setEnabled(bool b)
 {
+    s_thornStyleEnabled = b;
     if (b) {
         qApp->installEventFilter(s_eventFilter());
     }
+}
+
+bool ThornStyle::isEnabled()
+{
+    return s_thornStyleEnabled;
 }
 
 QPalette ThornStyle::standardPalette() const
@@ -1443,25 +1488,7 @@ QTabBar QToolButton::left-arrow
 
 #endif
 
-#if 0 // All of the stuff below didn't apply because the object name of TransportDialog.cpp is "Rosegarden Transport" with a space.
-
-/* Give the non-LED parts of the dialog the groupbox "lighter black" background
- * for improved constrast, and set foreground color to "LED blue" as used
- * elsewhere
- */
-#RosegardenTransport QWidget
-{
-    background-color: #404040;
-    color: #C0D8FF;
-    border: 0 solid transparent; /* no sunken border on these */
-}
-
-#RosegardenTransport QFrame QWidget
-{
-    background-color: #000000;
-}
-
-
+#if 0 // TODO?
 /* Transport buttons are styled independently, with a smaller radius and a
  * lighter "pressed" state
  */
@@ -1493,9 +1520,6 @@ QTabBar QToolButton::left-arrow
     border-radius: 1px;
     background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 #E0E0E0, stop:1 #EEEEEE);
 }
-
-// same with MatrixParameters, no such object anymore
-
 
 #endif
 

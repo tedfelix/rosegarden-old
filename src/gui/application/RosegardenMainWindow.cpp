@@ -1,4 +1,4 @@
-/* -*- c-basic-offset: 4 indent-tabs-mode: nil -*- vi:set ts=8 sts=4 sw=4: */
+﻿/* -*- c-basic-offset: 4 indent-tabs-mode: nil -*- vi:set ts=8 sts=4 sw=4: */
 
 /*
     Rosegarden
@@ -195,7 +195,6 @@
 #include <QDesktopServices>
 #include <QSettings>
 #include <QShortcut>
-#include <QDockWidget>
 #include <QMessageBox>
 #include <QProcess>
 #include <QTemporaryFile>
@@ -255,7 +254,6 @@ RosegardenMainWindow::RosegardenMainWindow(bool enableSound,
     QMainWindow(0),
     m_actionsSetup(false),
     m_view(0),
-    m_dockLeft(0),
     m_doc(0),
     m_recentFiles(0),
     m_sequencerThread(0),
@@ -274,7 +272,6 @@ RosegardenMainWindow::RosegardenMainWindow(bool enableSound,
     m_storedLoopStart(0),
     m_storedLoopEnd(0),
     m_useSequencer(enableSound),
-    m_dockVisible(true),
     m_autoSaveTimer(new QTimer(this)),
     m_clipboard(Clipboard::mainClipboard()),
     m_playList(0),
@@ -328,23 +325,10 @@ RosegardenMainWindow::RosegardenMainWindow(bool enableSound,
     emit startupStatusMessage(tr("Initializing plugin manager..."));
     m_pluginManager = new AudioPluginManager(enableSound);
 
-    // start of docking code 
-    this->setDockOptions(QMainWindow::AnimatedDocks);
-
     RosegardenDocument* doc = newDocument();
 
-    m_dockLeft = new QDockWidget(tr("Special Parameters"), this);
-    m_dockLeft->setObjectName("SpecialParametersDock");
-    m_dockLeft->setMinimumSize(180, 200);    //### fix arbitrary value for min-size
-    addDockWidget(Qt::LeftDockWidgetArea, m_dockLeft);
-
-    m_dockLeft->setFeatures(QDockWidget::DockWidgetMovable
-            | QDockWidget::DockWidgetFloatable
-            | QDockWidget::DockWidgetClosable);
-    
-
-    m_parameterArea = new RosegardenParameterArea(m_dockLeft, "RosegardenParameterArea");
-    m_dockLeft->setWidget(m_parameterArea);
+    m_parameterArea = new RosegardenParameterArea(this);
+    m_parameterArea->setObjectName("RosegardenParameterArea");
 
     // Populate the parameter-box area with the respective
     // parameter box widgets.
@@ -355,10 +339,6 @@ RosegardenMainWindow::RosegardenMainWindow(bool enableSound,
     m_instrumentParameterBox = new InstrumentParameterBox(doc, m_parameterArea);
     m_parameterArea->addRosegardenParameterBox(m_instrumentParameterBox);
 
-    // Now that we've added the parameter boxes, we set this as the QScrollArea's widget
-    m_parameterArea->setScrollAreaWidget();
-    m_dockLeft->setMaximumWidth(m_dockLeft->sizeHint().width());
-
     // Lookup the configuration parameter that specifies the default
     // arrangement, and instantiate it.
     
@@ -368,41 +348,6 @@ RosegardenMainWindow::RosegardenMainWindow(bool enableSound,
     initStatusBar();
     setupActions();
     initZoomToolbar();
-    
-    //!!! The parameter area amnesia problem that's been annoying me for the
-    // longest time was caused by this connection/mechanism.
-    //
-    // Case 1: User presses the [x] button on the parameter area, which is
-    // effectively the same as pressing P to hide the parameters.  They're
-    // hidden, this is called, and the QSettings bits update the menu checkbox
-    // and reflect a valid and intended state.
-    //
-    // Case 2: User merely minimizes the entire main window, eg. to get it out
-    // of the way to make more room for editing.  The parameter area is hidden
-    // along with the entire main window, so this code gets called, and now we
-    // have made minimizing the entire main window perform the additional
-    // function of hiding the parameter area as an unintended consequence.
-    //
-    // There has to be some way to resolve for both case 1 and 2 and behave
-    // nicely by latching onto something finer-grained and more specific than
-    // the hideEvent(), but after a bit of time spent in an attempt to pick
-    // apart all the assorted things RosegardenParameterArea inherits from its
-    // many, many parent classes, I got bored.
-    //
-    // I'm just going to disable this functionality entirely, and move on.  I'd
-    // rather have people complain that the setting on the [x] button doesn't
-    // stick than be constantly turning my parameters off by accident, due to
-    // this other thing sticking quite unintentionally.
-    //
-    // If somebody wants to fix this properly, we need to figure out how to get
-    // to the close button in the parameter area directly, and behave one way if
-    // it's clicked on, and behave differently if we're getting signals from the
-    // whole application being hidden or closed.  You'd expect this would be
-    // really obvious and easy, but it was a wider problem than my attention
-    // span.
-    //
-//    connect(m_parameterArea, SIGNAL(hidden()),
-//            this, SLOT(slotParameterAreaHidden()));
 
     m_seqManager = new SequenceManager();
     Q_ASSERT(m_transport);
@@ -515,7 +460,7 @@ RosegardenMainWindow::RosegardenMainWindow(bool enableSound,
 
     QTimer::singleShot(1000, this, SLOT(slotTestStartupTester()));
 
-    // Restore window geometry and toolbar/dock state
+    // Restore window geometry and toolbar state
     RG_DEBUG << "[geometry] RosegardenMainWindow - Restoring saved main window geometry...";
     QSettings settings;
     settings.beginGroup(WindowGeometryConfigGroup);
@@ -561,6 +506,7 @@ RosegardenMainWindow::~RosegardenMainWindow()
     if (isSequencerRunning()) {
         RosegardenSequencer::getInstance()->quit();
         usleep(300000);
+        RosegardenSequencer::getInstance()->cleanup();
         delete m_sequencerThread;
     }
 
@@ -680,7 +626,7 @@ void
 RosegardenMainWindow::closeEvent(QCloseEvent *event)
 {
     if (queryClose()) {
-        // Save window geometry and toolbar/dock state
+        // Save window geometry and toolbar state
         RG_DEBUG << "[geometry] RosegardenMainWindow - Saving main window geometry...";
         QSettings settings;
         settings.beginGroup(WindowGeometryConfigGroup);
@@ -778,7 +724,7 @@ RosegardenMainWindow::setupActions()
     createAction("show_tempo_ruler", SLOT(slotToggleTempoRuler()));
     createAction("show_chord_name_ruler", SLOT(slotToggleChordNameRuler()));
     createAction("show_previews", SLOT(slotTogglePreviews()));
-    createAction("show_inst_segment_parameters", SLOT(slotDockParametersBack()));
+    createAction("show_inst_segment_parameters", SLOT(slotHideShowParameterArea()));
     createAction("select", SLOT(slotPointerSelected()));
     createAction("draw", SLOT(slotDrawSelected()));
     createAction("erase", SLOT(slotEraseSelected()));
@@ -1046,7 +992,7 @@ RosegardenMainWindow::initView()
 
     // We also need to make sure the parameter boxes don't send any
     // signals to the old view!
-    // 
+    //
     disconnect(m_segmentParameterBox, 0, oldView, 0);
     disconnect(m_instrumentParameterBox, 0, oldView, 0);
     disconnect(m_trackParameterBox, 0, oldView, 0);
@@ -1056,6 +1002,7 @@ RosegardenMainWindow::initView()
          m_segmentParameterBox,
          m_instrumentParameterBox,
          m_trackParameterBox,
+         m_parameterArea,
          this);
 
     // Connect up this signal so that we can force tool mode
@@ -1161,8 +1108,6 @@ RosegardenMainWindow::initView()
     m_triggerSegmentManager = 0;
 
     // !!! This also deletes oldView (via QObject::deleteLater()).
-    //     Since we call processEvents() below, that means this will be
-    //     deleted by the end of this routine.
     setCentralWidget(m_view);
 
     // set the highlighted track
@@ -1207,30 +1152,12 @@ RosegardenMainWindow::initView()
         actionx->trigger();
     }
     
-    
-/*    int zoomLevel = m_doc->getConfiguration().
-                    get
-                        <Int>
-                        (DocumentConfiguration::ZoomLevel);
-    */
-    //QSettings settings;
     int zoomLevel = m_doc->getConfiguration().get<Int>(DocumentConfiguration::ZoomLevel);
-
     m_zoomSlider->setSize(double(zoomLevel) / 1000.0);
     slotChangeZoom(zoomLevel);
 
-    //slotChangeZoom(int(m_zoomSlider->getCurrentSize()));
-
     enterActionState("new_file"); //@@@ JAS orig. 0
     
-    // !!! It is imperative that this be called here.  If it isn't, the old
-    //     RosegardenMainViewWidget will not be deleted by the end of this
-    //     routine (the call to setCentralWidget() uses
-    //     QObject::deleteLater()), leading to crashes when it is deleted
-    //     after the old RosegardenDocument that it has a pointer to is
-    //     deleted in setDocument().  QSharedPointer anyone?
-    qApp->processEvents(QEventLoop::AllEvents, 100);
-
     if (findAction("show_chord_name_ruler")->isChecked()) {
         SetWaitCursor swc;
         m_view->initChordNameRuler();
@@ -1347,9 +1274,6 @@ RosegardenMainWindow::setDocument(RosegardenDocument* newDocument)
     initView();
 
     // This will delete all edit views.
-    // This has to be done after the old RosegardenMainViewWidget is destroyed
-    // (in initView()) since RosegardenMainViewWidget depends on it.
-    // ??? QSharedPointer anyone?
     delete oldDoc;
     oldDoc = 0;
 
@@ -1748,7 +1672,7 @@ RosegardenMainWindow::readOptions()
 
     opt = qStrToBool(settings.value("show_inst_segment_parameters", true));
     findAction("show_inst_segment_parameters")->setChecked(opt);
-    slotDockParametersBack();
+    slotHideShowParameterArea();
 
     settings.endGroup();
 
@@ -3573,26 +3497,9 @@ RosegardenMainWindow::slotTogglePreviews()
 }
 
 void
-RosegardenMainWindow::slotDockParametersBack()
+RosegardenMainWindow::slotHideShowParameterArea()
 {
-    if (findAction("show_inst_segment_parameters")->isChecked()) {
-        m_dockLeft->setVisible(true);
-    } else {
-        m_dockLeft->setVisible(false);
-    }
-
-//    m_dockLeft->dockBack();
-/*&&&
-    m_dockLeft->setFloating(false);
-    m_dockLeft->setVisible(true);
-*/
-}
-
-void
-RosegardenMainWindow::slotParametersClosed()
-{
-    // ??? This code appears to be dead.
-    m_dockVisible = false;
+    m_parameterArea->setVisible(findAction("show_inst_segment_parameters")->isChecked());
 }
 
 void
@@ -3603,14 +3510,6 @@ RosegardenMainWindow::slotParameterAreaHidden()
     // Since the parameter area is now hidden, clear the checkbox in the
     // menu to keep things in sync.
     findAction("show_inst_segment_parameters")->setChecked(false);
-}
-
-void
-RosegardenMainWindow::slotParametersDockedBack(QDockWidget* dw, int) //qt4: Qt::DockWidgetAreas //qt3 was: QDockWidget::DockPosition)
-{
-    if (dw == m_dockLeft) {
-        m_dockVisible = true;
-    }
 }
 
 void
@@ -6398,40 +6297,6 @@ RosegardenMainWindow::plugShortcuts(QWidget *widget, QShortcut * /*acc*/)
                 SIGNAL(clicked()),
                 SLOT(slotRefreshTimeDisplay()));
     }
-}
-
-void
-RosegardenMainWindow::setCursor(const QCursor& cursor)
-{
-    //KDockMainWindow::setCursor(cursor);
-//    this->setCursor(cursor);    // note. this (qmainwindow) now contains main dock
-
-    // play it safe, so we can use this class at anytime even very early in the app init
-    if ((getView() &&
-            getView()->getTrackEditor() &&
-            getView()->getTrackEditor()->getCompositionView() &&
-            getView()->getTrackEditor()->getCompositionView()->viewport())) {
-
-        getView()->getTrackEditor()->getCompositionView()->viewport()->setCursor(cursor);
-    }
-
-    // view, main window...
-    //
-    getView()->setCursor(cursor);
-
-    // toolbars...
-    //
-    /*
-    //&&& what does this do? - disabled
-    QPtrListIterator<KToolBar> tbIter = toolBarIterator();
-    QToolBar* tb = 0;
-    while ((tb = tbIter.current()) != 0) {
-        tb->setCursor(cursor);
-        ++tbIter;
-    }
-    */
-
-    if (m_dockLeft) m_dockLeft->setCursor(cursor);
 }
 
 QVector<QString>
