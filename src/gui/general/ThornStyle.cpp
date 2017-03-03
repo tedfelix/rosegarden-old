@@ -363,7 +363,8 @@ int ThornStyle::styleHint(QStyle::StyleHint hint, const QStyleOption *option, co
     case SH_GroupBox_TextLabelColor:
         // QGroupBox::title { color: #FFFFFF; }
         // QGroupBox::title:!enabled { color: #000000; }
-        return option->state & State_Enabled ? qRgb(0xFF, 0xFF, 0xFF) : qRgb(0, 0, 0);
+        // but it was etched; plain black is unreadable, so let's use another color now
+        return option->state & State_Enabled ? qRgb(0xFF, 0xFF, 0xFF) : qRgb(0xAA, 0xAA, 0xAA);
     case SH_DialogButtonBox_ButtonsHaveIcons:
         return 0;
     case SH_DockWidget_ButtonsHaveFrame:
@@ -1312,10 +1313,8 @@ QSize ThornStyle::sizeFromContents(QStyle::ContentsType type, const QStyleOption
     QSize sz = QProxyStyle::sizeFromContents(type, option, size, widget);
     switch (type) {
     case CT_LineEdit:
-        if (const QStyleOptionFrame *frame = qstyleoption_cast<const QStyleOptionFrame *>(option)) {
-            if (frame->lineWidth > 0) // i.e. not inside a QSpinBox
-                sz += QSize(2, 2); // line width of 1
-        }
+        // Reduce size of lineedits, to make the NameSetEditor more compact (in the BankEditorDialog)
+        sz -= QSize(2, 2);
         break;
     case CT_SpinBox:
         if (const QStyleOptionSpinBox *vopt = qstyleoption_cast<const QStyleOptionSpinBox *>(option)) {
