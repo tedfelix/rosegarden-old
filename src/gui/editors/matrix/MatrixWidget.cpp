@@ -125,7 +125,8 @@ MatrixWidget::MatrixWidget(bool drumMode) :
     m_chordNameRuler(0),
     m_layout(0),
     m_hSliderHacked(false),
-    m_lastNote(0)
+    m_lastNote(0),
+    m_hoverNoteIsVisible(true)
 {
     //MATRIX_DEBUG << "MatrixWidget ctor";
 
@@ -294,7 +295,12 @@ MatrixWidget::MatrixWidget(bool drumMode) :
     
     m_toolBox = new MatrixToolBox(this);
 
+    // Relay context help from matrix tools
     connect(m_toolBox, SIGNAL(showContextHelp(const QString &)),
+            this, SIGNAL(showContextHelp(const QString &)));
+
+    // Relay context help from matrix rulers
+    connect(m_controlsWidget, SIGNAL(showContextHelp(const QString &)),
             this, SIGNAL(showContextHelp(const QString &)));
 
     MatrixMover *matrixMoverTool = dynamic_cast <MatrixMover *> (m_toolBox->getTool(MatrixMover::ToolName()));
@@ -303,11 +309,11 @@ MatrixWidget::MatrixWidget(bool drumMode) :
                 m_controlsWidget, SLOT(slotHoveredOverNoteChanged(int, bool, timeT)));
     }
 
-    MatrixVelocity *matrixVelocityTool = dynamic_cast <MatrixVelocity *> (m_toolBox->getTool(MatrixVelocity::ToolName()));
-    if (matrixVelocityTool) {
-        connect(matrixVelocityTool, SIGNAL(hoveredOverNoteChanged()),
-                m_controlsWidget, SLOT(slotHoveredOverNoteChanged()));
-    }
+//    MatrixVelocity *matrixVelocityTool = dynamic_cast <MatrixVelocity *> (m_toolBox->getTool(MatrixVelocity::ToolName()));
+//    if (matrixVelocityTool) {
+//        connect(matrixVelocityTool, SIGNAL(hoveredOverNoteChanged()),
+//                m_controlsWidget, SLOT(slotHoveredOverNoteChanged()));
+//    }
 
     connect(this, SIGNAL(toolChanged(QString)),
             m_controlsWidget, SLOT(slotSetToolName(QString)));
@@ -853,9 +859,11 @@ MatrixWidget::slotDispatchMousePress(const MatrixMouseEvent *e)
 void
 MatrixWidget::slotDispatchMouseMove(const MatrixMouseEvent *e)
 {
-    m_pitchRuler->drawHoverNote(e->pitch);
+    if (m_hoverNoteIsVisible) {
+        m_pitchRuler->drawHoverNote(e->pitch);
+    }
     m_pianoView->update();   // Needed to remove black trailers left by
-                             // hover note at hight zoom levels
+                             // hover note at high zoom levels
 
     if (!m_currentTool) return;
 
@@ -912,6 +920,13 @@ MatrixWidget::slotDispatchMouseDoubleClick(const MatrixMouseEvent *e)
 {
     if (!m_currentTool) return;
     m_currentTool->handleMouseDoubleClick(e);
+}
+
+void
+MatrixWidget::setHoverNoteVisible(bool visible)
+{
+    m_hoverNoteIsVisible = visible;
+    if (! visible) m_pitchRuler->hideHoverNote();
 }
 
 void

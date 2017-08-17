@@ -312,6 +312,9 @@ ControlRulerWidget::slotAddPropertyRuler(const PropertyName &propertyName)
     connect(controlruler, SIGNAL(rulerSelectionChanged(EventSelection *)),
             this, SLOT(slotChildRulerSelectionChanged(EventSelection *)));
 
+    connect(controlruler, SIGNAL(showContextHelp(const QString &)),
+            this,  SIGNAL(showContextHelp(const QString &)));
+
     controlruler->setXOffset(m_gutter);
     controlruler->updateSelection(&m_selectedElements);
 
@@ -458,6 +461,14 @@ ControlRulerWidget::getActiveRuler(void)
     QWidget * widget = m_stackedWidget->currentWidget ();
     if (!widget) { return 0; }
     return dynamic_cast <ControllerEventsRuler *> (widget);
+}
+
+PropertyControlRuler *
+ControlRulerWidget::getActivePropertyRuler()
+{
+    QWidget * widget = m_stackedWidget->currentWidget ();
+    if (!widget) { return 0; }
+    return dynamic_cast <PropertyControlRuler *> (widget);
 }
 
 bool

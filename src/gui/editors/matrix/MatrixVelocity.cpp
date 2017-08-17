@@ -33,7 +33,9 @@
 #include "MatrixScene.h"
 #include "MatrixWidget.h"
 #include "misc/Debug.h"
-
+#include "gui/rulers/ControlItem.h"
+#include "gui/rulers/ControlRulerWidget.h"
+#include "gui/rulers/PropertyControlRuler.h"
 
 namespace Rosegarden
 {
@@ -45,7 +47,8 @@ MatrixVelocity::MatrixVelocity(MatrixWidget *widget) :
     m_screenPixelsScale(100),
     m_velocityScale(0),
     m_currentElement(0),
-    m_currentViewSegment(0)
+    m_currentViewSegment(0),
+    m_start(false)
 {
     createAction("select", SLOT(slotSelectSelected()));
     createAction("draw", SLOT(slotDrawSelected()));
@@ -68,6 +71,9 @@ void
 MatrixVelocity::handleLeftButtonPress(const MatrixMouseEvent *e)
 {
     if (!e->element) return;
+
+    // Mouse position is no more related to pitch
+    m_widget->setHoverNoteVisible(false);
 
     m_currentViewSegment = e->viewSegment;
     m_currentElement = e->element;
@@ -96,6 +102,8 @@ MatrixVelocity::handleLeftButtonPress(const MatrixMouseEvent *e)
                                         m_currentElement,
                                         true);
     }
+
+    m_start = true;
 }
 
 MatrixVelocity::FollowMode
@@ -122,40 +130,44 @@ MatrixVelocity::handleMouseMove(const MatrixMouseEvent *e)
     } else {
         m_velocityScale =
             (double)(m_mouseStartY - e->sceneY) /
-//            (double)(m_screenPixelsScale * 2);
             (double)(m_screenPixelsScale);
     }
 
     m_velocityDelta = 128 * m_velocityScale;
 
-    /*m_velocityDelta=(m_mouseStartY-(e->pos()).y());
-
-        if (m_velocityDelta > m_screenPixelsScale)
-        m_velocityDelta=m_screenPixelsScale;
-    else if (m_velocityDelta < -m_screenPixelsScale)
-        m_velocityDelta=-m_screenPixelsScale;
-
-    m_velocityScale=1.0+(double)m_velocityDelta/(double)m_screenPixelsScale;
-
-    m_velocityDelta*=2.0;
-    */
-
-    // Preview velocity delta in contexthelp
-    setContextHelp(tr("Velocity change: %1").arg(m_velocityDelta));
-
 	// Preview calculated velocity info on element
 	// Dupe from MatrixMover
     EventSelection* selection = m_scene->getSelection();
 
-//    MatrixElement *element = 0;
-//    int maxY = m_currentViewSegment->getCanvasYForHeight(0);
+
+    // Is a velocity ruler visible ?
+    ControlRulerWidget * controlRulerWidget =
+            m_scene->getMatrixWidget()->getControlsWidget();
+
+    // Assuming velocity is the only one property ruler
+    PropertyControlRuler *velocityRuler = controlRulerWidget->getActivePropertyRuler();
+
+    if (velocityRuler) {
+
+        ControlItemList *items = velocityRuler->getSelectedItems();
+        for (ControlItemList::iterator it = items->begin(); it != items->end(); ++it) {
+            float y = (*it)->y();
+            if (m_start) (*it)->setData(velocityRuler->yToValue(y));
+            int velocity = (*it)->getData() + m_velocityDelta;
+            y = velocityRuler->valueToY(velocity);
+            (*it)->setValue(y);
+        }
+        velocityRuler->update();
+    }
+    m_start = false;
+
+
+    int maxVelocity = 0;
+    int minVelocity = 127;
 
     for (EventSelection::eventcontainer::iterator it =
              selection->getSegmentEvents().begin();
          it != selection->getSegmentEvents().end(); ++it) {
-
-//        MatrixElement *element = m_currentViewSegment->getElement(*it);
-//        if (!element) continue;
 
         MatrixElement *element = 0;
         ViewElementList::iterator vi = m_currentViewSegment->findEvent(*it);
@@ -164,27 +176,23 @@ MatrixVelocity::handleMouseMove(const MatrixMouseEvent *e)
         }
         if (!element) continue;
 
-//        timeT diffTime = element->getViewAbsoluteTime() -
-//            m_currentElement->getViewAbsoluteTime();
-
-//        int epitch = 0;
-//        if (element->event()->has(PITCH)) {
-//            epitch = element->event()->get<Int>(PITCH);
-//        }
-
         int velocity = 64;
         if (element->event()->has(BaseProperties::VELOCITY)) {
             velocity = element->event()->get<Int>(BaseProperties::VELOCITY);
         }
 
-//        element->reconfigure(newTime + diffTime,
-//                             element->getViewDuration(),
-//                             epitch + diffPitch);
-        element->reconfigure(velocity+m_velocityDelta);
+        velocity += m_velocityDelta;
+
+        element->reconfigure(velocity);
         element->setSelected(true);
+
+        if (velocity > 127) velocity = 127;
+        if (velocity < 0) velocity = 0;
+
+        if (velocity > maxVelocity) maxVelocity = velocity;
+        if (velocity < minVelocity) minVelocity = velocity;
     }
 
-    emit hoveredOverNoteChanged();
 
 	/** Might be something for the feature
 	EventSelection* selection = m_mParentView->getCurrentSelection();
@@ -201,6 +209,15 @@ MatrixVelocity::handleMouseMove(const MatrixMouseEvent *e)
 	}
 	*/
 
+    // Preview velocity delta in contexthelp
+    if (minVelocity == maxVelocity) {
+        setContextHelp(tr("Velocity change: %1   Velocity: %2")
+                           .arg(m_velocityDelta).arg(minVelocity));
+    } else {
+        setContextHelp(tr("Velocity change: %1   Velocity: %2 to %3")
+                           .arg(m_velocityDelta).arg(minVelocity).arg(maxVelocity));
+    }
+
     return NoFollow;
 }
 
@@ -209,6 +226,8 @@ MatrixVelocity::handleMouseRelease(const MatrixMouseEvent *e)
 {
     if (!e || !m_currentElement || !m_currentViewSegment) {
         m_mouseStartY = 0;
+        // Mouse position is again related to pitch
+        m_widget->setHoverNoteVisible(true);
         return;
     }
 
@@ -218,6 +237,8 @@ MatrixVelocity::handleMouseRelease(const MatrixMouseEvent *e)
 
     if (selection->getAddedEvents() == 0 || m_velocityDelta == 0) {
         delete selection;
+        // Mouse position is again related to pitch
+        m_widget->setHoverNoteVisible(true);
         return;
     } else {
         QString commandLabel = tr("Change Velocity");
@@ -235,9 +256,13 @@ MatrixVelocity::handleMouseRelease(const MatrixMouseEvent *e)
     }
 
     // Reset the start of mousemove
+    m_start = false;
     m_velocityDelta = m_mouseStartY = 0;
     m_currentElement = 0;
     setBasicContextHelp();
+
+    // Mouse position is again related to pitch
+    m_widget->setHoverNoteVisible(true);
 }
 
 void
@@ -245,11 +270,14 @@ MatrixVelocity::ready()
 {
     setBasicContextHelp();
     m_widget->setCanvasCursor(Qt::SizeVerCursor);
+    m_start = false;
 }
 
 void
 MatrixVelocity::stow()
 {
+    m_start = false;
+    m_widget->setHoverNoteVisible(true);
 }
 
 void
