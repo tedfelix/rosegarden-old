@@ -129,6 +129,12 @@ NameSetEditor::NameSetEditor(BankEditorDialog *bankEditor,
 
                 columnLayout->addWidget(rowWidget);
 
+                // ??? Switch from using the object name to using a property.
+                //     The setProperty() calls have been added below.  Just
+                //     need to switch the clients over to using them.  Then
+                //     remove the setObjectName() calls (and this).
+                QString numberText = QString("%1").arg(index + 1);
+
                 // If this is the very first number label, make it a button.
                 if (tab == 0  &&  col == 0  &&  row == 0) {
                     m_numberingBaseButton = new QPushButton("", rowWidget);
@@ -151,6 +157,9 @@ NameSetEditor::NameSetEditor(BankEditorDialog *bankEditor,
 
                 if (showKeyMapButtons) {
                     QToolButton *button = new QToolButton;
+                    // 1-based
+                    button->setObjectName(numberText);
+                    // 0-based
                     button->setProperty("index", index);
                     connect(button, SIGNAL(clicked()),
                             this, SLOT(slotKeyMapButtonPressed()));
@@ -162,6 +171,9 @@ NameSetEditor::NameSetEditor(BankEditorDialog *bankEditor,
                 // Note: ThornStyle::sizeFromContents() reduces the size
                 //       of these so they will fit on smaller displays.
                 LineEdit *lineEdit = new LineEdit("", rowWidget);
+                // 1-based
+                lineEdit->setObjectName(numberText);
+                // 0-based
                 lineEdit->setProperty("index", index);
                 lineEdit->setMinimumWidth(110);
                 lineEdit->setCompleter(new QCompleter(m_completions));
