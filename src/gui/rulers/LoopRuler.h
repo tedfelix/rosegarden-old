@@ -20,7 +20,6 @@
 #define RG_LOOPRULER_H
 
 #include "base/SnapGrid.h"
-#include "gui/general/HZoomable.h"
 #include <QSize>
 #include <QWidget>
 #include <QPen>
@@ -44,7 +43,7 @@ class RosegardenDocument;
  * ruler-like scale, and reacts to mouse clicks by sending relevant
  * signals to modify position pointer and playback/looping states.
 */
-class LoopRuler : public QWidget, public HZoomable
+class LoopRuler : public QWidget
 {
     Q_OBJECT
 
@@ -52,7 +51,6 @@ public:
     LoopRuler(RosegardenDocument *doc,
               RulerScale *rulerScale,
               int height = 0,
-              double xorigin = 0.0,
               bool invert = false,
               bool isForMainWindow = false,
               QWidget* parent = 0);
@@ -67,8 +65,6 @@ public:
     void scrollHoriz(int x);
 
     void setMinimumWidth(int width) { m_width = width; }
-
-    void setHorizScaleFactor(double dy) { m_hScaleFactor = dy; }
 
     bool hasActiveMousePress() { return m_activeMousePress; }
 
@@ -118,7 +114,6 @@ protected:
 
     //--------------- Data members ---------------------------------
     int  m_height;
-    double m_xorigin;
     bool m_invert;
     bool m_isForMainWindow;
     int  m_currentXOffset;

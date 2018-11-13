@@ -23,7 +23,6 @@
 #include "base/RulerScale.h"
 #include "base/SnapGrid.h"
 #include "gui/general/GUIPalette.h"
-#include "gui/general/HZoomable.h"
 #include "gui/general/RosegardenScrollView.h"
 #include "document/RosegardenDocument.h"
 
@@ -45,13 +44,11 @@ namespace Rosegarden
 LoopRuler::LoopRuler(RosegardenDocument *doc,
                      RulerScale *rulerScale,
                      int height,
-                     double xorigin,
                      bool invert,
                      bool isForMainWindow,
                      QWidget *parent) :
     QWidget(parent),
     m_height(height),
-    m_xorigin(xorigin),
     m_invert(invert),
     m_isForMainWindow(isForMainWindow),
     m_currentXOffset(0),
@@ -99,11 +96,7 @@ void LoopRuler::scrollHoriz(int x)
     // int w = width(); //, h = height();
     // int dx = x - ( -m_currentXOffset);
 
-    if (getHScaleFactor() != 1.0) {
-        m_currentXOffset = static_cast<int>( -x / getHScaleFactor());
-    } else {
-        m_currentXOffset = -x;
-    }
+    m_currentXOffset = -x;
 
 //    if (dx > w*3 / 4 || dx < -w*3 / 4) {
 //        update();
@@ -128,8 +121,7 @@ QSize LoopRuler::sizeHint() const
 {
     double width =
         m_rulerScale->getBarPosition(m_rulerScale->getLastVisibleBar()) +
-        m_rulerScale->getBarWidth(m_rulerScale->getLastVisibleBar()) +
-        m_xorigin;
+        m_rulerScale->getBarWidth(m_rulerScale->getLastVisibleBar());
 
     QSize res(std::max(int(width), m_width), m_height);
 
@@ -138,7 +130,7 @@ QSize LoopRuler::sizeHint() const
 
 QSize LoopRuler::minimumSizeHint() const
 {
-    double firstBarWidth = m_rulerScale->getBarWidth(0) + m_xorigin;
+    double firstBarWidth = m_rulerScale->getBarWidth(0);
 
     QSize res = QSize(int(firstBarWidth), m_height);
 
@@ -150,9 +142,6 @@ void LoopRuler::paintEvent(QPaintEvent* e)
 //    RG_DEBUG << "LoopRuler::paintEvent";
 
     QPainter paint(this);
-
-    if (getHScaleFactor() != 1.0)
-        paint.scale(getHScaleFactor(), 1.0);
 
     paint.setClipRegion(e->region());
     paint.setClipRect(e->rect().normalized());
@@ -172,7 +161,7 @@ void LoopRuler::paintEvent(QPaintEvent* e)
         if (tQM >= 0) {
             // draw quick marker
             double xQM = m_rulerScale->getXForTime(tQM)
-                       + m_xorigin + m_currentXOffset;
+                       + m_currentXOffset;
             
             paint.setPen(m_quickMarkerPen);
             
@@ -190,8 +179,7 @@ void LoopRuler::drawBarSections(QPainter* paint)
     QRect clipRect = paint->clipRegion().boundingRect();
 
     int firstBar = m_rulerScale->getBarForX(clipRect.x() -
-                                            m_currentXOffset -
-                                            m_xorigin);
+                                            m_currentXOffset);
     int lastBar = m_rulerScale->getLastVisibleBar();
     if (firstBar < m_rulerScale->getFirstVisibleBar()) {
         firstBar = m_rulerScale->getFirstVisibleBar();
@@ -201,8 +189,8 @@ void LoopRuler::drawBarSections(QPainter* paint)
 
     for (int i = firstBar; i < lastBar; ++i) {
 
-        double x = m_rulerScale->getBarPosition(i) + m_currentXOffset + m_xorigin;
-        if ((x * getHScaleFactor()) > clipRect.x() + clipRect.width())
+        double x = m_rulerScale->getBarPosition(i) + m_currentXOffset;
+        if (x > clipRect.x() + clipRect.width())
             break;
 
         double width = m_rulerScale->getBarWidth(i);
@@ -247,8 +235,8 @@ LoopRuler::drawLoopMarker(QPainter* paint)
         x1 = tmp;
     }
 
-    x1 += m_currentXOffset + m_xorigin;
-    x2 += m_currentXOffset + m_xorigin;
+    x1 += m_currentXOffset;
+    x2 += m_currentXOffset;
 
     paint->save();
     paint->setBrush(GUIPalette::getColour(GUIPalette::LoopHighlight));
@@ -261,8 +249,7 @@ LoopRuler::drawLoopMarker(QPainter* paint)
 double
 LoopRuler::mouseEventToSceneX(QMouseEvent *mE)
 {
-    double x = mE->pos().x() / getHScaleFactor()
-               - m_currentXOffset - m_xorigin;
+    double x = mE->pos().x() - m_currentXOffset;
     return x;
 }
 

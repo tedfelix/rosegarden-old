@@ -123,30 +123,22 @@ TrackEditor::init(RosegardenMainViewWidget *mainViewWidget)
     grid->setMargin(0);
     grid->setSpacing(0);
 
-    // Height for top and bottom standard rulers.
-    // rename: standardRulerHeight
-    const int barButtonsHeight = 25;
-
     // Top Rulers
     
     m_chordNameRuler = new ChordNameRuler(m_rulerScale,
                                           m_doc,
-                                          0.0,
                                           20,
                                           this);
     grid->addWidget(m_chordNameRuler, 0, 1);
 
     m_tempoRuler = new TempoRuler(m_rulerScale,
                                   m_doc,
-                                  0.0,
                                   24,
                                   true);
     grid->addWidget(m_tempoRuler, 1, 1);
 
     m_topStandardRuler = new StandardRuler(m_doc,
                                      m_rulerScale,
-                                     0,
-                                     barButtonsHeight,
                                      false,
                                      true,
                                      this);
@@ -168,8 +160,6 @@ TrackEditor::init(RosegardenMainViewWidget *mainViewWidget)
 
     m_bottomStandardRuler = new StandardRuler(m_doc,
                                         m_rulerScale,
-                                        0,
-                                        barButtonsHeight,
                                         true,
                                         true,
                                         m_compositionView);

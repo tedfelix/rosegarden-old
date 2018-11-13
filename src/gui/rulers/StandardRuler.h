@@ -39,8 +39,6 @@ class StandardRuler : public QWidget
 public:
     StandardRuler(RosegardenDocument *doc,
                   RulerScale *rulerScale,
-                  double xorigin,
-                  int buttonHeight,
                   bool invert = false, // draw upside-down
                   bool isForMainWindow = false,
                   QWidget* parent = 0);
@@ -59,8 +57,6 @@ public:
     
     void setMinimumWidth(int width);
 
-    void setHScaleFactor(double dy);
-    
     /**
      * Update all components of standard ruler.
      * Useful when the scene has changed due to font change,
