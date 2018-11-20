@@ -1,5 +1,5 @@
 # CMake version required. This must be the very first line, because it sets default policies affecting everything else
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.1)
 
 # Project name
 project(rosegarden)
@@ -55,18 +55,6 @@ enable_testing()
 # and this defines the BUILD_TESTING option (and enabled CDash integration)
 include(CTest)
 
-# Qt5 is required.
-# ??? Move down to required dependencies section?
-find_package(Qt5 "5.1.0" REQUIRED COMPONENTS Core Gui Widgets Xml Network PrintSupport Test)
-
-set(QT_QTCORE_LIBRARY Qt5::Core)
-set(QT_QTGUI_LIBRARY Qt5::Widgets Qt5::PrintSupport)
-set(QT_QTXML_LIBRARY Qt5::Xml)
-set(QT_QTNETWORK_LIBRARY Qt5::Network)
-set(QT_QTTEST_LIBRARY Qt5::Test)
-
-set(QT_RCC_EXECUTABLE ${Qt5Core_RCC_EXECUTABLE})
-
 # Compiler defines
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
@@ -80,9 +68,11 @@ add_definitions(-DUNSTABLE) # this is changed to STABLE by the release script
 
 # Compiler flags
 
+set(CMAKE_CXX_STANDARD 11) # Enable C++11
+
 if(CMAKE_COMPILER_IS_GNUCXX)
    if(CMAKE_SYSTEM_NAME MATCHES Linux OR CMAKE_SYSTEM_NAME STREQUAL GNU)
-      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Woverloaded-virtual -Wextra -Wformat-nonliteral -Wformat-security -Winit-self -Wswitch-enum -Wnon-virtual-dtor -Wno-long-long -ansi -Wundef -Wcast-align -Wchar-subscripts -W -Wpointer-arith -fno-check-new -fno-common")
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Woverloaded-virtual -Wextra -Wformat-nonliteral -Wformat-security -Winit-self -Wswitch-enum -Wnon-virtual-dtor -Wno-long-long -ansi -Wundef -Wcast-align -Wchar-subscripts -W -Wpointer-arith -fno-check-new -fno-common -Werror=return-type")
       add_definitions(-DQT_NO_EXCEPTIONS)
       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden")
    endif()
@@ -94,6 +84,18 @@ find_package(PkgConfig REQUIRED)
 include(FeatureSummary)
 
 # Required dependencies ---------------------------------------
+
+# Qt5 is required.
+find_package(Qt5 "5.1.0" REQUIRED COMPONENTS Core Gui Widgets Xml Network PrintSupport Test)
+
+set(QT_QTCORE_LIBRARY Qt5::Core)
+set(QT_QTGUI_LIBRARY Qt5::Widgets Qt5::PrintSupport)
+set(QT_QTXML_LIBRARY Qt5::Xml)
+set(QT_QTNETWORK_LIBRARY Qt5::Network)
+set(QT_QTTEST_LIBRARY Qt5::Test)
+
+set(QT_RCC_EXECUTABLE ${Qt5Core_RCC_EXECUTABLE})
+
 
 find_path(LADSPA_INCLUDE_DIR ladspa.h)
 if(NOT LADSPA_INCLUDE_DIR)
