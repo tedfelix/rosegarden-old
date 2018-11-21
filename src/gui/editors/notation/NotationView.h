@@ -59,17 +59,17 @@ public:
     typedef void (NotationView::*opOnEvent) (Event* e, Segment *containing);
     NotationView(RosegardenDocument *doc,
                     std::vector<Segment *> segments,
-                    QWidget *parent = 0);
+                    QWidget *parent = nullptr);
 
     virtual ~NotationView();
 
-    virtual Segment *getCurrentSegment();
-    virtual EventSelection *getSelection() const;
-    virtual void setSelection(EventSelection* s, bool preview = false);
+    Segment *getCurrentSegment() override;
+    EventSelection *getSelection() const override;
+    void setSelection(EventSelection* s, bool preview = false) override;
 
     virtual void initLayoutToolbar();
     void initRulersToolbar();
-    virtual void initStatusBar();
+    void initStatusBar() override;
     timeT getInsertionTime() const;
     
     bool hasSegment(Segment * seg) const;
@@ -77,7 +77,7 @@ public:
     /** This turns out to be cruft that is rather annoying to eliminate.  We
      * don't use this for anything, and provide an empty implementation.
      */
-    virtual void updateViewCaption() { }
+    void updateViewCaption() override { }
 
     // Adopt a segment that doesn't live in Composition.
     void adoptSegment(Segment *s);
@@ -98,7 +98,7 @@ signals:
     void stepByStepTargetRequested(QObject *);
 
 protected:
-    virtual void readOptions();
+    void readOptions() override;
 
 protected slots:
     /// Some change occurs and the whole scene have to be redrawn.
@@ -116,9 +116,9 @@ protected slots:
     /// Preview with LilyPond (via Okular or the like)
     void slotPreviewLilyPond();
 
-    void slotEditCut();
-    void slotEditCopy();
-    void slotEditPaste();
+    void slotEditCut() override;
+    void slotEditCopy() override;
+    void slotEditPaste() override;
     void slotEditDelete();
     void slotEditCutAndClose();
     void slotEditGeneralPaste();
@@ -376,7 +376,7 @@ protected slots:
     void slotAddLayer();
     void slotMagicLayer();
 
-    virtual void slotConfigure();
+    void slotConfigure() override;
 
     // Open insert pitch bends sequence dialog
     void slotExpressionSequence();  // Controllers > Insert Expression Controller Sequence...
@@ -413,7 +413,7 @@ private:
      * If \a force point to a bool, then the bool's value
      * is used to show/hide the toolbar.
      */
-    void toggleNamedToolBar(const QString& toolBarName, bool* force = 0);
+    void toggleNamedToolBar(const QString& toolBarName, bool* force = nullptr);
 
     /**
      * Return the device of the current segment, if any
@@ -462,7 +462,7 @@ private:
      * delete, but I won't try to work that one out at the moment.  I'll just
      * implement closeEvent() and whistle right on past that other thing.
      */
-    void closeEvent(QCloseEvent *event);
+    void closeEvent(QCloseEvent *event) override;
     void setupActions();
     bool isInChordMode();
     bool isInTripletMode();

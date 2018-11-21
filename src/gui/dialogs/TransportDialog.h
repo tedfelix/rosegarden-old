@@ -57,7 +57,7 @@ class TransportDialog : public QDialog
 {
     Q_OBJECT
 public:
-    TransportDialog(QWidget *parent = 0);
+    TransportDialog(QWidget *parent = nullptr);
     ~TransportDialog();
 
     enum TimeDisplayMode { RealMode, SMPTEMode, BarMode, BarMetronomeMode, FrameMode };
@@ -101,7 +101,7 @@ public:
     virtual void hide();
 
 protected:
-    virtual void closeEvent(QCloseEvent * e);
+    void closeEvent(QCloseEvent * e) override;
     void computeSampleRate();
     void cycleThroughModes();
     void displayTime();

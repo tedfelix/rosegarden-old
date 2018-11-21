@@ -44,7 +44,7 @@ public:
                       bool retune,
                       std::string timeAdjust,
                       Mark mark,
-                      QString name = 0) :
+                      QString name = nullptr) :
         BasicSelectionCommand(!name.isEmpty() ? name : getGlobalName(), selection, true),
         m_selection(&selection),
         m_triggerSegmentId(triggerSegmentId),
@@ -59,7 +59,7 @@ public:
     }
 
 protected:
-    virtual void modifySegment();
+    void modifySegment() override;
 
 private:
     EventSelection *m_selection;// only used on 1st execute (cf bruteForceRedo)

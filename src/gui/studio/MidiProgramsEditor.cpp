@@ -65,7 +65,7 @@ MidiProgramsEditor::MidiProgramsEditor(BankEditorDialog* bankEditor,
                   tr("Bank and Program details"),  // title
                   parent,
                   true),  // showKeyMapButtons
-    m_device(0),
+    m_device(nullptr),
     m_bankList(bankEditor->getBankList()),
     m_programList(bankEditor->getProgramList()),
     m_oldBank(false, 0, 0)
@@ -168,7 +168,7 @@ MidiProgramsEditor::clearAll()
     m_lsb->setValue(0);
     m_librarian->clear();
     m_librarianEmail->clear();
-    m_currentBank = 0;
+    m_currentBank = nullptr;
     setEnabled(false);
 
     blockAllSignals(false);
@@ -406,7 +406,7 @@ MidiProgramsEditor::slotNameChanged(const QString& programName)
     MidiBank *currBank = getCurrentBank();
 
     if (!currBank) {
-        RG_WARNING << "slotNameChanged(): WARNING: currBank is NULL.";
+        RG_WARNING << "slotNameChanged(): WARNING: currBank is nullptr.";
         return;
     }
 
@@ -452,7 +452,7 @@ MidiProgramsEditor::slotNameChanged(const QString& programName)
     }
 
     if (!program) {
-        RG_WARNING << "slotNameChanged(): WARNING: program is NULL.";
+        RG_WARNING << "slotNameChanged(): WARNING: program is nullptr.";
         return;
     }
 
@@ -656,7 +656,7 @@ MidiProgramsEditor::getProgram(const MidiBank &bank, int programNo)
         }
     }
 
-    return 0;
+    return nullptr;
 }
 
 void

@@ -46,15 +46,15 @@ public:
                          bool shouldTranspose = false);
     virtual ~ClefInsertionCommand();
 
-    virtual QString getThisGlobalName(Clef *clef = 0);
-    static QString getGlobalName(Clef *clef = 0);
-    virtual timeT getRelayoutEndTime();
+    virtual QString getThisGlobalName(Clef *clef = nullptr);
+    static QString getGlobalName(Clef *clef = nullptr);
+    timeT getRelayoutEndTime() override;
 
-    virtual EventSelection *getSubsequentSelection();
+    EventSelection *getSubsequentSelection() override;
     Event *getLastInsertedEvent() { return m_lastInsertedEvent; }
 
 protected:
-    virtual void modifySegment();
+    void modifySegment() override;
 
     Clef m_clef;
     bool m_shouldChangeOctave;
@@ -75,11 +75,11 @@ public:
                             bool shouldTranspose = false);
     virtual ~ClefLinkInsertionCommand();
 
-    virtual QString getThisGlobalName(Clef *clef = 0);
-    static QString getGlobalName(Clef *clef = 0);
+    QString getThisGlobalName(Clef *clef = nullptr) override;
+    static QString getGlobalName(Clef *clef = nullptr);
 
 protected:
-    virtual void modifySegment();
+    void modifySegment() override;
 };
 
 }

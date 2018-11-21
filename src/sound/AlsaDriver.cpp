@@ -190,7 +190,7 @@ AlsaDriver::shutdown()
 
 #ifdef HAVE_LIBJACK
     delete m_jackDriver;
-    m_jackDriver = 0;
+    m_jackDriver = nullptr;
 #endif
 
     if (m_midiHandle) {
@@ -209,7 +209,7 @@ AlsaDriver::shutdown()
         RG_DEBUG << "shutdown() - closed MIDI handle";
 #endif
 
-        m_midiHandle = 0;
+        m_midiHandle = nullptr;
     }
 
     DataBlockRepository::clear();
@@ -1212,7 +1212,7 @@ AlsaDriver::setPlausibleConnection(DeviceId id, QString idealConnection, bool re
         }
     }
 
-    AlsaPortDescription *viableHardwarePort = 0, *viableSoftwarePort = 0;
+    AlsaPortDescription *viableHardwarePort = nullptr, *viableSoftwarePort = 0;
     int fitness = 0;
 
     // Try to find one viable hardware and one viable software port, if
@@ -1331,7 +1331,7 @@ AlsaDriver::setPlausibleConnection(DeviceId id, QString idealConnection, bool re
 
     // If we found a viable software port, use it.  If we didn't find a viable
     // software port, but did find a viable hardware port, use it. 
-    AlsaPortDescription *port = 0;
+    AlsaPortDescription *port = nullptr;
     if (viableSoftwarePort) port = viableSoftwarePort;
     else if (viableHardwarePort) port = viableHardwarePort;
 
@@ -1374,8 +1374,8 @@ AlsaDriver::connectSomething()
     // something suitable to connect one play, and one record device to, and
     // connects it.  If nothing very appropriate beckons, leaves unconnected.
 
-    MappedDevice *toConnect = 0;
-    MappedDevice *toConnectRecord = 0;
+    MappedDevice *toConnect = nullptr;
+    MappedDevice *toConnectRecord = nullptr;
 
     // Check whether anything is connected.
 
@@ -1538,7 +1538,7 @@ AlsaDriver::setCurrentTimer(QString timer)
     // thing if we're currently playing and on the JACK transport.
 
     m_queueRunning = false;
-    checkAlsaError(snd_seq_stop_queue(m_midiHandle, m_queue, NULL), "setCurrentTimer(): stopping queue");
+    checkAlsaError(snd_seq_stop_queue(m_midiHandle, m_queue, nullptr), "setCurrentTimer(): stopping queue");
     checkAlsaError(snd_seq_drain_output(m_midiHandle), "setCurrentTimer(): draining output to stop queue");
 
     snd_seq_event_t event;
@@ -1596,7 +1596,7 @@ AlsaDriver::setCurrentTimer(QString timer)
         m_jackDriver->prebufferAudio();
 #endif
 
-    checkAlsaError(snd_seq_continue_queue(m_midiHandle, m_queue, NULL), "checkAlsaError(): continue queue");
+    checkAlsaError(snd_seq_continue_queue(m_midiHandle, m_queue, nullptr), "checkAlsaError(): continue queue");
     checkAlsaError(snd_seq_drain_output(m_midiHandle), "setCurrentTimer(): draining output to continue queue");
     m_queueRunning = true;
 
@@ -1734,7 +1734,7 @@ AlsaDriver::initialiseMidi()
     setCurrentTimer(AUTO_TIMER_NAME);
 
     // Start the timer
-    if (checkAlsaError(snd_seq_start_queue(m_midiHandle, m_queue, NULL),
+    if (checkAlsaError(snd_seq_start_queue(m_midiHandle, m_queue, nullptr),
                        "initialiseMidi(): couldn't start queue") < 0) {
         reportFailure(MappedEvent::FailureALSACallFailed);
         return false;
@@ -1765,7 +1765,7 @@ AlsaDriver::initialiseAudio()
         m_driverStatus |= AUDIO_OK;
     } else {
         delete m_jackDriver;
-        m_jackDriver = 0;
+        m_jackDriver = nullptr;
     }
 #endif
 }
@@ -1819,7 +1819,7 @@ AlsaDriver::initialisePlayback(const RealTime &position)
         // Note: CakeWalk PA 9.03 doesn't like this.  This causes it to go out
         //       of "Waiting for MIDI sync" mode, rendering MIDI sync
         //       impossible.
-        sendSystemDirect(SND_SEQ_EVENT_STOP, NULL);
+        sendSystemDirect(SND_SEQ_EVENT_STOP, nullptr);
 
         // Send the Song Position Pointer for MIDI CLOCK positioning
 
@@ -1853,9 +1853,9 @@ AlsaDriver::initialisePlayback(const RealTime &position)
         //     position pointer.
 
         if (m_playStartPosition == RealTime::zeroTime)
-            sendSystemDirect(SND_SEQ_EVENT_START, NULL);
+            sendSystemDirect(SND_SEQ_EVENT_START, nullptr);
         else
-            sendSystemDirect(SND_SEQ_EVENT_CONTINUE, NULL);
+            sendSystemDirect(SND_SEQ_EVENT_CONTINUE, nullptr);
 
         // A short delay is required to give the slave time to get
         // ready for the first clock.  The MIDI Spec (section 2, page 30)
@@ -1897,7 +1897,7 @@ AlsaDriver::stopPlayback()
 #endif
 
     if (getMIDISyncStatus() == TRANSPORT_MASTER) {
-        sendSystemDirect(SND_SEQ_EVENT_STOP, NULL);
+        sendSystemDirect(SND_SEQ_EVENT_STOP, nullptr);
     }
 
     if (getMMCStatus() == TRANSPORT_MASTER) {
@@ -2730,7 +2730,7 @@ AlsaDriver::getMappedEventList(MappedEventList &mappedEventList)
                 }
 
                 std::string sysExcData; 
-                MappedEvent *sysExcEvent = 0;
+                MappedEvent *sysExcEvent = nullptr;
 
                 // Check to see if there are any pending System Exclusive Messages
                 if (!m_pendSysExcMap->empty()) {
@@ -3591,7 +3591,7 @@ AlsaDriver::processMidiOut(const MappedEventList &mC,
             RG_DEBUG << "processMidiOut(): stopping queue for now-event";
 #endif
 
-            checkAlsaError(snd_seq_stop_queue(m_midiHandle, m_queue, NULL), "processMidiOut(): stop queue");
+            checkAlsaError(snd_seq_stop_queue(m_midiHandle, m_queue, nullptr), "processMidiOut(): stop queue");
             checkAlsaError(snd_seq_drain_output(m_midiHandle), "processMidiOut(): draining");
         }
 
@@ -3699,7 +3699,7 @@ AlsaDriver::processMidiOut(const MappedEventList &mC,
 #ifdef DEBUG_ALSA
             RG_DEBUG << "processMidiOut() - Event of type " << (int)((*i)->getType()) << " (data1 " << (int)(*i)->getData1() << ", data2 " << (int)(*i)->getData2() << ") for external controller channel " << (int)channel;
 #endif
-        } else if (instrument != 0) {
+        } else if (instrument != nullptr) {
             channel = (*i)->getRecordedChannel();
 #ifdef DEBUG_ALSA
             RG_DEBUG << "processMidiOut() - Non-controller Event of type " << (int)((*i)->getType()) << " (data1 " << (int)(*i)->getData1() << ", data2 " << (int)(*i)->getData2() << ") for channel " << (int)(*i)->getRecordedChannel();
@@ -3910,7 +3910,7 @@ AlsaDriver::processMidiOut(const MappedEventList &mC,
                     RG_DEBUG << "processMidiOut(): restarting queue after now-event";
 #endif
 
-                    checkAlsaError(snd_seq_continue_queue(m_midiHandle, m_queue, NULL), "processMidiOut(): continue queue");
+                    checkAlsaError(snd_seq_continue_queue(m_midiHandle, m_queue, nullptr), "processMidiOut(): continue queue");
                 }
                 checkAlsaError(snd_seq_drain_output(m_midiHandle), "processMidiOut(): draining");
             }
@@ -3947,7 +3947,7 @@ AlsaDriver::processMidiOut(const MappedEventList &mC,
             RG_DEBUG << "processMidiOut(): restarting queue after all now-events";
 #endif
 
-            checkAlsaError(snd_seq_continue_queue(m_midiHandle, m_queue, NULL), "processMidiOut(): continue queue");
+            checkAlsaError(snd_seq_continue_queue(m_midiHandle, m_queue, nullptr), "processMidiOut(): continue queue");
         }
 
 #ifdef DEBUG_PROCESS_MIDI_OUT 
@@ -4063,7 +4063,7 @@ AlsaDriver::startClocks()
 #endif
 
     // Restart the timer
-    if ((result = snd_seq_continue_queue(m_midiHandle, m_queue, NULL)) < 0) {
+    if ((result = snd_seq_continue_queue(m_midiHandle, m_queue, nullptr)) < 0) {
         RG_WARNING << "startClocks(): WARNING: Couldn't start queue - " << snd_strerror(result);
         reportFailure(MappedEvent::FailureALSACallFailed);
     }
@@ -4101,7 +4101,7 @@ AlsaDriver::startClocksApproved()
     int result;
 
     // Restart the timer
-    if ((result = snd_seq_continue_queue(m_midiHandle, m_queue, NULL)) < 0) {
+    if ((result = snd_seq_continue_queue(m_midiHandle, m_queue, nullptr)) < 0) {
         RG_WARNING << "startClocksApproved(): WARNING: Couldn't start queue - " << snd_strerror(result);
         reportFailure(MappedEvent::FailureALSACallFailed);
     }
@@ -4119,7 +4119,7 @@ AlsaDriver::stopClocks()
     RG_DEBUG << "stopClocks() begin...";
 #endif
 
-    if (checkAlsaError(snd_seq_stop_queue(m_midiHandle, m_queue, NULL), "stopClocks(): stopping queue") < 0) {
+    if (checkAlsaError(snd_seq_stop_queue(m_midiHandle, m_queue, nullptr), "stopClocks(): stopping queue") < 0) {
         reportFailure(MappedEvent::FailureALSACallFailed);
     }
     checkAlsaError(snd_seq_drain_output(m_midiHandle), "stopClocks(): draining output to stop queue");
@@ -4180,7 +4180,7 @@ AlsaDriver::processEventsOut(const MappedEventList &mC,
         }
     }
 
-    AudioFile *audioFile = 0;
+    AudioFile *audioFile = nullptr;
     bool haveNewAudio = false;
 
     // For each incoming event, insert audio events if we find them
@@ -4237,7 +4237,7 @@ AlsaDriver::processEventsOut(const MappedEventList &mC,
                 RG_DEBUG << "processEventsOut(): Read buffer length is " << bufferLength << " (" << bufferFrames << " frames)";
 #endif
 
-                PlayableAudioFile *paf = 0;
+                PlayableAudioFile *paf = nullptr;
 
                 try {
                     paf = new PlayableAudioFile((*i)->getInstrument(),
@@ -4887,7 +4887,7 @@ AlsaDriver::setRecordDevice(DeviceId id, bool connectAction)
     sender.client = pair.first;
     sender.port = pair.second;
 
-    MappedDevice *device = 0;
+    MappedDevice *device = nullptr;
 
     for (MappedDeviceList::iterator i = m_devices.begin();
          i != m_devices.end(); ++i) {
@@ -5246,7 +5246,7 @@ AlsaDriver::getAlsaModuleVersionString()
 
     if (v) {
         char buf[256];
-        if (fgets(buf, 256, v) == NULL) {
+        if (fgets(buf, 256, v) == nullptr) {
             fclose(v);
             return "(unknown)"; /* check fgets result */
         }
@@ -5277,7 +5277,7 @@ AlsaDriver::getKernelVersionString()
 
     if (v) {
         char buf[256];
-        if (fgets(buf, 256, v) == NULL) {
+        if (fgets(buf, 256, v) == nullptr) {
             fclose(v);
             return "(unknown)"; /* check fgets result */
         }

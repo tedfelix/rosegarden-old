@@ -45,8 +45,8 @@ class BasicCommand : public NamedCommand
 public:
     virtual ~BasicCommand();
 
-    virtual void execute();
-    virtual void unexecute();
+    void execute() override;
+    void unexecute() override;
 
     virtual Segment &getSegment();
 
@@ -55,7 +55,7 @@ public:
     virtual timeT getRelayoutEndTime();
 
     /// events selected after command; 0 if no change / no meaningful selection
-    virtual EventSelection *getSubsequentSelection() { return 0; }
+    virtual EventSelection *getSubsequentSelection() { return nullptr; }
 
 protected:
     /**

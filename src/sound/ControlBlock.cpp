@@ -54,13 +54,13 @@ void TrackInfo::clear()
 ControlBlock *
 ControlBlock::getInstance()
 {
-    static ControlBlock *instance = 0;
+    static ControlBlock *instance = nullptr;
     if (!instance) instance = new ControlBlock();
     return instance;
 }
 
 ControlBlock::ControlBlock() :
-    m_doc(0),
+    m_doc(nullptr),
     m_maxTrackId(0),
     m_thruFilter(0),
     m_recordFilter(0),
@@ -521,7 +521,7 @@ TrackInfo::makeChannelReady(Studio &studio)
     Instrument *instrument =
         studio.getInstrumentById(m_instrumentId);
 
-    // If we have deleted a device, we may get a NULL instrument.  In
+    // If we have deleted a device, we may get a nullptr instrument.  In
     // that case, we can't do much.
     if (!instrument) { return; }
 
@@ -562,7 +562,7 @@ TrackInfo::allocateThruChannel(Studio &studio)
     Instrument *instrument =
         studio.getInstrumentById(m_instrumentId);
 
-    // If we have deleted a device, we may get a NULL instrument.  In
+    // If we have deleted a device, we may get a nullptr instrument.  In
     // that case, we can't do much.
     if (!instrument) { return; }
 
@@ -631,7 +631,7 @@ TrackInfo::releaseThruChannel(Studio &studio)
         if (allocator)
             { allocator->releaseThruChannel(m_thruChannel); }
     }
-    // If we recently deleted a device, we may get a NULL instrument.
+    // If we recently deleted a device, we may get a nullptr instrument.
     // In that case, we can't actively release it but we don't need
     // to, we can just mark it released.
     else /* if (!instrument || m_useFixedChannel) */ {}

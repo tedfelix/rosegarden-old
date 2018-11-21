@@ -48,7 +48,7 @@ public:
                 break;
             case Qt::NoArrow :
             default :
-                fileName = 0;
+                fileName = nullptr;
         }
 
         if (fileName) {
@@ -62,7 +62,7 @@ public:
 
     virtual ~BigArrowButton() { } 
 
-    virtual QSize sizeHint() const {
+    QSize sizeHint() const override {
         return QSize(20, 20);
     }
 };

@@ -98,8 +98,8 @@ public:
     void setCanvasCursor(QCursor cursor);
 
     // These delegate to MatrixScene, which possesses the selection
-    virtual EventSelection *getSelection() const;
-    virtual void setSelection(EventSelection *s, bool preview);
+    EventSelection *getSelection() const override;
+    void setSelection(EventSelection *s, bool preview) override;
 
     ControlRulerWidget *getControlsWidget(void)
     { return m_controlsWidget; }
@@ -209,7 +209,7 @@ protected slots:
     void slotInstrumentGone(void);
 
 protected :
-    virtual void showEvent(QShowEvent * event);
+    void showEvent(QShowEvent * event) override;
 
     /// (Re)generate the pitch ruler (useful when key mapping changed)
     void generatePitchRuler();
@@ -230,7 +230,7 @@ private:
     MatrixScene *m_scene; // I own this
     MatrixToolBox *m_toolBox; // I own this
     MatrixTool *m_currentTool; // Toolbox owns this
-    // This can be NULL.  It tracks what pitchruler corresponds to.
+    // This can be nullptr.  It tracks what pitchruler corresponds to.
     Instrument *m_instrument; // Studio owns this (TBC)
     bool m_drumMode;
     bool m_onlyKeyMapping;

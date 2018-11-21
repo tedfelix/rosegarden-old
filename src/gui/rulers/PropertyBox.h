@@ -45,13 +45,13 @@ public:
     PropertyBox(QString label,
                int width,
                int height,
-               QWidget *parent=0);
+               QWidget *parent=nullptr);
 
-    virtual QSize sizeHint() const;
-    virtual QSize minimumSizeHint() const;
+    QSize sizeHint() const override;
+    QSize minimumSizeHint() const override;
 
 protected:
-    virtual void paintEvent(QPaintEvent *);
+    void paintEvent(QPaintEvent *) override;
 
     //--------------- Data members ---------------------------------
 

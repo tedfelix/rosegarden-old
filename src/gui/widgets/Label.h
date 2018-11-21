@@ -35,11 +35,11 @@ class Label : public QLabel
 {
     Q_OBJECT
 public:
-    explicit Label(const QString &text, QWidget *parent=0, Qt::WindowFlags f=0) :
+    explicit Label(const QString &text, QWidget *parent=nullptr, Qt::WindowFlags f=0) :
         QLabel(text, parent, f)  { }
 
     // ??? Non-standard.  Used by Ui_RosegardenTransport.
-    Label(QWidget *parent = 0, const char *name=0):
+    Label(QWidget *parent = nullptr, const char *name=0):
         QLabel(name, parent) {;}
 
 signals:
@@ -48,13 +48,13 @@ signals:
     void scrollWheel(int);
 
 protected:
-    virtual void mouseReleaseEvent(QMouseEvent * /*e*/)
+    void mouseReleaseEvent(QMouseEvent * /*e*/) override
         { emit clicked(); }
 
-    virtual void mouseDoubleClickEvent(QMouseEvent * /*e*/)
+    void mouseDoubleClickEvent(QMouseEvent * /*e*/) override
         { emit doubleClicked(); }
 
-    virtual void wheelEvent(QWheelEvent *e)
+    void wheelEvent(QWheelEvent *e) override
         { emit scrollWheel(e->delta()); }
 
 };

@@ -36,10 +36,10 @@ class DeferScrollArea : public QScrollArea
 {
     Q_OBJECT
 public:
-    DeferScrollArea(QWidget* parent=0);
+    DeferScrollArea(QWidget* parent=nullptr);
     ~DeferScrollArea();
 
-    void wheelEvent(QWheelEvent*);
+    void wheelEvent(QWheelEvent*) override;
 public slots:
 signals:
     void gotWheelEvent(QWheelEvent*);

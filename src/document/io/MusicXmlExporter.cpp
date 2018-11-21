@@ -161,7 +161,7 @@ MusicXmlExporter::exportTrack(Track *track)
         // no selected segments, skip the track.
         //
         bool selectedSegments = false;
-        if ((m_view != NULL) && (m_view->haveSelection())) {
+        if ((m_view != nullptr) && (m_view->haveSelection())) {
             //
             // Check whether the current segment is in the list of selected segments.
             //
@@ -236,8 +236,8 @@ MusicXmlExporter::initalisePart(timeT compositionEndTime, int curTrackPos,
 {
     TrackVector tracks;
     std::string name;
-    Track *track = 0;
-    Track *curTrack = 0;
+    Track *track = nullptr;
+    Track *curTrack = nullptr;
     bool inMultiStaffGroup = false;
     InstrumentId instrument = 0;
     bool found = false;
@@ -246,7 +246,7 @@ MusicXmlExporter::initalisePart(timeT compositionEndTime, int curTrackPos,
 
     // For each track
     for (int trackPos = 0;
-         (track = m_composition->getTrackByPosition(trackPos)) != 0; ++trackPos) {
+         (track = m_composition->getTrackByPosition(trackPos)) != nullptr; ++trackPos) {
         qApp->processEvents();
 
         if (trackPos == curTrackPos) curTrack = track;
@@ -336,11 +336,11 @@ MusicXmlExporter::writeScorePart(timeT compositionEndTime, std::ostream &str)
     int writeSquareClose = 0;
     int writeCurlyOpen = 0;
     int writeCurlyClose = 0;
-    Track *track = 0;
+    Track *track = nullptr;
 
     // For each Track in the Composition
     for (int trackPos = 0;
-         (track = m_composition->getTrackByPosition(trackPos)) != 0;
+         (track = m_composition->getTrackByPosition(trackPos)) != nullptr;
          ++trackPos) {
         if (m_progressDialog) {
             m_progressDialog->setValue(
@@ -411,7 +411,7 @@ MusicXmlExporter::writeScorePart(timeT compositionEndTime, std::ostream &str)
             str << "      <part-name>" << track->getLabel() << "</part-name>" << std::endl;
 
             Instrument *instrument = m_doc->getStudio().getInstrumentFor(track);
-            if (instrument != NULL) {
+            if (instrument != nullptr) {
                 InstrumentMap instruments;
                 if (isPercussionTrack(track)) {
                     // For each Segment in the Composition

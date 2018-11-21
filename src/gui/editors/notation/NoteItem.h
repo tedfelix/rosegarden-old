@@ -44,16 +44,16 @@ public:
              bool selected,
              bool shaded,
 	     NotePixmapFactory *factory,
-	     QGraphicsItem *parent = 0);
+	     QGraphicsItem *parent = nullptr);
     virtual ~NoteItem();
 
-    QRectF boundingRect() const;
+    QRectF boundingRect() const override;
     QPointF offset() const;
     QPixmap makePixmap() const;
 
     void paint(QPainter *painter,
                const QStyleOptionGraphicsItem *option,
-               QWidget *widget);
+               QWidget *widget) override;
 
     enum DrawMode {
         DrawNormal,

@@ -39,10 +39,9 @@ class ConfigureDialogBase : public QDialog
 {
     Q_OBJECT
 public:
-    ConfigureDialogBase(QWidget *parent = 0, QString label = 0, const char *name = 0);
-    
-    //virtual 
-    ~ConfigureDialogBase();
+    ConfigureDialogBase(QWidget *parent = nullptr, const QString &label = {}, const char *name = nullptr);
+
+    ~ConfigureDialogBase() override;
 
     typedef std::vector<ConfigurationPage*> configurationpages;
 
@@ -51,7 +50,7 @@ public:
     void setPageByIndex(int index);
 
 protected slots:
-    virtual void accept();
+    void accept() override;
     virtual void slotApply();
     virtual void slotCancelOrClose();
     virtual void slotHelpRequested();

@@ -409,7 +409,7 @@ CheckForParallelsDialog::startCheck()
     int currentTrackPosition;
     QString currentTrackLabel;
 
-    NotationStaff *currentStaff = NULL;
+    NotationStaff *currentStaff = nullptr;
 
     parallelList.clear();
 
@@ -427,7 +427,7 @@ CheckForParallelsDialog::startCheck()
     parallelLocation pl;
 
     pl.time = -1;
-    pl.staff = 0;
+    pl.staff = nullptr;
 
     locationForLine.push_back(pl);
     locationForLine.push_back(pl);
@@ -495,7 +495,7 @@ CheckForParallelsDialog::startCheck()
                     // the line numbers for the real parallels in the text browser are correct
 
                     pl.time = -1;
-                    pl.staff = 0;
+                    pl.staff = nullptr;
 
                     if ( predecessorEnd > currentTime ) {
                         int bar;

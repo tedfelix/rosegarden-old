@@ -41,21 +41,21 @@ class SegmentMover : public SegmentTool
     friend class SegmentToolBox;
 
 public:
-    virtual void ready();
-    virtual void stow();
+    void ready() override;
+    void stow() override;
 
-    virtual void mousePressEvent(QMouseEvent *);
-    virtual int mouseMoveEvent(QMouseEvent *);
-    virtual void mouseReleaseEvent(QMouseEvent *);
-    virtual void keyPressEvent(QKeyEvent *);
-    virtual void keyReleaseEvent(QKeyEvent *);
+    void mousePressEvent(QMouseEvent *) override;
+    int mouseMoveEvent(QMouseEvent *) override;
+    void mouseReleaseEvent(QMouseEvent *) override;
+    void keyPressEvent(QKeyEvent *) override;
+    void keyReleaseEvent(QKeyEvent *) override;
 
     static QString ToolName();
 
 protected:
     SegmentMover(CompositionView*, RosegardenDocument*);
 
-    void setContextHelp2(Qt::KeyboardModifiers modifiers = 0);
+    void setContextHelp2(Qt::KeyboardModifiers modifiers = nullptr);
 
     QPoint m_clickPoint;
     bool m_changeMade;

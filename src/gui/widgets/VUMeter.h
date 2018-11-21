@@ -69,13 +69,13 @@ public:
     void setRecordLevel(double level);
     void setRecordLevel(double leftLevel, double rightLevel);
 
-    virtual void paintEvent(QPaintEvent*);
+    void paintEvent(QPaintEvent*) override;
 
 protected:
     // Constructor is protected - we can only create an object
     // from a sub-class of this type from a sub-class.
     //
-    VUMeter(QWidget *parent = 0,
+    VUMeter(QWidget *parent = nullptr,
             VUMeterType type = Plain,
             bool stereo = false,
             bool hasRecord = false,

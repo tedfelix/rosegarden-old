@@ -85,9 +85,9 @@ public:
         OpenGL
     };
 
-    GeneralConfigurationPage(RosegardenDocument *doc, QWidget *parent = 0);
+    GeneralConfigurationPage(RosegardenDocument *doc, QWidget *parent = nullptr);
 
-    virtual void apply();
+    void apply() override;
 
     static QString iconLabel() { return tr("General"); }
     static QString title()     { return tr("General Configuration"); }

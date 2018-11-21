@@ -88,7 +88,7 @@ public:
                  int trackLabelWidth,
                  bool showTrackLabels,
                  int overallHeight,
-                 QWidget* parent = 0);
+                 QWidget* parent = nullptr);
 
     ~TrackButtons();
 
@@ -293,11 +293,11 @@ protected:
     QColor getRecordLedColour(Rosegarden::Instrument *ins);
 
     // CompositionObserver overrides
-    virtual void tracksAdded(const Composition *, std::vector<TrackId> &trackIds);
-    virtual void trackChanged(const Composition *, Track*);
-    virtual void tracksDeleted(const Composition *, std::vector<TrackId> &trackIds);
-    virtual void trackSelectionChanged(const Composition *, TrackId trackId);
-    virtual void segmentRemoved(const Composition *, Segment *);
+    void tracksAdded(const Composition *, std::vector<TrackId> &trackIds) override;
+    void trackChanged(const Composition *, Track*) override;
+    void tracksDeleted(const Composition *, std::vector<TrackId> &trackIds) override;
+    void trackSelectionChanged(const Composition *, TrackId trackId) override;
+    void segmentRemoved(const Composition *, Segment *) override;
 
     int labelWidth();
     int trackHeight(TrackId trackId);

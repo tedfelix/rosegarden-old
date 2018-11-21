@@ -319,7 +319,7 @@ QTreeWidgetItem
             return twItem;
         }
     }
-    return 0;               //twItem;
+    return nullptr;               //twItem;
 }
 
 
@@ -345,7 +345,7 @@ QTreeWidgetItem
             return twItem;
         }
     }
-    return 0;               //twItem;
+    return nullptr;               //twItem;
 }
 
 
@@ -416,7 +416,7 @@ DeviceManagerDialog::updateDevicesList(QTreeWidget * treeWid,
                 midiDevices << mdev; // append
                 RG_DEBUG << "DeviceManagerDialog: direction matches in_out_direction";
             } else {
-                //RG_DEBUG << "ERROR: mdev is NULL in updateDevicesList() ";
+                //RG_DEBUG << "ERROR: mdev is nullptr in updateDevicesList() ";
                 //continue;
             }
         }               // end if MidiDevice
@@ -476,7 +476,7 @@ DeviceManagerDialog::updateDevicesList(QTreeWidget * treeWid,
                 twItem->setText(1, outPort);
             } else {
                 RG_DEBUG <<
-                "Warning: twItem is NULL in DeviceManagerDialog::updateDevicesList() "
+                "Warning: twItem is nullptr in DeviceManagerDialog::updateDevicesList() "
                         ;
             }
         }
@@ -525,7 +525,7 @@ MidiDevice
         }
     }
 
-    return 0;
+    return nullptr;
 }
 
 MidiDevice
@@ -543,7 +543,7 @@ MidiDevice
 
 
     if (!twItem)
-        return 0;
+        return nullptr;
 
     devId = twItem->data(0, m_UserRole_DeviceId).toInt();
     mdev = getDeviceById(devId);
@@ -564,7 +564,7 @@ MidiDevice
     DeviceId devId;
 
     if (!twItem)
-        return 0;
+        return nullptr;
     devId = twItem->data(0, m_UserRole_DeviceId).toInt();
     mdev = getDeviceById(devId);
 //        mdev = getDeviceByName( twItem->text( 0 ) );    // item->text(column)
@@ -635,7 +635,7 @@ DeviceManagerDialog::connectMidiDeviceToPort(MidiDevice *device,
     //RG_DEBUG << "connectMidiDeviceToPort(" << device->getId() << ", " << newPort << ")";
 
     if (!device) {
-        RG_WARNING << "connectMidiDeviceToPort() WARNING: Device is NULL";
+        RG_WARNING << "connectMidiDeviceToPort() WARNING: Device is nullptr";
         return;
     }
 
@@ -923,7 +923,7 @@ DeviceManagerDialog::slotDeviceItemChanged(QTreeWidgetItem * twItem,
     mdev = getMidiDeviceOfItem(twItem);
     if (!mdev) {
         RG_DEBUG <<
-        "Warning: mdev is NULL in DeviceManagerDialog::slotPlaybackDeviceItemChanged() "
+        "Warning: mdev is nullptr in DeviceManagerDialog::slotPlaybackDeviceItemChanged() "
                 ;
         return;
     }

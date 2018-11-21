@@ -59,13 +59,13 @@ class TrackParameterBox : public RosegardenParameterBox,
     Q_OBJECT
         
 public:
-    TrackParameterBox(QWidget *parent = 0);
+    TrackParameterBox(QWidget *parent = nullptr);
     
     void setDocument(RosegardenDocument *doc);
 
     // CompositionObserver overrides.
-    virtual void trackChanged(const Composition *comp, Track *track);
-    virtual void trackSelectionChanged(const Composition *, TrackId);
+    void trackChanged(const Composition *comp, Track *track) override;
+    void trackSelectionChanged(const Composition *, TrackId) override;
 
 public slots:
     /// Connected to RosegardenDocument::docColoursChanged().

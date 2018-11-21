@@ -54,7 +54,7 @@ ControlRulerWidget::ControlRulerWidget() :
 m_controlList(0),
 m_segment(0),
 m_viewSegment(0),
-m_scale(0)
+m_scale(nullptr)
 {
     m_tabBar = new ControlRulerTabBar;
 
@@ -107,7 +107,7 @@ ControlRulerWidget::setSegments(RosegardenDocument *document, std::vector<Segmen
     if (instr) {
         Device *device = instr->getDevice();
 
-        // Cast to a Controllable if possible, otherwise leave c NULL.
+        // Cast to a Controllable if possible, otherwise leave c nullptr.
         Controllable *c =
             dynamic_cast<MidiDevice *>(device);
         if (!c)
@@ -326,7 +326,7 @@ ControlRulerWidget::slotAddPropertyRuler(const PropertyName &propertyName)
     if (name == "velocity") name = tr("Velocity");
     addRuler(controlruler, name);
     // Update selection drawing in matrix view.
-    emit childRulerSelectionChanged(0);
+    emit childRulerSelectionChanged(nullptr);
 }
 
 void
@@ -459,7 +459,7 @@ ControllerEventsRuler *
 ControlRulerWidget::getActiveRuler(void)
 {
     QWidget * widget = m_stackedWidget->currentWidget ();
-    if (!widget) { return 0; }
+    if (!widget) { return nullptr; }
     return dynamic_cast <ControllerEventsRuler *> (widget);
 }
 
@@ -467,7 +467,7 @@ PropertyControlRuler *
 ControlRulerWidget::getActivePropertyRuler()
 {
     QWidget * widget = m_stackedWidget->currentWidget ();
-    if (!widget) { return 0; }
+    if (!widget) { return nullptr; }
     return dynamic_cast <PropertyControlRuler *> (widget);
 }
 
@@ -479,13 +479,13 @@ ControlRulerWidget::hasSelection(void)
     return ruler->getEventSelection() ? true : false;
 }
 
-// Return the active ruler's event selection, or NULL if none.
+// Return the active ruler's event selection, or nullptr if none.
 // @author Tom Breton (Tehom)
 EventSelection *
 ControlRulerWidget::getSelection(void)
 {
     ControllerEventsRuler *ruler = getActiveRuler();
-    if (!ruler) { return 0; }
+    if (!ruler) { return nullptr; }
     return ruler->getEventSelection();
 }
 
@@ -493,22 +493,22 @@ ControlParameter *
 ControlRulerWidget::getControlParameter(void)
 {
     ControllerEventsRuler *ruler = getActiveRuler();
-    if (!ruler) { return 0; }
+    if (!ruler) { return nullptr; }
     return ruler->getControlParameter();
 }
 
-// @return the active ruler's parameter situation, or NULL if none.
+// @return the active ruler's parameter situation, or nullptr if none.
 // Return is owned by caller.
 // @author Tom Breton (Tehom)
 SelectionSituation *
 ControlRulerWidget::getSituation(void)
 {
     ControllerEventsRuler *ruler = getActiveRuler();
-    if (!ruler) { return 0; }
+    if (!ruler) { return nullptr; }
     EventSelection * selection = ruler->getEventSelection();
-    if (!selection) { return 0; }
+    if (!selection) { return nullptr; }
     ControlParameter * cp = ruler->getControlParameter();
-    if (!cp) { return 0; }
+    if (!cp) { return nullptr; }
     return
         new SelectionSituation(cp->getType(), selection);
 }

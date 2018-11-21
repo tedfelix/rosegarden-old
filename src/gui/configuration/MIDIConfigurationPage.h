@@ -46,9 +46,9 @@ class MIDIConfigurationPage : public TabbedConfigurationPage
 {
     Q_OBJECT
 public:
-    MIDIConfigurationPage(RosegardenDocument *doc, QWidget *parent = 0);
+    MIDIConfigurationPage(RosegardenDocument *doc, QWidget *parent = nullptr);
 
-    virtual void apply();
+    void apply() override;
 
     static QString iconLabel() { return tr("MIDI"); }
     static QString title()     { return tr("MIDI Settings"); }

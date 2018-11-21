@@ -294,9 +294,7 @@ ThornStyle::~ThornStyle()
 {
 }
 
-QIcon ThornStyle::standardIconImplementation(StandardPixmap standardIcon,
-                                             const QStyleOption *option,
-                                             const QWidget *parent) const
+QIcon ThornStyle::standardIcon(QStyle::StandardPixmap standardIcon, const QStyleOption *option, const QWidget *parent) const
 {
     // NOTE: see src/gui/styles/qcommonstyle.cpp in the Qt source for examples
     // of how to extend this whenever more custom icons are called for
@@ -416,8 +414,8 @@ int ThornStyle::pixelMetric(QStyle::PixelMetric metric, const QStyleOption *opti
         // QMenuBar::item { spacing: 3px; padding: 1px 4px; }
         return 4;
     case PM_ScrollBarExtent: {
-        QWidget *parent = widget ? widget->parentWidget() : 0;
-        QWidget *combo = parent ? parent->parentWidget() : 0;
+        QWidget *parent = widget ? widget->parentWidget() : nullptr;
+        QWidget *combo = parent ? parent->parentWidget() : nullptr;
         if (qobject_cast<QComboBox *>(combo)) {
             // QComboBox QAbstractItemView QScrollBar:vertical { width: 12px; }
             return 12;
@@ -1475,11 +1473,6 @@ QRect ThornStyle::subControlRect(QStyle::ComplexControl cc, const QStyleOptionCo
     }
 
     return QProxyStyle::subControlRect(cc, option, sc, widget);
-}
-
-QIcon ThornStyle::standardIcon(QStyle::StandardPixmap standardIcon, const QStyleOption *option, const QWidget *widget) const
-{
-    return standardIconImplementation(standardIcon, option, widget);
 }
 
 #pragma GCC diagnostic pop

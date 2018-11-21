@@ -50,10 +50,10 @@ public:
 
     ~EventUnquantizeCommand();
     
-    static QString getGlobalName(Quantizer *quantizer = 0);
+    static QString getGlobalName(Quantizer *quantizer = nullptr);
     
 protected:
-    virtual void modifySegment();
+    void modifySegment() override;
 
 private:
     Quantizer *m_quantizer;

@@ -53,14 +53,14 @@ public:
               int height = 0,
               bool invert = false,
               bool isForMainWindow = false,
-              QWidget* parent = 0);
+              QWidget* parent = nullptr);
 
     ~LoopRuler();
 
     void setSnapGrid(const SnapGrid *grid);
 
-    virtual QSize sizeHint() const;
-    virtual QSize minimumSizeHint() const;
+    QSize sizeHint() const override;
+    QSize minimumSizeHint() const override;
 
     void scrollHoriz(int x);
 
@@ -77,12 +77,12 @@ public slots:
 protected:
     double mouseEventToSceneX(QMouseEvent *mE);
 
-    virtual void mousePressEvent       (QMouseEvent*);
-    virtual void mouseReleaseEvent     (QMouseEvent*);
-    virtual void mouseDoubleClickEvent (QMouseEvent*);
-    virtual void mouseMoveEvent        (QMouseEvent*);
+    void mousePressEvent       (QMouseEvent*) override;
+    void mouseReleaseEvent     (QMouseEvent*) override;
+    void mouseDoubleClickEvent (QMouseEvent*) override;
+    void mouseMoveEvent        (QMouseEvent*) override;
 
-    virtual void paintEvent(QPaintEvent*);
+    void paintEvent(QPaintEvent*) override;
 
     void setLoopingMode(bool value) { m_loopingMode = value; }
     void drawBarSections(QPainter*);

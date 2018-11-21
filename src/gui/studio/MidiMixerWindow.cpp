@@ -69,7 +69,7 @@ namespace Rosegarden
 MidiMixerWindow::MidiMixerWindow(QWidget *parent,
                                  RosegardenDocument *document):
     MixerWindow(parent, document),
-    m_tabFrame(0)
+    m_tabFrame(nullptr)
 {
     // Initial setup
     //
@@ -103,7 +103,7 @@ void
 MidiMixerWindow::setupTabs()
 {
     DeviceListConstIterator it;
-    MidiDevice *dev = 0;
+    MidiDevice *dev = nullptr;
     InstrumentList instruments;
     InstrumentList::const_iterator iIt;
     int faderCount = 0, deviceCount = 1;
@@ -631,7 +631,7 @@ MidiMixerWindow::updateMeters()
             m_faders[i]->m_vuMeter->setLevel(double(info.level / 127.0));
             RG_DEBUG << "MidiMixerWindow::updateMeters - level  " << info.level;
         } else {
-            RG_DEBUG << "MidiMixerWindow::updateMeters - m_vuMeter for m_faders[" << i << "] is NULL!";
+            RG_DEBUG << "MidiMixerWindow::updateMeters - m_vuMeter for m_faders[" << i << "] is nullptr!";
         }
     }
 }

@@ -49,12 +49,12 @@ class SelectDialog : public QDialog
     Q_OBJECT
 
 public:
-    SelectDialog(QWidget *parent = 0
+    SelectDialog(QWidget *parent = nullptr
                 );
     ~SelectDialog();
 
 public slots:
-    void accept();
+    void accept() override;
     void help();
 
 protected:

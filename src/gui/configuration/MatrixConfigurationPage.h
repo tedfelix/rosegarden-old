@@ -38,9 +38,9 @@ class MatrixConfigurationPage : public TabbedConfigurationPage
     Q_OBJECT
 
 public:
-    MatrixConfigurationPage(QWidget *parent = 0);
+    MatrixConfigurationPage(QWidget *parent = nullptr);
 
-    virtual void apply();
+    void apply() override;
 
     static QString iconLabel() { return tr("Matrix"); }
     static QString title()     { return tr("Matrix"); }

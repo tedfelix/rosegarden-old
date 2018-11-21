@@ -45,14 +45,14 @@ public:
 
     // Create the parameter display area.
 
-    RosegardenParameterArea(QWidget *parent = 0);
+    RosegardenParameterArea(QWidget *parent = nullptr);
 
     // Add a rosegarden parameter box to the list that are to be displayed.
 
     void addRosegardenParameterBox(RosegardenParameterBox *b);
 
 protected:
-    bool eventFilter(QObject *object, QEvent *event);
+    bool eventFilter(QObject *object, QEvent *event) override;
 
 private:
     // The list of parameter box widgets that are being displayed by this

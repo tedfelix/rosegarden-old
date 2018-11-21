@@ -60,7 +60,7 @@ class ActionCommandArgumentQuerier : public CommandArgumentQuerier
 
 public:
     ActionCommandArgumentQuerier(QWidget *widget) : m_widget(widget) { }
-    QString getText(QString message, bool *ok) {
+    QString getText(QString message, bool *ok) override {
         if (!m_widget) return "";
         return InputDialog::getText(m_widget,
                                     tr("Rosegarden - Query"),
@@ -74,7 +74,7 @@ protected:
 void
 ActionCommandRegistry::invokeCommand(QString actionName)
 {
-    EventSelection *selection = 0;
+    EventSelection *selection = nullptr;
 
     SelectionManager *sm = dynamic_cast<SelectionManager *>(m_client);
 

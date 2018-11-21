@@ -45,27 +45,27 @@ class ControllerEventsRuler : public ControlRuler, public SegmentObserver
 public:
     ControllerEventsRuler(ViewSegment*,
                           RulerScale*,
-                          QWidget* parent=0,
-                          const ControlParameter *controller = 0,
-                          const char* name=0 );
+                          QWidget* parent=nullptr,
+                          const ControlParameter *controller = nullptr,
+                          const char* name=nullptr );
 
     virtual ~ControllerEventsRuler();
 
-    virtual void paintEvent(QPaintEvent *);
+    void paintEvent(QPaintEvent *) override;
 
-    virtual QString getName();
+    QString getName() override;
     int getDefaultItemWidth() { return m_defaultItemWidth; }
 
     // Allow something external to reset the selection of Events
     // that this ruler is displaying
     //
-    virtual void setViewSegment(ViewSegment *);
-    virtual void setSegment(Segment *);
+    void setViewSegment(ViewSegment *) override;
+    void setSegment(Segment *) override;
 
     // SegmentObserver interface
-    virtual void eventAdded(const Segment *, Event *);
-    virtual void eventRemoved(const Segment *, Event *);
-    virtual void segmentDeleted(const Segment *);
+    void eventAdded(const Segment *, Event *) override;
+    void eventRemoved(const Segment *, Event *) override;
+    void segmentDeleted(const Segment *) override;
 
     virtual ControlItem* addControlItem2(float, float);
     virtual ControlItem* addControlItem2(Event *);
@@ -96,7 +96,7 @@ public:
     ControlParameter* getControlParameter() { return m_controller; }
 
 public slots:
-    virtual void slotSetTool(const QString&);
+    void slotSetTool(const QString&) override;
 
 protected:
     virtual void init();

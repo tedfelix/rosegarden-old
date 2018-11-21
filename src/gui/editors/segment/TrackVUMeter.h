@@ -32,7 +32,7 @@ namespace Rosegarden
 class TrackVUMeter: public VUMeter
 {
 public:
-     TrackVUMeter(QWidget *parent = 0,
+     TrackVUMeter(QWidget *parent = nullptr,
                   VUMeterType type = Plain,
                   int width = 0,
                   int height = 0,
@@ -41,8 +41,8 @@ public:
     int getPosition() const { return m_position; }
 
 protected:
-    virtual void meterStart();
-    virtual void meterStop();
+    void meterStart() override;
+    void meterStop() override;
 
 private:
     int m_position;

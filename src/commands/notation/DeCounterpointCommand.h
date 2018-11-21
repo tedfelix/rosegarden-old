@@ -46,14 +46,14 @@ public:
 
     DeCounterpointCommand(Segment &segment) :
         BasicSelectionCommand(getGlobalName(), segment, true),
-        m_selection(0) { }
+        m_selection(nullptr) { }
 
     static QString getGlobalName() { return tr("Split-and-Tie Overlapping &Chords"); }
 
     static void registerCommand(CommandRegistry *r);
 
 protected:
-    virtual void modifySegment();
+    void modifySegment() override;
 
 private:
     EventSelection *m_selection;// only used on 1st execute (cf bruteForceRedo)

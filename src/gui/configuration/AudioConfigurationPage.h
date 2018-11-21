@@ -47,9 +47,9 @@ class AudioConfigurationPage : public TabbedConfigurationPage
     Q_OBJECT
 public:
     AudioConfigurationPage(RosegardenDocument *doc,
-                               QWidget *parent = 0);
+                               QWidget *parent = nullptr);
 
-    virtual void apply();
+    void apply() override;
 
     static QString iconLabel() { return tr("Audio"); }
     static QString title()     { return tr("Audio Settings"); }

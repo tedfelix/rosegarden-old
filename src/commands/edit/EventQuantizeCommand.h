@@ -71,7 +71,7 @@ public:
 
     ~EventQuantizeCommand();
     
-    static QString getGlobalName(Quantizer *quantizer = 0);
+    static QString getGlobalName(Quantizer *quantizer = nullptr);
 
     void setProgressDialog(QPointer<QProgressDialog> progressDialog)
             { m_progressDialog = progressDialog; }
@@ -79,7 +79,7 @@ public:
                                                     m_progressPerCall = perCall; };
 
 protected:
-    virtual void modifySegment();
+    void modifySegment() override;
 
 private:
     Quantizer *m_quantizer; // I own this

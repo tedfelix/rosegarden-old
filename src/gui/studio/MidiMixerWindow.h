@@ -97,13 +97,13 @@ protected slots:
 protected:
     void addTab(QWidget *tab, const QString &title);
 
-    virtual void sendControllerRefresh();
+    void sendControllerRefresh() override;
 
     QTabWidget *m_tabWidget;
 
     struct FaderStruct {
 
-        FaderStruct():m_id(0), m_vuMeter(0), m_volumeFader(0) {}
+        FaderStruct():m_id(0), m_vuMeter(0), m_volumeFader(nullptr) {}
 
         InstrumentId m_id;
         MidiMixerVUMeter *m_vuMeter;

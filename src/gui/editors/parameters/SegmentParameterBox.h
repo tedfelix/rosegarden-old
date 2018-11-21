@@ -65,7 +65,7 @@ public:
     } Tristate;
 
     SegmentParameterBox(RosegardenDocument *doc,
-                        QWidget *parent=0);
+                        QWidget *parent=nullptr);
     ~SegmentParameterBox();
 
     // Use Segments to update GUI parameters
@@ -79,8 +79,8 @@ public:
 
     // CompositionObserver interface
     //
-    virtual void segmentRemoved(const Composition *,
-                                Segment *);
+    void segmentRemoved(const Composition *,
+                                Segment *) override;
 
 public slots:
     void slotRepeatPressed();

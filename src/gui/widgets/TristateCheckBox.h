@@ -39,14 +39,14 @@ class TristateCheckBox : public QCheckBox
 {
 Q_OBJECT
 public:
-    TristateCheckBox(QWidget *parent=0):QCheckBox(parent)
+    TristateCheckBox(QWidget *parent=nullptr):QCheckBox(parent)
         { setTristate(true) ;}
 
     virtual ~TristateCheckBox();
 
 protected:
     // don't emit when the button is released
-    virtual void mouseReleaseEvent(QMouseEvent *);
+    void mouseReleaseEvent(QMouseEvent *) override;
 
 private:
 };

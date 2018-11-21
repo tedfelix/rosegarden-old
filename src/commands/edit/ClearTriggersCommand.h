@@ -37,7 +37,7 @@ class ClearTriggersCommand : public BasicSelectionCommand
 
 public:
     ClearTriggersCommand(EventSelection &selection,
-                         QString name = 0) :
+                         QString name = nullptr) :
         BasicSelectionCommand(!name.isEmpty() ? name : getGlobalName(), selection, true),
         m_selection(&selection)
     { }
@@ -47,7 +47,7 @@ public:
     }
 
 protected:
-    virtual void modifySegment();
+    void modifySegment() override;
 
 private:
     EventSelection *m_selection;// only used on 1st execute (cf bruteForceRedo)

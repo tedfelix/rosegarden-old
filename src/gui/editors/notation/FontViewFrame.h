@@ -37,10 +37,10 @@ class FontViewFrame : public QFrame
     Q_OBJECT
 
 public:
-    FontViewFrame(int pixelSize, QWidget *parent = 0);
+    FontViewFrame(int pixelSize, QWidget *parent = nullptr);
     virtual ~FontViewFrame();
 
-    QSize sizeHint() const;
+    QSize sizeHint() const override;
     bool hasRow(int row) const;
 
 public slots:
@@ -50,7 +50,7 @@ public slots:
 
 protected:
     QSize cellSize() const;
-    void paintEvent( QPaintEvent* );
+    void paintEvent( QPaintEvent* ) override;
     void loadFont();
 
 private:
