@@ -46,7 +46,7 @@ public:
                InstrumentId ibase,
                const std::string &name,
                DeviceDirection dir);
-    virtual ~MidiDevice();
+    ~MidiDevice() override;
 
     // Copy ctor.
     // ??? Switch pointers to objects and rely on bitwise copy to take
@@ -63,7 +63,7 @@ public:
     //           const std::string &label,
     //           DeviceDirection dir);
 
-    AllocateChannels *getAllocator(void) override;
+    AllocateChannels *getAllocator() override;
 
     // Instrument must be on heap; I take ownership of it
     void addInstrument(Instrument*) override;
@@ -172,7 +172,7 @@ public:
     bool modifyControlParameter(const ControlParameter &con, int index);
 
     void replaceControlParameters(const ControlList &);
-    void refreshControlParameters(void);
+    void refreshControlParameters();
 
     // Check to see if the passed ControlParameter is unique in
     // our ControlParameter list.

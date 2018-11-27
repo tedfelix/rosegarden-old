@@ -32,7 +32,7 @@ class SegmentMapper : public MappedEventBuffer
 {
 
 public:
-    virtual ~SegmentMapper();
+    ~SegmentMapper() override;
 
     /// Create the appropriate mapper for the segment type.  Factory function.
     static QSharedPointer<SegmentMapper> makeMapperForSegment(RosegardenDocument *, Segment *);
@@ -40,12 +40,12 @@ public:
     int getSegmentRepeatCount() override;
     TrackId getTrackID() const override;
 
-    void initSpecial(void) override;
+    void initSpecial() override;
 
 protected:
     SegmentMapper(RosegardenDocument *, Segment *);
 
-    bool mutedEtc(void);
+    bool mutedEtc();
 
     //--------------- Data members ---------------------------------
     Segment *m_segment;

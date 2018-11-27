@@ -30,16 +30,16 @@ class RelativeRamp : public ParameterPattern
 {
     QString getText(QString propertyName) const override;
 
-    virtual SliderSpecVector
+    SliderSpecVector
         getSliderSpec(const SelectionSituation *situation) const override;
 
     // Set the properties of events from begin to end.
-    virtual void
+    void
         setEventProperties(iterator begin, iterator end,
                            Result *result) const override;
 
 public:
-    RelativeRamp(void) 
+    RelativeRamp() 
     {};
     static RelativeRamp single;
 };

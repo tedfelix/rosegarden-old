@@ -50,9 +50,9 @@ public:
     PropertyControlRuler(PropertyName propertyName,
                         ViewSegment*,
                         RulerScale*,
-                        QWidget* parent=nullptr, const char* name=0);
+                        QWidget* parent=nullptr, const char* name=nullptr);
 
-    virtual ~PropertyControlRuler();
+    ~PropertyControlRuler() override;
 
     virtual void update();
     

@@ -52,9 +52,9 @@ public:
      * to the user as a nice continuous range.
      */
     ZoomSlider(const std::vector<T> &sizes, T defaultValue,
-               Qt::Orientation, QWidget * parent, const char * name=0);
+               Qt::Orientation, QWidget * parent, const char * name=nullptr);
 
-    virtual ~ZoomSlider();
+    ~ZoomSlider() override;
     
     void reinitialise(const std::vector<T> &sizes, T defaultValue);
 

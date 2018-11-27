@@ -51,13 +51,13 @@ public:
     LinkedSegmentsCommand(const QString &name,
                           SegmentVec originalSegments,
 			  Composition *composition);
-    virtual ~LinkedSegmentsCommand();
+    ~LinkedSegmentsCommand() override;
 
 protected:
     void execute()override = 0;
     void unexecute()override = 0;
-    void executeAttachDetach(void);
-    void unexecuteAttachDetach(void);
+    void executeAttachDetach();
+    void unexecuteAttachDetach();
     // Copy auxilliary properties of source segment to target: track,
     // repeatingness, delay.  Does not include any segment-time properties.
     void copyAuxProperties(Segment *source, Segment *target);

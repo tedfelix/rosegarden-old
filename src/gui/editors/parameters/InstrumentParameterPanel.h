@@ -43,7 +43,7 @@ class InstrumentParameterPanel : public QFrame
     Q_OBJECT
 public:
     InstrumentParameterPanel(QWidget *parent);
-    virtual ~InstrumentParameterPanel() {}
+    ~InstrumentParameterPanel() override {}
 
 protected:
     void setSelectedInstrument(Instrument *);
@@ -53,7 +53,7 @@ protected:
 
 private slots:
     /// m_selectedInstrument is being destroyed
-    void slotInstrumentGone(void);
+    void slotInstrumentGone();
 
 private:
     // ??? This needs to go.  If the panels need the selected instrument,

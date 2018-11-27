@@ -131,7 +131,7 @@ public:
     RosegardenMainWindow(bool enableSound = true,
                          QObject *startupStatusMessageReceiver = nullptr);
 
-    virtual ~RosegardenMainWindow();
+    ~RosegardenMainWindow() override;
 
     /** Qt generates a QCloseEvent when the user clicks the close button on the
      * title bar.  We also get a close event when slotQuit() calls close().
@@ -871,7 +871,7 @@ public slots:
     /**
      * Update existing figurations
      */
-    void slotUpdateFigurations(void);
+    void slotUpdateFigurations();
     
     /**
      * Tempo to Segment length

@@ -36,7 +36,7 @@ class MappedInserterBase;
 /// List of controllers and a pitchbend.
 struct ControllerAndPBList
 {
-    ControllerAndPBList(void) :
+    ControllerAndPBList() :
         m_havePitchbend(false),
         m_pitchbend(0)
     { }
@@ -97,7 +97,7 @@ class ChannelManager : public QObject
 
 public:
     ChannelManager(Instrument *instrument);
-    virtual ~ChannelManager()  { freeChannelInterval(); }
+    ~ChannelManager() override  { freeChannelInterval(); }
 
     /// Set the instrument we are playing on, releasing any old one.
     void setInstrument(Instrument *instrument);

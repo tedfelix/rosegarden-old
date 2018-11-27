@@ -180,18 +180,18 @@ NotationView::NotationView(RosegardenDocument *doc,
     EditViewBase(doc, segments, parent),
     m_document(doc),
     m_durationMode(InsertingRests),
-    m_durationPressed(0),
-    m_accidentalPressed(0),
-    m_selectionCounter(0),
-    m_insertModeLabel(0),
-    m_annotationsLabel(0),
-    m_lilyPondDirectivesLabel(0),
-    m_currentNotePixmap(0),
-    m_hoveredOverNoteName(0),
-    m_hoveredOverAbsoluteTime(0),
-    m_fontCombo(0),
-    m_fontSizeCombo(0),
-    m_spacingCombo(0),
+    m_durationPressed(nullptr),
+    m_accidentalPressed(nullptr),
+    m_selectionCounter(nullptr),
+    m_insertModeLabel(nullptr),
+    m_annotationsLabel(nullptr),
+    m_lilyPondDirectivesLabel(nullptr),
+    m_currentNotePixmap(nullptr),
+    m_hoveredOverNoteName(nullptr),
+    m_hoveredOverAbsoluteTime(nullptr),
+    m_fontCombo(nullptr),
+    m_fontSizeCombo(nullptr),
+    m_spacingCombo(nullptr),
     m_segments(segments)
 {
     m_notationWidget = new NotationWidget();
@@ -464,7 +464,7 @@ findAdopted(Segment *s)
 
 // Set NotationWidget's segments.
 void
-NotationView::setWidgetSegments(void)
+NotationView::setWidgetSegments()
 {
     SegmentVector allSegments = m_segments;
     allSegments.insert(allSegments.end(),
@@ -1188,7 +1188,7 @@ NotationView::slotUpdateMenuStates()
 
 void
 NotationView::
-conformRulerSelectionState(void)
+conformRulerSelectionState()
 {
     ControlRulerWidget * cr = m_notationWidget->getControlsWidget();
     if (cr->isAnyRulerVisible())
@@ -1785,7 +1785,7 @@ NotationView::slotClearSelection()
     if (!selector) {
         slotSetSelectTool();
     } else {
-        setSelection(0, false);
+        setSelection(nullptr, false);
     }
 }
 
@@ -1862,7 +1862,7 @@ NotationView::slotFilterSelection()
         if (haveEvent) {
             setSelection(newSelection, false);
         } else {
-            setSelection(0, false);
+            setSelection(nullptr, false);
         }
     }
 }
@@ -4494,19 +4494,19 @@ NotationView::slotStepByStepTargetRequested(QObject *obj)
 }
 
 void
-NotationView::slotMoveEventsUpStaffInteractive(void)
+NotationView::slotMoveEventsUpStaffInteractive()
 { generalMoveEventsToStaff(true, true); }
 
 void
-NotationView::slotMoveEventsDownStaffInteractive(void)
+NotationView::slotMoveEventsDownStaffInteractive()
 { generalMoveEventsToStaff(false, true); }
 
 void
-NotationView::slotMoveEventsUpStaff(void)
+NotationView::slotMoveEventsUpStaff()
 { generalMoveEventsToStaff(true, false); }
 
 void
-NotationView::slotMoveEventsDownStaff(void)
+NotationView::slotMoveEventsDownStaff()
 { generalMoveEventsToStaff(false, false); }
 
 // Move the selected events to another staff

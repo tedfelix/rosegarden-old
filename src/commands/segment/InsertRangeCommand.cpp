@@ -47,16 +47,16 @@ public:
         {
             Q_ASSERT(duration > 0);
         }
-    virtual ~SegmentGroupInsertRangeCommand();
+    ~SegmentGroupInsertRangeCommand() override;
 
 protected:
     void execute() override;
     void unexecute() override;
-    void     calculateNewSegments(void);
+    void     calculateNewSegments();
     Segment * splitRejoin(Segment *segment);
 
 private:
-    timeT getRangeDuration(void)
+    timeT getRangeDuration()
     { return m_duration; }
 
     timeT m_splitTime;
@@ -132,7 +132,7 @@ splitRejoin(Segment *segment)
 }
 
 void
-SegmentGroupInsertRangeCommand::calculateNewSegments(void)
+SegmentGroupInsertRangeCommand::calculateNewSegments()
 {
     Q_ASSERT(!m_originalSegments.empty());
 

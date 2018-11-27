@@ -60,7 +60,7 @@ class NotationScene : public QGraphicsScene,
 
 public:
     NotationScene();
-    ~NotationScene();
+    ~NotationScene() override;
 
     void setNotationWidget(NotationWidget *w);
     void setStaffs(RosegardenDocument *document, std::vector<Segment *> segments);
@@ -284,7 +284,7 @@ private:
     NotationStaff *getNextStaffVertically(int direction, timeT t);
     NotationStaff *getNextStaffHorizontally(int direction, bool cycle);
     NotationStaff *getStaffbyTrackAndTime(const Track *track, timeT targetTime);
-    void initCurrentStaffIndex(void);
+    void initCurrentStaffIndex();
     void processKeyboardEvent(QKeyEvent * keyEvent);
 
     NotationWidget *m_widget; // I do not own this

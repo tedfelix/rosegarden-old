@@ -76,7 +76,7 @@ private:
 
     /**Destroys the input dialog
      */
-    ~InputDialog();
+    ~InputDialog() override;
 
 public:
     /* Static convenience function to get a string from the user. \a
@@ -96,7 +96,7 @@ public:
      */
     static QString getText(QWidget *parent, const QString &title, const QString &label,
                            LineEdit::EchoMode echo = LineEdit::Normal,
-                           const QString &text = QString(), bool *ok = nullptr, Qt::WindowFlags f = 0);
+                           const QString &text = QString(), bool *ok = nullptr, Qt::WindowFlags f = nullptr);
 
     // Let's see if we can do without reinventing getInteger et al.  We use
     // getInteger() in one place.  It probably has a bad background, but it's

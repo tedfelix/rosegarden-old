@@ -59,7 +59,7 @@ class InternalSegmentMapper : public SegmentMapper
 {
 public:
     InternalSegmentMapper(RosegardenDocument *doc, Segment *segment);
-    ~InternalSegmentMapper();
+    ~InternalSegmentMapper() override;
 
 private:
     // Hide copy ctor and op= since dtor is non-trivial.
@@ -112,7 +112,7 @@ private:
     /// dump all segment data in the file
     void fillBuffer() override;
 
-    Instrument *getInstrument(void) const
+    Instrument *getInstrument() const
     { return m_channelManager.getInstrument(); }
 
     void popInsertNoteoff(int trackid, Composition &comp);

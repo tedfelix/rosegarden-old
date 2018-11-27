@@ -59,7 +59,7 @@ public:
 
     EventSelection(const EventSelection&);
 
-    virtual ~EventSelection();
+    ~EventSelection() override;
 
     bool operator==(const EventSelection &);
 
@@ -388,7 +388,7 @@ class MarkerElementInfo
 class MarkerSelection : public TimewiseSelection<MarkerElementInfo>
 {
 public:
-   MarkerSelection(void) : TimewiseSelection<MarkerElementInfo>() {};
+   MarkerSelection() : TimewiseSelection<MarkerElementInfo>() {};
    MarkerSelection(Composition &, timeT beginTime, timeT endTime);
 
 };

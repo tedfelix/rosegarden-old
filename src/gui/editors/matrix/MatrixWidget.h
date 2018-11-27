@@ -71,7 +71,7 @@ class MatrixWidget : public QWidget,
 
 public:
     MatrixWidget(bool drumMode);
-    virtual ~MatrixWidget();
+    ~MatrixWidget() override;
 
     void setSegments(RosegardenDocument *document,
                      std::vector<Segment *> segments);
@@ -101,7 +101,7 @@ public:
     EventSelection *getSelection() const override;
     void setSelection(EventSelection *s, bool preview) override;
 
-    ControlRulerWidget *getControlsWidget(void)
+    ControlRulerWidget *getControlsWidget()
     { return m_controlsWidget; }
     
     // This delegates to MatrixScene
@@ -206,7 +206,7 @@ protected slots:
     void slotMouseLeavesView();
 
     /// Instrument is being destroyed
-    void slotInstrumentGone(void);
+    void slotInstrumentGone();
 
 protected :
     void showEvent(QShowEvent * event) override;

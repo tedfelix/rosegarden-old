@@ -733,7 +733,7 @@ MatrixView::slotUpdateMenuStates()
 
 void
 MatrixView::
-conformRulerSelectionState(void)
+conformRulerSelectionState()
 {
     ControlRulerWidget * cr = m_matrixWidget->getControlsWidget();
     if (cr->isAnyRulerVisible())
@@ -1190,7 +1190,7 @@ MatrixView::slotFilterSelection()
         }
 
         if (haveEvent) setSelection(newSelection, false);
-        else setSelection(0, false);
+        else setSelection(nullptr, false);
     }
 }
 
