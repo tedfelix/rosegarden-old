@@ -477,16 +477,16 @@ FileSource::initRemote()
 
     m_reply = nms.localData()->get(req);
 
-    connect(m_reply, SIGNAL(readyRead()),
-            this, SLOT(readyRead()));
+    connect(m_reply, &QIODevice::readyRead,
+            this, &FileSource::readyRead);
     connect(m_reply, SIGNAL(error(QNetworkReply::NetworkError)),
             this, SLOT(replyFailed(QNetworkReply::NetworkError)));
-    connect(m_reply, SIGNAL(finished()),
-            this, SLOT(replyFinished()));
-    connect(m_reply, SIGNAL(metaDataChanged()),
-            this, SLOT(metaDataChanged()));
-    connect(m_reply, SIGNAL(downloadProgress(qint64, qint64)),
-            this, SLOT(downloadProgress(qint64, qint64)));
+    connect(m_reply, &QNetworkReply::finished,
+            this, &FileSource::replyFinished);
+    connect(m_reply, &QNetworkReply::metaDataChanged,
+            this, &FileSource::metaDataChanged);
+    connect(m_reply, &QNetworkReply::downloadProgress,
+            this, &FileSource::downloadProgress);
 }
 
 void
@@ -899,7 +899,8 @@ FileSource::createCacheFile()
 #ifdef DEBUG_FILE_SOURCE
         std::cerr << "FileSource::createCacheFile: ERROR: Failed to create temporary directory: " << f.what() << std::endl;
 #endif
-        return "";
+        m_localFilename = "";
+        return false;
     }
 
     QString filepart = m_url.path().section('/', -1, -1,
@@ -957,7 +958,8 @@ FileSource::createCacheFile()
                       << m_url.toString() << "\" (or file already exists)" << std::endl;
 #endif
 
-            return "";
+            m_localFilename = "";
+            return false;
         }
     }
 
@@ -968,7 +970,6 @@ FileSource::createCacheFile()
 #endif
     
     m_localFilename = filepath;
-
     return false;
 }
 

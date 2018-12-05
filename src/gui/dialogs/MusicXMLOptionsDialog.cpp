@@ -57,7 +57,7 @@ MusicXMLOptionsDialog::MusicXMLOptionsDialog(QWidget *parent,
                        m_doc(doc)
 {
     setModal(true);
-    setWindowTitle((windowCaption = "" ? tr("MusicXML Export") : windowCaption));
+    setWindowTitle((windowCaption == "" ? tr("MusicXML Export") : windowCaption));
 
     QGridLayout *metaGridLayout = new QGridLayout;
 
@@ -189,8 +189,8 @@ MusicXMLOptionsDialog::MusicXMLOptionsDialog(QWidget *parent,
 
 
     connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
-    connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
-    connect(buttonBox, SIGNAL(helpRequested()), this, SLOT(help()));
+    connect(buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
+    connect(buttonBox, &QDialogButtonBox::helpRequested, this, &MusicXMLOptionsDialog::help);
 
     populateDefaultValues();
 

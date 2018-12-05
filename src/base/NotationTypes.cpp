@@ -13,10 +13,6 @@
     COPYING included with this distribution for more information.
 */
 
-#ifdef __GNUG__
-#pragma GCC diagnostic ignored "-Wimplicit-fallthrough"
-#endif
-
 #include "base/NotationTypes.h"
 #include "NotationRules.h"
 #include "base/BaseProperties.h"
@@ -47,25 +43,24 @@ const int MIN_SUBORDERING = SHRT_MIN;
 
 namespace Accidentals
 {
-#pragma GCC diagnostic ignored "-Wattributes"
     /**
      * NoAccidental means the accidental will be inferred
      * based on the performance pitch and current key at the
      * location of the note.
      */
-    ROSEGARDENPRIVATE_EXPORT const Accidental NoAccidental = "no-accidental";
+    const Accidental NoAccidental = "no-accidental";
 
-    ROSEGARDENPRIVATE_EXPORT const Accidental Sharp = "sharp";
-    ROSEGARDENPRIVATE_EXPORT const Accidental Flat = "flat";
-    ROSEGARDENPRIVATE_EXPORT const Accidental Natural = "natural";
-    ROSEGARDENPRIVATE_EXPORT const Accidental DoubleSharp = "double-sharp";
-    ROSEGARDENPRIVATE_EXPORT const Accidental DoubleFlat = "double-flat";
+    const Accidental Sharp = "sharp";
+    const Accidental Flat = "flat";
+    const Accidental Natural = "natural";
+    const Accidental DoubleSharp = "double-sharp";
+    const Accidental DoubleFlat = "double-flat";
 
     // Additional Accidentals for demi- and sesqui- sharps and flats
-    ROSEGARDENPRIVATE_EXPORT const Accidental QuarterFlat = "demiflat";
-    ROSEGARDENPRIVATE_EXPORT const Accidental ThreeQuarterFlat =  "sesqiflat";
-    ROSEGARDENPRIVATE_EXPORT const Accidental QuarterSharp = "demisharp";
-    ROSEGARDENPRIVATE_EXPORT const Accidental ThreeQuarterSharp = "sesquisharp";
+    const Accidental QuarterFlat = "demiflat";
+    const Accidental ThreeQuarterFlat =  "sesqiflat";
+    const Accidental QuarterSharp = "demisharp";
+    const Accidental ThreeQuarterSharp = "sesquisharp";
 
     ROSEGARDENPRIVATE_EXPORT AccidentalList getStandardAccidentals() {
 
@@ -109,29 +104,29 @@ using namespace Accidentals;
 
 namespace Marks
 {
-    ROSEGARDENPRIVATE_EXPORT const Mark NoMark = "no-mark";
-    ROSEGARDENPRIVATE_EXPORT const Mark Accent = "accent";
-    ROSEGARDENPRIVATE_EXPORT const Mark Tenuto = "tenuto";
-    ROSEGARDENPRIVATE_EXPORT const Mark Staccato = "staccato";
-    ROSEGARDENPRIVATE_EXPORT const Mark Staccatissimo = "staccatissimo";
-    ROSEGARDENPRIVATE_EXPORT const Mark Marcato = "marcato";
-    ROSEGARDENPRIVATE_EXPORT const Mark Open = "open";
-    ROSEGARDENPRIVATE_EXPORT const Mark Stopped = "stopped";
-    ROSEGARDENPRIVATE_EXPORT const Mark Harmonic = "harmonic";
-    ROSEGARDENPRIVATE_EXPORT const Mark Sforzando = getTextMark("sf");
-    ROSEGARDENPRIVATE_EXPORT const Mark Rinforzando = getTextMark("rf");
-    ROSEGARDENPRIVATE_EXPORT const Mark Trill = "trill";
-    ROSEGARDENPRIVATE_EXPORT const Mark LongTrill = "long-trill";
-    ROSEGARDENPRIVATE_EXPORT const Mark TrillLine = "trill-line";
-    ROSEGARDENPRIVATE_EXPORT const Mark Turn = "turn";
-    ROSEGARDENPRIVATE_EXPORT const Mark Pause = "pause";
-    ROSEGARDENPRIVATE_EXPORT const Mark UpBow = "up-bow";
-    ROSEGARDENPRIVATE_EXPORT const Mark DownBow = "down-bow";
+    const Mark NoMark = "no-mark";
+    const Mark Accent = "accent";
+    const Mark Tenuto = "tenuto";
+    const Mark Staccato = "staccato";
+    const Mark Staccatissimo = "staccatissimo";
+    const Mark Marcato = "marcato";
+    const Mark Open = "open";
+    const Mark Stopped = "stopped";
+    const Mark Harmonic = "harmonic";
+    const Mark Sforzando = getTextMark("sf");
+    const Mark Rinforzando = getTextMark("rf");
+    const Mark Trill = "trill";
+    const Mark LongTrill = "long-trill";
+    const Mark TrillLine = "trill-line";
+    const Mark Turn = "turn";
+    const Mark Pause = "pause";
+    const Mark UpBow = "up-bow";
+    const Mark DownBow = "down-bow";
 
-    ROSEGARDENPRIVATE_EXPORT const Mark Mordent = "mordent";
-    ROSEGARDENPRIVATE_EXPORT const Mark MordentInverted = "mordent-inverted";
-    ROSEGARDENPRIVATE_EXPORT const Mark MordentLong = "mordent-long";
-    ROSEGARDENPRIVATE_EXPORT const Mark MordentLongInverted = "mordent-long-inverted";
+    const Mark Mordent = "mordent";
+    const Mark MordentInverted = "mordent-inverted";
+    const Mark MordentLong = "mordent-long";
+    const Mark MordentLongInverted = "mordent-long-inverted";
 
     ROSEGARDENPRIVATE_EXPORT string getTextMark(string text) {
         return string("text_") + text;
@@ -1005,14 +1000,14 @@ resolveNoAccidental(int pitch,
                   const Key &key,
                   NoAccidentalStrategy noAccidentalStrategy)
 {
-    Accidental outputAccidental = "";
+    Accidental outputAccidental;
 
     // Find out the accidental to use, based on the strategy specified
     switch (noAccidentalStrategy) {
         case UseKeySharpness:
             noAccidentalStrategy =
                 key.isSharp() ? UseSharps : UseFlats;
-            // fall though
+            // fall through
         case UseFlats:
             // shares code with UseSharps
         case UseSharps:
@@ -1034,7 +1029,7 @@ resolveNoAccidental(int pitch,
             int pitchOffset = (pitch - key.getTonicPitch() + 12) % 12;
             // 0: major, 1: minor
             int minor = key.isMinor();
-            static int pitchToHeight[2][12] =
+            static const int pitchToHeight[2][12] =
                 {
                     { 0, 0, 1, 2, 2, 3, 3, 4, 5, 5, 6, 6 },
                     // a ., b, c, ., d, ., e, f, ., g, .
@@ -1045,7 +1040,7 @@ resolveNoAccidental(int pitch,
             // accidentals in the key. Example: in F major, with a pitchOffset
             // of 6, the resulting height would be 3 (Bb) and the correction
             // would be +1, so the resulting note would be B-natural
-            static int pitchToCorrection[2][12] =
+            static const int pitchToCorrection[2][12] =
                 {
                     { 0, +1, 0, -1, 0, 0, +1, 0, -1, 0, -1, 0 },
                     { 0, -1, 0, 0, +1, 0, -1, 0, 0, +1, 0, +1 }
@@ -1096,23 +1091,23 @@ resolveSpecifiedAccidental(int pitch,
     // its number of accidentals to set the flags:
     if (keyIsSharp) {
         switch (accidentalCount) {
-            case 7: keyHasSharpB = true;
-            case 6: keyHasSharpE = true;
-            case 5: keyHasSharpA = true;
-            case 4: keyHasSharpD = true;
-            case 3: keyHasSharpG = true;
-            case 2: keyHasSharpC = true;
-            case 1: keyHasSharpF = true;
+            case 7: keyHasSharpB = true; // fall-through
+            case 6: keyHasSharpE = true; // fall-through
+            case 5: keyHasSharpA = true; // fall-through
+            case 4: keyHasSharpD = true; // fall-through
+            case 3: keyHasSharpG = true; // fall-through
+            case 2: keyHasSharpC = true; // fall-through
+            case 1: keyHasSharpF = true; // fall-through
         }
     } else {
         switch (accidentalCount) {
-            case 7: keyHasFlatF = true;
-            case 6: keyHasFlatC = true;
-            case 5: keyHasFlatG = true;
-            case 4: keyHasFlatD = true;
-            case 3: keyHasFlatA = true;
-            case 2: keyHasFlatE = true;
-            case 1: keyHasFlatB = true;
+            case 7: keyHasFlatF = true; // fall-through
+            case 6: keyHasFlatC = true; // fall-through
+            case 5: keyHasFlatG = true; // fall-through
+            case 4: keyHasFlatD = true; // fall-through
+            case 3: keyHasFlatA = true; // fall-through
+            case 2: keyHasFlatE = true; // fall-through
+            case 1: keyHasFlatB = true; // fall-through
         }
    }
 

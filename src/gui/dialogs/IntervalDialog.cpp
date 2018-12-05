@@ -99,16 +99,16 @@ IntervalDialog::IntervalDialog(QWidget *parent, bool askChangeKey, bool askTrans
 
     vBox->setLayout(vBoxLayout);
 
-    connect(m_referencenote, SIGNAL(noteChanged(int,int,int)),
-            this, SLOT(slotSetReferenceNote(int,int,int)));
+    connect(m_referencenote, &DiatonicPitchChooser::noteChanged,
+            this, &IntervalDialog::slotSetReferenceNote);
 
-    connect(m_targetnote, SIGNAL(noteChanged(int,int,int)),
-            this, SLOT(slotSetTargetNote(int,int,int)));
+    connect(m_targetnote, &DiatonicPitchChooser::noteChanged,
+            this, &IntervalDialog::slotSetTargetNote);
     QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel );
     metagrid->addWidget(buttonBox, 1, 0);
     metagrid->setRowStretch(0, 10);
-    connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
-    connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+    connect(buttonBox, &QDialogButtonBox::accepted, this, &QDialog::accept);
+    connect(buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
 }
 
 // number of octaves the notes are apart
@@ -236,8 +236,6 @@ IntervalDialog::getIntervalName(int intervalDiatonic, int intervalChromatic)
                textIntervalDeviated += tr("a triply augmented");
            else if (deviation == 4)
                textIntervalDeviated += tr("a quadruply augmented");
-           else if (deviation == 0)
-               textIntervalDeviated += tr("a perfect");
            else
                textIntervalDeviated += tr("an (unknown, %1)").arg(deviation);
            break;

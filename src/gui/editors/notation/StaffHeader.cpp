@@ -246,14 +246,15 @@ StaffHeader::StaffHeader(HeadersGroup *group,
     // from the headers group. The notation widget displays the tool tip,
     // without clipping nor resizing it, when it receives this signal.
 
-    m_firstSeg = *m_segments.begin();
-    if (m_firstSeg == *m_segments.end()) {
+    if (m_segments.begin() == m_segments.end()) {
         RG_WARNING << "No segments on this track";
         m_noSegment = true;
         return;
     } else {
         m_noSegment = false;
     }
+
+    m_firstSeg = *m_segments.begin();
     m_firstSegStartTime = m_firstSeg->getStartTime();
 
     /// This may not work if two segments are superimposed
@@ -284,20 +285,20 @@ StaffHeader::StaffHeader(HeadersGroup *group,
     m_clefOrKeyInconsistency->hide();
 
     // Connect the warning icon to a show popup slot
-    connect(m_clefOrKeyInconsistency, SIGNAL(clicked()),
-            this, SLOT(slotShowInconsistencies()));
+    connect(m_clefOrKeyInconsistency, &QAbstractButton::clicked,
+            this, &StaffHeader::slotShowInconsistencies);
 
 
     // Implement a ToolTip event replacement (see enterEvent(), leaveEvent and
     // mouseMoveEvent()).
     m_toolTipTimer = new QTimer(this);
-    connect(m_toolTipTimer, SIGNAL(timeout()), this, SLOT(slotToolTip()));
+    connect(m_toolTipTimer, &QTimer::timeout, this, &StaffHeader::slotToolTip);
     m_toolTipTimer->setSingleShot(false);
     m_toolTipTimer->setInterval(200);  // 0.2 s
     setMouseTracking(true);
 
-    connect(m_headersGroup, SIGNAL(currentSegmentChanged()),
-            this, SLOT(slotSetCurrent()));
+    connect(m_headersGroup, &HeadersGroup::currentSegmentChanged,
+            this, &StaffHeader::slotSetCurrent);
 
             
     // Create three objects where to find possible inconsistencies
@@ -839,7 +840,7 @@ StaffHeader::SegmentCmp::operator()(const Segment * s1, const Segment * s2) cons
 // StaffHeader::event(QEvent *event)
 // {
 //     if (event->type() == QEvent::ToolTip) {
-//         emit(showToolTip(m_toolTipText));
+//         emit showToolTip(m_toolTipText);
 //         return true;
 //     }
 // 
@@ -895,9 +896,9 @@ StaffHeader::slotToolTip()
     QRect inconIconRect = m_clefOrKeyInconsistency->frameGeometry();
     if ((m_clefOrKeyIsInconsistent || m_transposeIsInconsistent)
          && inconIconRect.contains(m_cursorPos)) {
-        emit(showToolTip(m_warningToolTipText));
+        emit showToolTip(m_warningToolTipText);
     } else {
-        emit(showToolTip(m_toolTipText));
+        emit showToolTip(m_toolTipText);
     }
 }
 
@@ -959,14 +960,14 @@ StaffHeader::slotShowInconsistencies()
     warning->setWindowFlags(Qt::Dialog); // Get a popup in middle of screen
     warning->setMinimumWidth(500);
     warning->show();
-    connect(this, SIGNAL(destroyed()), warning, SLOT(close()));
+    connect(this, &QObject::destroyed, warning, &QWidget::close);
 }
 
 void
 StaffHeader::eventAdded(const Segment */* seg */, Event *ev)
 {
    if (ev->isa(Key::EventType) || ev->isa(Clef::EventType)) {
-        emit(staffModified());
+        emit staffModified();
     }
 }
 
@@ -974,32 +975,32 @@ void
 StaffHeader::eventRemoved(const Segment */* seg */, Event *ev)
 {
     if (ev->isa(Key::EventType) || ev->isa(Clef::EventType)) {
-        emit(staffModified());
+        emit staffModified();
     }
 }
 
 void
 StaffHeader::appearanceChanged(const Segment */* seg */)
 {
-        emit(staffModified());
+        emit staffModified();
 }
 
 void
 StaffHeader::startChanged(const Segment */* seg */, timeT)
 {
-        emit(staffModified());
+        emit staffModified();
 }
 
 void
 StaffHeader::endMarkerTimeChanged(const Segment */* seg */, bool /*shorten*/)
 {
-        emit(staffModified());
+        emit staffModified();
 }
 
 void
 StaffHeader::transposeChanged(const Segment */* seg */, int)
 {
-        emit(staffModified());
+        emit staffModified();
 }
 
 void
@@ -1020,7 +1021,7 @@ StaffHeader::segmentDeleted(const Segment *seg)
         }
     }
 
-    emit(staffModified());
+    emit staffModified();
 }
 
 

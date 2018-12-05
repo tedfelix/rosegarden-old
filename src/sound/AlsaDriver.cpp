@@ -15,7 +15,6 @@
 
 #ifdef __GNUG__
 #pragma GCC diagnostic ignored "-Wswitch-enum"
-#pragma GCC diagnostic ignored "-Wimplicit-fallthrough"
 #endif
 
 #define RG_MODULE_STRING "[AlsaDriver]"
@@ -1193,13 +1192,13 @@ AlsaDriver::setPlausibleConnection(DeviceId id, QString idealConnection, bool re
 
         int colon = idealConnection.indexOf(":");
         if (colon >= 0) {
-            client = idealConnection.left(colon).toInt();
+            client = idealConnection.leftRef(colon).toInt();
         }
 
         if (client > 0) {
             QString remainder = idealConnection.mid(colon + 1);
             int space = remainder.indexOf(" ");
-            if (space >= 0) portNo = remainder.left(space).toInt();
+            if (space >= 0) portNo = remainder.leftRef(space).toInt();
         }
     
         int firstSpace = idealConnection.indexOf(" ");
@@ -2541,7 +2540,8 @@ AlsaDriver::getMappedEventList(MappedEventList &mappedEventList)
                 break;
             }
 
-            // FALLTHROUGH:  NOTEON with velocity 0 is treated as a NOTEOFF
+            // fall-through
+            // NOTEON with velocity 0 is treated as a NOTEOFF
 
         case SND_SEQ_EVENT_NOTEOFF: {
             //RG_DEBUG << "AD::gMEL()  NOTEOFF channel:" << channel << " pitch:" << event->data.note.note;

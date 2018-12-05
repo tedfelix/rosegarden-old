@@ -61,7 +61,7 @@ LilyPondOptionsDialog::LilyPondOptionsDialog(QWidget *parent,
     m_createdFromNotationEditor(createdFromNotationEditor)
 {
     setModal(true);
-    setWindowTitle((windowCaption = "" ? tr("LilyPond Export/Preview") : windowCaption));
+    setWindowTitle((windowCaption == "" ? tr("LilyPond Export/Preview") : windowCaption));
 
     QGridLayout *metaGridLayout = new QGridLayout;
 
@@ -326,8 +326,8 @@ LilyPondOptionsDialog::LilyPondOptionsDialog(QWidget *parent,
 
     connect(m_lilyLanguage, SIGNAL(activated(int)), m_useShortNames, SLOT(slotCheckVersion(int)));
     connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
-    connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
-    connect(buttonBox, SIGNAL(helpRequested()), this, SLOT(help()));
+    connect(buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
+    connect(buttonBox, &QDialogButtonBox::helpRequested, this, &LilyPondOptionsDialog::help);
 
     populateDefaultValues();
     

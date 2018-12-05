@@ -1025,7 +1025,7 @@ StaffLayout::resizeStaffLineRow(int row, double x, double length)
 
     delete m_staffConnectingLines[row];
 
-    if (m_pageMode != LinearMode && m_connectingLineLength > 0.1) {
+    if (m_pageMode != LinearMode && m_connectingLineLength > 0) {
 
         // rather arbitrary (dup in insertBar)
         int barThickness = m_resolution / 12 + 1;
@@ -1117,20 +1117,6 @@ StaffLayout::renderElements(ViewElementList::iterator,
 {
     // nothing -- we assume rendering will be done by the implementation
     // of positionElements
-}
-
-void
-StaffLayout::renderAllElements()
-{
-    renderElements(m_viewSegment->getViewElementList()->begin(),
-                   m_viewSegment->getViewElementList()->end());
-}
-
-void
-StaffLayout::positionAllElements()
-{
-    positionElements(m_viewSegment->getSegment().getStartTime(),
-                     m_viewSegment->getSegment().getEndTime());
 }
 
 QRectF

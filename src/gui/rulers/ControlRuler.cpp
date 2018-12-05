@@ -53,11 +53,6 @@
 namespace Rosegarden
 {
 
-const int ControlRuler::DefaultRulerHeight = 75;
-const int ControlRuler::MinItemHeight = 5;
-const int ControlRuler::MaxItemHeight = 64 + 5;
-const int ControlRuler::ItemHeightRange = 64;
-
     ControlRuler::ControlRuler(ViewSegment * /*viewsegment*/,
                            RulerScale* rulerScale,
                            QWidget* parent) :
@@ -89,10 +84,8 @@ const int ControlRuler::ItemHeightRange = 64;
     setMouseTracking(true);
 
     m_toolBox = new ControlToolBox(this);
-    connect(m_toolBox, SIGNAL(showContextHelp(const QString &)),
-            this, SIGNAL(showContextHelp(const QString &)));
-
-    emit stateChange("have_controller_item_selected", false);
+    connect(m_toolBox, &BaseToolBox::showContextHelp,
+            this, &ControlRuler::showContextHelp);
 }
 
 ControlRuler::~ControlRuler()
